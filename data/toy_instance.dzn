@@ -1,0 +1,73 @@
+% Toy test instance for MO-JSSP model validation
+% 2 jobs, 2 machines, 2 speed levels
+% NOTA METODOLÓGICA: Esta relación (Modo 1 mayor duración / menor energía,
+% Modo 2 menor duración / mayor energía) pertenece a los datos de esta instancia
+% de prueba y no constituye una restricción general del modelo de SpeedScaling.
+
+JOBS = 1..2;
+MACHINES = 1..2;
+SPEED = 2;
+
+% Processing times [job, machine, speed]
+time = array3d(
+    JOBS,
+    MACHINES,
+    1..SPEED,
+    [
+        % Job 1: M1, M2
+        5, 3,
+        6, 4,
+
+        % Job 2: M1, M2
+        7, 5,
+        4, 2
+    ]
+);
+
+% Energy consumption [job, machine, speed]
+energy = array3d(
+    JOBS,
+    MACHINES,
+    1..SPEED,
+    [
+        % Job 1: M1, M2
+        10, 20,
+        15, 25,
+
+        % Job 2: M1, M2
+        18, 28,
+        10, 20
+    ]
+);
+
+% Precedence order within job [job, machine]
+% Job 1: M1 first (0), M2 second (1)
+% Job 2: M2 first (0), M1 second (1)
+precedence = array2d(
+    JOBS,
+    MACHINES,
+    [
+        0, 1,
+        1, 0
+    ]
+);
+
+% Release dates [job, machine]
+releaseDate = array2d(
+    JOBS,
+    MACHINES,
+    [
+        0, 0,
+        0, 0
+    ]
+);
+
+% Due dates [job, machine]
+dueDate = array2d(
+    JOBS,
+    MACHINES,
+    [
+        10, 10,
+        10, 10
+    ]
+);
