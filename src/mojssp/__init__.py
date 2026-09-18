@@ -18,6 +18,8 @@ from .schedule_validator import (
     ScheduleValidator,
     validate_schedule,
 )
+from .nsga2 import NSGA2, NSGA2Result, nsga2
+
 __all__ = [
     "ProcessingMode",
     "Operation",
@@ -37,7 +39,11 @@ __all__ = [
     "ScheduleValidationError",
     "ScheduleValidator",
     "validate_schedule",
+    "NSGA2",
+    "NSGA2Result",
+    "nsga2",
 ]
+
 
 
 
