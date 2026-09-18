@@ -5,10 +5,12 @@ from dataclasses import dataclass
 from typing import Callable, Dict, List, Optional, Sequence, Set, Tuple
 
 from .decoder import Decoder
+from .dominance import dominates
 from .evaluator import Evaluator, ObjectiveValues
 from .instance import Instance
 from .schedule import Schedule
 from .solution import Solution
+
 
 
 @dataclass(eq=False)
@@ -47,18 +49,6 @@ class NSGA2Result:
     population_objectives: Tuple[ObjectiveValues, ...]
 
 
-def dominates(a: ObjectiveValues, b: ObjectiveValues) -> bool:
-    """Check if objective vector a dominates objective vector b in minimization.
-
-    a dominates b iff:
-        a_i <= b_i for all objectives i, and
-        a_j < b_j for at least one objective j.
-    """
-    a_vals = (a.makespan, a.tardiness, a.energy)
-    b_vals = (b.makespan, b.tardiness, b.energy)
-    all_le = all(x <= y for x, y in zip(a_vals, b_vals))
-    any_lt = any(x < y for x, y in zip(a_vals, b_vals))
-    return all_le and any_lt
 
 
 def fast_non_dominated_sort(population: Sequence[Individual]) -> List[List[Individual]]:

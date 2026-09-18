@@ -19,6 +19,9 @@ from .schedule_validator import (
     validate_schedule,
 )
 from .nsga2 import NSGA2, NSGA2Result, nsga2
+from .dominance import dominates
+from .pareto_archive import ArchiveEntry, ParetoArchive
+
 
 __all__ = [
     "ProcessingMode",
@@ -42,7 +45,11 @@ __all__ = [
     "NSGA2",
     "NSGA2Result",
     "nsga2",
+    "dominates",
+    "ArchiveEntry",
+    "ParetoArchive",
 ]
+
 
 
 
