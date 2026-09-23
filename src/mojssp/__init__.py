@@ -21,6 +21,17 @@ from .schedule_validator import (
 from .nsga2 import NSGA2, NSGA2Result, nsga2
 from .dominance import dominates
 from .pareto_archive import ArchiveEntry, ParetoArchive
+from .normalization import (
+    NormalizationBoundError,
+    ObjectiveBounds,
+    ObjectiveNormalizer,
+    compute_instance_bounds,
+)
+from .hypervolume import (
+    DEFAULT_REFERENCE_POINT,
+    compute_hypervolume,
+    compute_archive_hypervolume,
+)
 
 
 __all__ = [
@@ -48,7 +59,15 @@ __all__ = [
     "dominates",
     "ArchiveEntry",
     "ParetoArchive",
+    "NormalizationBoundError",
+    "ObjectiveBounds",
+    "ObjectiveNormalizer",
+    "compute_instance_bounds",
+    "DEFAULT_REFERENCE_POINT",
+    "compute_hypervolume",
+    "compute_archive_hypervolume",
 ]
+
 
 
 
