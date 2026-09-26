@@ -32,6 +32,35 @@ from .hypervolume import (
     compute_hypervolume,
     compute_archive_hypervolume,
 )
+from .critical_path import (
+    get_critical_operations,
+    map_operation_to_sequence_index,
+    get_critical_sequence_indices,
+)
+from .local_search import (
+    ArchiveAddResult,
+    LocalParetoArchive,
+    LocalSearch,
+    LocalSearchResult,
+)
+from .nsga2_ls import (
+    NSGA2LS,
+    NSGA2LSResult,
+    nsga2_ls,
+)
+from .mopso import (
+    MOPSO,
+    MOPSOResult,
+    mopso,
+    PersonalParetoArchive,
+)
+from .algorithm_contract import (
+    AlgorithmResult,
+    OptimizationAlgorithm,
+    NSGA2Adapter,
+    NSGA2LSAdapter,
+    MOPSOAdapter,
+)
 
 
 __all__ = [
@@ -66,6 +95,25 @@ __all__ = [
     "DEFAULT_REFERENCE_POINT",
     "compute_hypervolume",
     "compute_archive_hypervolume",
+    "get_critical_operations",
+    "map_operation_to_sequence_index",
+    "get_critical_sequence_indices",
+    "ArchiveAddResult",
+    "LocalParetoArchive",
+    "LocalSearch",
+    "LocalSearchResult",
+    "NSGA2LS",
+    "NSGA2LSResult",
+    "nsga2_ls",
+    "MOPSO",
+    "MOPSOResult",
+    "mopso",
+    "PersonalParetoArchive",
+    "AlgorithmResult",
+    "OptimizationAlgorithm",
+    "NSGA2Adapter",
+    "NSGA2LSAdapter",
+    "MOPSOAdapter",
 ]
 
 
