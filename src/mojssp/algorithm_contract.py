@@ -150,3 +150,53 @@ class MOPSOAdapter:
             raw_result=raw,
         )
 
+
+@dataclass(frozen=True)
+class AlgorithmBlockResult:
+    """Result of executing an algorithm arm for an evaluation budget block.
+
+    Attributes:
+        solutions: Defensive snapshot of the arm's current ParetoArchive of
+            non-dominated solutions discovered by the arm up to the end of this block.
+        evaluations_used: Exact number of real Evaluator.evaluate() calls consumed
+            during this run(budget) call (evaluations_used <= budget).
+        completed: True if the arm has definitively finished its execution budget or
+            iterations, False otherwise.
+    """
+
+    solutions: ParetoArchive
+    evaluations_used: int
+    completed: bool
+
+
+@runtime_checkable
+class PortfolioArm(Protocol):
+    """Common protocol for stateful algorithm arms in the portfolio."""
+
+    @property
+    def arm_name(self) -> str:
+        """Descriptive identifier of the arm ('NSGA-II', etc.)."""
+        ...
+
+    @property
+    def total_evaluations(self) -> int:
+        """Cumulative real evaluations consumed across all blocks executed so far."""
+        ...
+
+    @property
+    def is_completed(self) -> bool:
+        """True if the arm has definitively finished its execution budget/generations."""
+        ...
+
+    def run(self, budget: int) -> AlgorithmBlockResult:
+        """Execute up to `budget` real evaluations and return the block result.
+
+        Args:
+            budget: Maximum number of calls to Evaluator.evaluate() permitted in this block.
+
+        Returns:
+            AlgorithmBlockResult with the updated archive snapshot, evaluations consumed,
+            and completion status.
+        """
+        ...
+
