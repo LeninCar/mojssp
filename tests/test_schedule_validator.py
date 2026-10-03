@@ -98,7 +98,7 @@ class TestScheduleValidator(unittest.TestCase):
         self.assertEqual(errors, [])
 
     def test_decoded_random_solution_passes(self) -> None:
-        toy_inst = load_dzn("data/toy_instance.dzn")
+        toy_inst = load_dzn("data/validation/toy_instance.dzn")
         rng = random.Random(123)
         sol = Solution.random(toy_inst, rng=rng)
         sched = Decoder().decode(toy_inst, sol)

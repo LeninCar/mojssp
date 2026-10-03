@@ -31,7 +31,7 @@ class TestPortfolio(unittest.TestCase):
     """Test suite for Portfolio and Global Pareto Archive (Phase 7.3)."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.seed = 42
 

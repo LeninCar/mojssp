@@ -214,7 +214,7 @@ class TestDecoder(unittest.TestCase):
         self.assertEqual(op2.energy, 8.0)
 
     def test_decoding_with_dzn_toy_instance(self) -> None:
-        toy_inst = load_dzn("data/toy_instance.dzn")
+        toy_inst = load_dzn("data/validation/toy_instance.dzn")
         rng = random.Random(42)
 
         # Generate a random solution and decode it

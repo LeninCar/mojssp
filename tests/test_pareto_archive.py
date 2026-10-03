@@ -214,7 +214,7 @@ class TestNSGA2IntegrationWithDominanceAndArchive(unittest.TestCase):
     """Integration test verifying NSGA-II compatibility with dominance and archive."""
 
     def test_nsga2_runs_with_common_dominance_and_feeds_archive(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         instance = load_dzn(toy_path)
 
         # Run NSGA-II

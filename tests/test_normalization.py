@@ -31,7 +31,7 @@ class TestNormalization(unittest.TestCase):
     """Test suite for ObjectiveBounds and ObjectiveNormalizer."""
 
     def setUp(self) -> None:
-        self.toy_dzn_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        self.toy_dzn_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(str(self.toy_dzn_path))
 
     def test_bounds_computation_toy_instance(self) -> None:

@@ -28,7 +28,7 @@ class TestCriticalPath(unittest.TestCase):
     """Test suite for Critical Path identification and sequence mapping."""
 
     def setUp(self) -> None:
-        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(str(toy_dzn))
 
     def test_empty_schedule(self) -> None:

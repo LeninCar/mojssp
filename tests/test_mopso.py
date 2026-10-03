@@ -38,7 +38,7 @@ class TestMOPSOComponents(unittest.TestCase):
     """Test unit components of discrete MOPSO."""
 
     def setUp(self) -> None:
-        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(str(toy_dzn))
 
     def test_velocity_limits_and_50_50_budget_distribution(self) -> None:
@@ -271,7 +271,7 @@ class TestMOPSOExecution(unittest.TestCase):
     """Test full execution of discrete MOPSO."""
 
     def setUp(self) -> None:
-        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(str(toy_dzn))
 
     def test_parameter_validations(self) -> None:

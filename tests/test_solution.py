@@ -16,7 +16,7 @@ class TestSolution(unittest.TestCase):
     """Test creation, validation, canonical mode mapping, and randomization of Solution."""
 
     def setUp(self):
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
 
     def test_valid_solution_creation(self):

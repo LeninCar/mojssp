@@ -25,7 +25,7 @@ class TestDMAB(unittest.TestCase):
 
     def setUp(self) -> None:
         self.arm_names = ("NSGA-II", "MOPSO", "NSGA-II+LS")
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.seed = 42
 

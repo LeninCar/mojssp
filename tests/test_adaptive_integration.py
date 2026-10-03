@@ -34,7 +34,7 @@ class TestAdaptiveIntegration(unittest.TestCase):
     """End-to-end integration tests for the full Adaptive Portfolio system."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.bounds = compute_instance_bounds(self.instance)
         self.normalizer = ObjectiveNormalizer(self.bounds)
@@ -177,9 +177,9 @@ class TestAdaptiveIntegration(unittest.TestCase):
             self.assertEqual(arm.total_evaluations, total_used)
 
     def test_dmab_update_count_matches_block_count(self) -> None:
-        """Validation 6: Exactly one DMAB update occurs per executed block."""
+        """Validation 6: Exactly one DMAB update occurs per executed block when neutral_warmup=False."""
         orchestrator = self._create_real_pipeline(seed=self.seed)
-        result = orchestrator.run(total_budget=60, block_size=15)
+        result = orchestrator.run(total_budget=60, block_size=15, neutral_warmup=False)
 
         # Total pulls matches block count
         self.assertEqual(orchestrator.dmab.total_pulls, result.total_blocks)
@@ -189,6 +189,27 @@ class TestAdaptiveIntegration(unittest.TestCase):
         for arm_name in orchestrator.portfolio.arm_names:
             expected_pulls = sum(1 for rec in result.history if rec.arm_name == arm_name)
             self.assertEqual(stats[arm_name].total_pulls, expected_pulls)
+
+    def test_neutral_warmup_end_to_end_behavior(self) -> None:
+        """Validation 8: Neutral warm-up isolates initialization rewards from DMAB learning."""
+        orchestrator = self._create_real_pipeline(seed=self.seed)
+        result = orchestrator.run(total_budget=60, block_size=15, neutral_warmup=True)
+
+        self.assertEqual(result.total_blocks, 4)
+        warmup_recs = [r for r in result.history if r.phase == "warmup"]
+        adaptive_recs = [r for r in result.history if r.phase == "adaptive"]
+
+        self.assertEqual(len(warmup_recs), 3)
+        self.assertEqual(len(adaptive_recs), 1)
+
+        # DMAB learning statistics only reflect adaptive blocks
+        self.assertEqual(orchestrator.dmab.total_pulls, 1)
+        active_arm = adaptive_recs[0].arm_name
+        stats = orchestrator.dmab.get_stats()
+        self.assertEqual(stats[active_arm].total_pulls, 1)
+        for arm in orchestrator.portfolio.arm_names:
+            if arm != active_arm:
+                self.assertEqual(stats[arm].total_pulls, 0)
 
     def test_reproducibility_deterministic_pipeline(self) -> None:
         """Validation 7: Same instance, seeds, budget, and block size yield identical trajectory."""

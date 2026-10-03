@@ -20,7 +20,7 @@ class TestNSGA2LS(unittest.TestCase):
     """Test suite for NSGA2LS execution, constraints, and reproducibility."""
 
     def setUp(self) -> None:
-        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(str(toy_dzn))
 
     def test_parameter_validations(self) -> None:

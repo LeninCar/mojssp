@@ -171,7 +171,7 @@ class TestEvaluator(unittest.TestCase):
             evaluate(self.instance, alien_sched)
 
     def test_end_to_end_with_toy_dzn_and_decoder(self) -> None:
-        toy_inst = load_dzn("data/toy_instance.dzn")
+        toy_inst = load_dzn("data/validation/toy_instance.dzn")
         rng = random.Random(42)
         sol = Solution.random(toy_inst, rng=rng)
 

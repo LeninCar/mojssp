@@ -24,7 +24,7 @@ class TestNSGA2Arm(unittest.TestCase):
     """Test suite for NSGA2Arm under Phase 7.2 common arm contract."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.seed = 42
 
@@ -208,7 +208,7 @@ class TestMOPSOArm(unittest.TestCase):
     """Test suite for MOPSOArm under Phase 7.2 common arm contract."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.seed = 42
 
@@ -433,7 +433,7 @@ class TestNSGA2LSArm(unittest.TestCase):
     """Test suite for NSGA2LSArm under Phase 7.2 common arm contract."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.seed = 42
 

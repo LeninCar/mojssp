@@ -124,7 +124,7 @@ class TestHypervolume(unittest.TestCase):
         """Test integration of ParetoArchive, ObjectiveNormalizer and compute_archive_hypervolume."""
         from mojssp import compute_instance_bounds, decode, evaluate
 
-        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         instance = load_dzn(str(toy_dzn))
 
         bounds = compute_instance_bounds(instance)

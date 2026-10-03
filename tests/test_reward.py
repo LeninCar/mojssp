@@ -28,7 +28,7 @@ class TestReward(unittest.TestCase):
     """Test suite for HypervolumeRewardTracker and ΔHV reward calculation."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.bounds = compute_instance_bounds(self.instance)
         self.normalizer = ObjectiveNormalizer(self.bounds)

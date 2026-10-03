@@ -29,7 +29,7 @@ class TestLocalSearch(unittest.TestCase):
     """Test suite for LocalSearch and LocalParetoArchive."""
 
     def setUp(self) -> None:
-        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_dzn = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(str(toy_dzn))
         self.init_sol = Solution(sequence=(1, 2, 1, 2), modes=(1, 1, 1, 1))
 

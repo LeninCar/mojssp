@@ -40,7 +40,7 @@ class TestNSGA2Components(unittest.TestCase):
     """Test suite for individual components of NSGA-II."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.dummy_sol = Solution(sequence=(1, 2, 1, 2), modes=(1, 1, 1, 1))
         self.dummy_sched = Decoder().decode(self.instance, self.dummy_sol)
@@ -168,7 +168,7 @@ class TestNSGA2Execution(unittest.TestCase):
     """Integration and execution tests for the complete NSGA-II algorithm."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
 
     def test_full_run_and_population_size(self) -> None:

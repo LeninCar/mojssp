@@ -27,7 +27,7 @@ class TestOrchestrator(unittest.TestCase):
     """Test suite for AdaptivePortfolioOrchestrator."""
 
     def setUp(self) -> None:
-        toy_path = Path(__file__).resolve().parent.parent / "data" / "toy_instance.dzn"
+        toy_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
         self.instance = load_dzn(toy_path)
         self.bounds = compute_instance_bounds(self.instance)
         self.normalizer = ObjectiveNormalizer(self.bounds)
@@ -122,12 +122,32 @@ class TestOrchestrator(unittest.TestCase):
         self.assertEqual(orchestrator.total_evaluations, sum_evals)
 
     def test_dmab_receives_reward_each_block(self) -> None:
-        """Test E: DMAB total_pulls increments exactly once per block executed."""
+        """Test E: DMAB total_pulls increments exactly once per block executed when neutral_warmup=False."""
         orchestrator = self._build_test_orchestrator()
-        res = orchestrator.run(total_budget=50, block_size=15)
+        res = orchestrator.run(total_budget=50, block_size=15, neutral_warmup=False)
 
         self.assertEqual(orchestrator.dmab.total_pulls, res.total_blocks)
         self.assertEqual(len(res.history), res.total_blocks)
+
+    def test_neutral_warmup_pipeline(self) -> None:
+        """Test: Neutral warm-up executes each arm once without feeding DMAB rewards."""
+        orchestrator = self._build_test_orchestrator()
+        total_budget = 60
+        block_size = 15
+
+        res = orchestrator.run(total_budget=total_budget, block_size=block_size, neutral_warmup=True)
+
+        self.assertEqual(res.total_blocks, 4)
+        warmup_records = [r for r in res.history if r.phase == "warmup"]
+        adaptive_records = [r for r in res.history if r.phase == "adaptive"]
+
+        self.assertEqual(len(warmup_records), 3)
+        self.assertEqual(len(adaptive_records), 1)
+        self.assertEqual(
+            [r.arm_name for r in warmup_records],
+            list(orchestrator.dmab.arm_names),
+        )
+        self.assertEqual(orchestrator.dmab.total_pulls, 1)
 
     def test_persistent_state_across_blocks(self) -> None:
         """Test F: Stateful algorithm arms continue their internal evolution across blocks."""
