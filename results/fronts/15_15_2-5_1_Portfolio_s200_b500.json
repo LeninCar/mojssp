@@ -1,0 +1,106 @@
+{
+  "run_id": "15_15_2-5_1_Portfolio_s200_b500",
+  "instance": "15_15_2-5_1",
+  "algorithm": "Adaptive Portfolio",
+  "seed": 200,
+  "budget": 500,
+  "hypervolume": 0.7053820930272816,
+  "archive_size": 19,
+  "pareto_front": [
+    {
+      "makespan": 1990.0,
+      "tardiness": 20346.0,
+      "energy": 16703.0
+    },
+    {
+      "makespan": 1910.0,
+      "tardiness": 17978.0,
+      "energy": 16844.0
+    },
+    {
+      "makespan": 1873.0,
+      "tardiness": 20192.0,
+      "energy": 16714.0
+    },
+    {
+      "makespan": 1694.0,
+      "tardiness": 15874.0,
+      "energy": 17527.0
+    },
+    {
+      "makespan": 1873.0,
+      "tardiness": 18093.0,
+      "energy": 17112.0
+    },
+    {
+      "makespan": 2189.0,
+      "tardiness": 22479.0,
+      "energy": 16591.0
+    },
+    {
+      "makespan": 1704.0,
+      "tardiness": 16564.0,
+      "energy": 17370.0
+    },
+    {
+      "makespan": 2013.0,
+      "tardiness": 20047.0,
+      "energy": 16758.0
+    },
+    {
+      "makespan": 1674.0,
+      "tardiness": 16559.0,
+      "energy": 17648.0
+    },
+    {
+      "makespan": 1668.0,
+      "tardiness": 16987.0,
+      "energy": 17668.0
+    },
+    {
+      "makespan": 1668.0,
+      "tardiness": 16987.0,
+      "energy": 17668.0
+    },
+    {
+      "makespan": 1668.0,
+      "tardiness": 16987.0,
+      "energy": 17668.0
+    },
+    {
+      "makespan": 1943.0,
+      "tardiness": 19828.0,
+      "energy": 16762.0
+    },
+    {
+      "makespan": 1898.0,
+      "tardiness": 18948.0,
+      "energy": 16774.0
+    },
+    {
+      "makespan": 1794.0,
+      "tardiness": 18300.0,
+      "energy": 16810.0
+    },
+    {
+      "makespan": 1994.0,
+      "tardiness": 21147.0,
+      "energy": 16618.0
+    },
+    {
+      "makespan": 1753.0,
+      "tardiness": 15813.0,
+      "energy": 17513.0
+    },
+    {
+      "makespan": 1755.0,
+      "tardiness": 17739.0,
+      "energy": 17233.0
+    },
+    {
+      "makespan": 1874.0,
+      "tardiness": 17476.0,
+      "energy": 16855.0
+    }
+  ]
+}

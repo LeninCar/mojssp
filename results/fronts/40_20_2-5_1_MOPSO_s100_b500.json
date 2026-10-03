@@ -1,0 +1,86 @@
+{
+  "run_id": "40_20_2-5_1_MOPSO_s100_b500",
+  "instance": "40_20_2-5_1",
+  "algorithm": "MOPSO",
+  "seed": 100,
+  "budget": 500,
+  "hypervolume": 0.6737936862554224,
+  "archive_size": 15,
+  "pareto_front": [
+    {
+      "makespan": 3901.0,
+      "tardiness": 127458.0,
+      "energy": 59383.0
+    },
+    {
+      "makespan": 4013.0,
+      "tardiness": 134291.0,
+      "energy": 58895.0
+    },
+    {
+      "makespan": 3916.0,
+      "tardiness": 129503.0,
+      "energy": 59338.0
+    },
+    {
+      "makespan": 3755.0,
+      "tardiness": 124438.0,
+      "energy": 60884.0
+    },
+    {
+      "makespan": 3852.0,
+      "tardiness": 129464.0,
+      "energy": 59884.0
+    },
+    {
+      "makespan": 3916.0,
+      "tardiness": 129503.0,
+      "energy": 59338.0
+    },
+    {
+      "makespan": 3906.0,
+      "tardiness": 130995.0,
+      "energy": 58934.0
+    },
+    {
+      "makespan": 3933.0,
+      "tardiness": 129830.0,
+      "energy": 59319.0
+    },
+    {
+      "makespan": 4129.0,
+      "tardiness": 140276.0,
+      "energy": 58518.0
+    },
+    {
+      "makespan": 3762.0,
+      "tardiness": 124916.0,
+      "energy": 59973.0
+    },
+    {
+      "makespan": 4009.0,
+      "tardiness": 134958.0,
+      "energy": 58886.0
+    },
+    {
+      "makespan": 4162.0,
+      "tardiness": 141836.0,
+      "energy": 58432.0
+    },
+    {
+      "makespan": 4125.0,
+      "tardiness": 130290.0,
+      "energy": 59207.0
+    },
+    {
+      "makespan": 4161.0,
+      "tardiness": 138779.0,
+      "energy": 58500.0
+    },
+    {
+      "makespan": 3779.0,
+      "tardiness": 124902.0,
+      "energy": 60765.0
+    }
+  ]
+}

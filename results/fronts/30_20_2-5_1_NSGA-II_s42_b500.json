@@ -1,0 +1,86 @@
+{
+  "run_id": "30_20_2-5_1_NSGA-II_s42_b500",
+  "instance": "30_20_2-5_1",
+  "algorithm": "NSGA-II",
+  "seed": 42,
+  "budget": 500,
+  "hypervolume": 0.7219245572827183,
+  "archive_size": 15,
+  "pareto_front": [
+    {
+      "makespan": 2919.0,
+      "tardiness": 68791.0,
+      "energy": 46073.0
+    },
+    {
+      "makespan": 2885.0,
+      "tardiness": 67659.0,
+      "energy": 46970.0
+    },
+    {
+      "makespan": 3184.0,
+      "tardiness": 75974.0,
+      "energy": 44060.0
+    },
+    {
+      "makespan": 2984.0,
+      "tardiness": 68360.0,
+      "energy": 45857.0
+    },
+    {
+      "makespan": 3410.0,
+      "tardiness": 82282.0,
+      "energy": 43701.0
+    },
+    {
+      "makespan": 3001.0,
+      "tardiness": 68095.0,
+      "energy": 45650.0
+    },
+    {
+      "makespan": 3131.0,
+      "tardiness": 74916.0,
+      "energy": 44229.0
+    },
+    {
+      "makespan": 2885.0,
+      "tardiness": 67868.0,
+      "energy": 46848.0
+    },
+    {
+      "makespan": 2883.0,
+      "tardiness": 67599.0,
+      "energy": 46987.0
+    },
+    {
+      "makespan": 2957.0,
+      "tardiness": 67657.0,
+      "energy": 45998.0
+    },
+    {
+      "makespan": 3018.0,
+      "tardiness": 70273.0,
+      "energy": 44998.0
+    },
+    {
+      "makespan": 3147.0,
+      "tardiness": 76797.0,
+      "energy": 43761.0
+    },
+    {
+      "makespan": 2989.0,
+      "tardiness": 70095.0,
+      "energy": 45568.0
+    },
+    {
+      "makespan": 2997.0,
+      "tardiness": 70686.0,
+      "energy": 44290.0
+    },
+    {
+      "makespan": 2970.0,
+      "tardiness": 71120.0,
+      "energy": 45118.0
+    }
+  ]
+}

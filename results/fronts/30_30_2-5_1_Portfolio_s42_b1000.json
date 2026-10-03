@@ -1,0 +1,71 @@
+{
+  "run_id": "30_30_2-5_1_Portfolio_s42_b1000",
+  "instance": "30_30_2-5_1",
+  "algorithm": "Adaptive Portfolio",
+  "seed": 42,
+  "budget": 1000,
+  "hypervolume": 0.7157975131150656,
+  "archive_size": 12,
+  "pareto_front": [
+    {
+      "makespan": 4599.0,
+      "tardiness": 106307.0,
+      "energy": 67844.0
+    },
+    {
+      "makespan": 4258.0,
+      "tardiness": 105103.0,
+      "energy": 68401.0
+    },
+    {
+      "makespan": 4268.0,
+      "tardiness": 102597.0,
+      "energy": 68323.0
+    },
+    {
+      "makespan": 4423.0,
+      "tardiness": 106292.0,
+      "energy": 67867.0
+    },
+    {
+      "makespan": 4494.0,
+      "tardiness": 111038.0,
+      "energy": 66943.0
+    },
+    {
+      "makespan": 3999.0,
+      "tardiness": 97601.0,
+      "energy": 69089.0
+    },
+    {
+      "makespan": 4132.0,
+      "tardiness": 100647.0,
+      "energy": 68473.0
+    },
+    {
+      "makespan": 5059.0,
+      "tardiness": 123324.0,
+      "energy": 66915.0
+    },
+    {
+      "makespan": 4316.0,
+      "tardiness": 104036.0,
+      "energy": 68025.0
+    },
+    {
+      "makespan": 4389.0,
+      "tardiness": 106340.0,
+      "energy": 67182.0
+    },
+    {
+      "makespan": 5040.0,
+      "tardiness": 123986.0,
+      "energy": 66878.0
+    },
+    {
+      "makespan": 3888.0,
+      "tardiness": 93484.0,
+      "energy": 69597.0
+    }
+  ]
+}

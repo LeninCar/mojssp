@@ -1,0 +1,106 @@
+{
+  "run_id": "50_50_2-5_1_NSGA-II_s100_b500",
+  "instance": "50_50_2-5_1",
+  "algorithm": "NSGA-II",
+  "seed": 100,
+  "budget": 500,
+  "hypervolume": 0.7232514150559859,
+  "archive_size": 19,
+  "pareto_front": [
+    {
+      "makespan": 7162.0,
+      "tardiness": 301048.0,
+      "energy": 191305.0
+    },
+    {
+      "makespan": 7560.0,
+      "tardiness": 312633.0,
+      "energy": 189201.0
+    },
+    {
+      "makespan": 7708.0,
+      "tardiness": 325428.0,
+      "energy": 187040.0
+    },
+    {
+      "makespan": 7690.0,
+      "tardiness": 323743.0,
+      "energy": 187564.0
+    },
+    {
+      "makespan": 7492.0,
+      "tardiness": 317733.0,
+      "energy": 189086.0
+    },
+    {
+      "makespan": 7461.0,
+      "tardiness": 312598.0,
+      "energy": 189449.0
+    },
+    {
+      "makespan": 7523.0,
+      "tardiness": 314645.0,
+      "energy": 188056.0
+    },
+    {
+      "makespan": 7449.0,
+      "tardiness": 311148.0,
+      "energy": 189544.0
+    },
+    {
+      "makespan": 7921.0,
+      "tardiness": 336370.0,
+      "energy": 186591.0
+    },
+    {
+      "makespan": 7893.0,
+      "tardiness": 335577.0,
+      "energy": 186760.0
+    },
+    {
+      "makespan": 7897.0,
+      "tardiness": 335442.0,
+      "energy": 186764.0
+    },
+    {
+      "makespan": 7186.0,
+      "tardiness": 299046.0,
+      "energy": 192024.0
+    },
+    {
+      "makespan": 7192.0,
+      "tardiness": 302372.0,
+      "energy": 189622.0
+    },
+    {
+      "makespan": 7730.0,
+      "tardiness": 325580.0,
+      "energy": 186860.0
+    },
+    {
+      "makespan": 7921.0,
+      "tardiness": 336370.0,
+      "energy": 186591.0
+    },
+    {
+      "makespan": 7191.0,
+      "tardiness": 302426.0,
+      "energy": 191114.0
+    },
+    {
+      "makespan": 7598.0,
+      "tardiness": 319514.0,
+      "energy": 187575.0
+    },
+    {
+      "makespan": 8048.0,
+      "tardiness": 342608.0,
+      "energy": 186125.0
+    },
+    {
+      "makespan": 7745.0,
+      "tardiness": 325382.0,
+      "energy": 187414.0
+    }
+  ]
+}

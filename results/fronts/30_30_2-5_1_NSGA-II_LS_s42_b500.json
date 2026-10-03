@@ -1,0 +1,21 @@
+{
+  "run_id": "30_30_2-5_1_NSGA-II_LS_s42_b500",
+  "instance": "30_30_2-5_1",
+  "algorithm": "NSGA-II+LS",
+  "seed": 42,
+  "budget": 500,
+  "hypervolume": 0.7000893446907331,
+  "archive_size": 2,
+  "pareto_front": [
+    {
+      "makespan": 3924.0,
+      "tardiness": 94518.0,
+      "energy": 67788.0
+    },
+    {
+      "makespan": 4302.0,
+      "tardiness": 104696.0,
+      "energy": 67549.0
+    }
+  ]
+}

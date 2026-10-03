@@ -1,0 +1,667 @@
+instance_a,source_a,instance_b,source_b,pair_type,distance,similarity_category
+10_10_2-5_1,original,15_10_2-5_1,original,original-original,1.5394,similares
+10_10_2-5_1,original,15_15_2-5_1,original,original-original,0.7484,muy similares
+10_10_2-5_1,original,20_10_2-5_1,original,original-original,2.2629,similares
+10_10_2-5_1,original,20_20_2-5_1,original,original-original,1.4459,similares
+10_10_2-5_1,original,30_20_2-5_1,original,original-original,1.8923,similares
+10_10_2-5_1,original,30_30_2-5_1,original,original-original,2.8888,moderadamente diferentes
+10_10_2-5_1,original,40_20_2-5_1,original,original-original,2.8316,moderadamente diferentes
+10_10_2-5_1,original,40_40_2-5_1,original,original-original,4.4975,moderadamente diferentes
+10_10_2-5_1,original,50_25_2-5_1,original,original-original,3.6474,moderadamente diferentes
+10_10_2-5_1,original,50_50_2-5_1,original,original-original,6.6758,claramente diferentes
+10_10_2-5_1,original,5_10_2-5_1,original,original-original,2.5842,moderadamente diferentes
+10_10_2-5_1,original,base_01_5x10,generated,original-generated,3.4936,moderadamente diferentes
+10_10_2-5_1,original,base_02_10x10,generated,original-generated,3.5368,moderadamente diferentes
+10_10_2-5_1,original,base_03_15x10,generated,original-generated,3.6141,moderadamente diferentes
+10_10_2-5_1,original,base_04_20x10,generated,original-generated,3.959,moderadamente diferentes
+10_10_2-5_1,original,base_05_20x20,generated,original-generated,4.7224,moderadamente diferentes
+10_10_2-5_1,original,btnk_high_10x10,generated,original-generated,5.3393,claramente diferentes
+10_10_2-5_1,original,btnk_low_10x10,generated,original-generated,3.6353,moderadamente diferentes
+10_10_2-5_1,original,dur_high_10x10,generated,original-generated,5.3987,claramente diferentes
+10_10_2-5_1,original,dur_low_10x10,generated,original-generated,3.6719,moderadamente diferentes
+10_10_2-5_1,original,load_high_20x10,generated,original-generated,4.032,moderadamente diferentes
+10_10_2-5_1,original,load_low_10x20,generated,original-generated,4.6937,moderadamente diferentes
+10_10_2-5_1,original,nrg_strong_10x10,generated,original-generated,5.7378,claramente diferentes
+10_10_2-5_1,original,nrg_weak_10x10,generated,original-generated,4.1095,moderadamente diferentes
+10_10_2-5_1,original,rel_high_10x10,generated,original-generated,2.7094,moderadamente diferentes
+10_10_2-5_1,original,rel_zero_10x10,generated,original-generated,2.8714,moderadamente diferentes
+10_10_2-5_1,original,tard_high_10x10,generated,original-generated,3.1905,moderadamente diferentes
+10_10_2-5_1,original,tard_low_10x10,generated,original-generated,3.6985,moderadamente diferentes
+10_10_2-5_1,original,int_btnk_load_20x10,generated,original-generated,5.7942,claramente diferentes
+10_10_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,5.4166,claramente diferentes
+10_10_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,6.5726,claramente diferentes
+10_10_2-5_1,original,int_nrg_load_20x10,generated,original-generated,5.9929,claramente diferentes
+10_10_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,5.337,claramente diferentes
+10_10_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,5.2499,claramente diferentes
+10_10_2-5_1,original,int_tard_load_20x10,generated,original-generated,3.8674,moderadamente diferentes
+10_10_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,5.5708,claramente diferentes
+15_10_2-5_1,original,15_15_2-5_1,original,original-original,1.682,similares
+15_10_2-5_1,original,20_10_2-5_1,original,original-original,1.2775,similares
+15_10_2-5_1,original,20_20_2-5_1,original,original-original,1.8091,similares
+15_10_2-5_1,original,30_20_2-5_1,original,original-original,1.7985,similares
+15_10_2-5_1,original,30_30_2-5_1,original,original-original,3.2206,moderadamente diferentes
+15_10_2-5_1,original,40_20_2-5_1,original,original-original,2.0855,similares
+15_10_2-5_1,original,40_40_2-5_1,original,original-original,4.6377,moderadamente diferentes
+15_10_2-5_1,original,50_25_2-5_1,original,original-original,3.2099,moderadamente diferentes
+15_10_2-5_1,original,50_50_2-5_1,original,original-original,6.9016,claramente diferentes
+15_10_2-5_1,original,5_10_2-5_1,original,original-original,2.8167,moderadamente diferentes
+15_10_2-5_1,original,base_01_5x10,generated,original-generated,4.44,moderadamente diferentes
+15_10_2-5_1,original,base_02_10x10,generated,original-generated,4.2099,moderadamente diferentes
+15_10_2-5_1,original,base_03_15x10,generated,original-generated,3.937,moderadamente diferentes
+15_10_2-5_1,original,base_04_20x10,generated,original-generated,3.9961,moderadamente diferentes
+15_10_2-5_1,original,base_05_20x20,generated,original-generated,5.3632,claramente diferentes
+15_10_2-5_1,original,btnk_high_10x10,generated,original-generated,6.1716,claramente diferentes
+15_10_2-5_1,original,btnk_low_10x10,generated,original-generated,4.2856,moderadamente diferentes
+15_10_2-5_1,original,dur_high_10x10,generated,original-generated,5.973,claramente diferentes
+15_10_2-5_1,original,dur_low_10x10,generated,original-generated,4.3295,moderadamente diferentes
+15_10_2-5_1,original,load_high_20x10,generated,original-generated,4.067,moderadamente diferentes
+15_10_2-5_1,original,load_low_10x20,generated,original-generated,5.6027,claramente diferentes
+15_10_2-5_1,original,nrg_strong_10x10,generated,original-generated,6.1285,claramente diferentes
+15_10_2-5_1,original,nrg_weak_10x10,generated,original-generated,4.7292,moderadamente diferentes
+15_10_2-5_1,original,rel_high_10x10,generated,original-generated,3.4988,moderadamente diferentes
+15_10_2-5_1,original,rel_zero_10x10,generated,original-generated,3.6145,moderadamente diferentes
+15_10_2-5_1,original,tard_high_10x10,generated,original-generated,3.7822,moderadamente diferentes
+15_10_2-5_1,original,tard_low_10x10,generated,original-generated,4.405,moderadamente diferentes
+15_10_2-5_1,original,int_btnk_load_20x10,generated,original-generated,6.1935,claramente diferentes
+15_10_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,6.2407,claramente diferentes
+15_10_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,7.0354,claramente diferentes
+15_10_2-5_1,original,int_nrg_load_20x10,generated,original-generated,5.9634,claramente diferentes
+15_10_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,6.1898,claramente diferentes
+15_10_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,6.0253,claramente diferentes
+15_10_2-5_1,original,int_tard_load_20x10,generated,original-generated,3.7849,moderadamente diferentes
+15_10_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,5.9418,claramente diferentes
+15_15_2-5_1,original,20_10_2-5_1,original,original-original,2.3456,similares
+15_15_2-5_1,original,20_20_2-5_1,original,original-original,1.0077,similares
+15_15_2-5_1,original,30_20_2-5_1,original,original-original,1.683,similares
+15_15_2-5_1,original,30_30_2-5_1,original,original-original,2.2966,similares
+15_15_2-5_1,original,40_20_2-5_1,original,original-original,2.6022,moderadamente diferentes
+15_15_2-5_1,original,40_40_2-5_1,original,original-original,3.919,moderadamente diferentes
+15_15_2-5_1,original,50_25_2-5_1,original,original-original,3.2667,moderadamente diferentes
+15_15_2-5_1,original,50_50_2-5_1,original,original-original,6.1166,claramente diferentes
+15_15_2-5_1,original,5_10_2-5_1,original,original-original,2.7155,moderadamente diferentes
+15_15_2-5_1,original,base_01_5x10,generated,original-generated,3.6326,moderadamente diferentes
+15_15_2-5_1,original,base_02_10x10,generated,original-generated,3.6759,moderadamente diferentes
+15_15_2-5_1,original,base_03_15x10,generated,original-generated,3.7161,moderadamente diferentes
+15_15_2-5_1,original,base_04_20x10,generated,original-generated,4.0441,moderadamente diferentes
+15_15_2-5_1,original,base_05_20x20,generated,original-generated,4.6204,moderadamente diferentes
+15_15_2-5_1,original,btnk_high_10x10,generated,original-generated,5.4228,claramente diferentes
+15_15_2-5_1,original,btnk_low_10x10,generated,original-generated,3.7508,moderadamente diferentes
+15_15_2-5_1,original,dur_high_10x10,generated,original-generated,5.2669,claramente diferentes
+15_15_2-5_1,original,dur_low_10x10,generated,original-generated,3.7962,moderadamente diferentes
+15_15_2-5_1,original,load_high_20x10,generated,original-generated,4.1261,moderadamente diferentes
+15_15_2-5_1,original,load_low_10x20,generated,original-generated,4.5947,moderadamente diferentes
+15_15_2-5_1,original,nrg_strong_10x10,generated,original-generated,5.8908,claramente diferentes
+15_15_2-5_1,original,nrg_weak_10x10,generated,original-generated,4.1441,moderadamente diferentes
+15_15_2-5_1,original,rel_high_10x10,generated,original-generated,2.4806,similares
+15_15_2-5_1,original,rel_zero_10x10,generated,original-generated,3.0206,moderadamente diferentes
+15_15_2-5_1,original,tard_high_10x10,generated,original-generated,3.5291,moderadamente diferentes
+15_15_2-5_1,original,tard_low_10x10,generated,original-generated,3.6908,moderadamente diferentes
+15_15_2-5_1,original,int_btnk_load_20x10,generated,original-generated,5.8708,claramente diferentes
+15_15_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,5.5094,claramente diferentes
+15_15_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,6.6134,claramente diferentes
+15_15_2-5_1,original,int_nrg_load_20x10,generated,original-generated,6.1413,claramente diferentes
+15_15_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,5.1895,claramente diferentes
+15_15_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,5.4952,claramente diferentes
+15_15_2-5_1,original,int_tard_load_20x10,generated,original-generated,4.1469,moderadamente diferentes
+15_15_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,5.8493,claramente diferentes
+20_10_2-5_1,original,20_20_2-5_1,original,original-original,2.6187,moderadamente diferentes
+20_10_2-5_1,original,30_20_2-5_1,original,original-original,2.0589,similares
+20_10_2-5_1,original,30_30_2-5_1,original,original-original,3.6845,moderadamente diferentes
+20_10_2-5_1,original,40_20_2-5_1,original,original-original,1.7989,similares
+20_10_2-5_1,original,40_40_2-5_1,original,original-original,4.9894,moderadamente diferentes
+20_10_2-5_1,original,50_25_2-5_1,original,original-original,2.9675,moderadamente diferentes
+20_10_2-5_1,original,50_50_2-5_1,original,original-original,7.0632,claramente diferentes
+20_10_2-5_1,original,5_10_2-5_1,original,original-original,3.8422,moderadamente diferentes
+20_10_2-5_1,original,base_01_5x10,generated,original-generated,4.7074,moderadamente diferentes
+20_10_2-5_1,original,base_02_10x10,generated,original-generated,4.222,moderadamente diferentes
+20_10_2-5_1,original,base_03_15x10,generated,original-generated,3.6735,moderadamente diferentes
+20_10_2-5_1,original,base_04_20x10,generated,original-generated,3.3962,moderadamente diferentes
+20_10_2-5_1,original,base_05_20x20,generated,original-generated,5.3495,claramente diferentes
+20_10_2-5_1,original,btnk_high_10x10,generated,original-generated,6.0116,claramente diferentes
+20_10_2-5_1,original,btnk_low_10x10,generated,original-generated,4.296,moderadamente diferentes
+20_10_2-5_1,original,dur_high_10x10,generated,original-generated,5.9687,claramente diferentes
+20_10_2-5_1,original,dur_low_10x10,generated,original-generated,4.3329,moderadamente diferentes
+20_10_2-5_1,original,load_high_20x10,generated,original-generated,3.4797,moderadamente diferentes
+20_10_2-5_1,original,load_low_10x20,generated,original-generated,5.7774,claramente diferentes
+20_10_2-5_1,original,nrg_strong_10x10,generated,original-generated,6.1803,claramente diferentes
+20_10_2-5_1,original,nrg_weak_10x10,generated,original-generated,4.7163,moderadamente diferentes
+20_10_2-5_1,original,rel_high_10x10,generated,original-generated,3.551,moderadamente diferentes
+20_10_2-5_1,original,rel_zero_10x10,generated,original-generated,3.6381,moderadamente diferentes
+20_10_2-5_1,original,tard_high_10x10,generated,original-generated,4.0546,moderadamente diferentes
+20_10_2-5_1,original,tard_low_10x10,generated,original-generated,4.4233,moderadamente diferentes
+20_10_2-5_1,original,int_btnk_load_20x10,generated,original-generated,5.6387,claramente diferentes
+20_10_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,6.0805,claramente diferentes
+20_10_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,7.046,claramente diferentes
+20_10_2-5_1,original,int_nrg_load_20x10,generated,original-generated,5.6308,claramente diferentes
+20_10_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,6.0341,claramente diferentes
+20_10_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,6.0175,claramente diferentes
+20_10_2-5_1,original,int_tard_load_20x10,generated,original-generated,3.4407,moderadamente diferentes
+20_10_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,6.1388,claramente diferentes
+20_20_2-5_1,original,30_20_2-5_1,original,original-original,1.3318,similares
+20_20_2-5_1,original,30_30_2-5_1,original,original-original,1.7317,similares
+20_20_2-5_1,original,40_20_2-5_1,original,original-original,2.3251,similares
+20_20_2-5_1,original,40_40_2-5_1,original,original-original,3.3057,moderadamente diferentes
+20_20_2-5_1,original,50_25_2-5_1,original,original-original,2.8679,moderadamente diferentes
+20_20_2-5_1,original,50_50_2-5_1,original,original-original,5.6287,claramente diferentes
+20_20_2-5_1,original,5_10_2-5_1,original,original-original,2.7131,moderadamente diferentes
+20_20_2-5_1,original,base_01_5x10,generated,original-generated,4.3606,moderadamente diferentes
+20_20_2-5_1,original,base_02_10x10,generated,original-generated,4.3942,moderadamente diferentes
+20_20_2-5_1,original,base_03_15x10,generated,original-generated,4.3928,moderadamente diferentes
+20_20_2-5_1,original,base_04_20x10,generated,original-generated,4.6741,moderadamente diferentes
+20_20_2-5_1,original,base_05_20x20,generated,original-generated,5.1908,claramente diferentes
+20_20_2-5_1,original,btnk_high_10x10,generated,original-generated,6.056,claramente diferentes
+20_20_2-5_1,original,btnk_low_10x10,generated,original-generated,4.4548,moderadamente diferentes
+20_20_2-5_1,original,dur_high_10x10,generated,original-generated,5.7594,claramente diferentes
+20_20_2-5_1,original,dur_low_10x10,generated,original-generated,4.501,moderadamente diferentes
+20_20_2-5_1,original,load_high_20x10,generated,original-generated,4.7475,moderadamente diferentes
+20_20_2-5_1,original,load_low_10x20,generated,original-generated,5.2117,claramente diferentes
+20_20_2-5_1,original,nrg_strong_10x10,generated,original-generated,6.3267,claramente diferentes
+20_20_2-5_1,original,nrg_weak_10x10,generated,original-generated,4.8017,moderadamente diferentes
+20_20_2-5_1,original,rel_high_10x10,generated,original-generated,3.1913,moderadamente diferentes
+20_20_2-5_1,original,rel_zero_10x10,generated,original-generated,3.8378,moderadamente diferentes
+20_20_2-5_1,original,tard_high_10x10,generated,original-generated,3.8541,moderadamente diferentes
+20_20_2-5_1,original,tard_low_10x10,generated,original-generated,4.4029,moderadamente diferentes
+20_20_2-5_1,original,int_btnk_load_20x10,generated,original-generated,6.4467,claramente diferentes
+20_20_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,6.1381,claramente diferentes
+20_20_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,7.0092,claramente diferentes
+20_20_2-5_1,original,int_nrg_load_20x10,generated,original-generated,6.5419,claramente diferentes
+20_20_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,5.7012,claramente diferentes
+20_20_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,5.8546,claramente diferentes
+20_20_2-5_1,original,int_tard_load_20x10,generated,original-generated,4.409,moderadamente diferentes
+20_20_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,6.0406,claramente diferentes
+30_20_2-5_1,original,30_30_2-5_1,original,original-original,1.9752,similares
+30_20_2-5_1,original,40_20_2-5_1,original,original-original,1.2795,similares
+30_20_2-5_1,original,40_40_2-5_1,original,original-original,3.3622,moderadamente diferentes
+30_20_2-5_1,original,50_25_2-5_1,original,original-original,1.9334,similares
+30_20_2-5_1,original,50_50_2-5_1,original,original-original,5.478,claramente diferentes
+30_20_2-5_1,original,5_10_2-5_1,original,original-original,3.6577,moderadamente diferentes
+30_20_2-5_1,original,base_01_5x10,generated,original-generated,4.6906,moderadamente diferentes
+30_20_2-5_1,original,base_02_10x10,generated,original-generated,4.4437,moderadamente diferentes
+30_20_2-5_1,original,base_03_15x10,generated,original-generated,4.1932,moderadamente diferentes
+30_20_2-5_1,original,base_04_20x10,generated,original-generated,4.2065,moderadamente diferentes
+30_20_2-5_1,original,base_05_20x20,generated,original-generated,5.161,claramente diferentes
+30_20_2-5_1,original,btnk_high_10x10,generated,original-generated,6.1442,claramente diferentes
+30_20_2-5_1,original,btnk_low_10x10,generated,original-generated,4.5026,moderadamente diferentes
+30_20_2-5_1,original,dur_high_10x10,generated,original-generated,5.9017,claramente diferentes
+30_20_2-5_1,original,dur_low_10x10,generated,original-generated,4.536,moderadamente diferentes
+30_20_2-5_1,original,load_high_20x10,generated,original-generated,4.2776,moderadamente diferentes
+30_20_2-5_1,original,load_low_10x20,generated,original-generated,5.4234,claramente diferentes
+30_20_2-5_1,original,nrg_strong_10x10,generated,original-generated,6.3711,claramente diferentes
+30_20_2-5_1,original,nrg_weak_10x10,generated,original-generated,4.8731,moderadamente diferentes
+30_20_2-5_1,original,rel_high_10x10,generated,original-generated,3.4082,moderadamente diferentes
+30_20_2-5_1,original,rel_zero_10x10,generated,original-generated,3.9223,moderadamente diferentes
+30_20_2-5_1,original,tard_high_10x10,generated,original-generated,3.7684,moderadamente diferentes
+30_20_2-5_1,original,tard_low_10x10,generated,original-generated,4.4514,moderadamente diferentes
+30_20_2-5_1,original,int_btnk_load_20x10,generated,original-generated,6.154,claramente diferentes
+30_20_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,6.2254,claramente diferentes
+30_20_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,7.0977,claramente diferentes
+30_20_2-5_1,original,int_nrg_load_20x10,generated,original-generated,6.2069,claramente diferentes
+30_20_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,5.8778,claramente diferentes
+30_20_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,5.8295,claramente diferentes
+30_20_2-5_1,original,int_tard_load_20x10,generated,original-generated,3.7312,moderadamente diferentes
+30_20_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,5.9558,claramente diferentes
+30_30_2-5_1,original,40_20_2-5_1,original,original-original,2.6177,moderadamente diferentes
+30_30_2-5_1,original,40_40_2-5_1,original,original-original,1.7205,similares
+30_30_2-5_1,original,50_25_2-5_1,original,original-original,2.3481,similares
+30_30_2-5_1,original,50_50_2-5_1,original,original-original,3.9668,moderadamente diferentes
+30_30_2-5_1,original,5_10_2-5_1,original,original-original,3.9947,moderadamente diferentes
+30_30_2-5_1,original,base_01_5x10,generated,original-generated,5.1299,claramente diferentes
+30_30_2-5_1,original,base_02_10x10,generated,original-generated,5.1389,claramente diferentes
+30_30_2-5_1,original,base_03_15x10,generated,original-generated,5.1171,claramente diferentes
+30_30_2-5_1,original,base_04_20x10,generated,original-generated,5.3286,claramente diferentes
+30_30_2-5_1,original,base_05_20x20,generated,original-generated,5.2816,claramente diferentes
+30_30_2-5_1,original,btnk_high_10x10,generated,original-generated,6.5481,claramente diferentes
+30_30_2-5_1,original,btnk_low_10x10,generated,original-generated,5.187,claramente diferentes
+30_30_2-5_1,original,dur_high_10x10,generated,original-generated,6.0466,claramente diferentes
+30_30_2-5_1,original,dur_low_10x10,generated,original-generated,5.2269,claramente diferentes
+30_30_2-5_1,original,load_high_20x10,generated,original-generated,5.4011,claramente diferentes
+30_30_2-5_1,original,load_low_10x20,generated,original-generated,5.3423,claramente diferentes
+30_30_2-5_1,original,nrg_strong_10x10,generated,original-generated,6.9872,claramente diferentes
+30_30_2-5_1,original,nrg_weak_10x10,generated,original-generated,5.4333,claramente diferentes
+30_30_2-5_1,original,rel_high_10x10,generated,original-generated,3.6643,moderadamente diferentes
+30_30_2-5_1,original,rel_zero_10x10,generated,original-generated,4.717,moderadamente diferentes
+30_30_2-5_1,original,tard_high_10x10,generated,original-generated,4.87,moderadamente diferentes
+30_30_2-5_1,original,tard_low_10x10,generated,original-generated,4.8602,moderadamente diferentes
+30_30_2-5_1,original,int_btnk_load_20x10,generated,original-generated,6.8959,claramente diferentes
+30_30_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,6.6385,claramente diferentes
+30_30_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,7.4714,claramente diferentes
+30_30_2-5_1,original,int_nrg_load_20x10,generated,original-generated,7.1595,claramente diferentes
+30_30_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,5.8393,claramente diferentes
+30_30_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,6.5502,claramente diferentes
+30_30_2-5_1,original,int_tard_load_20x10,generated,original-generated,5.2845,claramente diferentes
+30_30_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,6.8132,claramente diferentes
+40_20_2-5_1,original,40_40_2-5_1,original,original-original,3.5753,moderadamente diferentes
+40_20_2-5_1,original,50_25_2-5_1,original,original-original,1.2591,similares
+40_20_2-5_1,original,50_50_2-5_1,original,original-original,5.5371,claramente diferentes
+40_20_2-5_1,original,5_10_2-5_1,original,original-original,4.3118,moderadamente diferentes
+40_20_2-5_1,original,base_01_5x10,generated,original-generated,5.4077,claramente diferentes
+40_20_2-5_1,original,base_02_10x10,generated,original-generated,4.9651,moderadamente diferentes
+40_20_2-5_1,original,base_03_15x10,generated,original-generated,4.4595,moderadamente diferentes
+40_20_2-5_1,original,base_04_20x10,generated,original-generated,4.2024,moderadamente diferentes
+40_20_2-5_1,original,base_05_20x20,generated,original-generated,5.5641,claramente diferentes
+40_20_2-5_1,original,btnk_high_10x10,generated,original-generated,6.5964,claramente diferentes
+40_20_2-5_1,original,btnk_low_10x10,generated,original-generated,5.0187,claramente diferentes
+40_20_2-5_1,original,dur_high_10x10,generated,original-generated,6.2728,claramente diferentes
+40_20_2-5_1,original,dur_low_10x10,generated,original-generated,5.0555,claramente diferentes
+40_20_2-5_1,original,load_high_20x10,generated,original-generated,4.2776,moderadamente diferentes
+40_20_2-5_1,original,load_low_10x20,generated,original-generated,6.0438,claramente diferentes
+40_20_2-5_1,original,nrg_strong_10x10,generated,original-generated,6.7488,claramente diferentes
+40_20_2-5_1,original,nrg_weak_10x10,generated,original-generated,5.3493,claramente diferentes
+40_20_2-5_1,original,rel_high_10x10,generated,original-generated,4.014,moderadamente diferentes
+40_20_2-5_1,original,rel_zero_10x10,generated,original-generated,4.4968,moderadamente diferentes
+40_20_2-5_1,original,tard_high_10x10,generated,original-generated,4.518,moderadamente diferentes
+40_20_2-5_1,original,tard_low_10x10,generated,original-generated,4.9544,moderadamente diferentes
+40_20_2-5_1,original,int_btnk_load_20x10,generated,original-generated,6.2296,claramente diferentes
+40_20_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,6.6725,claramente diferentes
+40_20_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,7.4413,claramente diferentes
+40_20_2-5_1,original,int_nrg_load_20x10,generated,original-generated,6.2132,claramente diferentes
+40_20_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,6.3262,claramente diferentes
+40_20_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,6.4253,claramente diferentes
+40_20_2-5_1,original,int_tard_load_20x10,generated,original-generated,3.9167,moderadamente diferentes
+40_20_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,6.4829,claramente diferentes
+40_40_2-5_1,original,50_25_2-5_1,original,original-original,2.7567,moderadamente diferentes
+40_40_2-5_1,original,50_50_2-5_1,original,original-original,2.4379,similares
+40_40_2-5_1,original,5_10_2-5_1,original,original-original,5.182,claramente diferentes
+40_40_2-5_1,original,base_01_5x10,generated,original-generated,6.446,claramente diferentes
+40_40_2-5_1,original,base_02_10x10,generated,original-generated,6.4424,claramente diferentes
+40_40_2-5_1,original,base_03_15x10,generated,original-generated,6.3892,claramente diferentes
+40_40_2-5_1,original,base_04_20x10,generated,original-generated,6.5363,claramente diferentes
+40_40_2-5_1,original,base_05_20x20,generated,original-generated,6.2566,claramente diferentes
+40_40_2-5_1,original,btnk_high_10x10,generated,original-generated,7.5855,claramente diferentes
+40_40_2-5_1,original,btnk_low_10x10,generated,original-generated,6.4882,claramente diferentes
+40_40_2-5_1,original,dur_high_10x10,generated,original-generated,7.0473,claramente diferentes
+40_40_2-5_1,original,dur_low_10x10,generated,original-generated,6.5261,claramente diferentes
+40_40_2-5_1,original,load_high_20x10,generated,original-generated,6.6025,claramente diferentes
+40_40_2-5_1,original,load_low_10x20,generated,original-generated,6.3957,claramente diferentes
+40_40_2-5_1,original,nrg_strong_10x10,generated,original-generated,8.0288,claramente diferentes
+40_40_2-5_1,original,nrg_weak_10x10,generated,original-generated,6.6688,claramente diferentes
+40_40_2-5_1,original,rel_high_10x10,generated,original-generated,5.0274,claramente diferentes
+40_40_2-5_1,original,rel_zero_10x10,generated,original-generated,6.1172,claramente diferentes
+40_40_2-5_1,original,tard_high_10x10,generated,original-generated,6.2474,claramente diferentes
+40_40_2-5_1,original,tard_low_10x10,generated,original-generated,6.1075,claramente diferentes
+40_40_2-5_1,original,int_btnk_load_20x10,generated,original-generated,7.8538,claramente diferentes
+40_40_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,7.6691,claramente diferentes
+40_40_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,8.3929,claramente diferentes
+40_40_2-5_1,original,int_nrg_load_20x10,generated,original-generated,8.1399,claramente diferentes
+40_40_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,6.723,claramente diferentes
+40_40_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,7.6363,claramente diferentes
+40_40_2-5_1,original,int_tard_load_20x10,generated,original-generated,6.5348,claramente diferentes
+40_40_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,7.8935,claramente diferentes
+50_25_2-5_1,original,50_50_2-5_1,original,original-original,4.43,moderadamente diferentes
+50_25_2-5_1,original,5_10_2-5_1,original,original-original,5.0123,claramente diferentes
+50_25_2-5_1,original,base_01_5x10,generated,original-generated,5.9634,claramente diferentes
+50_25_2-5_1,original,base_02_10x10,generated,original-generated,5.5562,claramente diferentes
+50_25_2-5_1,original,base_03_15x10,generated,original-generated,5.0933,claramente diferentes
+50_25_2-5_1,original,base_04_20x10,generated,original-generated,4.839,moderadamente diferentes
+50_25_2-5_1,original,base_05_20x20,generated,original-generated,5.7829,claramente diferentes
+50_25_2-5_1,original,btnk_high_10x10,generated,original-generated,6.9017,claramente diferentes
+50_25_2-5_1,original,btnk_low_10x10,generated,original-generated,5.6035,claramente diferentes
+50_25_2-5_1,original,dur_high_10x10,generated,original-generated,6.5497,claramente diferentes
+50_25_2-5_1,original,dur_low_10x10,generated,original-generated,5.6383,claramente diferentes
+50_25_2-5_1,original,load_high_20x10,generated,original-generated,4.914,moderadamente diferentes
+50_25_2-5_1,original,load_low_10x20,generated,original-generated,6.2779,claramente diferentes
+50_25_2-5_1,original,nrg_strong_10x10,generated,original-generated,7.2626,claramente diferentes
+50_25_2-5_1,original,nrg_weak_10x10,generated,original-generated,5.8572,claramente diferentes
+50_25_2-5_1,original,rel_high_10x10,generated,original-generated,4.4515,moderadamente diferentes
+50_25_2-5_1,original,rel_zero_10x10,generated,original-generated,5.1547,claramente diferentes
+50_25_2-5_1,original,tard_high_10x10,generated,original-generated,5.2061,claramente diferentes
+50_25_2-5_1,original,tard_low_10x10,generated,original-generated,5.4059,claramente diferentes
+50_25_2-5_1,original,int_btnk_load_20x10,generated,original-generated,6.534,claramente diferentes
+50_25_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,6.9803,claramente diferentes
+50_25_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,7.7987,claramente diferentes
+50_25_2-5_1,original,int_nrg_load_20x10,generated,original-generated,6.7521,claramente diferentes
+50_25_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,6.4113,claramente diferentes
+50_25_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,6.8027,claramente diferentes
+50_25_2-5_1,original,int_tard_load_20x10,generated,original-generated,4.6634,moderadamente diferentes
+50_25_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,7.0299,claramente diferentes
+50_50_2-5_1,original,5_10_2-5_1,original,original-original,7.4863,claramente diferentes
+50_50_2-5_1,original,base_01_5x10,generated,original-generated,8.071,claramente diferentes
+50_50_2-5_1,original,base_02_10x10,generated,original-generated,8.0392,claramente diferentes
+50_50_2-5_1,original,base_03_15x10,generated,original-generated,7.9881,claramente diferentes
+50_50_2-5_1,original,base_04_20x10,generated,original-generated,8.0718,claramente diferentes
+50_50_2-5_1,original,base_05_20x20,generated,original-generated,7.4002,claramente diferentes
+50_50_2-5_1,original,btnk_high_10x10,generated,original-generated,8.9356,claramente diferentes
+50_50_2-5_1,original,btnk_low_10x10,generated,original-generated,8.0692,claramente diferentes
+50_50_2-5_1,original,dur_high_10x10,generated,original-generated,8.3564,claramente diferentes
+50_50_2-5_1,original,dur_low_10x10,generated,original-generated,8.0941,claramente diferentes
+50_50_2-5_1,original,load_high_20x10,generated,original-generated,8.1271,claramente diferentes
+50_50_2-5_1,original,load_low_10x20,generated,original-generated,7.5763,claramente diferentes
+50_50_2-5_1,original,nrg_strong_10x10,generated,original-generated,9.4835,claramente diferentes
+50_50_2-5_1,original,nrg_weak_10x10,generated,original-generated,8.1755,claramente diferentes
+50_50_2-5_1,original,rel_high_10x10,generated,original-generated,6.6957,claramente diferentes
+50_50_2-5_1,original,rel_zero_10x10,generated,original-generated,7.8183,claramente diferentes
+50_50_2-5_1,original,tard_high_10x10,generated,original-generated,8.0313,claramente diferentes
+50_50_2-5_1,original,tard_low_10x10,generated,original-generated,7.5802,claramente diferentes
+50_50_2-5_1,original,int_btnk_load_20x10,generated,original-generated,9.1382,claramente diferentes
+50_50_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,9.0195,claramente diferentes
+50_50_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,9.7054,claramente diferentes
+50_50_2-5_1,original,int_nrg_load_20x10,generated,original-generated,9.547,claramente diferentes
+50_50_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,7.9389,claramente diferentes
+50_50_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,9.133,claramente diferentes
+50_50_2-5_1,original,int_tard_load_20x10,generated,original-generated,8.2132,claramente diferentes
+50_50_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,9.4372,claramente diferentes
+5_10_2-5_1,original,base_01_5x10,generated,original-generated,5.0005,claramente diferentes
+5_10_2-5_1,original,base_02_10x10,generated,original-generated,5.3296,claramente diferentes
+5_10_2-5_1,original,base_03_15x10,generated,original-generated,5.5523,claramente diferentes
+5_10_2-5_1,original,base_04_20x10,generated,original-generated,5.9844,claramente diferentes
+5_10_2-5_1,original,base_05_20x20,generated,original-generated,6.4086,claramente diferentes
+5_10_2-5_1,original,btnk_high_10x10,generated,original-generated,6.1108,claramente diferentes
+5_10_2-5_1,original,btnk_low_10x10,generated,original-generated,5.4755,claramente diferentes
+5_10_2-5_1,original,dur_high_10x10,generated,original-generated,6.5771,claramente diferentes
+5_10_2-5_1,original,dur_low_10x10,generated,original-generated,5.529,claramente diferentes
+5_10_2-5_1,original,load_high_20x10,generated,original-generated,6.0582,claramente diferentes
+5_10_2-5_1,original,load_low_10x20,generated,original-generated,6.2476,claramente diferentes
+5_10_2-5_1,original,nrg_strong_10x10,generated,original-generated,6.7384,claramente diferentes
+5_10_2-5_1,original,nrg_weak_10x10,generated,original-generated,5.8416,claramente diferentes
+5_10_2-5_1,original,rel_high_10x10,generated,original-generated,4.7436,moderadamente diferentes
+5_10_2-5_1,original,rel_zero_10x10,generated,original-generated,4.8481,moderadamente diferentes
+5_10_2-5_1,original,tard_high_10x10,generated,original-generated,4.8982,moderadamente diferentes
+5_10_2-5_1,original,tard_low_10x10,generated,original-generated,5.5382,claramente diferentes
+5_10_2-5_1,original,int_btnk_load_20x10,generated,original-generated,6.8385,claramente diferentes
+5_10_2-5_1,original,int_dur_btnk_10x10,generated,original-generated,6.1489,claramente diferentes
+5_10_2-5_1,original,int_dur_nrg_10x10,generated,original-generated,7.3274,claramente diferentes
+5_10_2-5_1,original,int_nrg_load_20x10,generated,original-generated,7.2678,claramente diferentes
+5_10_2-5_1,original,int_rel_btnk_10x10,generated,original-generated,6.0835,claramente diferentes
+5_10_2-5_1,original,int_tard_btnk_10x10,generated,original-generated,5.8999,claramente diferentes
+5_10_2-5_1,original,int_tard_load_20x10,generated,original-generated,5.7995,claramente diferentes
+5_10_2-5_1,original,int_tard_nrg_10x10,generated,original-generated,6.5527,claramente diferentes
+base_01_5x10,generated,base_02_10x10,generated,generated-generated,1.1375,similares
+base_01_5x10,generated,base_03_15x10,generated,generated-generated,2.2073,similares
+base_01_5x10,generated,base_04_20x10,generated,generated-generated,3.2566,moderadamente diferentes
+base_01_5x10,generated,base_05_20x20,generated,generated-generated,2.7153,moderadamente diferentes
+base_01_5x10,generated,btnk_high_10x10,generated,generated-generated,5.0594,claramente diferentes
+base_01_5x10,generated,btnk_low_10x10,generated,generated-generated,1.2174,similares
+base_01_5x10,generated,dur_high_10x10,generated,generated-generated,4.8531,moderadamente diferentes
+base_01_5x10,generated,dur_low_10x10,generated,generated-generated,1.233,similares
+base_01_5x10,generated,load_high_20x10,generated,generated-generated,3.2612,moderadamente diferentes
+base_01_5x10,generated,load_low_10x20,generated,generated-generated,2.3722,similares
+base_01_5x10,generated,nrg_strong_10x10,generated,generated-generated,5.7579,claramente diferentes
+base_01_5x10,generated,nrg_weak_10x10,generated,generated-generated,1.707,similares
+base_01_5x10,generated,rel_high_10x10,generated,generated-generated,2.7302,moderadamente diferentes
+base_01_5x10,generated,rel_zero_10x10,generated,generated-generated,2.3978,similares
+base_01_5x10,generated,tard_high_10x10,generated,generated-generated,2.7874,moderadamente diferentes
+base_01_5x10,generated,tard_low_10x10,generated,generated-generated,1.6504,similares
+base_01_5x10,generated,int_btnk_load_20x10,generated,generated-generated,5.9026,claramente diferentes
+base_01_5x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.1076,claramente diferentes
+base_01_5x10,generated,int_dur_nrg_10x10,generated,generated-generated,6.9326,claramente diferentes
+base_01_5x10,generated,int_nrg_load_20x10,generated,generated-generated,6.4304,claramente diferentes
+base_01_5x10,generated,int_rel_btnk_10x10,generated,generated-generated,5.9694,claramente diferentes
+base_01_5x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.6041,claramente diferentes
+base_01_5x10,generated,int_tard_load_20x10,generated,generated-generated,4.1435,moderadamente diferentes
+base_01_5x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.1588,claramente diferentes
+base_02_10x10,generated,base_03_15x10,generated,generated-generated,1.1224,similares
+base_02_10x10,generated,base_04_20x10,generated,generated-generated,2.1917,similares
+base_02_10x10,generated,base_05_20x20,generated,generated-generated,2.3407,similares
+base_02_10x10,generated,btnk_high_10x10,generated,generated-generated,5.0734,claramente diferentes
+base_02_10x10,generated,btnk_low_10x10,generated,generated-generated,0.4327,muy similares
+base_02_10x10,generated,dur_high_10x10,generated,generated-generated,4.745,moderadamente diferentes
+base_02_10x10,generated,dur_low_10x10,generated,generated-generated,0.466,muy similares
+base_02_10x10,generated,load_high_20x10,generated,generated-generated,2.1771,similares
+base_02_10x10,generated,load_low_10x20,generated,generated-generated,2.5255,moderadamente diferentes
+base_02_10x10,generated,nrg_strong_10x10,generated,generated-generated,5.6355,claramente diferentes
+base_02_10x10,generated,nrg_weak_10x10,generated,generated-generated,1.266,similares
+base_02_10x10,generated,rel_high_10x10,generated,generated-generated,2.7327,moderadamente diferentes
+base_02_10x10,generated,rel_zero_10x10,generated,generated-generated,2.4026,similares
+base_02_10x10,generated,tard_high_10x10,generated,generated-generated,2.5773,moderadamente diferentes
+base_02_10x10,generated,tard_low_10x10,generated,generated-generated,1.213,similares
+base_02_10x10,generated,int_btnk_load_20x10,generated,generated-generated,5.4968,claramente diferentes
+base_02_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.1162,claramente diferentes
+base_02_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,6.8507,claramente diferentes
+base_02_10x10,generated,int_nrg_load_20x10,generated,generated-generated,5.9437,claramente diferentes
+base_02_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.0753,claramente diferentes
+base_02_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.6053,claramente diferentes
+base_02_10x10,generated,int_tard_load_20x10,generated,generated-generated,3.3676,moderadamente diferentes
+base_02_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.0447,claramente diferentes
+base_03_15x10,generated,base_04_20x10,generated,generated-generated,1.1101,similares
+base_03_15x10,generated,base_05_20x20,generated,generated-generated,2.5764,moderadamente diferentes
+base_03_15x10,generated,btnk_high_10x10,generated,generated-generated,5.2317,claramente diferentes
+base_03_15x10,generated,btnk_low_10x10,generated,generated-generated,1.1672,similares
+base_03_15x10,generated,dur_high_10x10,generated,generated-generated,4.7388,moderadamente diferentes
+base_03_15x10,generated,dur_low_10x10,generated,generated-generated,1.2017,similares
+base_03_15x10,generated,load_high_20x10,generated,generated-generated,1.0967,similares
+base_03_15x10,generated,load_low_10x20,generated,generated-generated,3.1487,moderadamente diferentes
+base_03_15x10,generated,nrg_strong_10x10,generated,generated-generated,5.7344,claramente diferentes
+base_03_15x10,generated,nrg_weak_10x10,generated,generated-generated,1.6216,similares
+base_03_15x10,generated,rel_high_10x10,generated,generated-generated,2.8641,moderadamente diferentes
+base_03_15x10,generated,rel_zero_10x10,generated,generated-generated,2.5851,moderadamente diferentes
+base_03_15x10,generated,tard_high_10x10,generated,generated-generated,2.7814,moderadamente diferentes
+base_03_15x10,generated,tard_low_10x10,generated,generated-generated,1.6207,similares
+base_03_15x10,generated,int_btnk_load_20x10,generated,generated-generated,5.2163,claramente diferentes
+base_03_15x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.28,claramente diferentes
+base_03_15x10,generated,int_dur_nrg_10x10,generated,generated-generated,6.877,claramente diferentes
+base_03_15x10,generated,int_nrg_load_20x10,generated,generated-generated,5.6393,claramente diferentes
+base_03_15x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.1709,claramente diferentes
+base_03_15x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.7519,claramente diferentes
+base_03_15x10,generated,int_tard_load_20x10,generated,generated-generated,2.788,moderadamente diferentes
+base_03_15x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.1423,claramente diferentes
+base_04_20x10,generated,base_05_20x20,generated,generated-generated,3.2023,moderadamente diferentes
+base_04_20x10,generated,btnk_high_10x10,generated,generated-generated,5.4731,claramente diferentes
+base_04_20x10,generated,btnk_low_10x10,generated,generated-generated,2.2115,similares
+base_04_20x10,generated,dur_high_10x10,generated,generated-generated,5.0816,claramente diferentes
+base_04_20x10,generated,dur_low_10x10,generated,generated-generated,2.2267,similares
+base_04_20x10,generated,load_high_20x10,generated,generated-generated,0.159,muy similares
+base_04_20x10,generated,load_low_10x20,generated,generated-generated,3.9622,moderadamente diferentes
+base_04_20x10,generated,nrg_strong_10x10,generated,generated-generated,6.0105,claramente diferentes
+base_04_20x10,generated,nrg_weak_10x10,generated,generated-generated,2.5016,moderadamente diferentes
+base_04_20x10,generated,rel_high_10x10,generated,generated-generated,3.2815,moderadamente diferentes
+base_04_20x10,generated,rel_zero_10x10,generated,generated-generated,3.0368,moderadamente diferentes
+base_04_20x10,generated,tard_high_10x10,generated,generated-generated,3.3603,moderadamente diferentes
+base_04_20x10,generated,tard_low_10x10,generated,generated-generated,2.4607,similares
+base_04_20x10,generated,int_btnk_load_20x10,generated,generated-generated,5.0215,claramente diferentes
+base_04_20x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.5238,claramente diferentes
+base_04_20x10,generated,int_dur_nrg_10x10,generated,generated-generated,7.0949,claramente diferentes
+base_04_20x10,generated,int_nrg_load_20x10,generated,generated-generated,5.509,claramente diferentes
+base_04_20x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.3082,claramente diferentes
+base_04_20x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.9894,claramente diferentes
+base_04_20x10,generated,int_tard_load_20x10,generated,generated-generated,2.5816,moderadamente diferentes
+base_04_20x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.4052,claramente diferentes
+base_05_20x20,generated,btnk_high_10x10,generated,generated-generated,5.4658,claramente diferentes
+base_05_20x20,generated,btnk_low_10x10,generated,generated-generated,2.4327,similares
+base_05_20x20,generated,dur_high_10x10,generated,generated-generated,4.6365,moderadamente diferentes
+base_05_20x20,generated,dur_low_10x10,generated,generated-generated,2.4569,similares
+base_05_20x20,generated,load_high_20x10,generated,generated-generated,3.1913,moderadamente diferentes
+base_05_20x20,generated,load_low_10x20,generated,generated-generated,1.2596,similares
+base_05_20x20,generated,nrg_strong_10x10,generated,generated-generated,6.346,claramente diferentes
+base_05_20x20,generated,nrg_weak_10x10,generated,generated-generated,2.4231,similares
+base_05_20x20,generated,rel_high_10x10,generated,generated-generated,3.6984,moderadamente diferentes
+base_05_20x20,generated,rel_zero_10x10,generated,generated-generated,4.0575,moderadamente diferentes
+base_05_20x20,generated,tard_high_10x10,generated,generated-generated,4.0265,moderadamente diferentes
+base_05_20x20,generated,tard_low_10x10,generated,generated-generated,1.4209,similares
+base_05_20x20,generated,int_btnk_load_20x10,generated,generated-generated,5.8326,claramente diferentes
+base_05_20x20,generated,int_dur_btnk_10x10,generated,generated-generated,5.5057,claramente diferentes
+base_05_20x20,generated,int_dur_nrg_10x10,generated,generated-generated,7.1896,claramente diferentes
+base_05_20x20,generated,int_nrg_load_20x10,generated,generated-generated,6.6291,claramente diferentes
+base_05_20x20,generated,int_rel_btnk_10x10,generated,generated-generated,6.3227,claramente diferentes
+base_05_20x20,generated,int_tard_btnk_10x10,generated,generated-generated,6.3256,claramente diferentes
+base_05_20x20,generated,int_tard_load_20x10,generated,generated-generated,4.5576,moderadamente diferentes
+base_05_20x20,generated,int_tard_nrg_10x10,generated,generated-generated,6.9148,claramente diferentes
+btnk_high_10x10,generated,btnk_low_10x10,generated,generated-generated,5.3694,claramente diferentes
+btnk_high_10x10,generated,dur_high_10x10,generated,generated-generated,4.0886,moderadamente diferentes
+btnk_high_10x10,generated,dur_low_10x10,generated,generated-generated,5.4123,claramente diferentes
+btnk_high_10x10,generated,load_high_20x10,generated,generated-generated,5.5583,claramente diferentes
+btnk_high_10x10,generated,load_low_10x20,generated,generated-generated,5.3801,claramente diferentes
+btnk_high_10x10,generated,nrg_strong_10x10,generated,generated-generated,7.3603,claramente diferentes
+btnk_high_10x10,generated,nrg_weak_10x10,generated,generated-generated,5.1292,claramente diferentes
+btnk_high_10x10,generated,rel_high_10x10,generated,generated-generated,5.5674,claramente diferentes
+btnk_high_10x10,generated,rel_zero_10x10,generated,generated-generated,5.4649,claramente diferentes
+btnk_high_10x10,generated,tard_high_10x10,generated,generated-generated,5.7415,claramente diferentes
+btnk_high_10x10,generated,tard_low_10x10,generated,generated-generated,5.1188,claramente diferentes
+btnk_high_10x10,generated,int_btnk_load_20x10,generated,generated-generated,2.1744,similares
+btnk_high_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,0.2997,muy similares
+btnk_high_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,6.2626,claramente diferentes
+btnk_high_10x10,generated,int_nrg_load_20x10,generated,generated-generated,7.6884,claramente diferentes
+btnk_high_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,2.5886,moderadamente diferentes
+btnk_high_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,2.6617,moderadamente diferentes
+btnk_high_10x10,generated,int_tard_load_20x10,generated,generated-generated,6.2153,claramente diferentes
+btnk_high_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,7.7166,claramente diferentes
+btnk_low_10x10,generated,dur_high_10x10,generated,generated-generated,4.8766,moderadamente diferentes
+btnk_low_10x10,generated,dur_low_10x10,generated,generated-generated,0.1188,muy similares
+btnk_low_10x10,generated,load_high_20x10,generated,generated-generated,2.1965,similares
+btnk_low_10x10,generated,load_low_10x20,generated,generated-generated,2.5834,moderadamente diferentes
+btnk_low_10x10,generated,nrg_strong_10x10,generated,generated-generated,5.6564,claramente diferentes
+btnk_low_10x10,generated,nrg_weak_10x10,generated,generated-generated,1.2784,similares
+btnk_low_10x10,generated,rel_high_10x10,generated,generated-generated,2.6537,moderadamente diferentes
+btnk_low_10x10,generated,rel_zero_10x10,generated,generated-generated,2.2895,similares
+btnk_low_10x10,generated,tard_high_10x10,generated,generated-generated,2.596,moderadamente diferentes
+btnk_low_10x10,generated,tard_low_10x10,generated,generated-generated,1.2954,similares
+btnk_low_10x10,generated,int_btnk_load_20x10,generated,generated-generated,5.78,claramente diferentes
+btnk_low_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.4192,claramente diferentes
+btnk_low_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,6.9652,claramente diferentes
+btnk_low_10x10,generated,int_nrg_load_20x10,generated,generated-generated,5.9655,claramente diferentes
+btnk_low_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.2913,claramente diferentes
+btnk_low_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.8785,claramente diferentes
+btnk_low_10x10,generated,int_tard_load_20x10,generated,generated-generated,3.379,moderadamente diferentes
+btnk_low_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.0673,claramente diferentes
+dur_high_10x10,generated,dur_low_10x10,generated,generated-generated,4.9445,moderadamente diferentes
+dur_high_10x10,generated,load_high_20x10,generated,generated-generated,5.1532,claramente diferentes
+dur_high_10x10,generated,load_low_10x20,generated,generated-generated,4.5512,moderadamente diferentes
+dur_high_10x10,generated,nrg_strong_10x10,generated,generated-generated,7.3822,claramente diferentes
+dur_high_10x10,generated,nrg_weak_10x10,generated,generated-generated,4.5634,moderadamente diferentes
+dur_high_10x10,generated,rel_high_10x10,generated,generated-generated,5.0433,claramente diferentes
+dur_high_10x10,generated,rel_zero_10x10,generated,generated-generated,5.2113,claramente diferentes
+dur_high_10x10,generated,tard_high_10x10,generated,generated-generated,5.5643,claramente diferentes
+dur_high_10x10,generated,tard_low_10x10,generated,generated-generated,4.4782,moderadamente diferentes
+dur_high_10x10,generated,int_btnk_load_20x10,generated,generated-generated,4.6762,moderadamente diferentes
+dur_high_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,4.2778,moderadamente diferentes
+dur_high_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,5.7358,claramente diferentes
+dur_high_10x10,generated,int_nrg_load_20x10,generated,generated-generated,7.7065,claramente diferentes
+dur_high_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,4.5818,moderadamente diferentes
+dur_high_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.099,claramente diferentes
+dur_high_10x10,generated,int_tard_load_20x10,generated,generated-generated,6.0177,claramente diferentes
+dur_high_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,7.7974,claramente diferentes
+dur_low_10x10,generated,load_high_20x10,generated,generated-generated,2.2077,similares
+dur_low_10x10,generated,load_low_10x20,generated,generated-generated,2.6037,moderadamente diferentes
+dur_low_10x10,generated,nrg_strong_10x10,generated,generated-generated,5.6814,claramente diferentes
+dur_low_10x10,generated,nrg_weak_10x10,generated,generated-generated,1.3164,similares
+dur_low_10x10,generated,rel_high_10x10,generated,generated-generated,2.662,moderadamente diferentes
+dur_low_10x10,generated,rel_zero_10x10,generated,generated-generated,2.2786,similares
+dur_low_10x10,generated,tard_high_10x10,generated,generated-generated,2.6082,moderadamente diferentes
+dur_low_10x10,generated,tard_low_10x10,generated,generated-generated,1.3258,similares
+dur_low_10x10,generated,int_btnk_load_20x10,generated,generated-generated,5.8204,claramente diferentes
+dur_low_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.4623,claramente diferentes
+dur_low_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,7.0179,claramente diferentes
+dur_low_10x10,generated,int_nrg_load_20x10,generated,generated-generated,5.9856,claramente diferentes
+dur_low_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.3323,claramente diferentes
+dur_low_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.9169,claramente diferentes
+dur_low_10x10,generated,int_tard_load_20x10,generated,generated-generated,3.3848,moderadamente diferentes
+dur_low_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.0857,claramente diferentes
+load_high_20x10,generated,load_low_10x20,generated,generated-generated,3.968,moderadamente diferentes
+load_high_20x10,generated,nrg_strong_10x10,generated,generated-generated,6.016,claramente diferentes
+load_high_20x10,generated,nrg_weak_10x10,generated,generated-generated,2.4989,similares
+load_high_20x10,generated,rel_high_10x10,generated,generated-generated,3.3523,moderadamente diferentes
+load_high_20x10,generated,rel_zero_10x10,generated,generated-generated,3.1001,moderadamente diferentes
+load_high_20x10,generated,tard_high_10x10,generated,generated-generated,3.3538,moderadamente diferentes
+load_high_20x10,generated,tard_low_10x10,generated,generated-generated,2.469,similares
+load_high_20x10,generated,int_btnk_load_20x10,generated,generated-generated,5.1096,claramente diferentes
+load_high_20x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.606,claramente diferentes
+load_high_20x10,generated,int_dur_nrg_10x10,generated,generated-generated,7.1435,claramente diferentes
+load_high_20x10,generated,int_nrg_load_20x10,generated,generated-generated,5.5125,claramente diferentes
+load_high_20x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.4228,claramente diferentes
+load_high_20x10,generated,int_tard_btnk_10x10,generated,generated-generated,6.057,claramente diferentes
+load_high_20x10,generated,int_tard_load_20x10,generated,generated-generated,2.5676,moderadamente diferentes
+load_high_20x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.4052,claramente diferentes
+load_low_10x20,generated,nrg_strong_10x10,generated,generated-generated,6.4184,claramente diferentes
+load_low_10x20,generated,nrg_weak_10x10,generated,generated-generated,2.5634,moderadamente diferentes
+load_low_10x20,generated,rel_high_10x10,generated,generated-generated,3.5528,moderadamente diferentes
+load_low_10x20,generated,rel_zero_10x10,generated,generated-generated,3.9204,moderadamente diferentes
+load_low_10x20,generated,tard_high_10x10,generated,generated-generated,4.1457,moderadamente diferentes
+load_low_10x20,generated,tard_low_10x10,generated,generated-generated,1.6192,similares
+load_low_10x20,generated,int_btnk_load_20x10,generated,generated-generated,6.1733,claramente diferentes
+load_low_10x20,generated,int_dur_btnk_10x10,generated,generated-generated,5.4377,claramente diferentes
+load_low_10x20,generated,int_dur_nrg_10x10,generated,generated-generated,7.1612,claramente diferentes
+load_low_10x20,generated,int_nrg_load_20x10,generated,generated-generated,7.05,claramente diferentes
+load_low_10x20,generated,int_rel_btnk_10x10,generated,generated-generated,6.1018,claramente diferentes
+load_low_10x20,generated,int_tard_btnk_10x10,generated,generated-generated,6.2907,claramente diferentes
+load_low_10x20,generated,int_tard_load_20x10,generated,generated-generated,5.1545,claramente diferentes
+load_low_10x20,generated,int_tard_nrg_10x10,generated,generated-generated,6.9908,claramente diferentes
+nrg_strong_10x10,generated,nrg_weak_10x10,generated,generated-generated,6.5585,claramente diferentes
+nrg_strong_10x10,generated,rel_high_10x10,generated,generated-generated,6.271,claramente diferentes
+nrg_strong_10x10,generated,rel_zero_10x10,generated,generated-generated,6.0211,claramente diferentes
+nrg_strong_10x10,generated,tard_high_10x10,generated,generated-generated,6.0854,claramente diferentes
+nrg_strong_10x10,generated,tard_low_10x10,generated,generated-generated,5.8703,claramente diferentes
+nrg_strong_10x10,generated,int_btnk_load_20x10,generated,generated-generated,7.6626,claramente diferentes
+nrg_strong_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,7.3445,claramente diferentes
+nrg_strong_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,3.9584,moderadamente diferentes
+nrg_strong_10x10,generated,int_nrg_load_20x10,generated,generated-generated,2.1892,similares
+nrg_strong_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,8.0803,claramente diferentes
+nrg_strong_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,7.6105,claramente diferentes
+nrg_strong_10x10,generated,int_tard_load_20x10,generated,generated-generated,6.4876,claramente diferentes
+nrg_strong_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,2.5042,moderadamente diferentes
+nrg_weak_10x10,generated,rel_high_10x10,generated,generated-generated,2.9385,moderadamente diferentes
+nrg_weak_10x10,generated,rel_zero_10x10,generated,generated-generated,2.748,moderadamente diferentes
+nrg_weak_10x10,generated,tard_high_10x10,generated,generated-generated,2.9169,moderadamente diferentes
+nrg_weak_10x10,generated,tard_low_10x10,generated,generated-generated,1.5534,similares
+nrg_weak_10x10,generated,int_btnk_load_20x10,generated,generated-generated,5.5543,claramente diferentes
+nrg_weak_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.1865,claramente diferentes
+nrg_weak_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,7.4879,claramente diferentes
+nrg_weak_10x10,generated,int_nrg_load_20x10,generated,generated-generated,6.8355,claramente diferentes
+nrg_weak_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.0717,claramente diferentes
+nrg_weak_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.7193,claramente diferentes
+nrg_weak_10x10,generated,int_tard_load_20x10,generated,generated-generated,3.645,moderadamente diferentes
+nrg_weak_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.9289,claramente diferentes
+rel_high_10x10,generated,rel_zero_10x10,generated,generated-generated,1.7581,similares
+rel_high_10x10,generated,tard_high_10x10,generated,generated-generated,3.747,moderadamente diferentes
+rel_high_10x10,generated,tard_low_10x10,generated,generated-generated,2.6131,moderadamente diferentes
+rel_high_10x10,generated,int_btnk_load_20x10,generated,generated-generated,6.0363,claramente diferentes
+rel_high_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.6866,claramente diferentes
+rel_high_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,7.211,claramente diferentes
+rel_high_10x10,generated,int_nrg_load_20x10,generated,generated-generated,6.5138,claramente diferentes
+rel_high_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,5.3205,claramente diferentes
+rel_high_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,6.2647,claramente diferentes
+rel_high_10x10,generated,int_tard_load_20x10,generated,generated-generated,4.3255,moderadamente diferentes
+rel_high_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.7052,claramente diferentes
+rel_zero_10x10,generated,tard_high_10x10,generated,generated-generated,3.2767,moderadamente diferentes
+rel_zero_10x10,generated,tard_low_10x10,generated,generated-generated,2.7583,moderadamente diferentes
+rel_zero_10x10,generated,int_btnk_load_20x10,generated,generated-generated,5.941,claramente diferentes
+rel_zero_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.5803,claramente diferentes
+rel_zero_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,7.1214,claramente diferentes
+rel_zero_10x10,generated,int_nrg_load_20x10,generated,generated-generated,6.2697,claramente diferentes
+rel_zero_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,5.7313,claramente diferentes
+rel_zero_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.9935,claramente diferentes
+rel_zero_10x10,generated,int_tard_load_20x10,generated,generated-generated,3.9179,moderadamente diferentes
+rel_zero_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.3661,claramente diferentes
+tard_high_10x10,generated,tard_low_10x10,generated,generated-generated,3.1834,moderadamente diferentes
+tard_high_10x10,generated,int_btnk_load_20x10,generated,generated-generated,6.1176,claramente diferentes
+tard_high_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.7747,claramente diferentes
+tard_high_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,7.3,claramente diferentes
+tard_high_10x10,generated,int_nrg_load_20x10,generated,generated-generated,6.3654,claramente diferentes
+tard_high_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.6909,claramente diferentes
+tard_high_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.0277,claramente diferentes
+tard_high_10x10,generated,int_tard_load_20x10,generated,generated-generated,2.1668,similares
+tard_high_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,5.4158,claramente diferentes
+tard_low_10x10,generated,int_btnk_load_20x10,generated,generated-generated,5.5522,claramente diferentes
+tard_low_10x10,generated,int_dur_btnk_10x10,generated,generated-generated,5.1799,claramente diferentes
+tard_low_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,6.8895,claramente diferentes
+tard_low_10x10,generated,int_nrg_load_20x10,generated,generated-generated,6.1712,claramente diferentes
+tard_low_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,5.8884,claramente diferentes
+tard_low_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,5.8874,claramente diferentes
+tard_low_10x10,generated,int_tard_load_20x10,generated,generated-generated,3.8563,moderadamente diferentes
+tard_low_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,6.3906,claramente diferentes
+int_btnk_load_20x10,generated,int_dur_btnk_10x10,generated,generated-generated,2.1732,similares
+int_btnk_load_20x10,generated,int_dur_nrg_10x10,generated,generated-generated,6.6489,claramente diferentes
+int_btnk_load_20x10,generated,int_nrg_load_20x10,generated,generated-generated,7.3694,claramente diferentes
+int_btnk_load_20x10,generated,int_rel_btnk_10x10,generated,generated-generated,3.506,moderadamente diferentes
+int_btnk_load_20x10,generated,int_tard_btnk_10x10,generated,generated-generated,3.4041,moderadamente diferentes
+int_btnk_load_20x10,generated,int_tard_load_20x10,generated,generated-generated,5.8089,claramente diferentes
+int_btnk_load_20x10,generated,int_tard_nrg_10x10,generated,generated-generated,8.0016,claramente diferentes
+int_dur_btnk_10x10,generated,int_dur_nrg_10x10,generated,generated-generated,6.309,claramente diferentes
+int_dur_btnk_10x10,generated,int_nrg_load_20x10,generated,generated-generated,7.6769,claramente diferentes
+int_dur_btnk_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,2.759,moderadamente diferentes
+int_dur_btnk_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,2.634,moderadamente diferentes
+int_dur_btnk_10x10,generated,int_tard_load_20x10,generated,generated-generated,6.2487,claramente diferentes
+int_dur_btnk_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,7.7022,claramente diferentes
+int_dur_nrg_10x10,generated,int_nrg_load_20x10,generated,generated-generated,4.6327,moderadamente diferentes
+int_dur_nrg_10x10,generated,int_rel_btnk_10x10,generated,generated-generated,6.7734,claramente diferentes
+int_dur_nrg_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,6.7098,claramente diferentes
+int_dur_nrg_10x10,generated,int_tard_load_20x10,generated,generated-generated,7.6673,claramente diferentes
+int_dur_nrg_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,4.737,moderadamente diferentes
+int_nrg_load_20x10,generated,int_rel_btnk_10x10,generated,generated-generated,8.3664,claramente diferentes
+int_nrg_load_20x10,generated,int_tard_btnk_10x10,generated,generated-generated,7.9263,claramente diferentes
+int_nrg_load_20x10,generated,int_tard_load_20x10,generated,generated-generated,6.0119,claramente diferentes
+int_nrg_load_20x10,generated,int_tard_nrg_10x10,generated,generated-generated,3.2953,moderadamente diferentes
+int_rel_btnk_10x10,generated,int_tard_btnk_10x10,generated,generated-generated,4.1027,moderadamente diferentes
+int_rel_btnk_10x10,generated,int_tard_load_20x10,generated,generated-generated,7.105,claramente diferentes
+int_rel_btnk_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,8.4808,claramente diferentes
+int_tard_btnk_10x10,generated,int_tard_load_20x10,generated,generated-generated,5.5599,claramente diferentes
+int_tard_btnk_10x10,generated,int_tard_nrg_10x10,generated,generated-generated,7.101,claramente diferentes
+int_tard_load_20x10,generated,int_tard_nrg_10x10,generated,generated-generated,5.8565,claramente diferentes

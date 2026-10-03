@@ -1,0 +1,56 @@
+{
+  "run_id": "50_25_2-5_1_NSGA-II_s42_b500",
+  "instance": "50_25_2-5_1",
+  "algorithm": "NSGA-II",
+  "seed": 42,
+  "budget": 500,
+  "hypervolume": 0.7191280408163777,
+  "archive_size": 9,
+  "pareto_front": [
+    {
+      "makespan": 4774.0,
+      "tardiness": 196839.0,
+      "energy": 96352.0
+    },
+    {
+      "makespan": 5025.0,
+      "tardiness": 203406.0,
+      "energy": 92971.0
+    },
+    {
+      "makespan": 5010.0,
+      "tardiness": 202656.0,
+      "energy": 92991.0
+    },
+    {
+      "makespan": 4865.0,
+      "tardiness": 202928.0,
+      "energy": 93944.0
+    },
+    {
+      "makespan": 5316.0,
+      "tardiness": 211703.0,
+      "energy": 92194.0
+    },
+    {
+      "makespan": 5112.0,
+      "tardiness": 210114.0,
+      "energy": 92440.0
+    },
+    {
+      "makespan": 5172.0,
+      "tardiness": 214671.0,
+      "energy": 92399.0
+    },
+    {
+      "makespan": 4873.0,
+      "tardiness": 199195.0,
+      "energy": 93250.0
+    },
+    {
+      "makespan": 5278.0,
+      "tardiness": 220087.0,
+      "energy": 91663.0
+    }
+  ]
+}

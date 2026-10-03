@@ -1,0 +1,31 @@
+{
+  "run_id": "40_40_2-5_1_Portfolio_s100_b500",
+  "instance": "40_40_2-5_1",
+  "algorithm": "Adaptive Portfolio",
+  "seed": 100,
+  "budget": 500,
+  "hypervolume": 0.7061042768594548,
+  "archive_size": 4,
+  "pareto_front": [
+    {
+      "makespan": 5956.0,
+      "tardiness": 201287.0,
+      "energy": 116122.0
+    },
+    {
+      "makespan": 5402.0,
+      "tardiness": 181309.0,
+      "energy": 117319.0
+    },
+    {
+      "makespan": 5665.0,
+      "tardiness": 189510.0,
+      "energy": 116908.0
+    },
+    {
+      "makespan": 5928.0,
+      "tardiness": 197585.0,
+      "energy": 116618.0
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "run_id": "10_10_2-5_1_MOPSO_s200_b500",
+  "instance": "10_10_2-5_1",
+  "algorithm": "MOPSO",
+  "seed": 200,
+  "budget": 500,
+  "hypervolume": 0.6789025506470167,
+  "archive_size": 17,
+  "pareto_front": [
+    {
+      "makespan": 1157.0,
+      "tardiness": 7311.0,
+      "energy": 7559.0
+    },
+    {
+      "makespan": 1220.0,
+      "tardiness": 6706.0,
+      "energy": 7192.0
+    },
+    {
+      "makespan": 1154.0,
+      "tardiness": 7380.0,
+      "energy": 7608.0
+    },
+    {
+      "makespan": 1293.0,
+      "tardiness": 7312.0,
+      "energy": 7125.0
+    },
+    {
+      "makespan": 1154.0,
+      "tardiness": 7380.0,
+      "energy": 7608.0
+    },
+    {
+      "makespan": 1559.0,
+      "tardiness": 9489.0,
+      "energy": 6965.0
+    },
+    {
+      "makespan": 1293.0,
+      "tardiness": 7312.0,
+      "energy": 7125.0
+    },
+    {
+      "makespan": 1293.0,
+      "tardiness": 7677.0,
+      "energy": 7079.0
+    },
+    {
+      "makespan": 1538.0,
+      "tardiness": 9431.0,
+      "energy": 6994.0
+    },
+    {
+      "makespan": 1397.0,
+      "tardiness": 8870.0,
+      "energy": 7010.0
+    },
+    {
+      "makespan": 1293.0,
+      "tardiness": 7677.0,
+      "energy": 7079.0
+    },
+    {
+      "makespan": 1344.0,
+      "tardiness": 8237.0,
+      "energy": 7077.0
+    },
+    {
+      "makespan": 1192.0,
+      "tardiness": 6828.0,
+      "energy": 7470.0
+    },
+    {
+      "makespan": 1275.0,
+      "tardiness": 7497.0,
+      "energy": 7084.0
+    },
+    {
+      "makespan": 1154.0,
+      "tardiness": 7380.0,
+      "energy": 7608.0
+    },
+    {
+      "makespan": 1275.0,
+      "tardiness": 7497.0,
+      "energy": 7084.0
+    },
+    {
+      "makespan": 1199.0,
+      "tardiness": 6889.0,
+      "energy": 7351.0
+    }
+  ]
+}

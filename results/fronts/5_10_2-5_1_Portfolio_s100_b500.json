@@ -1,0 +1,256 @@
+{
+  "run_id": "5_10_2-5_1_Portfolio_s100_b500",
+  "instance": "5_10_2-5_1",
+  "algorithm": "Adaptive Portfolio",
+  "seed": 100,
+  "budget": 500,
+  "hypervolume": 0.7780236609658651,
+  "archive_size": 49,
+  "pareto_front": [
+    {
+      "makespan": 668.0,
+      "tardiness": 1815.0,
+      "energy": 2998.0
+    },
+    {
+      "makespan": 768.0,
+      "tardiness": 1908.0,
+      "energy": 2837.0
+    },
+    {
+      "makespan": 839.0,
+      "tardiness": 2500.0,
+      "energy": 2752.0
+    },
+    {
+      "makespan": 656.0,
+      "tardiness": 1790.0,
+      "energy": 3365.0
+    },
+    {
+      "makespan": 662.0,
+      "tardiness": 1702.0,
+      "energy": 3374.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 718.0,
+      "tardiness": 1988.0,
+      "energy": 2934.0
+    },
+    {
+      "makespan": 713.0,
+      "tardiness": 1704.0,
+      "energy": 3204.0
+    },
+    {
+      "makespan": 772.0,
+      "tardiness": 2040.0,
+      "energy": 2814.0
+    },
+    {
+      "makespan": 758.0,
+      "tardiness": 2281.0,
+      "energy": 2809.0
+    },
+    {
+      "makespan": 763.0,
+      "tardiness": 2165.0,
+      "energy": 2889.0
+    },
+    {
+      "makespan": 728.0,
+      "tardiness": 1745.0,
+      "energy": 3157.0
+    },
+    {
+      "makespan": 835.0,
+      "tardiness": 2494.0,
+      "energy": 2760.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 687.0,
+      "tardiness": 1883.0,
+      "energy": 2969.0
+    },
+    {
+      "makespan": 856.0,
+      "tardiness": 2887.0,
+      "energy": 2728.0
+    },
+    {
+      "makespan": 749.0,
+      "tardiness": 1847.0,
+      "energy": 2937.0
+    },
+    {
+      "makespan": 766.0,
+      "tardiness": 2273.0,
+      "energy": 2855.0
+    },
+    {
+      "makespan": 708.0,
+      "tardiness": 1797.0,
+      "energy": 3094.0
+    },
+    {
+      "makespan": 685.0,
+      "tardiness": 1849.0,
+      "energy": 2982.0
+    },
+    {
+      "makespan": 668.0,
+      "tardiness": 1798.0,
+      "energy": 3002.0
+    },
+    {
+      "makespan": 896.0,
+      "tardiness": 2735.0,
+      "energy": 2697.0
+    },
+    {
+      "makespan": 910.0,
+      "tardiness": 2842.0,
+      "energy": 2673.0
+    },
+    {
+      "makespan": 728.0,
+      "tardiness": 1779.0,
+      "energy": 3080.0
+    },
+    {
+      "makespan": 696.0,
+      "tardiness": 1686.0,
+      "energy": 3210.0
+    },
+    {
+      "makespan": 721.0,
+      "tardiness": 1918.0,
+      "energy": 2903.0
+    },
+    {
+      "makespan": 795.0,
+      "tardiness": 2043.0,
+      "energy": 2796.0
+    },
+    {
+      "makespan": 835.0,
+      "tardiness": 2471.0,
+      "energy": 2766.0
+    },
+    {
+      "makespan": 958.0,
+      "tardiness": 3021.0,
+      "energy": 2661.0
+    },
+    {
+      "makespan": 901.0,
+      "tardiness": 2439.0,
+      "energy": 2760.0
+    }
+  ]
+}

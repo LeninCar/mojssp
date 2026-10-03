@@ -1,0 +1,46 @@
+{
+  "run_id": "20_10_2-5_1_Portfolio_s42_b500",
+  "instance": "20_10_2-5_1",
+  "algorithm": "Adaptive Portfolio",
+  "seed": 42,
+  "budget": 500,
+  "hypervolume": 0.7223534066251698,
+  "archive_size": 7,
+  "pareto_front": [
+    {
+      "makespan": 1435.0,
+      "tardiness": 19217.0,
+      "energy": 14438.0
+    },
+    {
+      "makespan": 1476.0,
+      "tardiness": 20059.0,
+      "energy": 14181.0
+    },
+    {
+      "makespan": 1432.0,
+      "tardiness": 18985.0,
+      "energy": 14550.0
+    },
+    {
+      "makespan": 1663.0,
+      "tardiness": 24063.0,
+      "energy": 13555.0
+    },
+    {
+      "makespan": 1568.0,
+      "tardiness": 21731.0,
+      "energy": 13793.0
+    },
+    {
+      "makespan": 1451.0,
+      "tardiness": 19736.0,
+      "energy": 14348.0
+    },
+    {
+      "makespan": 1511.0,
+      "tardiness": 21160.0,
+      "energy": 13901.0
+    }
+  ]
+}

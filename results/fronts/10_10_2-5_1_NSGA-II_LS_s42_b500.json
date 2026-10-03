@@ -1,0 +1,176 @@
+{
+  "run_id": "10_10_2-5_1_NSGA-II_LS_s42_b500",
+  "instance": "10_10_2-5_1",
+  "algorithm": "NSGA-II+LS",
+  "seed": 42,
+  "budget": 500,
+  "hypervolume": 0.6957967245391299,
+  "archive_size": 33,
+  "pareto_front": [
+    {
+      "makespan": 1331.0,
+      "tardiness": 8188.0,
+      "energy": 7268.0
+    },
+    {
+      "makespan": 1328.0,
+      "tardiness": 8249.0,
+      "energy": 7252.0
+    },
+    {
+      "makespan": 1318.0,
+      "tardiness": 7947.0,
+      "energy": 7400.0
+    },
+    {
+      "makespan": 1336.0,
+      "tardiness": 8432.0,
+      "energy": 7008.0
+    },
+    {
+      "makespan": 1329.0,
+      "tardiness": 8414.0,
+      "energy": 7156.0
+    },
+    {
+      "makespan": 1034.0,
+      "tardiness": 5780.0,
+      "energy": 7510.0
+    },
+    {
+      "makespan": 1104.0,
+      "tardiness": 5738.0,
+      "energy": 7494.0
+    },
+    {
+      "makespan": 1104.0,
+      "tardiness": 5738.0,
+      "energy": 7494.0
+    },
+    {
+      "makespan": 1081.0,
+      "tardiness": 5796.0,
+      "energy": 7494.0
+    },
+    {
+      "makespan": 1081.0,
+      "tardiness": 5796.0,
+      "energy": 7494.0
+    },
+    {
+      "makespan": 1084.0,
+      "tardiness": 5784.0,
+      "energy": 7494.0
+    },
+    {
+      "makespan": 1081.0,
+      "tardiness": 5796.0,
+      "energy": 7494.0
+    },
+    {
+      "makespan": 1081.0,
+      "tardiness": 5796.0,
+      "energy": 7494.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1178.0,
+      "tardiness": 7441.0,
+      "energy": 7435.0
+    },
+    {
+      "makespan": 1073.0,
+      "tardiness": 6359.0,
+      "energy": 7459.0
+    },
+    {
+      "makespan": 1073.0,
+      "tardiness": 6359.0,
+      "energy": 7459.0
+    },
+    {
+      "makespan": 1073.0,
+      "tardiness": 6359.0,
+      "energy": 7459.0
+    },
+    {
+      "makespan": 1069.0,
+      "tardiness": 6393.0,
+      "energy": 7459.0
+    },
+    {
+      "makespan": 1073.0,
+      "tardiness": 6359.0,
+      "energy": 7459.0
+    }
+  ]
+}

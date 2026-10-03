@@ -1,0 +1,146 @@
+{
+  "run_id": "30_30_2-5_1_NSGA-II_s42_b1000",
+  "instance": "30_30_2-5_1",
+  "algorithm": "NSGA-II",
+  "seed": 42,
+  "budget": 1000,
+  "hypervolume": 0.7464342386535718,
+  "archive_size": 27,
+  "pareto_front": [
+    {
+      "makespan": 4088.0,
+      "tardiness": 99243.0,
+      "energy": 67299.0
+    },
+    {
+      "makespan": 4848.0,
+      "tardiness": 120432.0,
+      "energy": 65540.0
+    },
+    {
+      "makespan": 4064.0,
+      "tardiness": 98089.0,
+      "energy": 67342.0
+    },
+    {
+      "makespan": 4090.0,
+      "tardiness": 98865.0,
+      "energy": 67223.0
+    },
+    {
+      "makespan": 4286.0,
+      "tardiness": 104115.0,
+      "energy": 66189.0
+    },
+    {
+      "makespan": 4302.0,
+      "tardiness": 102945.0,
+      "energy": 66208.0
+    },
+    {
+      "makespan": 4261.0,
+      "tardiness": 105006.0,
+      "energy": 66493.0
+    },
+    {
+      "makespan": 4143.0,
+      "tardiness": 100510.0,
+      "energy": 67064.0
+    },
+    {
+      "makespan": 4276.0,
+      "tardiness": 103576.0,
+      "energy": 66266.0
+    },
+    {
+      "makespan": 4808.0,
+      "tardiness": 118400.0,
+      "energy": 65553.0
+    },
+    {
+      "makespan": 4443.0,
+      "tardiness": 108026.0,
+      "energy": 65809.0
+    },
+    {
+      "makespan": 4185.0,
+      "tardiness": 101822.0,
+      "energy": 66577.0
+    },
+    {
+      "makespan": 4103.0,
+      "tardiness": 100580.0,
+      "energy": 67164.0
+    },
+    {
+      "makespan": 4271.0,
+      "tardiness": 105306.0,
+      "energy": 66470.0
+    },
+    {
+      "makespan": 4505.0,
+      "tardiness": 110383.0,
+      "energy": 65782.0
+    },
+    {
+      "makespan": 4603.0,
+      "tardiness": 114524.0,
+      "energy": 65696.0
+    },
+    {
+      "makespan": 4443.0,
+      "tardiness": 108026.0,
+      "energy": 65809.0
+    },
+    {
+      "makespan": 4189.0,
+      "tardiness": 101768.0,
+      "energy": 66577.0
+    },
+    {
+      "makespan": 4185.0,
+      "tardiness": 101629.0,
+      "energy": 66657.0
+    },
+    {
+      "makespan": 4008.0,
+      "tardiness": 96522.0,
+      "energy": 67453.0
+    },
+    {
+      "makespan": 4090.0,
+      "tardiness": 98867.0,
+      "energy": 67220.0
+    },
+    {
+      "makespan": 4782.0,
+      "tardiness": 118774.0,
+      "energy": 65549.0
+    },
+    {
+      "makespan": 3996.0,
+      "tardiness": 96165.0,
+      "energy": 67550.0
+    },
+    {
+      "makespan": 4000.0,
+      "tardiness": 96282.0,
+      "energy": 67470.0
+    },
+    {
+      "makespan": 4878.0,
+      "tardiness": 118008.0,
+      "energy": 65438.0
+    },
+    {
+      "makespan": 4649.0,
+      "tardiness": 114366.0,
+      "energy": 65613.0
+    },
+    {
+      "makespan": 4589.0,
+      "tardiness": 111592.0,
+      "energy": 65731.0
+    }
+  ]
+}

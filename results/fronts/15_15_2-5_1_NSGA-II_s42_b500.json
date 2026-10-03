@@ -1,0 +1,121 @@
+{
+  "run_id": "15_15_2-5_1_NSGA-II_s42_b500",
+  "instance": "15_15_2-5_1",
+  "algorithm": "NSGA-II",
+  "seed": 42,
+  "budget": 500,
+  "hypervolume": 0.8124490715135211,
+  "archive_size": 22,
+  "pareto_front": [
+    {
+      "makespan": 1645.0,
+      "tardiness": 15110.0,
+      "energy": 16998.0
+    },
+    {
+      "makespan": 1768.0,
+      "tardiness": 17382.0,
+      "energy": 16021.0
+    },
+    {
+      "makespan": 1652.0,
+      "tardiness": 16341.0,
+      "energy": 16414.0
+    },
+    {
+      "makespan": 1782.0,
+      "tardiness": 18023.0,
+      "energy": 15712.0
+    },
+    {
+      "makespan": 1896.0,
+      "tardiness": 19168.0,
+      "energy": 15594.0
+    },
+    {
+      "makespan": 1664.0,
+      "tardiness": 15795.0,
+      "energy": 16742.0
+    },
+    {
+      "makespan": 1878.0,
+      "tardiness": 17951.0,
+      "energy": 15670.0
+    },
+    {
+      "makespan": 1767.0,
+      "tardiness": 17282.0,
+      "energy": 16048.0
+    },
+    {
+      "makespan": 1647.0,
+      "tardiness": 15142.0,
+      "energy": 16969.0
+    },
+    {
+      "makespan": 1685.0,
+      "tardiness": 16524.0,
+      "energy": 16394.0
+    },
+    {
+      "makespan": 1767.0,
+      "tardiness": 17489.0,
+      "energy": 15927.0
+    },
+    {
+      "makespan": 1984.0,
+      "tardiness": 18076.0,
+      "energy": 15574.0
+    },
+    {
+      "makespan": 1727.0,
+      "tardiness": 17314.0,
+      "energy": 16042.0
+    },
+    {
+      "makespan": 1742.0,
+      "tardiness": 16735.0,
+      "energy": 16209.0
+    },
+    {
+      "makespan": 1764.0,
+      "tardiness": 17212.0,
+      "energy": 16140.0
+    },
+    {
+      "makespan": 1931.0,
+      "tardiness": 19153.0,
+      "energy": 15549.0
+    },
+    {
+      "makespan": 1754.0,
+      "tardiness": 16788.0,
+      "energy": 16208.0
+    },
+    {
+      "makespan": 1946.0,
+      "tardiness": 18707.0,
+      "energy": 15451.0
+    },
+    {
+      "makespan": 1672.0,
+      "tardiness": 15330.0,
+      "energy": 16471.0
+    },
+    {
+      "makespan": 2058.0,
+      "tardiness": 20424.0,
+      "energy": 15418.0
+    },
+    {
+      "makespan": 1811.0,
+      "tardiness": 17359.0,
+      "energy": 15701.0
+    },
+    {
+      "makespan": 1946.0,
+      "tardiness": 18670.0,
+      "energy": 15492.0
+    }
+  ]
+}
