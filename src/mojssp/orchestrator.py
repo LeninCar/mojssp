@@ -36,6 +36,7 @@ class BlockExecutionRecord:
     hv_before: float
     hv_after: float
     completed: bool
+    phase: str = "adaptive"
 
 
 @dataclass(frozen=True)
@@ -165,21 +166,78 @@ class AdaptivePortfolioOrchestrator:
             hv_before=hv_before,
             hv_after=hv_after,
             completed=block_result.completed,
+            phase="adaptive",
         )
         self._history.append(record)
 
         return record
 
-    def run(self, total_budget: int, block_size: int) -> AdaptiveExecutionResult:
-        """Run the adaptive portfolio until consuming total_budget evaluations.
+    def run_warmup_block(self, arm_name: str, block_budget: int) -> BlockExecutionRecord:
+        """Execute a single neutral warm-up block for a specific arm.
 
-        Guarantees that total evaluations consumed during this run do not exceed total_budget.
-        If remaining budget is smaller than block_size, the final block is allocated exactly
-        the remaining budget.
+        Consumes block_budget evaluations on the arm, updates the Global Pareto Archive,
+        computes ΔHV reward, but DOES NOT feed the reward into DMAB learning statistics.
+        Marks the arm as initialized in DMAB without recording observations.
 
         Args:
-            total_budget: Maximum total real evaluations to consume during this run (> 0).
+            arm_name: Canonical name of the arm to execute during warm-up.
+            block_budget: Evaluation budget for this warm-up block (> 0).
+
+        Returns:
+            BlockExecutionRecord detailing the warm-up block execution.
+
+        Raises:
+            ValueError: If block_budget <= 0.
+        """
+        if block_budget <= 0:
+            raise ValueError(f"block_budget must be positive, got {block_budget}")
+
+        hv_before = self._reward_tracker.current_hv
+        block_result: PortfolioBlockResult = self._portfolio.run_arm(
+            arm_name, budget=block_budget
+        )
+        reward = self._reward_tracker.compute_reward(self._portfolio.global_archive)
+        hv_after = self._reward_tracker.current_hv
+
+        # Mark arm initialized in DMAB without adding reward observation
+        if hasattr(self._dmab, "initialize_arm"):
+            self._dmab.initialize_arm(arm_name)
+
+        record = BlockExecutionRecord(
+            block_index=len(self._history),
+            arm_name=arm_name,
+            budget_allocated=block_budget,
+            evaluations_used=block_result.evaluations_used,
+            reward=reward,
+            hv_before=hv_before,
+            hv_after=hv_after,
+            completed=block_result.completed,
+            phase="warmup",
+        )
+        self._history.append(record)
+
+        return record
+
+    def run(
+        self,
+        total_budget: int,
+        block_size: int,
+        neutral_warmup: bool = True,
+    ) -> AdaptiveExecutionResult:
+        """Run the adaptive portfolio until consuming total_budget evaluations.
+
+        If neutral_warmup is True (default), executes each registered arm in DMAB canonical
+        registration order exactly once using block_size evaluations. During warm-up, the
+        Global Archive is updated, but DMAB learning statistics are NOT updated with the
+        initialization rewards. After warm-up, the active DMAB adaptive selection loop begins.
+
+        If remaining budget does not suffice to complete warm-up across all arms, available
+        budget is allocated to arms in order until total_budget is exhausted.
+
+        Args:
+            total_budget: Maximum total real evaluations to consume (> 0).
             block_size: Maximum evaluations per block (> 0).
+            neutral_warmup: Whether to execute neutral warm-up before active DMAB adaptation.
 
         Returns:
             AdaptiveExecutionResult containing summary statistics and execution history.
@@ -194,6 +252,23 @@ class AdaptivePortfolioOrchestrator:
 
         run_evaluations_used = 0
 
+        # Phase 1: Neutral Warm-up (if enabled)
+        if neutral_warmup:
+            warmup_arms = list(self._dmab.arm_names)
+            for arm_name in warmup_arms:
+                if run_evaluations_used >= total_budget:
+                    break
+                remaining = total_budget - run_evaluations_used
+                warmup_budget = min(block_size, remaining)
+                rec = self.run_warmup_block(arm_name, warmup_budget)
+                run_evaluations_used += rec.evaluations_used
+
+                if rec.completed and all(
+                    arm.is_completed for arm in self._portfolio.arms.values()
+                ):
+                    break
+
+        # Phase 2: Active DMAB Adaptive Phase
         while run_evaluations_used < total_budget:
             remaining = total_budget - run_evaluations_used
             block_budget = min(block_size, remaining)

@@ -1,0 +1,85 @@
+% Small test instance (3 jobs, 3 machines, 2 speeds) for MO-JSSP
+% Total operations: 9
+
+JOBS = 1..3;
+MACHINES = 1..3;
+SPEED = 2;
+
+% Processing times [job, machine, speed]
+time = array3d(
+    JOBS,
+    MACHINES,
+    1..SPEED,
+    [
+        % Job 1: M1, M2, M3
+        4, 2,
+        6, 3,
+        5, 3,
+
+        % Job 2: M1, M2, M3
+        3, 2,
+        5, 3,
+        4, 2,
+
+        % Job 3: M1, M2, M3
+        5, 3,
+        4, 2,
+        6, 4
+    ]
+);
+
+% Energy consumption [job, machine, speed]
+energy = array3d(
+    JOBS,
+    MACHINES,
+    1..SPEED,
+    [
+        % Job 1: M1, M2, M3
+        10, 20,
+        15, 28,
+        12, 22,
+
+        % Job 2: M1, M2, M3
+        10, 18,
+        14, 26,
+        12, 20,
+
+        % Job 3: M1, M2, M3
+        15, 25,
+        12, 22,
+        18, 30
+    ]
+);
+
+% Precedence order within job [job, machine]
+precedence = array2d(
+    JOBS,
+    MACHINES,
+    [
+        0, 1, 2,
+        1, 2, 0,
+        2, 0, 1
+    ]
+);
+
+% Release dates [job, machine]
+releaseDate = array2d(
+    JOBS,
+    MACHINES,
+    [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0
+    ]
+);
+
+% Due dates [job, machine]
+dueDate = array2d(
+    JOBS,
+    MACHINES,
+    [
+        20, 20, 20,
+        20, 20, 20,
+        20, 20, 20
+    ]
+);

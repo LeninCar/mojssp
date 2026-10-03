@@ -60,6 +60,14 @@ class DMABSelector(Protocol):
         """Reset internal counters, sliding window, and pseudo-random generator state."""
         ...
 
+    def initialize_arm(self, arm_name: str) -> None:
+        """Mark an arm as initialized by neutral warm-up without updating reward statistics."""
+        ...
+
+    def is_arm_initialized(self, arm_name: str) -> bool:
+        """Return whether an arm has completed warm-up or initialization."""
+        ...
+
 
 class SlidingWindowUCB:
     """Sliding-Window Upper Confidence Bound (SW-UCB) selector.
@@ -142,6 +150,7 @@ class SlidingWindowUCB:
 
         self._total_pulls: int = 0
         self._total_counts: Dict[str, int] = {name: 0 for name in self._arm_names}
+        self._initialized_arms: set[str] = set()
         self._window: deque[Tuple[str, float]] = deque(maxlen=window_size)
 
     @property
@@ -170,9 +179,9 @@ class SlidingWindowUCB:
         Returns:
             Canonical arm name of the chosen arm.
         """
-        # Warm-up phase: ensure every arm has been pulled at least once in registration order
+        # Warm-up phase: ensure every arm has completed warm-up or been pulled at least once
         for name in self._arm_names:
-            if self._total_counts[name] == 0:
+            if name not in self._initialized_arms and self._total_counts[name] == 0:
                 return name
 
         # Compute UCB for each arm
@@ -220,7 +229,39 @@ class SlidingWindowUCB:
 
         self._total_pulls += 1
         self._total_counts[arm_name] += 1
+        self._initialized_arms.add(arm_name)
         self._window.append((arm_name, float(reward)))
+
+    def initialize_arm(self, arm_name: str) -> None:
+        """Mark an arm as initialized by neutral warm-up without updating reward statistics.
+
+        Args:
+            arm_name: Identifier of the arm to mark as initialized.
+
+        Raises:
+            KeyError: If arm_name is not registered.
+        """
+        if arm_name not in self._total_counts:
+            raise KeyError(
+                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
+            )
+        self._initialized_arms.add(arm_name)
+
+    def mark_warmup_complete(self, arm_name: Optional[str] = None) -> None:
+        """Convenience method to mark one or all arms as having completed warm-up."""
+        if arm_name is not None:
+            self.initialize_arm(arm_name)
+        else:
+            for name in self._arm_names:
+                self.initialize_arm(name)
+
+    def is_arm_initialized(self, arm_name: str) -> bool:
+        """Return whether an arm has completed warm-up or initialization."""
+        if arm_name not in self._total_counts:
+            raise KeyError(
+                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
+            )
+        return arm_name in self._initialized_arms
 
     def _compute_arm_stats(self, arm_name: str) -> ArmStats:
         """Internal helper to compute ArmStats for a given arm."""
@@ -229,7 +270,17 @@ class SlidingWindowUCB:
 
         if window_pulls == 0:
             window_mean = 0.0
-            ucb = float("inf")
+            if arm_name in self._initialized_arms and self._total_counts[arm_name] == 0:
+                # Arm completed neutral warm-up but has no adaptive observations yet.
+                # Effective count is 1 from warm-up to prevent forcing re-selection.
+                t_eff = min(self._total_pulls, self._window_size)
+                if t_eff > 1:
+                    exploration = self._c * math.sqrt(math.log(t_eff) / 1.0)
+                else:
+                    exploration = 0.0
+                ucb = window_mean + exploration
+            else:
+                ucb = float("inf")
         else:
             window_mean = sum(window_rewards) / window_pulls
             t_eff = min(self._total_pulls, self._window_size)
@@ -259,5 +310,6 @@ class SlidingWindowUCB:
         """Reset internal counters, sliding window, and pseudo-random generator state."""
         self._total_pulls = 0
         self._total_counts = {name: 0 for name in self._arm_names}
+        self._initialized_arms.clear()
         self._window.clear()
         self._rng = random.Random(self._seed)

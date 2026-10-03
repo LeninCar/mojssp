@@ -56,3 +56,8 @@ cover/
 
 # Local agent instructions
 AGENTS.md
+
+# Non-benchmark instances and temporary files
+data/archive/
+data/invalid/
+scratch/

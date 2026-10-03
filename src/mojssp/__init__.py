@@ -67,6 +67,13 @@ from .arms import ActiveLSState, MOPSOArm, NSGA2Arm, NSGA2LSArm
 from .portfolio import Portfolio, PortfolioBlockResult
 from .dmab import ArmStats, DMABSelector, SlidingWindowUCB
 from .reward import HypervolumeRewardTracker, RewardInvariantError
+from .igd import (
+    build_empirical_reference_front,
+    compute_archive_igd,
+    compute_euclidean_distance,
+    compute_igd,
+    filter_non_dominated_points,
+)
 from .orchestrator import (
     AdaptiveExecutionResult,
     AdaptivePortfolioOrchestrator,
@@ -138,6 +145,11 @@ __all__ = [
     "SlidingWindowUCB",
     "RewardInvariantError",
     "HypervolumeRewardTracker",
+    "compute_euclidean_distance",
+    "compute_igd",
+    "compute_archive_igd",
+    "filter_non_dominated_points",
+    "build_empirical_reference_front",
     "BlockExecutionRecord",
     "AdaptiveExecutionResult",
     "AdaptivePortfolioOrchestrator",
