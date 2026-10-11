@@ -125,7 +125,7 @@ def run_single_window_horizon_trial(
     all_arms = ["NSGA-II", "MOPSO", "NSGA-II+LS"]
 
     warmup_recs = [r for r in history if r.phase == "warmup"]
-    adaptive_recs = [r for r in history if r.phase == "adaptive"]
+    adaptive_recs = [r for r in history if r.phase in ("initial_probe", "adaptive")]
 
     warmup_fe = sum(r.evaluations_used for r in warmup_recs)
     adaptive_fe_tot = sum(r.evaluations_used for r in adaptive_recs)
