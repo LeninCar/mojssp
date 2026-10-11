@@ -95,8 +95,8 @@ class TestNeutralWarmup(unittest.TestCase):
             self.assertEqual(stats[arm_name].window_pulls, 0)
             self.assertEqual(stats[arm_name].window_mean, 0.0)
 
-    def test_3_dmab_does_not_repeat_warmup(self) -> None:
-        """Test 3: After initialization, DMAB does not obligatorily re-select all arms."""
+    def test_3_initial_probe_guarantees_all_arms_pulled(self) -> None:
+        """Test 3: Initial adaptive probe guarantees every arm is pulled once before ordinary SW-UCB."""
         dmab = SlidingWindowUCB(arm_names=["A", "B", "C"], window_size=10, seed=42)
 
         # Mark all arms as initialized via neutral warm-up
@@ -104,35 +104,51 @@ class TestNeutralWarmup(unittest.TestCase):
 
         # All arms are initialized, total_pulls is 0
         self.assertEqual(dmab.total_pulls, 0)
+        self.assertFalse(dmab.is_initial_probe_complete)
 
-        # First adaptive selection
+        # First adaptive selection picks A (first unprobed arm)
         sel0 = dmab.select_arm()
-        self.assertIn(sel0, ["A", "B", "C"])
-
-        # Update sel0 with a high positive reward
-        dmab.update(sel0, 1.0)
+        self.assertEqual(sel0, "A")
+        dmab.update("A", 1.0)
         self.assertEqual(dmab.total_pulls, 1)
+        self.assertEqual(dmab.get_adaptive_pulls("A"), 1)
+        self.assertTrue(dmab.is_in_initial_probe("B"))
 
-        # Second adaptive selection: arm sel0 has positive mean, while others have 0.0 mean.
-        # At t_eff=1, exploration bonus is 0.0. sel0 must be selected again (no forced round-robin).
+        # Second adaptive selection picks B (unprobed, despite A having reward 1.0)
         sel1 = dmab.select_arm()
-        self.assertEqual(sel1, sel0)
+        self.assertEqual(sel1, "B")
+        dmab.update("B", 0.5)
+        self.assertEqual(dmab.total_pulls, 2)
+        self.assertEqual(dmab.get_adaptive_pulls("B"), 1)
+        self.assertTrue(dmab.is_in_initial_probe("C"))
+
+        # Third adaptive selection picks C (last unprobed arm)
+        sel2 = dmab.select_arm()
+        self.assertEqual(sel2, "C")
+        dmab.update("C", 0.2)
+        self.assertEqual(dmab.total_pulls, 3)
+        self.assertTrue(dmab.is_initial_probe_complete)
+
+        # Fourth selection: all arms probed! Ordinary SW-UCB applies.
+        # Arm A has highest mean reward (1.0), so it is selected
+        sel3 = dmab.select_arm()
+        self.assertEqual(sel3, "A")
 
     def test_4_first_adaptive_reward(self) -> None:
         """Test 4: After first adaptive block, only that reward appears in DMAB stats."""
         orch = self._build_orchestrator()
 
-        # 3 warm-up blocks (45 FE) + 1 adaptive block (15 FE) = 60 FE
+        # 3 warm-up blocks (45 FE) + 1 adaptive probe block (15 FE) = 60 FE
         res = orch.run(total_budget=60, block_size=15, neutral_warmup=True)
 
-        adaptive_blocks = [r for r in res.history if r.phase == "adaptive"]
-        self.assertEqual(len(adaptive_blocks), 1)
+        probe_blocks = [r for r in res.history if r.phase == "initial_probe"]
+        self.assertEqual(len(probe_blocks), 1)
 
         # DMAB has exactly 1 update
         self.assertEqual(orch.dmab.total_pulls, 1)
 
-        first_adaptive_arm = adaptive_blocks[0].arm_name
-        first_adaptive_reward = adaptive_blocks[0].reward
+        first_adaptive_arm = probe_blocks[0].arm_name
+        first_adaptive_reward = probe_blocks[0].reward
 
         stats = orch.dmab.get_stats()
         self.assertEqual(stats[first_adaptive_arm].total_pulls, 1)
@@ -154,7 +170,7 @@ class TestNeutralWarmup(unittest.TestCase):
         self.assertGreater(orch.reward_tracker.current_hv, 0.0)
 
     def test_6_budget_strict_accounting(self) -> None:
-        """Test 6: Budget accounting matches exact split between warm-up and adaptive phases."""
+        """Test 6: Budget accounting matches exact split between warm-up, initial probe, and adaptive phases."""
         orch = self._build_orchestrator()
         total_budget = 500
         block_size = 50
@@ -164,15 +180,18 @@ class TestNeutralWarmup(unittest.TestCase):
         self.assertEqual(res.total_evaluations, total_budget)
 
         warmup_evals = sum(r.evaluations_used for r in res.history if r.phase == "warmup")
+        probe_evals = sum(r.evaluations_used for r in res.history if r.phase == "initial_probe")
         adaptive_evals = sum(r.evaluations_used for r in res.history if r.phase == "adaptive")
 
-        self.assertEqual(warmup_evals, 3 * block_size)  # 150 FE
-        self.assertEqual(adaptive_evals, total_budget - warmup_evals)  # 350 FE
-        self.assertEqual(warmup_evals + adaptive_evals, total_budget)
+        self.assertEqual(warmup_evals, 3 * block_size)  # 150 FE (3 warmup blocks)
+        self.assertEqual(probe_evals, 3 * block_size)   # 150 FE (3 probe blocks)
+        self.assertEqual(adaptive_evals, 4 * block_size)  # 200 FE (4 ordinary adaptive blocks)
+        self.assertEqual(warmup_evals + probe_evals + adaptive_evals, total_budget)
 
-        # Exactly 3 warm-up blocks + 7 adaptive blocks = 10 blocks
+        # Exactly 3 warm-up blocks + 3 probe blocks + 4 adaptive blocks = 10 blocks
         self.assertEqual(len([r for r in res.history if r.phase == "warmup"]), 3)
-        self.assertEqual(len([r for r in res.history if r.phase == "adaptive"]), 7)
+        self.assertEqual(len([r for r in res.history if r.phase == "initial_probe"]), 3)
+        self.assertEqual(len([r for r in res.history if r.phase == "adaptive"]), 4)
         self.assertEqual(res.total_blocks, 10)
 
     def test_7_reward_invariant(self) -> None:

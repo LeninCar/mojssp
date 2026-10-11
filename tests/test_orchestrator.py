@@ -139,10 +139,11 @@ class TestOrchestrator(unittest.TestCase):
 
         self.assertEqual(res.total_blocks, 4)
         warmup_records = [r for r in res.history if r.phase == "warmup"]
-        adaptive_records = [r for r in res.history if r.phase == "adaptive"]
+        adaptive_records = [r for r in res.history if r.phase in ("initial_probe", "adaptive")]
 
         self.assertEqual(len(warmup_records), 3)
         self.assertEqual(len(adaptive_records), 1)
+        self.assertEqual(adaptive_records[0].phase, "initial_probe")
         self.assertEqual(
             [r.arm_name for r in warmup_records],
             list(orchestrator.dmab.arm_names),

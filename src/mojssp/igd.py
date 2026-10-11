@@ -145,8 +145,12 @@ def build_empirical_reference_front(
 ) -> List[Tuple[float, float, float]]:
     """Construct an empirical Pareto reference front by pooling and filtering multiple archives.
 
-    Extracts all objective vectors across all provided archives, removes duplicates,
-    and discards any vector dominated by another pooled vector.
+    Extracts all objective vectors across all provided archives, removes duplicates within
+    numerical tolerance, and discards any vector dominated by another pooled vector.
+
+    Note:
+        This front represents an empirical reference front (the best known approximation
+        pool), and should not be characterized as the true global Pareto front.
 
     Args:
         archives: Collection of ParetoArchive instances or collections of ArchiveEntry.
@@ -171,3 +175,157 @@ def build_empirical_reference_front(
     if normalizer is not None:
         return [normalizer.normalize_tuple(p) for p in filtered_raw]
     return filtered_raw
+
+
+def compute_modified_distance(
+    u: Sequence[float], v: Sequence[float]
+) -> float:
+    """Compute the modified distance d+(u, v) for minimization problems (Ishibuchi et al., 2015).
+
+    d+(u, v) measures the distance from obtained point u to reference point v, penalizing
+    only components where u is worse (greater) than v:
+        d+(u, v) = sqrt(sum_{i=1}^M (max(0, u_i - v_i))^2)
+
+    If u weakly dominates v (u_i <= v_i for all i), d+(u, v) = 0.0.
+
+    Args:
+        u: Obtained point coordinates.
+        v: Reference point coordinates.
+
+    Returns:
+        Non-negative scalar modified distance d+(u, v).
+
+    Raises:
+        ValueError: If u and v have different dimensionalities.
+    """
+    if len(u) != len(v):
+        raise ValueError(
+            f"Point dimensions must match: got {len(u)} and {len(v)}"
+        )
+    return math.sqrt(sum((max(0.0, float(a) - float(b))) ** 2 for a, b in zip(u, v)))
+
+
+def compute_igd_plus(
+    obtained_points: Sequence[Sequence[float]],
+    reference_points: Sequence[Sequence[float]],
+) -> float:
+    """Compute Inverted Generational Distance Plus (IGD+) (Ishibuchi et al., 2015).
+
+    IGD+ is weakly Pareto compliant, satisfying the property that if set A dominates
+    set B, then IGD+(A, P*) <= IGD+(B, P*).
+
+    Formula:
+        IGD+(A, P*) = (1 / |P*|) * sum_{v in P*} min_{u in A} d+(u, v)
+
+    Args:
+        obtained_points: Collection of non-dominated objective points discovered by an algorithm.
+        reference_points: Non-empty collection of reference Pareto front points.
+
+    Returns:
+        Scalar IGD+ value >= 0.0.
+
+    Raises:
+        ValueError: If reference_points is empty.
+    """
+    if not reference_points:
+        raise ValueError("reference_points must be a non-empty sequence")
+
+    if not obtained_points:
+        return float("inf")
+
+    total_min_distance = 0.0
+    for ref_pt in reference_points:
+        min_dist = min(compute_modified_distance(obt_pt, ref_pt) for obt_pt in obtained_points)
+        total_min_distance += min_dist
+
+    return float(total_min_distance / len(reference_points))
+
+
+def compute_archive_igd_plus(
+    archive: ParetoArchive,
+    reference_points: Sequence[Tuple[float, float, float]],
+    normalizer: ObjectiveNormalizer,
+) -> float:
+    """Compute normalized IGD+ of a ParetoArchive against a normalized reference front.
+
+    Args:
+        archive: ParetoArchive containing non-dominated solutions.
+        reference_points: Reference front points in normalized [0, 1]^3 space.
+        normalizer: ObjectiveNormalizer configured with instance bounds.
+
+    Returns:
+        Scalar IGD+ in normalized space [0, 1]^3.
+    """
+    if len(archive) == 0:
+        return float("inf")
+
+    normalized_obtained = normalizer.normalize_archive(archive)
+    return compute_igd_plus(normalized_obtained, reference_points)
+
+
+def compute_contribution_rate(
+    obtained_points: Sequence[Sequence[float]],
+    reference_points: Sequence[Sequence[float]],
+    tolerance: float = 1e-6,
+) -> float:
+    """Compute the Contribution Rate (CR) of an obtained front to the reference front.
+
+    CR measures the percentage of reference front points that are matched (within numerical
+    tolerance across all objectives) by at least one solution in the obtained front:
+        CR(A, P*) = (|{ v in P* : exists u in A with ||u - v||_inf <= tolerance }| / |P*|) * 100%
+
+    Args:
+        obtained_points: Collection of non-dominated objective points.
+        reference_points: Non-empty collection of reference Pareto front points.
+        tolerance: Numerical tolerance for floating-point equality (default: 1e-6).
+
+    Returns:
+        Percentage in [0.0, 100.0] representing the contribution rate.
+
+    Raises:
+        ValueError: If reference_points is empty or tolerance < 0.
+    """
+    if not reference_points:
+        raise ValueError("reference_points must be a non-empty sequence")
+
+    if tolerance < 0.0:
+        raise ValueError(f"tolerance must be non-negative, got {tolerance}")
+
+    if not obtained_points:
+        return 0.0
+
+    matched = 0
+    for ref_pt in reference_points:
+        is_matched = any(
+            all(abs(float(u_i) - float(v_i)) <= tolerance for u_i, v_i in zip(obt_pt, ref_pt))
+            for obt_pt in obtained_points
+        )
+        if is_matched:
+            matched += 1
+
+    return float((matched / len(reference_points)) * 100.0)
+
+
+def compute_archive_contribution_rate(
+    archive: ParetoArchive,
+    reference_points: Sequence[Tuple[float, float, float]],
+    normalizer: ObjectiveNormalizer,
+    tolerance: float = 1e-6,
+) -> float:
+    """Compute the normalized Contribution Rate (CR) of a ParetoArchive.
+
+    Args:
+        archive: ParetoArchive containing non-dominated solutions.
+        reference_points: Reference front points in normalized [0, 1]^3 space.
+        normalizer: ObjectiveNormalizer configured with instance bounds.
+        tolerance: Numerical tolerance for floating-point equality in normalized space.
+
+    Returns:
+        Percentage in [0.0, 100.0] representing the contribution rate.
+    """
+    if len(archive) == 0:
+        return 0.0
+
+    normalized_obtained = normalizer.normalize_archive(archive)
+    return compute_contribution_rate(normalized_obtained, reference_points, tolerance=tolerance)
+

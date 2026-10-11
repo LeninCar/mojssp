@@ -143,6 +143,13 @@ class AdaptivePortfolioOrchestrator:
         # 1. DMAB selects arm
         arm_name = self._dmab.select_arm()
 
+        # Check if arm is undergoing its initial adaptive probe
+        is_probe = False
+        if hasattr(self._dmab, "is_in_initial_probe"):
+            is_probe = self._dmab.is_in_initial_probe(arm_name)
+        elif hasattr(self._dmab, "get_adaptive_pulls"):
+            is_probe = (self._dmab.get_adaptive_pulls(arm_name) == 0)
+
         # 2. Portfolio executes block on selected arm
         block_result: PortfolioBlockResult = self._portfolio.run_arm(
             arm_name, budget=block_budget
@@ -166,7 +173,7 @@ class AdaptivePortfolioOrchestrator:
             hv_before=hv_before,
             hv_after=hv_after,
             completed=block_result.completed,
-            phase="adaptive",
+            phase="initial_probe" if is_probe else "adaptive",
         )
         self._history.append(record)
 

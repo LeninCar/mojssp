@@ -197,10 +197,11 @@ class TestAdaptiveIntegration(unittest.TestCase):
 
         self.assertEqual(result.total_blocks, 4)
         warmup_recs = [r for r in result.history if r.phase == "warmup"]
-        adaptive_recs = [r for r in result.history if r.phase == "adaptive"]
+        adaptive_recs = [r for r in result.history if r.phase in ("initial_probe", "adaptive")]
 
         self.assertEqual(len(warmup_recs), 3)
         self.assertEqual(len(adaptive_recs), 1)
+        self.assertEqual(adaptive_recs[0].phase, "initial_probe")
 
         # DMAB learning statistics only reflect adaptive blocks
         self.assertEqual(orchestrator.dmab.total_pulls, 1)

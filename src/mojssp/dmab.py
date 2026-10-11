@@ -150,6 +150,7 @@ class SlidingWindowUCB:
 
         self._total_pulls: int = 0
         self._total_counts: Dict[str, int] = {name: 0 for name in self._arm_names}
+        self._adaptive_pulls: Dict[str, int] = {name: 0 for name in self._arm_names}
         self._initialized_arms: set[str] = set()
         self._window: deque[Tuple[str, float]] = deque(maxlen=window_size)
 
@@ -179,9 +180,9 @@ class SlidingWindowUCB:
         Returns:
             Canonical arm name of the chosen arm.
         """
-        # Warm-up phase: ensure every arm has completed warm-up or been pulled at least once
+        # Initial probe phase: guarantee each arm receives exactly one adaptive block before ordinary SW-UCB
         for name in self._arm_names:
-            if name not in self._initialized_arms and self._total_counts[name] == 0:
+            if self._adaptive_pulls[name] == 0:
                 return name
 
         # Compute UCB for each arm
@@ -229,6 +230,7 @@ class SlidingWindowUCB:
 
         self._total_pulls += 1
         self._total_counts[arm_name] += 1
+        self._adaptive_pulls[arm_name] += 1
         self._initialized_arms.add(arm_name)
         self._window.append((arm_name, float(reward)))
 
@@ -263,6 +265,27 @@ class SlidingWindowUCB:
             )
         return arm_name in self._initialized_arms
 
+    def get_adaptive_pulls(self, arm_name: str) -> int:
+        """Return the count of adaptive updates executed for the given arm."""
+        if arm_name not in self._adaptive_pulls:
+            raise KeyError(
+                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
+            )
+        return self._adaptive_pulls[arm_name]
+
+    def is_in_initial_probe(self, arm_name: str) -> bool:
+        """Return True if the arm has not yet completed its initial adaptive probe block."""
+        if arm_name not in self._adaptive_pulls:
+            raise KeyError(
+                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
+            )
+        return self._adaptive_pulls[arm_name] == 0
+
+    @property
+    def is_initial_probe_complete(self) -> bool:
+        """Return True if all registered arms have completed their initial adaptive probe."""
+        return all(count > 0 for count in self._adaptive_pulls.values())
+
     def _compute_arm_stats(self, arm_name: str) -> ArmStats:
         """Internal helper to compute ArmStats for a given arm."""
         window_rewards = [r for (name, r) in self._window if name == arm_name]
@@ -270,17 +293,7 @@ class SlidingWindowUCB:
 
         if window_pulls == 0:
             window_mean = 0.0
-            if arm_name in self._initialized_arms and self._total_counts[arm_name] == 0:
-                # Arm completed neutral warm-up but has no adaptive observations yet.
-                # Effective count is 1 from warm-up to prevent forcing re-selection.
-                t_eff = min(self._total_pulls, self._window_size)
-                if t_eff > 1:
-                    exploration = self._c * math.sqrt(math.log(t_eff) / 1.0)
-                else:
-                    exploration = 0.0
-                ucb = window_mean + exploration
-            else:
-                ucb = float("inf")
+            ucb = float("inf")
         else:
             window_mean = sum(window_rewards) / window_pulls
             t_eff = min(self._total_pulls, self._window_size)
@@ -310,6 +323,165 @@ class SlidingWindowUCB:
         """Reset internal counters, sliding window, and pseudo-random generator state."""
         self._total_pulls = 0
         self._total_counts = {name: 0 for name in self._arm_names}
+        self._adaptive_pulls = {name: 0 for name in self._arm_names}
         self._initialized_arms.clear()
         self._window.clear()
         self._rng = random.Random(self._seed)
+
+
+class RoundRobinSelector:
+    """Deterministic cyclical selector allocating budget blocks uniformly across arms.
+
+    Conforms to DMABSelector protocol so it can be seamlessly orchestrated by
+    AdaptivePortfolioOrchestrator to serve as the uniform round-robin baseline.
+    """
+
+    def __init__(self, arm_names: Sequence[str], seed: Optional[int] = None) -> None:
+        if not arm_names:
+            raise ValueError("arm_names cannot be empty")
+        self._arm_names: Tuple[str, ...] = tuple(arm_names)
+        self._seed = seed
+        self._total_pulls: int = 0
+        self._total_counts: Dict[str, int] = {name: 0 for name in self._arm_names}
+        self._adaptive_pulls: Dict[str, int] = {name: 0 for name in self._arm_names}
+        self._initialized_arms: set[str] = set()
+        self._current_idx: int = 0
+
+    @property
+    def arm_names(self) -> Tuple[str, ...]:
+        return self._arm_names
+
+    @property
+    def total_pulls(self) -> int:
+        return self._total_pulls
+
+    def select_arm(self) -> str:
+        selected = self._arm_names[self._current_idx % len(self._arm_names)]
+        self._current_idx += 1
+        return selected
+
+    def update(self, arm_name: str, reward: float) -> None:
+        if arm_name not in self._total_counts:
+            raise KeyError(f"Unknown arm '{arm_name}'")
+        self._total_pulls += 1
+        self._total_counts[arm_name] += 1
+        self._adaptive_pulls[arm_name] += 1
+        self._initialized_arms.add(arm_name)
+
+    def initialize_arm(self, arm_name: str) -> None:
+        if arm_name not in self._total_counts:
+            raise KeyError(f"Unknown arm '{arm_name}'")
+        self._initialized_arms.add(arm_name)
+
+    def is_arm_initialized(self, arm_name: str) -> bool:
+        return arm_name in self._initialized_arms
+
+    def get_adaptive_pulls(self, arm_name: str) -> int:
+        return self._adaptive_pulls[arm_name]
+
+    def is_in_initial_probe(self, arm_name: str) -> bool:
+        return self._adaptive_pulls[arm_name] == 0
+
+    @property
+    def is_initial_probe_complete(self) -> bool:
+        return all(count > 0 for count in self._adaptive_pulls.values())
+
+    def get_stats(self) -> Dict[str, ArmStats]:
+        return {
+            name: ArmStats(
+                arm_name=name,
+                total_pulls=self._total_counts[name],
+                window_pulls=self._total_counts[name],
+                window_mean=0.0,
+                ucb=0.0,
+            )
+            for name in self._arm_names
+        }
+
+    def reset(self) -> None:
+        self._total_pulls = 0
+        self._total_counts = {name: 0 for name in self._arm_names}
+        self._adaptive_pulls = {name: 0 for name in self._arm_names}
+        self._initialized_arms.clear()
+        self._current_idx = 0
+
+
+class UniformRandomSelector:
+    """Random allocation selector sampling arms uniformly at random.
+
+    During the initial probe phase, guarantees each arm is probed once to ensure
+    identical initial conditions across all portfolio methods, and then samples
+    arms uniformly at random (p = 1/K).
+    Conforms to DMABSelector protocol for direct orchestration.
+    """
+
+    def __init__(self, arm_names: Sequence[str], seed: Optional[int] = None) -> None:
+        if not arm_names:
+            raise ValueError("arm_names cannot be empty")
+        self._arm_names: Tuple[str, ...] = tuple(arm_names)
+        self._seed = seed
+        self._rng = random.Random(seed)
+        self._total_pulls: int = 0
+        self._total_counts: Dict[str, int] = {name: 0 for name in self._arm_names}
+        self._adaptive_pulls: Dict[str, int] = {name: 0 for name in self._arm_names}
+        self._initialized_arms: set[str] = set()
+
+    @property
+    def arm_names(self) -> Tuple[str, ...]:
+        return self._arm_names
+
+    @property
+    def total_pulls(self) -> int:
+        return self._total_pulls
+
+    def select_arm(self) -> str:
+        for name in self._arm_names:
+            if self._adaptive_pulls[name] == 0:
+                return name
+        return self._rng.choice(self._arm_names)
+
+    def update(self, arm_name: str, reward: float) -> None:
+        if arm_name not in self._total_counts:
+            raise KeyError(f"Unknown arm '{arm_name}'")
+        self._total_pulls += 1
+        self._total_counts[arm_name] += 1
+        self._adaptive_pulls[arm_name] += 1
+        self._initialized_arms.add(arm_name)
+
+    def initialize_arm(self, arm_name: str) -> None:
+        if arm_name not in self._total_counts:
+            raise KeyError(f"Unknown arm '{arm_name}'")
+        self._initialized_arms.add(arm_name)
+
+    def is_arm_initialized(self, arm_name: str) -> bool:
+        return arm_name in self._initialized_arms
+
+    def get_adaptive_pulls(self, arm_name: str) -> int:
+        return self._adaptive_pulls[arm_name]
+
+    def is_in_initial_probe(self, arm_name: str) -> bool:
+        return self._adaptive_pulls[arm_name] == 0
+
+    @property
+    def is_initial_probe_complete(self) -> bool:
+        return all(count > 0 for count in self._adaptive_pulls.values())
+
+    def get_stats(self) -> Dict[str, ArmStats]:
+        return {
+            name: ArmStats(
+                arm_name=name,
+                total_pulls=self._total_counts[name],
+                window_pulls=self._total_counts[name],
+                window_mean=0.0,
+                ucb=0.0,
+            )
+            for name in self._arm_names
+        }
+
+    def reset(self) -> None:
+        self._total_pulls = 0
+        self._total_counts = {name: 0 for name in self._arm_names}
+        self._adaptive_pulls = {name: 0 for name in self._arm_names}
+        self._initialized_arms.clear()
+        self._rng = random.Random(self._seed)
+

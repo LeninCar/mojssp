@@ -13,6 +13,10 @@ from mojssp import (
     MOPSO,
     MOPSOAdapter,
     MOPSOResult,
+    MOEADAdapter,
+    MOEADResult,
+    SPEA2Adapter,
+    SPEA2Result,
     NSGA2,
     NSGA2Adapter,
     NSGA2LS,
@@ -131,6 +135,42 @@ class TestAlgorithmContract(unittest.TestCase):
         # Specific fields like iterations are directly preserved via raw_result
         self.assertGreater(result.raw_result.iterations, 0)
         self.assertEqual(result.total_evaluations, result.raw_result.total_evaluations)
+
+    def test_moead_adapter_wrapping_and_traceability(self) -> None:
+        """Test MOEADAdapter wraps MOEA/D cleanly and preserves raw_result."""
+        adapter = MOEADAdapter(population_size=10, max_evaluations=30, seed=404)
+
+        # Protocol check
+        self.assertTrue(isinstance(adapter, OptimizationAlgorithm))
+        self.assertEqual(adapter.algorithm_name, "MOEA/D")
+
+        result = adapter.run(self.instance)
+
+        self.assertIsInstance(result, AlgorithmResult)
+        self.assertIsInstance(result.archive, ParetoArchive)
+        self.assertEqual(result.algorithm_name, "MOEA/D")
+        self.assertEqual(result.seed, 404)
+        self.assertIsInstance(result.raw_result, MOEADResult)
+        self.assertEqual(result.total_evaluations, 30)
+        self.assertGreater(len(result.archive), 0)
+
+    def test_spea2_adapter_wrapping_and_traceability(self) -> None:
+        """Test SPEA2Adapter wraps SPEA2 cleanly and preserves raw_result."""
+        adapter = SPEA2Adapter(population_size=10, archive_size=10, max_evaluations=30, seed=505)
+
+        # Protocol check
+        self.assertTrue(isinstance(adapter, OptimizationAlgorithm))
+        self.assertEqual(adapter.algorithm_name, "SPEA2")
+
+        result = adapter.run(self.instance)
+
+        self.assertIsInstance(result, AlgorithmResult)
+        self.assertIsInstance(result.archive, ParetoArchive)
+        self.assertEqual(result.algorithm_name, "SPEA2")
+        self.assertEqual(result.seed, 505)
+        self.assertIsInstance(result.raw_result, SPEA2Result)
+        self.assertEqual(result.total_evaluations, 30)
+        self.assertGreater(len(result.archive), 0)
 
     def test_raw_result_identity(self) -> None:
         """Test that result.raw_result is the exact original instance (object identity)."""

@@ -14,6 +14,8 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
 
 from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
 from .arms import MOPSOArm, NSGA2Arm, NSGA2LSArm
+from .moead import MOEADArm
+from .spea2 import SPEA2Arm
 from .dmab import SlidingWindowUCB
 from .hypervolume import compute_archive_hypervolume
 from .instance import Instance
@@ -30,13 +32,31 @@ from .portfolio import Portfolio
 
 @dataclass(frozen=True)
 class ArmAllocation:
-    """Summary of budget allocated to a specific arm during a portfolio run."""
+    """Summary of budget allocated to a specific arm during a portfolio run.
+
+    Attributes:
+        arm_name: Canonical identifier of the arm.
+        evaluations_assigned: Total evaluations consumed by this arm.
+        percentage_of_budget: Percentage of total portfolio budget consumed.
+        number_of_blocks: Number of blocks executed by this arm.
+        cumulative_reward: Total reward obtained after warmup (probe_reward + ordinary_adaptive_reward).
+        warmup_reward: Reward obtained during the neutral warmup block (Phase 1).
+        probe_reward: Reward obtained during the initial adaptive probe block (Phase 2).
+        ordinary_adaptive_reward: Reward obtained during ordinary SW-UCB selection (Phase 3).
+        post_warmup_reward: Combined reward obtained during active search (probe_reward + ordinary_adaptive_reward).
+        adaptive_reward: Alias for post_warmup_reward for backwards compatibility.
+    """
 
     arm_name: str
     evaluations_assigned: int
     percentage_of_budget: float
     number_of_blocks: int
     cumulative_reward: float
+    warmup_reward: float = 0.0
+    probe_reward: float = 0.0
+    ordinary_adaptive_reward: float = 0.0
+    post_warmup_reward: float = 0.0
+    adaptive_reward: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -66,6 +86,9 @@ def compute_arm_allocations(
 ) -> Dict[str, ArmAllocation]:
     """Aggregate evaluations, block counts, and rewards by arm across a portfolio run.
 
+    Distinguishes neutral warmup rewards from active adaptive rewards so that
+    cumulative_reward accurately reflects DMAB performance without initialization bias.
+
     Args:
         history: Sequence of BlockExecutionRecord detailing the blocks executed.
         total_budget: Total evaluation budget of the portfolio run.
@@ -76,27 +99,42 @@ def compute_arm_allocations(
     """
     evals: Dict[str, int] = {name: 0 for name in arm_names}
     blocks: Dict[str, int] = {name: 0 for name in arm_names}
-    rewards: Dict[str, float] = {name: 0.0 for name in arm_names}
+    warmup_rewards: Dict[str, float] = {name: 0.0 for name in arm_names}
+    probe_rewards: Dict[str, float] = {name: 0.0 for name in arm_names}
+    ordinary_rewards: Dict[str, float] = {name: 0.0 for name in arm_names}
 
     for b in history:
         arm = b.arm_name
         if arm not in evals:
             evals[arm] = 0
             blocks[arm] = 0
-            rewards[arm] = 0.0
+            warmup_rewards[arm] = 0.0
+            probe_rewards[arm] = 0.0
+            ordinary_rewards[arm] = 0.0
         evals[arm] += b.evaluations_used
         blocks[arm] += 1
-        rewards[arm] += b.reward
+        if b.phase == "warmup":
+            warmup_rewards[arm] += b.reward
+        elif b.phase == "initial_probe":
+            probe_rewards[arm] += b.reward
+        else:
+            ordinary_rewards[arm] += b.reward
 
     allocations: Dict[str, ArmAllocation] = {}
     for arm in sorted(evals.keys()):
         pct = (evals[arm] / total_budget * 100.0) if total_budget > 0 else 0.0
+        post_warmup = float(probe_rewards[arm] + ordinary_rewards[arm])
         allocations[arm] = ArmAllocation(
             arm_name=arm,
             evaluations_assigned=evals[arm],
             percentage_of_budget=pct,
             number_of_blocks=blocks[arm],
-            cumulative_reward=float(rewards[arm]),
+            cumulative_reward=post_warmup,
+            warmup_reward=float(warmup_rewards[arm]),
+            probe_reward=float(probe_rewards[arm]),
+            ordinary_adaptive_reward=float(ordinary_rewards[arm]),
+            post_warmup_reward=post_warmup,
+            adaptive_reward=post_warmup,
         )
 
     return allocations
@@ -150,6 +188,21 @@ def run_standalone_experiment(
             max_evaluations=budget,
             max_ls_iterations=10,
             max_ls_neighbors=10,
+        )
+    elif arm_name == "MOEA/D":
+        arm = MOEADArm(
+            instance,
+            population_size=population_size,
+            seed=seed,
+            max_evaluations=budget,
+        )
+    elif arm_name == "SPEA2":
+        arm = SPEA2Arm(
+            instance,
+            population_size=population_size,
+            archive_size=population_size,
+            seed=seed,
+            max_evaluations=budget,
         )
     else:
         raise ValueError(f"Unknown standalone arm name: {arm_name}")

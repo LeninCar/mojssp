@@ -151,6 +151,60 @@ class MOPSOAdapter:
         )
 
 
+class MOEADAdapter:
+    """Lightweight adapter wrapping MOEAD into the OptimizationAlgorithm contract."""
+
+    def __init__(self, algorithm: Optional[Any] = None, **kwargs: Any) -> None:
+        from .moead import MOEAD
+        self._algorithm = algorithm if algorithm is not None else MOEAD(**kwargs)
+
+    @property
+    def algorithm(self) -> Any:
+        return self._algorithm
+
+    @property
+    def algorithm_name(self) -> str:
+        return "MOEA/D"
+
+    def run(self, instance: Instance) -> AlgorithmResult:
+        from .moead import MOEADResult
+        raw: MOEADResult = self._algorithm.run(instance)
+        return AlgorithmResult(
+            archive=raw.archive,
+            total_evaluations=raw.total_evaluations,
+            seed=raw.seed,
+            algorithm_name=self.algorithm_name,
+            raw_result=raw,
+        )
+
+
+class SPEA2Adapter:
+    """Lightweight adapter wrapping SPEA2 into the OptimizationAlgorithm contract."""
+
+    def __init__(self, algorithm: Optional[Any] = None, **kwargs: Any) -> None:
+        from .spea2 import SPEA2
+        self._algorithm = algorithm if algorithm is not None else SPEA2(**kwargs)
+
+    @property
+    def algorithm(self) -> Any:
+        return self._algorithm
+
+    @property
+    def algorithm_name(self) -> str:
+        return "SPEA2"
+
+    def run(self, instance: Instance) -> AlgorithmResult:
+        from .spea2 import SPEA2Result
+        raw: SPEA2Result = self._algorithm.run(instance)
+        return AlgorithmResult(
+            archive=raw.archive,
+            total_evaluations=raw.total_evaluations,
+            seed=raw.seed,
+            algorithm_name=self.algorithm_name,
+            raw_result=raw,
+        )
+
+
 @dataclass(frozen=True)
 class AlgorithmBlockResult:
     """Result of executing an algorithm arm for an evaluation budget block.
