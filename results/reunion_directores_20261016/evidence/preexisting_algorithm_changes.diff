@@ -1,0 +1,114 @@
+diff --git a/src/mojssp/arms.py b/src/mojssp/arms.py
+index 06e76fb..f6f62b4 100644
+--- a/src/mojssp/arms.py
++++ b/src/mojssp/arms.py
+@@ -11,6 +11,7 @@ from typing import Dict, List, Optional, Tuple
+ 
+ from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
+ from .critical_path import get_critical_sequence_indices
++from .cooperation import GuidedMatingArm
+ from .decoder import Decoder
+ from .evaluator import Evaluator, ObjectiveValues
+ from .instance import Instance
+@@ -37,7 +38,7 @@ from .schedule import Schedule
+ from .solution import Solution
+ 
+ 
+-class NSGA2Arm:
++class NSGA2Arm(GuidedMatingArm):
+     """Stateful portfolio arm wrapping NSGA-II under the common arm contract.
+ 
+     Preserves internal search state (population, partial offspring, pending sibling,
+@@ -112,6 +113,7 @@ class NSGA2Arm:
+ 
+     def reset(self) -> None:
+         """Reset the arm to its initial unexecuted state."""
++        self._archive_guidance = None
+         self._archive = ParetoArchive()
+         self._rng = random.Random(self._seed)
+         self._population.clear()
+@@ -217,7 +219,7 @@ class NSGA2Arm:
+                 )
+ 
+                 if self._rng.random() < self._crossover_probability:
+-                    c1_sol, c2_sol = crossover_pox(p1.solution, p2.solution, self._instance, self._rng)
++                    c1_sol, c2_sol = crossover_pox(p1.solution, self._guided_parent(p2.solution), self._instance, self._rng)
+                 else:
+                     c1_sol, c2_sol = p1.solution, p2.solution
+ 
+diff --git a/src/mojssp/moead.py b/src/mojssp/moead.py
+index 1e1306c..b44e087 100644
+--- a/src/mojssp/moead.py
++++ b/src/mojssp/moead.py
+@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
+ 
+ from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
+ from .decoder import Decoder
++from .cooperation import GuidedMatingArm
+ from .evaluator import Evaluator, ObjectiveValues
+ from .instance import Instance
+ from .normalization import ObjectiveNormalizer, compute_instance_bounds
+@@ -321,7 +322,7 @@ class MOEAD:
+         )
+ 
+ 
+-class MOEADArm:
++class MOEADArm(GuidedMatingArm):
+     """Stateful portfolio arm implementing MOEA/D under the common PortfolioArm protocol.
+ 
+     Preserves internal algorithmic state (subproblems, ideal reference point z*,
+@@ -440,6 +441,7 @@ class MOEADArm:
+ 
+     def reset(self) -> None:
+         """Reset the arm to its initial unexecuted state with its initial seed."""
++        self._archive_guidance = None
+         self._rng = random.Random(self._seed)
+         self._subproblems.clear()
+         self._ideal_point = [1.0, 1.0, 1.0]
+@@ -556,7 +558,7 @@ class MOEADArm:
+ 
+                 # Crossover
+                 if self._rng.random() < self._crossover_probability:
+-                    c1, c2 = crossover_pox(parent1, parent2, self._instance, self._rng)
++                    c1, c2 = crossover_pox(parent1, self._guided_parent(parent2), self._instance, self._rng)
+                     child_sol = c1 if self._rng.random() < 0.5 else c2
+                 else:
+                     child_sol = parent1
+diff --git a/src/mojssp/spea2.py b/src/mojssp/spea2.py
+index 939fa5d..a12429f 100644
+--- a/src/mojssp/spea2.py
++++ b/src/mojssp/spea2.py
+@@ -12,6 +12,7 @@ from typing import Any, List, Optional, Sequence, Tuple, Union
+ 
+ from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
+ from .decoder import Decoder
++from .cooperation import GuidedMatingArm
+ from .dominance import dominates
+ from .evaluator import Evaluator, ObjectiveValues
+ from .instance import Instance
+@@ -273,7 +274,7 @@ class SPEA2:
+         )
+ 
+ 
+-class SPEA2Arm:
++class SPEA2Arm(GuidedMatingArm):
+     """Stateful portfolio arm implementing SPEA2 under the common PortfolioArm protocol.
+ 
+     Preserves internal algorithmic state (population, environmental archive, partial
+@@ -365,6 +366,7 @@ class SPEA2Arm:
+ 
+     def reset(self) -> None:
+         """Reset the arm to its initial unexecuted state with its initial seed."""
++        self._archive_guidance = None
+         self._rng = random.Random(self._seed)
+         self._population.clear()
+         self._archive_population.clear()
+@@ -479,7 +481,7 @@ class SPEA2Arm:
+                 # Crossover
+                 if self._rng.random() < self._crossover_probability:
+                     c1_sol, c2_sol = crossover_pox(
+-                        p1.solution, p2.solution, self._instance, self._rng
++                        p1.solution, self._guided_parent(p2.solution), self._instance, self._rng
+                     )
+                 else:
+                     c1_sol, c2_sol = p1.solution, p2.solution

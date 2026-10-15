@@ -1,0 +1,7 @@
+# Python 3.12.8 (Windows); full platform recorded in manifest.json.
+pytest==9.1.1
+iniconfig==2.3.1
+pluggy==1.7.0
+numpy==2.5.3
+scipy==1.16.2
+matplotlib==3.10.1

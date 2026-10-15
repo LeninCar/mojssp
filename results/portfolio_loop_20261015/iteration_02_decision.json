@@ -1,0 +1,152 @@
+{
+  "iteration": 2,
+  "decision": "Pass development screen; retain opt-in pending confirmation.",
+  "evidence": {
+    "hv": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.029251397165862416,
+      "bootstrap95": [
+        0.020934106173830982,
+        0.03683179933120116
+      ],
+      "permutation_p_two_sided": 0.03125,
+      "base_wtl": [
+        6,
+        0,
+        0
+      ],
+      "by_base": {
+        "development_00_5x5": 0.011138634706230185,
+        "development_01_10x10": 0.04361590406057544,
+        "development_02_20x10": 0.03609212303678685,
+        "development_03_10x20": 0.028048304943754248,
+        "development_04_20x20": 0.03004769460182688,
+        "development_05_30x20": 0.026565721646000868
+      },
+      "holm_p": 0.0625
+    },
+    "auc_hv": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.017198775025393732,
+      "bootstrap95": [
+        0.012132552612888321,
+        0.022787801380756163
+      ],
+      "permutation_p_two_sided": 0.03125,
+      "base_wtl": [
+        6,
+        0,
+        0
+      ],
+      "by_base": {
+        "development_00_5x5": 0.019810679482393678,
+        "development_01_10x10": 0.027989278033413445,
+        "development_02_20x10": 0.021316213770529058,
+        "development_03_10x20": 0.008701311520387334,
+        "development_04_20x20": 0.01362446247022501,
+        "development_05_30x20": 0.011750704875413853
+      }
+    },
+    "seconds": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.5542978277775952,
+      "bootstrap95": [
+        -0.2028646222218716,
+        1.3114602777770616
+      ],
+      "permutation_p_two_sided": 0.25,
+      "base_wtl": [
+        5,
+        0,
+        1
+      ],
+      "by_base": {
+        "development_00_5x5": 2.1219165666601234,
+        "development_01_10x10": 0.7318196999985958,
+        "development_02_20x10": 1.080644566672466,
+        "development_03_10x20": 0.12594336667098105,
+        "development_04_20x20": 0.22776886666057786,
+        "development_05_30x20": -0.9623060999971736
+      }
+    },
+    "unique_vectors": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 9.111111111111112,
+      "bootstrap95": [
+        -0.5555555555555557,
+        19.5
+      ],
+      "permutation_p_two_sided": 0.21875,
+      "base_wtl": [
+        4,
+        0,
+        2
+      ],
+      "by_base": {
+        "development_00_5x5": 29.0,
+        "development_01_10x10": 22.0,
+        "development_02_20x10": 8.333333333333334,
+        "development_03_10x20": -5.666666666666667,
+        "development_04_20x20": 4.0,
+        "development_05_30x20": -3.0
+      }
+    },
+    "mean_nn_distance": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": -0.0006157495332447337,
+      "bootstrap95": [
+        -0.0011248374558392826,
+        -0.0001796726547695604
+      ],
+      "permutation_p_two_sided": 0.0625,
+      "base_wtl": [
+        1,
+        0,
+        5
+      ],
+      "by_base": {
+        "development_00_5x5": -0.0001142549978239334,
+        "development_01_10x10": -0.0016889302338576114,
+        "development_02_20x10": 1.5001939158738065e-05,
+        "development_03_10x20": -0.0002996539575369477,
+        "development_04_20x20": -0.0005237338310196811,
+        "development_05_30x20": -0.0010829261183889667
+      }
+    },
+    "genetic_diversity": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.06171180999006668,
+      "bootstrap95": [
+        0.05015566907904076,
+        0.07240742514545194
+      ],
+      "permutation_p_two_sided": 0.03125,
+      "base_wtl": [
+        6,
+        0,
+        0
+      ],
+      "by_base": {
+        "development_00_5x5": 0.038125159642401076,
+        "development_01_10x10": 0.07816985951468709,
+        "development_02_20x10": 0.07557726692209449,
+        "development_03_10x20": 0.051448275862068994,
+        "development_04_20x20": 0.06741730523627065,
+        "development_05_30x20": 0.05953299276287782
+      }
+    }
+  },
+  "runtime_ratio": 1.1040683846889217,
+  "allocation": {
+    "MOEA/D": 0.4138888888888889,
+    "NSGA-II": 0.3787037037037037,
+    "SPEA2": 0.2074074074074074
+  },
+  "caveat": "All six base means gain HV/AUC, but final family Holm p=.0625 after two candidates. FE following two zero global gains increases from 125 to 186.1: scale normalization is not by itself an anti-stagnation success. Max idle 10 blocks preserves revisits."
+}

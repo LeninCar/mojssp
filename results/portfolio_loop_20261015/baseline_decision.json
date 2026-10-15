@@ -1,0 +1,21 @@
+{
+  "baseline_search_fe": 270000,
+  "independent_bases": 6,
+  "seeds_per_base": 3,
+  "finding": "Original SW-UCB remains nearly uniform and loses to all three individuals in mean HV on all six bases. Uniform exact passive-union audit establishes absence of active information transfer.",
+  "observed_allocation": {
+    "MOEA/D": 0.3342592592592592,
+    "NSGA-II": 0.3398148148148148,
+    "SPEA2": 0.3259259259259259
+  },
+  "adaptive_minus_uniform_HV": 0.002102328618403013,
+  "next_actions": [
+    "I1 isolated foreign-parent replay",
+    "I2 isolated reward-scale normalization"
+  ],
+  "limitations": [
+    "New development cohort; historical values are not pooled.",
+    "Size and instance profile are confounded; no feature rule is learned.",
+    "Raw timing was collected sequentially with brief concurrent unit tests; confirm timing using all methods in counterbalanced cases."
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "iteration": 3,
+  "decision": "Reject combination for adoption. Preserve inactive treatment only to reproduce the negative result.",
+  "evidence": {
+    "hv": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": -0.0017421403204296796,
+      "bootstrap95": [
+        -0.007744539983783924,
+        0.0038134382717017064
+      ],
+      "permutation_p_two_sided": 0.5625,
+      "base_wtl": [
+        3,
+        0,
+        3
+      ],
+      "by_base": {
+        "development_00_5x5": 0.004946508989592295,
+        "development_01_10x10": -0.012057364687711977,
+        "development_02_20x10": -0.009335589251631951,
+        "development_03_10x20": 0.0022011481333693204,
+        "development_04_20x20": 0.006994008623852095,
+        "development_05_30x20": -0.0032015537300478605
+      }
+    },
+    "auc_hv": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": -0.002773211503028037,
+      "bootstrap95": [
+        -0.008143813536881015,
+        0.002597390530824941
+      ],
+      "permutation_p_two_sided": 0.40625,
+      "base_wtl": [
+        2,
+        0,
+        4
+      ],
+      "by_base": {
+        "development_00_5x5": -0.0029736826690853015,
+        "development_01_10x10": -0.012754025205384564,
+        "development_02_20x10": -0.00921583297948625,
+        "development_03_10x20": 0.004894346725652883,
+        "development_04_20x20": 0.005359407292594172,
+        "development_05_30x20": -0.0019494821824591613
+      }
+    },
+    "seconds": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": -0.6667594388887261,
+      "bootstrap95": [
+        -1.642065211112721,
+        0.2130447277781463
+      ],
+      "permutation_p_two_sided": 0.40625,
+      "base_wtl": [
+        3,
+        0,
+        3
+      ],
+      "by_base": {
+        "development_00_5x5": 0.4136355999993005,
+        "development_01_10x10": 0.1648596666782396,
+        "development_02_20x10": 0.29623696666385513,
+        "development_03_10x20": -0.30633643333567306,
+        "development_04_20x20": -1.9979713999976714,
+        "development_05_30x20": -2.570981033340407
+      }
+    },
+    "unique_vectors": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": -0.8333333333333335,
+      "bootstrap95": [
+        -5.777777777777779,
+        5.5
+      ],
+      "permutation_p_two_sided": 0.875,
+      "base_wtl": [
+        2,
+        0,
+        4
+      ],
+      "by_base": {
+        "development_00_5x5": 13.666666666666666,
+        "development_01_10x10": -4.0,
+        "development_02_20x10": -7.666666666666667,
+        "development_03_10x20": -2.0,
+        "development_04_20x20": -7.0,
+        "development_05_30x20": 2.0
+      }
+    },
+    "mean_nn_distance": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": -0.00010827074320001319,
+      "bootstrap95": [
+        -0.0009294407082210497,
+        0.0006263266901949224
+      ],
+      "permutation_p_two_sided": 0.78125,
+      "base_wtl": [
+        3,
+        0,
+        3
+      ],
+      "by_base": {
+        "development_00_5x5": -0.001953551454509,
+        "development_01_10x10": 0.0013435707061984225,
+        "development_02_20x10": -0.00032365382509020316,
+        "development_03_10x20": 0.00035807414079631043,
+        "development_04_20x20": -0.0004112927974804541,
+        "development_05_30x20": 0.0003372287708848448
+      }
+    },
+    "genetic_diversity": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.010187349226621265,
+      "bootstrap95": [
+        0.0016453100610188548,
+        0.018181885908897414
+      ],
+      "permutation_p_two_sided": 0.125,
+      "base_wtl": [
+        4,
+        0,
+        2
+      ],
+      "by_base": {
+        "development_00_5x5": 0.012822477650063871,
+        "development_01_10x10": 0.02760153256704982,
+        "development_02_20x10": -0.005530651340996211,
+        "development_03_10x20": -4.725415070242859e-05,
+        "development_04_20x20": 0.01258939974457222,
+        "development_05_30x20": 0.013688590889740318
+      }
+    }
+  },
+  "reason": "Fails prospective requirement of improving both HV and AUC relative to scaled. HV wins only 3/6 bases; AUC only 2/6. Changes allocator feedback and increases SPEA2 share; synergy is not guaranteed.",
+  "next": "Freeze scaled as primary confirmation candidate, guidance replay as secondary distinct cooperation mechanism; no further tuning based on confirmation."
+}

@@ -1,0 +1,9 @@
+instance_name,condition,cooperation_enabled,runtime_seconds,total_fe,fe_overshoot,final_hv,auc_hv,archive_size,unique_genotypes,unique_objectives,moead_fe,nsga2_fe,spea2_fe,active_sols_moead,active_sols_nsga2,active_sols_spea2,total_injections_offered,total_injections_accepted,total_injections_rejected_dup,total_injections_rejected_dom,total_injections_surviving,total_injection_time_seconds
+base_c01_5x5_b03,MOEAD_Standalone,False,0.2495,1000,0,1.01150845,0.9231142,54,54,51,1000,0,0,54,0,0,0,0,0,0,0,0.0
+base_c01_5x5_b03,Portfolio_RoundRobin,False,0.3104,1000,0,0.99028469,0.89732451,25,25,23,350,350,300,16,7,2,0,0,0,0,0,0
+base_c01_5x5_b03,Portfolio_SWUCB_Passive,False,0.3173,1000,0,0.98735378,0.90874524,62,62,53,600,200,200,50,6,6,0,0,0,0,0,0
+base_c01_5x5_b03,Portfolio_SWUCB_Cooperative,True,0.2877,1000,0,0.98858021,0.89949882,33,33,30,650,200,150,27,4,2,28,9,19,0,9,0.010287
+base_c03_20x10_b04,MOEAD_Standalone,False,0.8778,1000,0,0.84600339,0.77880202,12,12,11,1000,0,0,12,0,0,0,0,0,0,0,0.0
+base_c03_20x10_b04,Portfolio_RoundRobin,False,1.085,1000,0,0.82150296,0.7638378,9,9,9,350,350,300,1,3,5,0,0,0,0,0,0
+base_c03_20x10_b04,Portfolio_SWUCB_Passive,False,1.1765,1000,0,0.81418975,0.76140228,9,9,9,350,300,350,1,2,6,0,0,0,0,0,0
+base_c03_20x10_b04,Portfolio_SWUCB_Cooperative,True,1.3267,1000,0,0.82437127,0.76744108,27,27,27,400,250,350,6,4,17,28,20,5,3,18,0.050636

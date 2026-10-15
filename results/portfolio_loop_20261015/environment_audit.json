@@ -1,0 +1,23 @@
+{
+  "branch": "experiment/pareto-archive-cooperation",
+  "HEAD": "1d695f3",
+  "initial_worktree_list": "Only current independent experimental Git checkout registered",
+  "preexisting_untracked": [
+    "data/generated/expanded_200/",
+    "results/pareto_cooperation_research/p5_adaptability_efficiency_design.md"
+  ],
+  "preexisting_changes_preserved": true,
+  "baseline_tests": {
+    "passed": 361,
+    "subtests_passed": 174,
+    "seconds": 17.39
+  },
+  "mechanism_tests": {
+    "passed": 370,
+    "subtests_passed": 174,
+    "seconds": 19.57
+  },
+  "original_repository_writes": 0,
+  "pushes": 0,
+  "prior_turn_classification": "Interrupted before observable progress in this thread; authoritative audit found no live Python jobs at entry."
+}

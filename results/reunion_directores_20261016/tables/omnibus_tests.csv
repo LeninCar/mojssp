@@ -1,0 +1,9 @@
+﻿campaign,budget,n_base_clusters,n_methods,friedman_stat,p_asymptotic,scope
+phase1_40_profiles,1000,8,3,9.75,0.007635094218859962,exploratory; small sample chi-square approximation
+phase2_pilot,1000,10,5,31.360000000000014,2.5849882303524137e-06,exploratory; small sample chi-square approximation
+phase2_budget,1000,10,5,31.360000000000014,2.5849882303524137e-06,exploratory; small sample chi-square approximation
+phase2_budget,3000,10,5,37.84,1.2090318351810092e-07,exploratory; small sample chi-square approximation
+phase2_budget,5000,10,5,32.96000000000001,1.2172180014876864e-06,exploratory; small sample chi-square approximation
+page_hinkley_final,5000,10,3,8.162162162162174,0.016889197188084005,exploratory; small sample chi-square approximation
+loop_development,3000,6,8,35.55555555555554,8.791974112596304e-06,exploratory omnibus; primary family stays separate
+loop_confirmation,3000,8,7,37.339285714285694,1.5120325696972663e-06,exploratory omnibus; primary family stays separate

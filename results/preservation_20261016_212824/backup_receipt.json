@@ -1,0 +1,11 @@
+{
+  "backup_root": "\\\\?\\C:\\Users\\lenin\\Documents\\Ingenier\u00eda\\2026-1\\TG1\\mojssp-preservation-20261016-20261015T212824499174Z\\verified_snapshot",
+  "checkout_files": 3736,
+  "checkout_bytes": 500022737,
+  "checkout_manifest_sha256": "53433c21772a73b3590a0939d7d98a14df2e28b37d30703674b98df5b0dba8ad",
+  "historical_files": 1859,
+  "historical_copied_files": 1450,
+  "historical_copied_bytes": 361027197,
+  "historical_manifest_sha256": "9a8041063b6a0d02b9a63e70d34f7c08946e615ab2bd90d45e5c78dd3c19573e",
+  "git_objects_files": 1208
+}

@@ -1,0 +1,25 @@
+1d695f3efa45d261da89bd7ba832730c33c9d4ca|2026-10-15T13:23:29-05:00|feat(provenance): implement non-invasive provenance observability and validate P4 audit
+ea044c02d0380812d3146d301791a739cdbe025a|2026-10-14T23:12:43-05:00|docs(phase2): record experimental results and scientific closure
+335b98e8255f6b65275c77ded8500ecc478082b8|2026-10-14T23:12:30-05:00|feat(scripts): add phase 2 experimental runners and audit tools
+473908ab88b88910f9fc49e0c1ce4fbf955569e0|2026-10-14T23:12:20-05:00|feat(portfolio): integrate 3-arm portfolio with SW-UCB and Round-Robin selectors
+a5566d477b352d20d39b40e3cf9c05d6fd6bb24b|2026-10-11T16:41:27-05:00|results(pilot): persist pilot experimental datasets, diagnostics, and plots
+8d64e489b9ee37c003a22f5bb79610e1325e678e|2026-10-11T16:41:13-05:00|feat(experiments): add pilot runner, analysis tools, diagnostics and thesis guidelines
+7fcb366b48fd90d541579c0e1f4832640686a6ea|2026-10-11T16:40:59-05:00|feat(portfolio): add baseline selectors, 3-phase reward breakdown and IGD+ metrics
+7d97f02bce28cc6ff36f836d5e4b51ed6df67749|2026-10-11T16:40:47-05:00|feat(algorithms): implement SPEA2 algorithm and incremental adapter
+4e596e8bc5fd60301488726aafd3a1adb0acb384|2026-10-11T16:40:38-05:00|feat(algorithms): implement MOEA/D algorithm and incremental adapter
+e601d2a6b395b183a2539d6c400b932906fdd852|2026-10-03T00:01:37-05:00|docs(audit): add comprehensive audit and strategic roadmap for MO-JSSP portfolio thesis
+e4f76f4a0e004df22a0f7a50e68ff057972f2050|2026-10-03T00:01:29-05:00|results(experiments): persist experimental datasets for F8.5, F8.6.2, and F8.6.5
+f2cf007f5f3dc75488e34b9a8fb60b117588fa59|2026-10-03T00:01:09-05:00|test(experiments): add test suites, diagnostics, and experimental runners for F8
+3929b702d6dc4539bcb6bd749a0d894bbb400fad|2026-10-03T00:00:59-05:00|data(benchmarks): add 37 MO-JSSP benchmark instances and registry
+15bf3d88deff397a17b72e7d06cd84c28d4a3343|2026-10-03T00:00:50-05:00|feat(core): enhance orchestrator, dmab, and add igd metric and runner
+4fc2f9fabde87feab50c1202d2167576ea82f84d|2026-09-30T14:02:10-05:00|test(phase-7.6): add end-to-end integration suite and demonstration script
+75dee12bc6e53db304a95db215f27a61894bc853|2026-09-30T14:01:42-05:00|feat(phase-7.5): implement hypervolume reward tracker and adaptive orchestrator
+679c615ab5994250ddf1c7d76b176f97ada9ecea|2026-09-30T14:01:16-05:00|feat(phase-7.4): implement sliding-window UCB selector for DMAB
+7cd9a0c2e93219da21028ff594091332a4a98d27|2026-09-30T14:00:44-05:00|feat(phase-7.3): implement portfolio coordinator and global pareto archive
+95f7761032312e28b831a10ee724234a9b0babdf|2026-09-30T13:58:18-05:00|feat(phase-7.2): implement stateful portfolio arms and block budget execution
+59398827ddfd44106d1026dea8c4d257c20c937d|2026-09-26T14:13:40-05:00|feat(phase-7.1): implement common algorithm contract and adapters by composition
+fa8d190b3b7cdb7fac3fb9ae228f5064d0ffef5b|2026-09-26T14:13:30-05:00|feat(phase-6): implement discrete MOPSO for MO-JSSP
+3987228b0eb0f7f96d66916da0aadc619b17019a|2026-09-26T14:13:15-05:00|feat(phase-5): implement NSGA-II + Local Search for MO-JSSP
+bf6b5e9d1f101abfd43552d247e67dca11b04c8f|2026-09-22T22:51:09-05:00|feat(phase-4): implement objective normalization and 3D hypervolume
+1e90c57d88b564fc1fa9f6b02a04c8a1763d4993|2026-09-18T05:01:40-05:00|feat(phase-4): implement Pareto archive
+c292045e0755368ee1c8b88dcdce748636a5cd22|2026-09-18T04:34:49-05:00|feat(phase-3): implement basic NSGA-II for MO-JSSP

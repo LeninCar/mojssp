@@ -1,0 +1,8 @@
+{
+  "scope": "Causal experiment, not autonomous policy validation",
+  "I1": "Exactly controlled per-arm allocation isolates foreign-parent effect. A trace from a separate 3000 FE control is required. Full from-scratch control+guided computation is 6000 FE per pair; both counted in campaign totals.",
+  "individual_comparisons": "Guidance replay quality at conditional 3000 FE must not be advertised as an autonomous equal-cost algorithm comparison.",
+  "I3": "Live scaled+guided portfolio uses exactly 3000 FE without a separate control trace; failed improvement criterion vs scaled.",
+  "open_question": "Live original SW-UCB plus guidance was not run; no claim is made about it.",
+  "effect_on_data": "No metric, raw result, gate or parameter changed."
+}

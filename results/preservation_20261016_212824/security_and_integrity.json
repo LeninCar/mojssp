@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-10-15T21:32:37.024776+00:00",
+  "frozen_manifests": [
+    {
+      "path": "results/portfolio_loop_20261015/artifact_index.json",
+      "sha256": "2c105d87aa270b4b50dd235570c6cd313edab5d9940ecca673fc41f89a738630",
+      "verified_entries": 530
+    },
+    {
+      "path": "results/reunion_directores_20261016/evidence_manifest.json",
+      "sha256": "f81aa5a072e35f4ed78049ca61263cd081c750783c07d36c3a94cfe21009bb94",
+      "verified_entries": 174
+    }
+  ],
+  "secret_scan": {
+    "text_files": 679,
+    "binary_images": 31,
+    "findings": [],
+    "scope": "Pattern/filename scan of all pending files; no claim of exhaustive absence of every possible secret."
+  },
+  "line_endings": "Existing core.autocrlf=true; git add uses per-command core.autocrlf=false. Staged Git blobs must match original SHA256 byte for byte.",
+  "historical_data_policy": "Reserved files copied/hashed for preservation only; no new optimization or holdout analysis.",
+  "external_changes": "mojssp-pareto-cooperation was already at 88022e2 and clean at start of this preservation task; historical meeting evidence is intentionally not refreshed."
+}

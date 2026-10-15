@@ -1,0 +1,209 @@
+[
+  {
+    "id": "01_hv_confirmacion",
+    "title": "Comparación principal de calidad final",
+    "design": "Confirmación interna; 3000 FE; 8 bases × 3 semillas por método",
+    "source": "tables/recent_base_means.csv",
+    "explanation": "Las filas muestran heterogeneidad entre bases. El HV absoluto no mide dificultad universal.",
+    "png": "figures/01_hv_confirmacion.png",
+    "svg": "figures/01_hv_confirmacion.svg"
+  },
+  {
+    "id": "02_diferencias_pareadas",
+    "title": "Ganancia respecto a SW-UCB original",
+    "design": "Confirmación interna; 3000 FE; 8 medias de base, 3 semillas pareadas/base",
+    "source": "tables/recent_paired_by_base.csv",
+    "explanation": "Escalado mejora HV y AUC en las ocho bases; padre externo pierde HV en una.",
+    "png": "figures/02_diferencias_pareadas.png",
+    "svg": "figures/02_diferencias_pareadas.svg"
+  },
+  {
+    "id": "03_hv_fe",
+    "title": "Calidad durante la búsqueda",
+    "design": "Confirmación interna; 0–3000 FE; 8 bases × 3 semillas/método; medias, sin inferencia por punto",
+    "source": "tables/recent_blocks.csv",
+    "explanation": "Las trayectorias proceden de registros cada 50 FE; el origen (0,0) forma parte de AUC.",
+    "png": "figures/03_hv_fe.png",
+    "svg": "figures/03_hv_fe.svg"
+  },
+  {
+    "id": "04_calidad_tiempo",
+    "title": "Calidad y coste computacional",
+    "design": "Confirmación interna; 3000 FE; 8 bases × 3 semillas; replay excluye coste del control externo",
+    "source": "tables/recent_base_means.csv",
+    "explanation": "El tiempo incluye algoritmos y gestión online; no permite aislar el coste del selector.",
+    "png": "figures/04_calidad_tiempo.png",
+    "svg": "figures/04_calidad_tiempo.svg"
+  },
+  {
+    "id": "05_asignacion",
+    "title": "Cómo cambia el reparto de FE",
+    "design": "Confirmación interna; 3000 FE; 8 bases × 3 semillas; inicialización incluida",
+    "source": "tables/recent_allocations.csv",
+    "explanation": "Mayor desigualdad por sí sola no demuestra adaptación efectiva. Comparar con figura 02.",
+    "png": "figures/05_asignacion.png",
+    "svg": "figures/05_asignacion.svg"
+  },
+  {
+    "id": "06_contribuciones",
+    "title": "Contribución marginal bajo asignación adaptativa",
+    "design": "Confirmación interna; UCB escalado; 3000 FE totales; 8 bases × 3 semillas",
+    "source": "tables/recent_complementarity.csv",
+    "explanation": "No sumar estas contribuciones como HV total. Son archivos locales observados, no un experimento de eliminar brazos.",
+    "png": "figures/06_contribuciones.png",
+    "svg": "figures/06_contribuciones.svg"
+  },
+  {
+    "id": "07_frentes_proyecciones",
+    "title": "Regiones exploradas por algoritmos individuales",
+    "design": "Fase 2 histórica; base_c02_10x10_b03_tard_high; semilla 42; 3000 FE/brazo, unión = 9000 FE",
+    "source": "tables/historical_front_projections.csv",
+    "explanation": "Círculos huecos: soluciones que sobreviven en la unión. Ejemplo ilustrativo, no generalización.",
+    "png": "figures/07_frentes_proyecciones.png",
+    "svg": "figures/07_frentes_proyecciones.svg"
+  },
+  {
+    "id": "08_caracterizacion",
+    "title": "Distribución de las instancias disponibles",
+    "design": "Datos no reservados; 1200 archivos de contenido distinto; sin FE ni semillas de búsqueda",
+    "source": "05_inventario_instancias.csv",
+    "explanation": "Los perfiles derivados están correlacionados; este histograma describe el inventario, no una muestra independiente.",
+    "png": "figures/08_caracterizacion.png",
+    "svg": "figures/08_caracterizacion.svg"
+  },
+  {
+    "id": "09_hv_tamano",
+    "title": "Rendimiento individual frente al tamaño",
+    "design": "Confirmación interna; 3000 FE; 8 bases × 3 semillas; tamaño y perfil confundidos",
+    "source": "tables/standalone_per_instance.csv",
+    "explanation": "Hay dos geometrías con 200 operaciones. No se ajusta una regla de especialización a ocho observaciones.",
+    "png": "figures/09_hv_tamano.png",
+    "svg": "figures/09_hv_tamano.svg"
+  },
+  {
+    "id": "10_cooperacion_diversidad",
+    "title": "Diversidad y calidad responden de forma distinta",
+    "design": "3000 FE; confirmación n=8 bases × 3 semillas; combinado sólo desarrollo n=6 × 3",
+    "source": "tables/recent_paired_by_base.csv",
+    "explanation": "La diversidad genotípica es una distancia en poblaciones registradas durante la campaña, no cobertura del Pareto óptimo.",
+    "png": "figures/10_cooperacion_diversidad.png",
+    "svg": "figures/10_cooperacion_diversidad.svg"
+  },
+  {
+    "id": "11_escala_ucb",
+    "title": "Escala de explotación y exploración",
+    "design": "Confirmación interna; 3000 FE; 8 bases × 3 semillas; brazo elegido con estadística finita; probes excluidos",
+    "source": "tables/ucb_terms.csv",
+    "explanation": "Los términos se reconstruyen antes de decidir y se muestran para el brazo elegido; escalas de ejes independientes. Los brazos ausentes de ventana tienen UCB infinito y no entran en estas medianas.",
+    "png": "figures/11_escala_ucb.png",
+    "svg": "figures/11_escala_ucb.svg"
+  },
+  {
+    "id": "12_page_hinkley",
+    "title": "Page-Hinkley no acredita una ventaja",
+    "design": "Histórico PH; 5000 FE; 10 bases de desarrollo × semillas 42,123,456; 90 ejecuciones",
+    "source": "tables/historical_runs_separated.csv",
+    "explanation": "Contraste histórico Holm PH vs SW-UCB p=0.320312. La calibración y comparación usan las mismas bases.",
+    "png": "figures/12_page_hinkley.png",
+    "svg": "figures/12_page_hinkley.svg"
+  },
+  {
+    "id": "13_presupuestos_historicos",
+    "title": "El efecto del presupuesto se estudia dentro de cada trayectoria",
+    "design": "Fase 2; 10 bases × 3 semillas × 5 métodos; cortes 1000/3000/5000 de 150 ejecuciones",
+    "source": "tables/historical_summary.csv",
+    "explanation": "No tratar 450 cortes como ejecuciones independientes. El piloto de 1000 FE tampoco es una réplica nueva de calidad.",
+    "png": "figures/13_presupuestos_historicos.png",
+    "svg": "figures/13_presupuestos_historicos.svg"
+  },
+  {
+    "id": "14_correlaciones",
+    "title": "Asociaciones exploratorias, sin evidencia causal",
+    "design": "Fase 1: 8 bases nominales × 5 semillas; confirmación: 8 bases × 3 semillas; modos constantes → NA",
+    "source": "tables/exploratory_feature_correlations.csv",
+    "explanation": "Las diferencias entre campañas y perfiles impiden usar estas correlaciones como un selector entrenado.",
+    "png": "figures/14_correlaciones.png",
+    "svg": "figures/14_correlaciones.svg"
+  },
+  {
+    "id": "15_trayectorias_asignacion",
+    "title": "Asignación observada bloque a bloque",
+    "design": "Confirmación interna; 3000 FE = 60 bloques; 8 bases × 3 semillas por política",
+    "source": "tables/recent_blocks.csv",
+    "explanation": "Las revisitas se mantienen incluso con UCB escalado. La figura muestra decisiones, no ganancias causales por brazo.",
+    "png": "figures/15_trayectorias_asignacion.png",
+    "svg": "figures/15_trayectorias_asignacion.svg"
+  },
+  {
+    "id": "16_solapamiento",
+    "title": "Coincidencia entre archivos locales",
+    "design": "Confirmación interna; UCB escalado; 3000 FE; 8 bases × 3 semillas",
+    "source": "tables/archive_overlap.csv",
+    "explanation": "Jaccard exacto bajo no implica cobertura volumétrica distinta: puntos diferentes pueden dominar regiones parecidas.",
+    "png": "figures/16_solapamiento.png",
+    "svg": "figures/16_solapamiento.svg"
+  },
+  {
+    "id": "17_estancamiento",
+    "title": "Evitar ceros y conservar oportunidades de recuperación",
+    "design": "Confirmación interna; 3000 FE; 8 bases × 3 semillas/método; cero ≤ 1e−14",
+    "source": "tables/stagnation.csv",
+    "explanation": "Una recompensa nula se refiere al archivo global presente; no prueba incapacidad del algoritmo.",
+    "png": "figures/17_estancamiento.png",
+    "svg": "figures/17_estancamiento.svg"
+  },
+  {
+    "id": "18_caracteristicas_rendimiento",
+    "title": "Características estructurales y brechas individuales",
+    "design": "Confirmación interna; 3000 FE; 8 bases × 3 semillas; asociaciones exploratorias",
+    "source": "tables/feature_performance_scatter.csv",
+    "explanation": "Tamaño, perfil y configuración del generador no están cruzados factorialmente en esta campaña.",
+    "png": "figures/18_caracteristicas_rendimiento.png",
+    "svg": "figures/18_caracteristicas_rendimiento.svg"
+  },
+  {
+    "id": "19_frente_3d",
+    "title": "Frentes observados en los tres objetivos",
+    "design": "Fase 2 histórica; base_c02_10x10_b03_tard_high; semilla 42; 3000 FE/brazo, 9000 FE de unión",
+    "source": "tables/historical_front_projections.csv",
+    "explanation": "No se conoce el frente Pareto óptimo. Esta visualización compara aproximaciones evaluadas.",
+    "png": "figures/19_frente_3d.png",
+    "svg": "figures/19_frente_3d.svg"
+  },
+  {
+    "id": "20_complementariedad_fe",
+    "title": "Complementariedad pasiva y su coste",
+    "design": "Fase 2; 10 bases × 3 semillas; cortes por brazo 1000/3000/5000; unión 3000/9000/15000 FE",
+    "source": "tables/historical_standalone_union.csv",
+    "explanation": "Ganancia de unión positiva no demuestra que un portafolio gane al mejor individual a igual FE total.",
+    "png": "figures/20_complementariedad_fe.png",
+    "svg": "figures/20_complementariedad_fe.svg"
+  },
+  {
+    "id": "21_perfiles_instancias",
+    "title": "Las instancias difieren en más características que el tamaño",
+    "design": "Confirmación interna; 8 bases, sin búsqueda adicional; FE no aplica",
+    "source": "05_inventario_instancias.csv",
+    "explanation": "La estandarización sirve para comparar columnas con unidades distintas; no es un índice de dificultad.",
+    "png": "figures/21_perfiles_instancias.png",
+    "svg": "figures/21_perfiles_instancias.svg"
+  },
+  {
+    "id": "22_modos_energia",
+    "title": "Intercambio entre tiempo y energía por modo",
+    "design": "Instancia confirmation_01_10x10; 100 operaciones, 5 modos; sin FE ni semillas de búsqueda",
+    "source": "tables/mode_values.csv",
+    "explanation": "El ejemplo describe modos existentes. El número de modos no varía entre las bases comparadas.",
+    "png": "figures/22_modos_energia.png",
+    "svg": "figures/22_modos_energia.svg"
+  },
+  {
+    "id": "23_hv_tiempo",
+    "title": "Calidad frente al tiempo medido",
+    "design": "Confirmación interna; 3000 FE máximo; 8 bases × 3 semillas/método; HV final constante tras terminar",
+    "source": "tables/recent_blocks.csv",
+    "explanation": "Se conserva el último HV al concluir cada corrida: no se extrapolan mejoras ni se promedian sólo las ejecuciones lentas.",
+    "png": "figures/23_hv_tiempo.png",
+    "svg": "figures/23_hv_tiempo.svg"
+  }
+]
