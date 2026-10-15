@@ -16,7 +16,7 @@ from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
 from .arms import MOPSOArm, NSGA2Arm, NSGA2LSArm
 from .moead import MOEADArm
 from .spea2 import SPEA2Arm
-from .dmab import SlidingWindowUCB
+from .dmab import RoundRobinSelector, SlidingWindowUCB
 from .hypervolume import compute_archive_hypervolume
 from .instance import Instance
 from .normalization import ObjectiveNormalizer, compute_instance_bounds
@@ -171,6 +171,7 @@ def run_standalone_experiment(
             instance,
             population_size=population_size,
             seed=seed,
+            max_generations=None,
             max_evaluations=budget,
         )
     elif arm_name == "MOPSO":
@@ -342,6 +343,130 @@ def run_portfolio_experiment(
         instance=instance.name,
         run_type="portfolio",
         algorithm="Adaptive Portfolio",
+        seed=seed,
+        budget=total_budget,
+        evaluations_used=portfolio.total_evaluations,
+        runtime_seconds=runtime_s,
+        hypervolume=final_hv,
+        archive_size=len(final_archive),
+        completed=portfolio.total_evaluations >= total_budget,
+        pareto_front=front_coords,
+        checkpoints=tuple(checkpoints),
+        arm_allocations=allocations,
+    )
+
+    return result, history
+
+
+def run_phase2_portfolio_experiment(
+    instance: Instance,
+    seed: int,
+    total_budget: int = 1000,
+    block_size: int = 50,
+    population_size: int = 30,
+    policy: str = "adaptive",  # 'adaptive' (SW-UCB) or 'uniform' (Round-Robin)
+    window_size: int = 10,
+    exploration_factor: float = 0.07,
+    neutral_warmup: bool = True,
+) -> Tuple[RunResult, Tuple[BlockExecutionRecord, ...]]:
+    """Execute a Phase 2 3-arm portfolio run [MOEA/D, NSGA-II, SPEA2].
+
+    Supports both adaptive selection (SW-UCB) and uniform allocation (Round-Robin).
+    Derives independent, deterministic pseudo-random seeds for each arm.
+    Preserves exact budget accounting, Global Pareto Archive integration,
+    and checkpoint telemetry without modifying historical functions.
+
+    Args:
+        instance: MO-JSSP problem instance.
+        seed: Master seed for reproducible execution and arm derivation.
+        total_budget: Total evaluation budget (> 0). Default: 1000.
+        block_size: Evaluations allocated per block (> 0). Default: 50.
+        population_size: Population size for constituent arms. Default: 30.
+        policy: 'adaptive' for SW-UCB or 'uniform' for Round-Robin.
+        window_size: Sliding window size W for SW-UCB. Default: 10.
+        exploration_factor: Exploration parameter c for SW-UCB. Default: 0.07.
+        neutral_warmup: Whether to execute neutral warm-up before adaptive selection. Default: True.
+
+    Returns:
+        Tuple of (RunResult, history of BlockExecutionRecord).
+
+    Raises:
+        ValueError: If policy is unknown, or budgets are non-positive.
+    """
+    if policy not in ("adaptive", "uniform"):
+        raise ValueError(f"Unknown policy '{policy}'. Must be 'adaptive' or 'uniform'.")
+
+    normalizer = ObjectiveNormalizer(compute_instance_bounds(instance))
+
+    # Deterministic seed derivation for independent pseudo-random streams
+    seed_moead = (seed * 10007 + 17) % (2**31 - 1)
+    seed_nsga2 = (seed * 10007 + 29) % (2**31 - 1)
+    seed_spea2 = (seed * 10007 + 43) % (2**31 - 1)
+
+    arm_moead = MOEADArm(instance, population_size=population_size, seed=seed_moead)
+    arm_nsga2 = NSGA2Arm(instance, population_size=population_size, max_generations=None, seed=seed_nsga2)
+    arm_spea2 = SPEA2Arm(instance, population_size=population_size, archive_size=population_size, seed=seed_spea2)
+
+    arms: Dict[str, PortfolioArm] = {
+        "MOEA/D": arm_moead,
+        "NSGA-II": arm_nsga2,
+        "SPEA2": arm_spea2,
+    }
+    portfolio = Portfolio(arms)
+    arm_names = list(arms.keys())
+
+    if policy == "adaptive":
+        selector = SlidingWindowUCB(
+            arm_names=arm_names,
+            window_size=window_size,
+            exploration_factor=exploration_factor,
+            seed=seed,
+        )
+        algo_label = "Adaptive Portfolio (DMAB)"
+        policy_label = "adaptive"
+    else:
+        selector = RoundRobinSelector(arm_names=arm_names)
+        algo_label = "Uniform Portfolio (Round-Robin)"
+        policy_label = "uniform"
+
+    reward_tracker = HypervolumeRewardTracker(normalizer=normalizer)
+    orchestrator = AdaptivePortfolioOrchestrator(
+        portfolio=portfolio,
+        dmab=selector,
+        reward_tracker=reward_tracker,
+    )
+
+    t0 = time.perf_counter()
+    exec_res = orchestrator.run(
+        total_budget=total_budget,
+        block_size=block_size,
+        neutral_warmup=neutral_warmup,
+    )
+    runtime_s = time.perf_counter() - t0
+
+    history = exec_res.history
+    allocations = compute_arm_allocations(history, total_budget, arm_names=arm_names)
+
+    checkpoints: List[Tuple[int, float]] = []
+    cum_evals = 0
+    for b in history:
+        cum_evals += b.evaluations_used
+        checkpoints.append((cum_evals, b.hv_after))
+
+    final_archive = portfolio.global_archive
+    final_hv = reward_tracker.current_hv
+    front_coords = tuple(
+        (float(e.objectives.makespan), float(e.objectives.tardiness), float(e.objectives.energy))
+        for e in final_archive.entries
+    )
+
+    run_id = f"{instance.name}_Portfolio_{policy_label}_s{seed}_b{total_budget}"
+
+    result = RunResult(
+        run_id=run_id,
+        instance=instance.name,
+        run_type="portfolio",
+        algorithm=algo_label,
         seed=seed,
         budget=total_budget,
         evaluations_used=portfolio.total_evaluations,

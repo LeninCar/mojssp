@@ -111,6 +111,12 @@ class Portfolio:
         elif "mopso" in canon or "pso" in canon:
             for extra in ("mopso", "pso"):
                 self._aliases[extra] = reg_name
+        elif "moead" in canon or "moea" in canon:
+            for extra in ("moead", "moea_d", "moea/d", "moea-d"):
+                self._aliases[extra] = reg_name
+        elif "spea" in canon:
+            for extra in ("spea2", "spea_2", "spea-2", "speaii"):
+                self._aliases[extra] = reg_name
 
     def get_arm(self, name: str) -> PortfolioArm:
         """Retrieve a registered arm by name or alias.

@@ -485,3 +485,115 @@ class UniformRandomSelector:
         self._initialized_arms.clear()
         self._rng = random.Random(self._seed)
 
+
+class RoundRobinSelector:
+    """Deterministic Round-Robin selector cycling cyclically through arms.
+
+    Conforms to the DMABSelector protocol for seamless drop-in integration with
+    AdaptivePortfolioOrchestrator. Guarantees uniform allocation across arms:
+        A_0 -> A_1 -> ... -> A_{K-1} -> A_0 -> ...
+    Preserves exact startup protocol equivalence with SW-UCB (identifies initial probe
+    phase for the first cycle through the arms).
+    """
+
+    def __init__(self, arm_names: Sequence[str]) -> None:
+        """Initialize RoundRobinSelector with a sequence of arm names.
+
+        Args:
+            arm_names: Non-empty sequence of unique, non-empty arm identifiers.
+
+        Raises:
+            ValueError: If arm_names is empty, contains non-strings, or duplicates.
+        """
+        if not arm_names:
+            raise ValueError("arm_names cannot be empty")
+
+        cleaned: List[str] = []
+        seen = set()
+        for idx, name in enumerate(arm_names):
+            if not isinstance(name, str) or not name.strip():
+                raise ValueError(
+                    f"arm_names must contain non-empty strings, got element {idx}: {name!r}"
+                )
+            if name in seen:
+                raise ValueError(f"Duplicate arm name '{name}' in arm_names.")
+            seen.add(name)
+            cleaned.append(name)
+
+        self._arm_names: Tuple[str, ...] = tuple(cleaned)
+        self._current_index: int = 0
+        self._total_pulls: int = 0
+        self._total_counts: Dict[str, int] = {name: 0 for name in self._arm_names}
+        self._adaptive_pulls: Dict[str, int] = {name: 0 for name in self._arm_names}
+        self._initialized_arms: set[str] = set()
+
+    @property
+    def arm_names(self) -> Tuple[str, ...]:
+        return self._arm_names
+
+    @property
+    def total_pulls(self) -> int:
+        return self._total_pulls
+
+    def select_arm(self) -> str:
+        """Select the next arm in cyclic round-robin sequence."""
+        # Initial probe phase: ensure each arm gets its first adaptive pull in order
+        for name in self._arm_names:
+            if self._adaptive_pulls[name] == 0:
+                return name
+
+        # Cyclic selection
+        selected = self._arm_names[self._current_index]
+        return selected
+
+    def update(self, arm_name: str, reward: float) -> None:
+        """Update pull count and advance cyclic index to the next arm."""
+        if arm_name not in self._total_counts:
+            raise KeyError(f"Unknown arm '{arm_name}'")
+        self._total_pulls += 1
+        self._total_counts[arm_name] += 1
+        self._adaptive_pulls[arm_name] += 1
+        self._initialized_arms.add(arm_name)
+
+        # Advance cyclic index
+        arm_idx = self._arm_names.index(arm_name)
+        self._current_index = (arm_idx + 1) % len(self._arm_names)
+
+    def initialize_arm(self, arm_name: str) -> None:
+        if arm_name not in self._total_counts:
+            raise KeyError(f"Unknown arm '{arm_name}'")
+        self._initialized_arms.add(arm_name)
+
+    def is_arm_initialized(self, arm_name: str) -> bool:
+        return arm_name in self._initialized_arms
+
+    def get_adaptive_pulls(self, arm_name: str) -> int:
+        return self._adaptive_pulls[arm_name]
+
+    def is_in_initial_probe(self, arm_name: str) -> bool:
+        return self._adaptive_pulls[arm_name] == 0
+
+    @property
+    def is_initial_probe_complete(self) -> bool:
+        return all(count > 0 for count in self._adaptive_pulls.values())
+
+    def get_stats(self) -> Dict[str, ArmStats]:
+        return {
+            name: ArmStats(
+                arm_name=name,
+                total_pulls=self._total_counts[name],
+                window_pulls=self._total_counts[name],
+                window_mean=0.0,
+                ucb=0.0,
+            )
+            for name in self._arm_names
+        }
+
+    def reset(self) -> None:
+        self._current_index = 0
+        self._total_pulls = 0
+        self._total_counts = {name: 0 for name in self._arm_names}
+        self._adaptive_pulls = {name: 0 for name in self._arm_names}
+        self._initialized_arms.clear()
+
+
