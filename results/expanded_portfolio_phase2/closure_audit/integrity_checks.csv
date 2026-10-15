@@ -1,0 +1,11 @@
+check_id,description,expected,observed,status
+CHK_01_RECORD_COUNT,Total milestone records in budget_diagnostic equals 450 (150 per budget),450,450,PASS
+CHK_02_BUDGET_MILESTONES,"Exactly [1000, 3000, 5000] FE budgets present in dataset","[1000, 3000, 5000]","[1000, 3000, 5000]",PASS
+CHK_03_UNIQUE_RUN_IDS,Zero duplicate run_ids across all 450 records,450 unique IDs,450 unique IDs,PASS
+CHK_04_ZERO_OVERSHOOT,All runs have overshoot == 0 (evaluations_used == budget),"min=0, max=0","min=0, max=0",PASS
+CHK_05_ZERO_ERRORS,All runs completed with status == SUCCESS and error == '',0 errors,0 errors,PASS
+CHK_06_CHECKPOINTS_COUNT,"Total checkpoints equals 15,000 (150 runs x 100 checkpoints)",15000,15000,PASS
+CHK_07_CHECKPOINTS_MONOTONICITY,Cumulative archive hypervolume is monotonically non-decreasing across checkpoints,0 non-monotonic steps,0 non-monotonic steps,PASS
+CHK_08_F24_F251_COHERENCE,Bit-for-bit coherence between F2.4 results and F2.5.1 1000 FE milestone,max_diff == 0.0,"max_hv_diff=0.0e+00, max_arch_diff=0",PASS
+CHK_09_ALLOCATION_BUDGET_SUM,Sum of arm allocations in portfolio runs matches milestone budget exactly,0 discrepancies,0 discrepancies,PASS
+CHK_10_PORTFOLIO_BLOCKS_COUNT,Each portfolio run executed exactly 100 blocks of 50 FE (5000 FE),[100],[100],PASS
