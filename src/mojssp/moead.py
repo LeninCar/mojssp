@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
 
 from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
 from .decoder import Decoder
+from .cooperation import GuidedMatingArm
 from .evaluator import Evaluator, ObjectiveValues
 from .instance import Instance
 from .normalization import ObjectiveNormalizer, compute_instance_bounds
@@ -321,7 +322,7 @@ class MOEAD:
         )
 
 
-class MOEADArm:
+class MOEADArm(GuidedMatingArm):
     """Stateful portfolio arm implementing MOEA/D under the common PortfolioArm protocol.
 
     Preserves internal algorithmic state (subproblems, ideal reference point z*,
@@ -440,6 +441,7 @@ class MOEADArm:
 
     def reset(self) -> None:
         """Reset the arm to its initial unexecuted state with its initial seed."""
+        self._archive_guidance = None
         self._rng = random.Random(self._seed)
         self._subproblems.clear()
         self._ideal_point = [1.0, 1.0, 1.0]
@@ -556,7 +558,7 @@ class MOEADArm:
 
                 # Crossover
                 if self._rng.random() < self._crossover_probability:
-                    c1, c2 = crossover_pox(parent1, parent2, self._instance, self._rng)
+                    c1, c2 = crossover_pox(parent1, self._guided_parent(parent2), self._instance, self._rng)
                     child_sol = c1 if self._rng.random() < 0.5 else c2
                 else:
                     child_sol = parent1

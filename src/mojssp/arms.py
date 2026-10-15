@@ -11,6 +11,7 @@ from typing import Dict, List, Optional, Tuple
 
 from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
 from .critical_path import get_critical_sequence_indices
+from .cooperation import GuidedMatingArm
 from .decoder import Decoder
 from .evaluator import Evaluator, ObjectiveValues
 from .instance import Instance
@@ -37,7 +38,7 @@ from .schedule import Schedule
 from .solution import Solution
 
 
-class NSGA2Arm:
+class NSGA2Arm(GuidedMatingArm):
     """Stateful portfolio arm wrapping NSGA-II under the common arm contract.
 
     Preserves internal search state (population, partial offspring, pending sibling,
@@ -112,6 +113,7 @@ class NSGA2Arm:
 
     def reset(self) -> None:
         """Reset the arm to its initial unexecuted state."""
+        self._archive_guidance = None
         self._archive = ParetoArchive()
         self._rng = random.Random(self._seed)
         self._population.clear()
@@ -217,7 +219,7 @@ class NSGA2Arm:
                 )
 
                 if self._rng.random() < self._crossover_probability:
-                    c1_sol, c2_sol = crossover_pox(p1.solution, p2.solution, self._instance, self._rng)
+                    c1_sol, c2_sol = crossover_pox(p1.solution, self._guided_parent(p2.solution), self._instance, self._rng)
                 else:
                     c1_sol, c2_sol = p1.solution, p2.solution
 

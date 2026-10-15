@@ -12,6 +12,7 @@ from typing import Any, List, Optional, Sequence, Tuple, Union
 
 from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
 from .decoder import Decoder
+from .cooperation import GuidedMatingArm
 from .dominance import dominates
 from .evaluator import Evaluator, ObjectiveValues
 from .instance import Instance
@@ -273,7 +274,7 @@ class SPEA2:
         )
 
 
-class SPEA2Arm:
+class SPEA2Arm(GuidedMatingArm):
     """Stateful portfolio arm implementing SPEA2 under the common PortfolioArm protocol.
 
     Preserves internal algorithmic state (population, environmental archive, partial
@@ -365,6 +366,7 @@ class SPEA2Arm:
 
     def reset(self) -> None:
         """Reset the arm to its initial unexecuted state with its initial seed."""
+        self._archive_guidance = None
         self._rng = random.Random(self._seed)
         self._population.clear()
         self._archive_population.clear()
@@ -479,7 +481,7 @@ class SPEA2Arm:
                 # Crossover
                 if self._rng.random() < self._crossover_probability:
                     c1_sol, c2_sol = crossover_pox(
-                        p1.solution, p2.solution, self._instance, self._rng
+                        p1.solution, self._guided_parent(p2.solution), self._instance, self._rng
                     )
                 else:
                     c1_sol, c2_sol = p1.solution, p2.solution
