@@ -109,39 +109,46 @@ from .orchestrator import (
     AdaptivePortfolioOrchestrator,
     BlockExecutionRecord,
 )
-from .pairing import (
-    CheckResult,
-    RawDznData,
-    ReferenceSample,
-    ValidationReport,
-    derive_btnk_high,
-    derive_nrg_strong,
-    derive_tard_high,
-    derive_tard_med,
-    derive_tardiness_variant,
-    format_validation_report,
-    generate_reference_sample,
-    read_dzn_raw,
-    validate_pairing,
-    write_dzn_raw,
-)
+try:
+    from .pairing import (
+        CheckResult,
+        RawDznData,
+        ReferenceSample,
+        ValidationReport,
+        derive_btnk_high,
+        derive_nrg_strong,
+        derive_tard_high,
+        derive_tard_med,
+        derive_tardiness_variant,
+        format_validation_report,
+        generate_reference_sample,
+        read_dzn_raw,
+        validate_pairing,
+        write_dzn_raw,
+    )
+    _PAIRING_SYMBOLS = [
+        "RawDznData",
+        "ReferenceSample",
+        "read_dzn_raw",
+        "write_dzn_raw",
+        "generate_reference_sample",
+        "derive_tardiness_variant",
+        "derive_tard_high",
+        "derive_tard_med",
+        "derive_nrg_strong",
+        "derive_btnk_high",
+        "validate_pairing",
+        "ValidationReport",
+        "CheckResult",
+        "format_validation_report",
+    ]
+except ModuleNotFoundError as _err:
+    if _err.name not in (f"{__name__}.pairing", "mojssp.pairing"):
+        raise
+    _PAIRING_SYMBOLS = []
 
 
-__all__ = [
-    "RawDznData",
-    "ReferenceSample",
-    "read_dzn_raw",
-    "write_dzn_raw",
-    "generate_reference_sample",
-    "derive_tardiness_variant",
-    "derive_tard_high",
-    "derive_tard_med",
-    "derive_nrg_strong",
-    "derive_btnk_high",
-    "validate_pairing",
-    "ValidationReport",
-    "CheckResult",
-    "format_validation_report",
+__all__ = _PAIRING_SYMBOLS + [
     "ProcessingMode",
     "Operation",
     "Job",
