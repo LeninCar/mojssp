@@ -1,0 +1,9 @@
+factor,original_range,generated_range,original_distinct_sizes,generated_distinct_sizes,dimension_notes
+Escala (N ops),50 - 2500,50 - 400,12,5,Originales cubren hasta 2500 ops (50x50); Generadas se enfocan en escala tractable (50-400 ops).
+Jobs/Machines Ratio,0.50 - 2.00,0.50 - 2.00,4,4,Originales: ratio entre 0.5 y 2.0; Generadas agregan instancias explícitas con ratio bajo (0.5) y alto (2.0) a escala constante (200 ops).
+Bottleneck Concentration,1.1053 - 1.6129,1.0229 - 2.9357,12,25,Originales están todas balanceadas (~1.06 - 1.15); Generadas introducen cuellos de botella severos (~2.84 - 2.94).
+Heterogeneidad Duración (CV),0.6590 - 0.8158,0.3020 - 1.0577,12,25,Originales homogéneas en CV (~0.52 - 0.54); Generadas cubren desde CV bajo (0.30) hasta CV muy alto (1.05).
+Conflicto Tiempo-Energía (Ratio E5/E1),2.2035 - 2.4886,1.2946 - 37.7039,12,25,"Originales tienen conflicto moderado constante (~2.36 - 2.97); Generadas cubren débil (1.29), moderado (3.00) y fuerte (37.52)."
+Presión de Tardanza (Fracción d_j < P_min),0.4500 - 0.9333,0.0000 - 1.0000,12,25,Originales tienen presión baja (~0.0 - 0.10); Generadas cubren desde presión nula (0.0) hasta presión garantizada al 100% (1.0).
+Dispersión de Releases (Mean),155.07 - 749.95,0.00 - 285.25,12,25,Originales tienen releases escalonados correlacionados con tamaño; Generadas añaden condición estática pura (0.0) y dispersión alta (>260.0).
+Interacciones Controladas,Ninguna (instancias generadas con un único proceso base),"8 combinaciones explícitas de 2 factores (Tardiness+Btnk, Dur+Btnk, Tard+Nrg, etc.)",0,8,Aporte exclusivo de las nuevas instancias para estudiar efectos acoplados.

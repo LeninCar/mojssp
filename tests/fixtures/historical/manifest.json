@@ -1,0 +1,52 @@
+[
+  {
+    "path": "tests/fixtures/historical/experiments/f85_portfolio_vs_standalone.csv",
+    "source": "results/experiments/f85_portfolio_vs_standalone.csv",
+    "sha256": "60d409aad855695424ec3ea085bfc1588fdf02e9083f5d404310f6a3aebfb038"
+  },
+  {
+    "path": "tests/fixtures/historical/experiments/f85_dmab_allocation.csv",
+    "source": "results/experiments/f85_dmab_allocation.csv",
+    "sha256": "f884923fe434b912ee5d38800e25a3214d033cbfaef5d5b9d704cb4f5b149123"
+  },
+  {
+    "path": "tests/fixtures/historical/experiments/f86_runs.csv",
+    "source": "results/experiments/f86_runs.csv",
+    "sha256": "939429eb2f8fa85d853970c7c583ea287d25cddf8fc84bfbe0dbd2ed523ec8d6"
+  },
+  {
+    "path": "tests/fixtures/historical/experiments/f86_dmab_blocks.csv",
+    "source": "results/experiments/f86_dmab_blocks.csv",
+    "sha256": "675066e234ed3efaef0606e0f468ae226990379c90d01e026fe6c7082b821bf0"
+  },
+  {
+    "path": "tests/fixtures/historical/experiments/f86_pairwise.csv",
+    "source": "results/experiments/f86_pairwise.csv",
+    "sha256": "3e3e1b9647b07d506530f8ef3e52766abc25d50e2003a2c1b7937ff39e577caa"
+  },
+  {
+    "path": "tests/fixtures/historical/experiments/f86_summary_by_instance.csv",
+    "source": "results/experiments/f86_summary_by_instance.csv",
+    "sha256": "1288b345df66b8f0309de596c13443be11cbd8d694da22a1ceb218b45a1ad8e0"
+  },
+  {
+    "path": "tests/fixtures/historical/diagnostics/f864_instance_characteristics.csv",
+    "source": "results/diagnostics/f864_instance_characteristics.csv",
+    "sha256": "4536cf298898008a6c82701bb484c1998681465ce9eebcd3a6707c75a4c4f355"
+  },
+  {
+    "path": "tests/fixtures/historical/diagnostics/f864_instance_distances.csv",
+    "source": "results/diagnostics/f864_instance_distances.csv",
+    "sha256": "acdd8e677c3a6b9fd7f2fbaa8a4f09ced23de2cd1ebb9e793030bd08ea0a817e"
+  },
+  {
+    "path": "tests/fixtures/historical/diagnostics/f864_factor_coverage.csv",
+    "source": "results/diagnostics/f864_factor_coverage.csv",
+    "sha256": "89890929067b16c226d7af31d32cd43246da2085aff56159dd1b2ecf7a6efaa2"
+  },
+  {
+    "path": "tests/fixtures/historical/diagnostics/f864_summary.json",
+    "source": "results/diagnostics/f864_summary.json",
+    "sha256": "1fde89088ca9c386ccca6d05bf5a4fadf807d244f430b16ef91ef01fabdeed03"
+  }
+]

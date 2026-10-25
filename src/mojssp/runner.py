@@ -12,6 +12,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
 
+from .selectors import make_selector
+from .fixed_budget import evaluation_quotas
 from .algorithm_contract import AlgorithmBlockResult, PortfolioArm
 from .arms import MOPSOArm, NSGA2Arm, NSGA2LSArm
 from .moead import MOEADArm
@@ -368,10 +370,20 @@ def run_phase2_portfolio_experiment(
     window_size: int = 10,
     exploration_factor: float = 0.07,
     neutral_warmup: bool = True,
+    *,
+    delta: float = 0.001,
+    threshold: float = 0.05,
+    min_instances: int = 5,
+    feed_initial_probe_to_detector: bool = False,
+    feed_reexploration_to_detector: bool = False,
+    budget_shares=None,
+    selected_arms=None,
+    round_size: int = 300,
+    minimum_share: float = .1,
 ) -> Tuple[RunResult, Tuple[BlockExecutionRecord, ...]]:
-    """Execute a Phase 2 3-arm portfolio run [MOEA/D, NSGA-II, SPEA2].
+    """Execute a portfolio, defaulting to [MOEA/D, NSGA-II, SPEA2].
 
-    Supports both adaptive selection (SW-UCB) and uniform allocation (Round-Robin).
+    Supports uniform, SW-UCB, scaled UCB, Page-Hinkley and fixed prior quotas.
     Derives independent, deterministic pseudo-random seeds for each arm.
     Preserves exact budget accounting, Global Pareto Archive integration,
     and checkpoint telemetry without modifying historical functions.
@@ -382,10 +394,12 @@ def run_phase2_portfolio_experiment(
         total_budget: Total evaluation budget (> 0). Default: 1000.
         block_size: Evaluations allocated per block (> 0). Default: 50.
         population_size: Population size for constituent arms. Default: 30.
-        policy: 'adaptive' for SW-UCB or 'uniform' for Round-Robin.
+        policy: 'uniform', 'sw_ucb', 'scaled', 'ph', or 'weighted'; 'adaptive' remains a SW-UCB alias.
         window_size: Sliding window size W for SW-UCB. Default: 10.
         exploration_factor: Exploration parameter c for SW-UCB. Default: 0.07.
         neutral_warmup: Whether to execute neutral warm-up before adaptive selection. Default: True.
+        budget_shares: Required shares for 'weighted'; cover the entire budget including initialization.
+        selected_arms: Optional ordered subset of at least two canonical algorithm names.
 
     Returns:
         Tuple of (RunResult, history of BlockExecutionRecord).
@@ -393,8 +407,22 @@ def run_phase2_portfolio_experiment(
     Raises:
         ValueError: If policy is unknown, or budgets are non-positive.
     """
-    if policy not in ("adaptive", "uniform"):
-        raise ValueError(f"Unknown policy '{policy}'. Must be 'adaptive' or 'uniform'.")
+    if policy not in ('adaptive', 'sw_ucb', 'uniform', 'scaled', 'ph', 'dmab_ph', 'ucb1', 'weighted', 'dynamic'):
+        raise ValueError(f'Unknown policy: {policy}')
+    canonical = ('MOEA/D', 'NSGA-II', 'SPEA2')
+    selected = canonical if selected_arms is None else tuple(selected_arms)
+    if len(selected) < 2 or len(set(selected)) != len(selected) or not set(selected).issubset(canonical):
+        raise ValueError('Select two or three distinct supported algorithms')
+    if budget_shares is not None and policy != 'weighted':
+        raise ValueError('Budget shares apply only to the weighted policy')
+    quotas = None
+    if policy == 'weighted':
+        shares = budget_shares
+        if shares is None or set(shares) != set(selected):
+            raise ValueError('Expected shares for every selected algorithm')
+        quotas = evaluation_quotas(total_budget, shares)
+        if any(value < population_size for value in quotas.values()):
+            raise ValueError('Each weighted quota must cover its full initial population')
 
     normalizer = ObjectiveNormalizer(compute_instance_bounds(instance))
 
@@ -403,31 +431,39 @@ def run_phase2_portfolio_experiment(
     seed_nsga2 = (seed * 10007 + 29) % (2**31 - 1)
     seed_spea2 = (seed * 10007 + 43) % (2**31 - 1)
 
-    arm_moead = MOEADArm(instance, population_size=population_size, seed=seed_moead)
-    arm_nsga2 = NSGA2Arm(instance, population_size=population_size, max_generations=None, seed=seed_nsga2)
-    arm_spea2 = SPEA2Arm(instance, population_size=population_size, archive_size=population_size, seed=seed_spea2)
-
-    arms: Dict[str, PortfolioArm] = {
-        "MOEA/D": arm_moead,
-        "NSGA-II": arm_nsga2,
-        "SPEA2": arm_spea2,
-    }
+    arms: Dict[str, PortfolioArm] = {}
+    for name in selected:
+        if name == 'MOEA/D':
+            arms[name] = MOEADArm(instance, population_size=population_size, seed=seed_moead)
+        elif name == 'NSGA-II':
+            arms[name] = NSGA2Arm(instance, population_size=population_size, max_generations=None, seed=seed_nsga2)
+        else:
+            arms[name] = SPEA2Arm(instance, population_size=population_size, archive_size=population_size, seed=seed_spea2)
     portfolio = Portfolio(arms)
     arm_names = list(arms.keys())
 
-    if policy == "adaptive":
-        selector = SlidingWindowUCB(
-            arm_names=arm_names,
-            window_size=window_size,
-            exploration_factor=exploration_factor,
-            seed=seed,
-        )
-        algo_label = "Adaptive Portfolio (DMAB)"
-        policy_label = "adaptive"
-    else:
-        selector = RoundRobinSelector(arm_names=arm_names)
-        algo_label = "Uniform Portfolio (Round-Robin)"
-        policy_label = "uniform"
+    selector = make_selector('uniform' if policy in ('weighted','dynamic') else policy, arm_names, seed=seed, window_size=window_size,
+        exploration_factor=exploration_factor, delta=delta, threshold=threshold,
+        min_instances=min_instances,
+        feed_initial_probe_to_detector=feed_initial_probe_to_detector,
+        feed_reexploration_to_detector=feed_reexploration_to_detector)
+    labels = {
+        'adaptive': 'Adaptive Portfolio (DMAB)',
+        'sw_ucb': 'Adaptive Portfolio (DMAB)',
+        'uniform': 'Uniform Portfolio (Round-Robin)',
+        'scaled': 'Scaled UCB Portfolio',
+        'ph': 'Adaptive Portfolio (DMAB-PH)',
+        'dmab_ph': 'Adaptive Portfolio (DMAB-PH)',
+        'ucb1': 'Classical UCB1 Portfolio',
+        'weighted': 'Fixed Prior Weighted Portfolio',
+        'dynamic': 'Dynamic Round Budget Portfolio',
+    }
+    algo_label = labels[policy]
+    policy_label = policy
+    if selected != canonical:
+        suffix = '_'.join(name.replace('/', '').replace('-', '') for name in selected)
+        policy_label += '_' + suffix
+        algo_label += ' [' + ', '.join(selected) + ']'
 
     reward_tracker = HypervolumeRewardTracker(normalizer=normalizer)
     orchestrator = AdaptivePortfolioOrchestrator(
@@ -437,11 +473,22 @@ def run_phase2_portfolio_experiment(
     )
 
     t0 = time.perf_counter()
-    exec_res = orchestrator.run(
-        total_budget=total_budget,
-        block_size=block_size,
-        neutral_warmup=neutral_warmup,
-    )
+    if policy == 'dynamic':
+        from .dynamic_budget import round_shares
+        if not neutral_warmup:
+            raise ValueError('Dynamic rounds require neutral initialization')
+        initial = evaluation_quotas(min(round_size,total_budget), round_shares(dict.fromkeys(arm_names,0.),minimum_share))
+        if any(value < population_size for value in initial.values()):
+            raise ValueError('Initial round must cover each full population')
+        exec_res = orchestrator.run_dynamic_rounds(total_budget, block_size, round_size, minimum_share)
+    elif quotas is not None:
+        exec_res = orchestrator.run_fixed_quotas(quotas, block_size, neutral_warmup)
+    else:
+        exec_res = orchestrator.run(
+            total_budget=total_budget,
+            block_size=block_size,
+            neutral_warmup=neutral_warmup,
+        )
     runtime_s = time.perf_counter() - t0
 
     history = exec_res.history
@@ -569,6 +616,8 @@ def export_results_to_csv(
             "hv_after",
             "reward",
             "completed",
+            "fe_before", "fe_after", "alarm_triggered", "num_alarms",
+            "ph_statistic", "cycle_index",
         ])
         for run_id, b in portfolio_blocks:
             # Parse instance and seed from run_id
@@ -586,6 +635,8 @@ def export_results_to_csv(
                 f"{b.hv_after:.8f}",
                 f"{b.reward:.8f}",
                 b.completed,
+                b.fe_before, b.fe_after, b.alarm_triggered, b.num_alarms,
+                f"{b.ph_statistic:.8f}", b.cycle_index,
             ])
 
     # 3. Export checkpoints.csv

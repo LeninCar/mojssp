@@ -34,7 +34,7 @@ class TestF864InstanceDiversity(unittest.TestCase):
         cls.project_root = Path(__file__).resolve().parent.parent
         cls.exp_dir = cls.project_root / "data" / "experimental"
         cls.gen_dir = cls.project_root / "data" / "generated" / "f86_3"
-        cls.diag_dir = cls.project_root / "results" / "diagnostics"
+        cls.diag_dir = Path(__file__).parent / "fixtures" / "historical" / "diagnostics"
 
         cls.char_csv = cls.diag_dir / "f864_instance_characteristics.csv"
         cls.dist_csv = cls.diag_dir / "f864_instance_distances.csv"

@@ -11,6 +11,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from run_portfolio_loop import OUT, write_new
+from mojssp.project_paths import HISTORICAL_ROOT
 
 
 def measure(run, key):
@@ -142,10 +143,14 @@ def analyze(split):
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('--split',default='development',choices=['development','confirmation'])
-    p.add_argument('--tag',required=True)
+    p.add_argument('--output',type=Path,required=True)
     args=p.parse_args()
+    if args.output.exists():
+        p.error('output already exists; choose a new file')
+    if args.output.resolve().is_relative_to(HISTORICAL_ROOT):
+        p.error('output must be outside the saved campaign')
     result=analyze(args.split)
-    write_new(OUT/f'analysis_{args.tag}.json',result)
+    write_new(args.output,result)
     print(json.dumps(result['summary'],indent=2))
     for k,v in result['comparisons'].items():
         if k.endswith('vs adaptive'):

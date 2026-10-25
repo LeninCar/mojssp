@@ -24,6 +24,7 @@ from typing import Any, Dict, List, Set, Tuple
 repo_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(repo_root / "src"))
 
+from mojssp.project_paths import PROJECT_ROOT, HISTORICAL_ROOT, input_path
 from mojssp.instance import Instance
 from mojssp.io import load_dzn
 from mojssp.runner import run_phase2_portfolio_experiment, run_standalone_experiment
@@ -113,6 +114,19 @@ def load_selected_instances(repo_root: Path) -> List[Dict[str, Any]]:
 
 
 def main() -> None:
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--data-root', type=Path, default=PROJECT_ROOT,
+                        help='Repository containing data/generated/expanded_200')
+    parser.add_argument('--output-dir', type=Path, required=True,
+                        help='New directory; historical outputs are never overwritten')
+    args = parser.parse_args()
+    if args.output_dir.exists():
+        parser.error('output directory already exists; choose a new directory')
+    if args.output_dir.resolve().is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside results/historical')
+    data_root = args.data_root.resolve()
+    selected_instances_meta = load_selected_instances(data_root)
     print("=" * 80)
     print("MO-JSSP PHASE 2 CONTROLLED PILOT EXPERIMENT (F2.4)")
     print("=" * 80)
@@ -121,11 +135,10 @@ def main() -> None:
     print(f"Git commit: {git_commit}")
 
     # Output directory
-    results_dir = repo_root / "results" / "expanded_portfolio_phase2" / "pilot"
+    results_dir = args.output_dir.resolve()
     results_dir.mkdir(parents=True, exist_ok=True)
 
     # 1. Load and validate instances
-    selected_instances_meta = load_selected_instances(repo_root)
     print(f"\nSuccessfully selected 10 strictly independent development instances:")
     for i, meta in enumerate(selected_instances_meta, 1):
         print(f"  {i:2d}. {meta['instance_name']} [{meta['configuration']}, {meta['dimensions']}, {meta['profile']}]")
@@ -133,7 +146,7 @@ def main() -> None:
     # Load instance objects
     loaded_instances: Dict[str, Instance] = {}
     for meta in selected_instances_meta:
-        inst_path = repo_root / meta["file_path"]
+        inst_path = input_path(meta["file_path"], data_root)
         inst = load_dzn(inst_path, validate=True)
         loaded_instances[meta["instance_name"]] = inst
 

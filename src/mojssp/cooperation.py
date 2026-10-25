@@ -6,7 +6,7 @@ decoder/evaluator/selection path; no cached fitness is assigned to a new child.
 from collections import defaultdict
 import math
 
-from .dmab import ArmStats, SlidingWindowUCB
+from .selectors import ScaleAwareUCB
 from .provenance import compute_genotype_id
 
 
@@ -79,24 +79,3 @@ class ArchiveGuidance:
                             'native_parent_id': compute_genotype_id(native_parent),
                             'mating_index': self._counts[arm.arm_name]})
         return donor.solution
-
-
-class ScaleAwareUCB(SlidingWindowUCB):
-    """Raw ΔHV is stored intact; normalize exploitation at decision time only.
-
-    Divide all recent rewards by their common maximum, including earlier
-    observations (not a per-observation moving denominator). Zero windows use
-    scale one, retaining ordinary exploration. Expired arms retain infinite
-    UCB, hence remain eligible for complementary discoveries.
-    """
-
-    def _compute_arm_stats(self, arm_name):
-        stats = super()._compute_arm_stats(arm_name)
-        if stats.window_pulls == 0:
-            return stats
-        scale = max((abs(r) for _, r in self._window), default=0.0) or 1.0
-        mean = stats.window_mean / scale
-        t_eff = min(self._total_pulls, self._window_size)
-        bonus = self._c * math.sqrt(math.log(t_eff) / stats.window_pulls) if t_eff > 1 else 0.0
-        return ArmStats(stats.arm_name, stats.total_pulls, stats.window_pulls,
-                        stats.window_mean, mean+bonus)

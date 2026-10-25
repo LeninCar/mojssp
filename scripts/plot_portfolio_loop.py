@@ -10,7 +10,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'results/portfolio_loop_20261015'
+sys.path.insert(0, str(ROOT / 'src'))
+from mojssp.project_paths import HISTORICAL_ROOT, campaign_path
+OUT=campaign_path('portfolio')
 LABELS={'moead':'MOEA/D','nsga2':'NSGA-II','spea2':'SPEA2','uniform':'Uniforme',
         'adaptive':'SW-UCB original','guidance':'Padre externo (replay)',
         'scaled':'UCB escalado','combined':'UCB escalado + padre externo'}
@@ -19,6 +21,15 @@ COLORS={'moead':'#4477aa','nsga2':'#ee7733','spea2':'#aa3377','uniform':'#999999
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', type=Path, required=True)
+    args = parser.parse_args()
+    if args.output_dir.exists():
+        parser.error('output directory already exists; choose a new directory')
+    if args.output_dir.resolve().is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside the saved campaign')
+    args.output_dir.mkdir(parents=True)
     fig,axes=plt.subplots(1,2,figsize=(12,5.2))
     allruns=[]
     for ax,split in zip(axes,['development','confirmation']):
@@ -45,7 +56,7 @@ def main():
     fig.legend(handles,labels,fontsize=8,loc='lower center',ncol=4)
     fig.suptitle('Después de 150 FE; AUC calculada desde (0, 0)',fontsize=10)
     fig.tight_layout(rect=(0,.13,1,.94))
-    fig.savefig(OUT/'trajectories.png',dpi=170)
+    fig.savefig(args.output_dir/'trajectories.png',dpi=170)
     plt.close(fig)
     fig,axes=plt.subplots(1,2,figsize=(12,4.8))
     for ax,split in zip(axes,['development','confirmation']):
@@ -63,7 +74,7 @@ def main():
         ax.set(title=split,ylabel='Fracción de FE',ylim=(0,1))
     axes[1].legend(loc='upper right',fontsize=8)
     fig.tight_layout()
-    fig.savefig(OUT/'allocation.png',dpi=170)
+    fig.savefig(args.output_dir/'allocation.png',dpi=170)
     plt.close(fig)
 
 

@@ -37,6 +37,7 @@ from mojssp.algorithm_contract import AlgorithmBlockResult, PortfolioArm
 from mojssp.arms import NSGA2Arm
 from mojssp.dmab import RoundRobinSelector, SlidingWindowUCB
 from mojssp.hypervolume import compute_archive_hypervolume
+from mojssp.project_paths import PROJECT_ROOT, HISTORICAL_ROOT, input_path
 from mojssp.instance import Instance
 from mojssp.io import load_dzn
 from mojssp.moead import MOEADArm
@@ -341,6 +342,19 @@ def run_portfolio_with_snapshots(
 
 
 def main() -> None:
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--data-root', type=Path, default=PROJECT_ROOT,
+                        help='Repository containing data/generated/expanded_200')
+    parser.add_argument('--output-dir', type=Path, required=True,
+                        help='New directory; historical outputs are never overwritten')
+    args = parser.parse_args()
+    if args.output_dir.exists():
+        parser.error('output directory already exists; choose a new directory')
+    if args.output_dir.resolve().is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside results/historical')
+    data_root = args.data_root.resolve()
+    selected_instances_meta = load_selected_instances(data_root)
     print("=" * 80)
     print("MO-JSSP PHASE 2 BUDGET DIAGNOSTIC EXPERIMENT (F2.5.1)")
     print("Budgets: 1000, 3000, 5000 FE | Methods: 5 | Instances: 10 | Seeds: 3")
@@ -349,13 +363,12 @@ def main() -> None:
     git_commit = get_git_commit(repo_root)
     print(f"Git commit: {git_commit}")
 
-    results_dir = repo_root / "results" / "expanded_portfolio_phase2" / "budget_diagnostic"
+    results_dir = args.output_dir.resolve()
     results_dir.mkdir(parents=True, exist_ok=True)
 
-    selected_instances_meta = load_selected_instances(repo_root)
     loaded_instances: Dict[str, Instance] = {}
     for meta in selected_instances_meta:
-        inst_path = repo_root / meta["file_path"]
+        inst_path = input_path(meta["file_path"], data_root)
         inst = load_dzn(inst_path, validate=True)
         loaded_instances[meta["instance_name"]] = inst
 

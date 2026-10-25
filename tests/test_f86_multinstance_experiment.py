@@ -25,7 +25,7 @@ from scripts.run_f86_experiment import (
 class TestF86MultinstanceExperiment(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.exp_dir = Path("results/experiments")
+        cls.exp_dir = Path(__file__).parent / "fixtures/historical/experiments"
         cls.runs_csv = cls.exp_dir / "f86_runs.csv"
         cls.blocks_csv = cls.exp_dir / "f86_dmab_blocks.csv"
         cls.pairwise_csv = cls.exp_dir / "f86_pairwise.csv"

@@ -7,6 +7,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from run_portfolio_loop import OUT, write_new
+from mojssp.project_paths import HISTORICAL_ROOT
 
 
 def read(name):
@@ -14,6 +15,14 @@ def read(name):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description='Historical closure audit tied to its original commit, not a general check of the current implementation.')
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    if args.output.exists():
+        parser.error('output already exists; choose a new file')
+    if args.output.resolve().is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside the saved campaign')
     closure=read('closure_decision.json')
     integrity=read('integrity_audit.json')
     tests=read('final_test_audit.json')
@@ -67,7 +76,7 @@ def main():
             'stop_reason':closure['stop_reason'],
             'requirements':[{'requirement':r,'evidence':p,'scope':s,'status':'verified within authorized experimental stopping scope'} for r,p,s in requirements],
             'interpretation':'Completion means this bounded research campaign and its requested reporting are complete; not universal superiority, solved optimization, or proven success of untested live cooperative policies.'}
-    write_new(OUT/'completion_audit.json',result)
+    write_new(args.output,result)
     print('Verified all 12 requirement groups against current artifacts and workspace state.')
 
 

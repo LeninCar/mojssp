@@ -1,0 +1,153 @@
+{
+  "audit_phase": "F8.6.4",
+  "total_instances": 37,
+  "counts": {
+    "original_instances": 12,
+    "generated_instances": 25
+  },
+  "distances_statistics": {
+    "all_pairs_count": 666,
+    "original_original": {
+      "count": 66,
+      "mean_distance": 3.1766,
+      "min_distance": 0.7484,
+      "max_distance": 7.4863
+    },
+    "generated_generated": {
+      "count": 300,
+      "mean_distance": 4.6732,
+      "min_distance": 0.1188,
+      "max_distance": 8.4808
+    },
+    "original_generated": {
+      "count": 300,
+      "mean_distance": 5.6367,
+      "min_distance": 2.4806,
+      "max_distance": 9.7054
+    }
+  },
+  "redundancy_analysis": {
+    "redundant_pairs_count": 6,
+    "redundant_pairs": [
+      {
+        "instance_a": "10_10_2-5_1",
+        "source_a": "original",
+        "instance_b": "15_15_2-5_1",
+        "source_b": "original",
+        "pair_type": "original-original",
+        "distance": 0.7484,
+        "similarity_category": "muy similares"
+      },
+      {
+        "instance_a": "base_02_10x10",
+        "source_a": "generated",
+        "instance_b": "btnk_low_10x10",
+        "source_b": "generated",
+        "pair_type": "generated-generated",
+        "distance": 0.4327,
+        "similarity_category": "muy similares"
+      },
+      {
+        "instance_a": "base_02_10x10",
+        "source_a": "generated",
+        "instance_b": "dur_low_10x10",
+        "source_b": "generated",
+        "pair_type": "generated-generated",
+        "distance": 0.466,
+        "similarity_category": "muy similares"
+      },
+      {
+        "instance_a": "base_04_20x10",
+        "source_a": "generated",
+        "instance_b": "load_high_20x10",
+        "source_b": "generated",
+        "pair_type": "generated-generated",
+        "distance": 0.159,
+        "similarity_category": "muy similares"
+      },
+      {
+        "instance_a": "btnk_high_10x10",
+        "source_a": "generated",
+        "instance_b": "int_dur_btnk_10x10",
+        "source_b": "generated",
+        "pair_type": "generated-generated",
+        "distance": 0.2997,
+        "similarity_category": "muy similares"
+      },
+      {
+        "instance_a": "btnk_low_10x10",
+        "source_a": "generated",
+        "instance_b": "dur_low_10x10",
+        "source_b": "generated",
+        "pair_type": "generated-generated",
+        "distance": 0.1188,
+        "similarity_category": "muy similares"
+      }
+    ]
+  },
+  "extreme_cases": [
+    {
+      "instance": "nrg_strong_10x10",
+      "classification": "condici\u00f3n de estr\u00e9s / conflicto extremo tiempo-energ\u00eda",
+      "key_metrics": {
+        "time_energy_conflict": 37.52,
+        "energy_cv": 1.04
+      },
+      "experimental_role": "Eval\u00faa el comportamiento de los algoritmos ante un frente Pareto empinado donde la aceleraci\u00f3n penaliza masivamente el consumo energ\u00e9tico."
+    },
+    {
+      "instance": "tard_high_10x10",
+      "classification": "condici\u00f3n de estr\u00e9s / presi\u00f3n de tardanza garantizada",
+      "key_metrics": {
+        "tardiness_pressure": 1.0,
+        "due_mean": 229.6
+      },
+      "experimental_role": "Fuerza tardanza positiva en el 100% de los trabajos independientemente de la velocidad, creando tensi\u00f3n permanente en el objetivo T."
+    },
+    {
+      "instance": "btnk_high_10x10",
+      "classification": "condici\u00f3n de estr\u00e9s / cuello de botella severo",
+      "key_metrics": {
+        "bottleneck_concentration": 2.84,
+        "duration_cv": 1.0
+      },
+      "experimental_role": "Eval\u00faa congesti\u00f3n asim\u00e9trica extrema donde 2 m\u00e1quinas concentran casi el triple de la carga media."
+    },
+    {
+      "instance": "rel_high_10x10",
+      "classification": "condici\u00f3n de estr\u00e9s / alta dispersi\u00f3n temporal de releases",
+      "key_metrics": {
+        "release_mean": 265.01,
+        "release_cv": 0.41
+      },
+      "experimental_role": "Impone ventanas de llegada dilatadas que limitan la compactaci\u00f3n semi-activa de los primeros bloques de tiempo."
+    },
+    {
+      "instance": "rel_zero_10x10",
+      "classification": "condici\u00f3n de referencia / JSSP est\u00e1tico cl\u00e1sico",
+      "key_metrics": {
+        "release_mean": 0.0,
+        "release_cv": 0.0
+      },
+      "experimental_role": "Permite comparar contra la formulaci\u00f3n tradicional de taller est\u00e1tico donde todos los trabajos est\u00e1n disponibles en t=0."
+    },
+    {
+      "instance": "load_high_20x10",
+      "classification": "condici\u00f3n de alta congesti\u00f3n de recursos (ratio jobs/machines = 2.0)",
+      "key_metrics": {
+        "jobs_per_machine": 2.0,
+        "operations": 200
+      },
+      "experimental_role": "Eval\u00faa alta competencia entre trabajos manteniendo escala de 200 operaciones."
+    },
+    {
+      "instance": "load_low_10x20",
+      "classification": "condici\u00f3n de baja congesti\u00f3n de recursos (ratio jobs/machines = 0.5)",
+      "key_metrics": {
+        "jobs_per_machine": 0.5,
+        "operations": 200
+      },
+      "experimental_role": "Eval\u00faa precedencia dominante con recursos holgados manteniendo escala de 200 operaciones."
+    }
+  ]
+}

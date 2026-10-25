@@ -6,9 +6,19 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from run_portfolio_loop import OUT, BASELINES, run_case, write_new
+from mojssp.project_paths import HISTORICAL_ROOT
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, required=True,
+                        help='New JSON file outside the saved campaign')
+    args = parser.parse_args()
+    if args.output.exists():
+        parser.error('output already exists; choose a new file')
+    if args.output.resolve().is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside the saved campaign')
     manifest=json.loads((OUT/'manifest.json').read_text(encoding='utf-8'))
     case=next(c for c in manifest['cases'] if c['name']=='development_00_5x5')
     evidence=[]
@@ -26,7 +36,7 @@ def main():
         evidence.append({'method':method,'search_fe':current['search_fe'],
                          'seconds':current['seconds'],'identical_fields':keys,
                          'block_trace_identical_except_timing':True})
-    write_new(OUT/'reproduction_audit.json',{'passed':True,'cases':evidence,
+    write_new(args.output,{'passed':True,'cases':evidence,
               'additional_search_fe':sum(e['search_fe'] for e in evidence),
               'scope':'One base and seed, all five controls at full budget. Existing tests also check native arm block-splitting and RNG continuity.'})
     print('All five control fronts, block allocations and metrics reproduced exactly; 15000 FE.')

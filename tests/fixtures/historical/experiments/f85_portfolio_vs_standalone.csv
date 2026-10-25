@@ -1,0 +1,9 @@
+experiment_id,instance,seed,configuration,total_budget,evaluations_used,final_hv,archive_size,runtime_s,dmab_c,dmab_window,warmup_fe,adaptive_fe,nsga2_fe,mopso_fe,nsga2_ls_fe,nsga2_blocks,mopso_blocks,nsga2_ls_blocks,nsga2_budget_share,mopso_budget_share,nsga2_ls_budget_share,selection_sequence
+10_10_2-5_1_NSGA-II_s42_1000FE,10_10_2-5_1.dzn,42,NSGA-II,1000,1000,0.84096152,43,0.64,,,,,1000,0,0,,,,100.0,0.0,0.0,
+10_10_2-5_1_MOPSO_s42_1000FE,10_10_2-5_1.dzn,42,MOPSO,1000,1000,0.67944075,39,2.01,,,,,0,1000,0,,,,0.0,100.0,0.0,
+10_10_2-5_1_NSGA-II+LS_s42_1000FE,10_10_2-5_1.dzn,42,NSGA-II+LS,1000,1000,0.71223153,4,0.44,,,,,0,0,1000,,,,0.0,0.0,100.0,
+10_10_2-5_1_NSGA-II_s100_1000FE,10_10_2-5_1.dzn,100,NSGA-II,1000,1000,0.81775446,46,0.63,,,,,1000,0,0,,,,100.0,0.0,0.0,
+10_10_2-5_1_MOPSO_s100_1000FE,10_10_2-5_1.dzn,100,MOPSO,1000,1000,0.63287717,24,1.33,,,,,0,1000,0,,,,0.0,100.0,0.0,
+10_10_2-5_1_NSGA-II+LS_s100_1000FE,10_10_2-5_1.dzn,100,NSGA-II+LS,1000,1000,0.68023745,13,0.45,,,,,0,0,1000,,,,0.0,0.0,100.0,
+10_10_2-5_1_Portfolio+DMAB_s42_1000FE,10_10_2-5_1.dzn,42,Portfolio+DMAB,1000,1000,0.78195873,20,0.78,0.07,10,150,850,400,300,300,7,5,5,40.00,30.00,30.00,L -> L -> N -> N -> N -> M -> M -> N -> L -> M -> N -> L -> L -> N -> M -> N -> M
+10_10_2-5_1_Portfolio+DMAB_s100_1000FE,10_10_2-5_1.dzn,100,Portfolio+DMAB,1000,1000,0.76291128,8,0.64,0.07,10,150,850,400,300,300,7,5,5,40.00,30.00,30.00,N -> N -> L -> L -> M -> M -> N -> L -> M -> N -> L -> N -> N -> N -> L -> M -> M

@@ -1,0 +1,15 @@
+{
+  "algorithms": ["NSGA-II", "SPEA2"],
+  "total_budget": 3000,
+  "block_size": 50,
+  "population_size": 30,
+  "candidate_probe_fe_per_arm": [50, 100, 150, 300],
+  "candidate_rules": ["greedy", "tree_depth2"],
+  "model_selection": "Leave one training instance out, keeping all seeds grouped; maximize mean selected-solver HV at total_budget minus probe FE",
+  "tree_max_depth": 2,
+  "tree_min_samples_leaf": 6,
+  "training_cases": "Same 18 cases as the static selector campaign",
+  "evaluation_cases": "Same 13 cases as the static selector campaign; no evaluation outcomes used to fit or select probe policy",
+  "budget_accounting": "Probe both solvers, preserve state, continue one; selected receives 3000-probe FE and other receives probe FE",
+  "cooperation": "Passive Pareto archive union; no injection"
+}

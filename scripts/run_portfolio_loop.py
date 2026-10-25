@@ -32,7 +32,9 @@ from mojssp.provenance import compute_genotype_id
 from mojssp.reward import HypervolumeRewardTracker
 from mojssp.spea2 import SPEA2Arm
 
-OUT = ROOT / 'results' / 'portfolio_loop_20261015'
+from mojssp.project_paths import campaign_path, input_path
+
+OUT = campaign_path('portfolio')
 NAMES = ('MOEA/D', 'NSGA-II', 'SPEA2')
 BASELINES = ['moead', 'nsga2', 'spea2', 'uniform', 'adaptive']
 PHASES = {'baseline': BASELINES, 'guidance': ['guidance'], 'scaled': ['scaled'],
@@ -126,7 +128,7 @@ def source_hashes():
 
 
 def run_case(case, seed, method, split):
-    path = ROOT / case['path']
+    path = input_path(case['path'])
     assert digest(path) == case['sha256']
     instance = load_dzn(path)
     normalizer = ObjectiveNormalizer(compute_instance_bounds(instance))
@@ -250,57 +252,9 @@ def run_case(case, seed, method, split):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--phase', choices=['prepare', *PHASES], required=True)
-    parser.add_argument('--split', choices=['development', 'confirmation'], default='development')
-    parser.add_argument('--methods', nargs='+')
-    args = parser.parse_args()
-    manifest = prepare()
-    if args.phase == 'prepare':
-        print('Prepared', len(manifest['cases']), 'new internal instances', flush=True)
-        return
-    methods = args.methods or PHASES[args.phase]
-    if any(m not in sum(PHASES.values(), []) for m in methods):
-        raise ValueError('Unregistered method')
-    completed = [json.loads(p.read_text(encoding='utf-8'))
-                 for p in (OUT/'runs').rglob('*.json') if not p.name.endswith('.failed.json')]
-    used_fe = sum(r['search_fe'] for r in completed)
-    used_seconds = sum(r['seconds']+r['analysis_seconds'] for r in completed)
-    reproduction_path = OUT / 'reproduction_audit.json'
-    if reproduction_path.exists():
-        reproduction = json.loads(reproduction_path.read_text(encoding='utf-8'))
-        used_fe += reproduction['additional_search_fe']
-        used_seconds += sum(r['seconds'] for r in reproduction['cases'])
-    del completed
-    count = 0
-    for case in manifest['cases']:
-        if case['split'] != args.split:
-            continue
-        for seed in manifest['seeds'][args.split]:
-            shift = count % len(methods)
-            order = methods[shift:] + methods[:shift]
-            # Replay requires a completed control; other methods remain rotated.
-            if 'guidance' in order and 'adaptive' in order and order.index('guidance') < order.index('adaptive'):
-                order.remove('guidance')
-                order.insert(order.index('adaptive')+1, 'guidance')
-            for method in order:
-                destination = OUT / 'runs' / args.split / f"{case['name']}__{seed}__{method}.json"
-                if destination.exists():
-                    continue
-                if used_fe+BUDGET > manifest['max_search_fe']:
-                    raise RuntimeError('Experimental FE cap reached')
-                if used_seconds > manifest['max_experiment_seconds']:
-                    raise RuntimeError('Experimental runtime cap reached')
-                try:
-                    r = run_case(case, seed, method, args.split)
-                    write_new(destination, r)
-                    used_fe += r['search_fe']
-                    used_seconds += r['seconds']+r['analysis_seconds']
-                except Exception as e:
-                    write_new(destination.with_suffix('.failed.json'), {'error': repr(e)})
-                    raise
-                print(f"{case['name']} seed={seed} {method}: HV={r['hv']:.6f} AUC={r['auc_hv']:.6f} seconds={r['seconds']:.2f}", flush=True)
-            count += 1
+    parser = argparse.ArgumentParser(description='Frozen historical campaign. Use run_experiment.py for new experiments; reproduce_portfolio_baseline.py for saved baseline validation.')
+    parser.parse_args()
+    parser.error('Historical campaign is read-only; use run_experiment.py for new runs')
 
 
 EXECUTION_SOURCE_HASHES = source_hashes()

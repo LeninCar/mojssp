@@ -26,9 +26,11 @@ sys.path.insert(0, str(repo_root / "src"))
 from mojssp.pareto_archive import ParetoArchive
 from mojssp.dominance import dominates
 
-pilot_dir = repo_root / "results" / "expanded_portfolio_phase2" / "pilot"
-plots_dir = pilot_dir / "plots"
-plots_dir.mkdir(parents=True, exist_ok=True)
+from mojssp.project_paths import HISTORICAL_ROOT, campaign_path
+pilot_dir = campaign_path("phase2") / "pilot"
+output_dir = None
+plots_dir = None
+
 
 
 def load_datasets() -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, List[Dict[str, Any]]]:
@@ -63,19 +65,19 @@ def analyze_performance(runs_df: pd.DataFrame) -> Dict[str, Any]:
     summary_by_method = summary_by_method.sort_values(by="mean", ascending=False)
     print(summary_by_method.to_string())
 
-    summary_by_method.to_csv(pilot_dir / "analysis_method_summary.csv")
+    summary_by_method.to_csv(output_dir / "analysis_method_summary.csv")
 
     print("\n" + "=" * 80)
     print("2. PERFORMANCE BY CONFIGURATION AND PROFILE")
     print("=" * 80)
     cfg_summary = runs_df.groupby(["configuration", "algorithm"])["final_hv"].agg(["mean", "std", "median"])
     print(cfg_summary.to_string())
-    cfg_summary.to_csv(pilot_dir / "analysis_configuration_summary.csv")
+    cfg_summary.to_csv(output_dir / "analysis_configuration_summary.csv")
 
     prof_summary = runs_df.groupby(["profile", "algorithm"])["final_hv"].agg(["mean", "std", "median"])
     print("\nBy Profile:")
     print(prof_summary.to_string())
-    prof_summary.to_csv(pilot_dir / "analysis_profile_summary.csv")
+    prof_summary.to_csv(output_dir / "analysis_profile_summary.csv")
 
     return {"by_method": summary_by_method, "by_cfg": cfg_summary, "by_prof": prof_summary}
 
@@ -145,12 +147,12 @@ def analyze_paired_comparisons(runs_df: pd.DataFrame) -> pd.DataFrame:
 
     paired_df = pd.DataFrame(paired_stats)
     print(paired_df.to_string(index=False))
-    paired_df.to_csv(pilot_dir / "analysis_paired_comparisons.csv", index=False)
+    paired_df.to_csv(output_dir / "analysis_paired_comparisons.csv", index=False)
 
     # Detailed per-instance differences
     pivot_hv["Diff_Adaptive_minus_Uniform"] = diff_adaptive_uniform
     pivot_hv["Diff_Adaptive_minus_VBS"] = diff_adaptive_vbs
-    pivot_hv.to_csv(pilot_dir / "analysis_paired_instances_detail.csv")
+    pivot_hv.to_csv(output_dir / "analysis_paired_instances_detail.csv")
 
     return paired_df
 
@@ -173,7 +175,7 @@ def analyze_adaptive_behavior(allocs_df: pd.DataFrame, blocks_df: pd.DataFrame) 
     mean_unif = uniform_allocs.groupby("arm_name")["evaluations_assigned"].agg(["mean", "std", "min", "max"])
     print(mean_unif.to_string())
 
-    mean_adapt.to_csv(pilot_dir / "analysis_adaptive_arm_allocations.csv")
+    mean_adapt.to_csv(output_dir / "analysis_adaptive_arm_allocations.csv")
 
     # Analyze blocks after 300 FE (block_index >= 6)
     post_startup_blocks = blocks_df[(blocks_df["policy"] == "adaptive") & (blocks_df["block_index"] >= 6)]
@@ -187,7 +189,7 @@ def analyze_adaptive_behavior(allocs_df: pd.DataFrame, blocks_df: pd.DataFrame) 
     print("\nMean Rewards by Arm in Adaptive Policy:")
     rew_summary = blocks_df[blocks_df["policy"] == "adaptive"].groupby(["arm_selected", "phase"])["reward"].agg(["mean", "std", "count"])
     print(rew_summary.to_string())
-    rew_summary.to_csv(pilot_dir / "analysis_arm_rewards_by_phase.csv")
+    rew_summary.to_csv(output_dir / "analysis_arm_rewards_by_phase.csv")
 
 
 def analyze_complementarity(fronts: List[Dict[str, Any]]) -> pd.DataFrame:
@@ -251,7 +253,7 @@ def analyze_complementarity(fronts: List[Dict[str, Any]]) -> pd.DataFrame:
     mean_comp = comp_df.mean(numeric_only=True)
     print("Average Complementarity Metrics across 30 pairs:")
     print(mean_comp.to_string())
-    comp_df.to_csv(pilot_dir / "analysis_complementarity_summary.csv", index=False)
+    comp_df.to_csv(output_dir / "analysis_complementarity_summary.csv", index=False)
     return comp_df
 
 
@@ -352,6 +354,18 @@ def generate_plots(runs_df: pd.DataFrame, checkpoints_df: pd.DataFrame, allocs_d
 
 
 def main() -> None:
+    global output_dir, plots_dir
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', type=Path, required=True)
+    args = parser.parse_args()
+    output_dir = args.output_dir.resolve()
+    if output_dir.exists():
+        parser.error('output directory already exists; choose a new directory')
+    if output_dir.is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside results/historical')
+    plots_dir = output_dir / 'plots'
+    plots_dir.mkdir(parents=True, exist_ok=True)
     runs_df, checkpoints_df, blocks_df, allocs_df, fronts = load_datasets()
     analyze_performance(runs_df)
     analyze_paired_comparisons(runs_df)

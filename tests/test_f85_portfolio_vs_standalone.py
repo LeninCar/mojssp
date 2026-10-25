@@ -111,8 +111,8 @@ class TestF85PortfolioVsStandalone(unittest.TestCase):
 
     def test_exported_csv_files_exist(self):
         """Verify exported CSV files exist and contain valid headers and expected row count."""
-        summary_csv = Path("results/experiments/f85_portfolio_vs_standalone.csv")
-        alloc_csv = Path("results/experiments/f85_dmab_allocation.csv")
+        summary_csv = Path(__file__).parent / "fixtures/historical/experiments/f85_portfolio_vs_standalone.csv"
+        alloc_csv = Path(__file__).parent / "fixtures/historical/experiments/f85_dmab_allocation.csv"
 
         self.assertTrue(summary_csv.exists(), f"Missing {summary_csv}")
         self.assertTrue(alloc_csv.exists(), f"Missing {alloc_csv}")

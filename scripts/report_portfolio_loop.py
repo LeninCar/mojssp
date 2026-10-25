@@ -6,6 +6,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from run_portfolio_loop import OUT, write_new
+from mojssp.project_paths import HISTORICAL_ROOT
 from analyze_portfolio_loop import analyze
 
 LABELS={'moead':'MOEA/D','nsga2':'NSGA-II','spea2':'SPEA2','uniform':'Uniforme',
@@ -29,6 +30,16 @@ def ci(item):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', type=Path, required=True)
+    args = parser.parse_args()
+    output_dir = args.output_dir.resolve()
+    if output_dir.exists():
+        parser.error('output directory already exists; choose a new directory')
+    if output_dir.is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside results/historical')
+    output_dir.mkdir(parents=True)
     dev=analyze('development')
     val=analyze('confirmation')
     baseline=val['summary']['adaptive']
@@ -83,7 +94,7 @@ def main():
         'window_size':10,'exploration_factor':.07,'enable_live_guidance':False,
         'guidance_scope':'Replay is a causal fixed-allocation experiment. Obtaining its control trace from scratch costs another 3000 FE; not an autonomous equal-budget policy.',
         'combined_live_policy':'Rejected in development; not confirmed or recommended.'}
-    write_new(OUT/'closure_decision.json',decision)
+    write_new(output_dir/'closure_decision.json',decision)
     lines=['# Portafolio MO-JSSP: campaña experimental del 15 de octubre de 2026','',
            f"Se completaron tres iteraciones aisladas. Motivo de cierre: **{decision['stop_reason']}**. "
            'Las conclusiones se limitan al generador, perfiles, presupuestos e instancias evaluados.', '',
@@ -321,7 +332,7 @@ def main():
                   'El protocolo y las hipótesis conservan la secuencia de decisiones.', '',
                   '![Trayectorias de HV](trajectories.png)','',
                   '![Asignación de evaluaciones](allocation.png)',''])
-    report=OUT/'report.md'
+    report=output_dir/'report.md'
     with report.open('x',encoding='utf-8') as f:
         f.write('\n'.join(lines))
     print(json.dumps({'stop_reason':decision['stop_reason'],'gates':{m:g['tests'] for m,g in gates.items()},

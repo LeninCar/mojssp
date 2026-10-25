@@ -5,8 +5,8 @@ HypervolumeRewardTracker feedback, and DMABSelector adaptation under
 a strict cumulative evaluation budget.
 """
 
-from dataclasses import dataclass
-from typing import List, Optional, Tuple
+from dataclasses import dataclass, replace
+from typing import Dict, List, Optional, Tuple
 
 from .dmab import DMABSelector
 from .pareto_archive import ParetoArchive
@@ -26,6 +26,15 @@ class BlockExecutionRecord:
         reward: Scalar Hypervolume delta reward computed and fed to DMAB.
         hv_after: Hypervolume of the Global Pareto Archive after the block.
         completed: Whether the arm has definitively finished its execution.
+        phase: Execution phase ('warmup', 'initial_probe', 'adaptive', 'reexploration').
+        fe_before: Real cumulative evaluations used prior to block execution.
+        fe_after: Real cumulative evaluations used after block execution.
+        ucb_indices: Optional mapping of arm name to UCB index at selection time.
+        alarm_triggered: Boolean indicating if a change-point alarm fired in this block.
+        num_alarms: Cumulative number of alarms triggered up to this block.
+        ph_statistic: Page-Hinkley test statistic value at the moment of update.
+        cycle_index: Ordinal identifier of the active UCB cycle.
+        is_reexploration: Whether this block was part of mandatory post-alarm re-exploration.
     """
 
     block_index: int
@@ -37,6 +46,16 @@ class BlockExecutionRecord:
     hv_after: float
     completed: bool
     phase: str = "adaptive"
+    fe_before: int = 0
+    fe_after: int = 0
+    ucb_indices: Optional[Dict[str, float]] = None
+    alarm_triggered: bool = False
+    num_alarms: int = 0
+    ph_statistic: float = 0.0
+    cycle_index: int = 0
+    is_reexploration: bool = False
+    round_index: Optional[int] = None
+
 
 
 @dataclass(frozen=True)
@@ -143,25 +162,67 @@ class AdaptivePortfolioOrchestrator:
         # 1. DMAB selects arm
         arm_name = self._dmab.select_arm()
 
-        # Check if arm is undergoing its initial adaptive probe
+        # Check if arm is undergoing its initial adaptive probe or re-exploration
         is_probe = False
+        is_reexploring = False
         if hasattr(self._dmab, "is_in_initial_probe"):
             is_probe = self._dmab.is_in_initial_probe(arm_name)
         elif hasattr(self._dmab, "get_adaptive_pulls"):
             is_probe = (self._dmab.get_adaptive_pulls(arm_name) == 0)
 
+        if hasattr(self._dmab, "is_in_reexploration"):
+            is_reexploring = self._dmab.is_in_reexploration(arm_name)
+
+        fe_before = self._portfolio.total_evaluations
+
         # 2. Portfolio executes block on selected arm
         block_result: PortfolioBlockResult = self._portfolio.run_arm(
             arm_name, budget=block_budget
         )
+        fe_after = self._portfolio.total_evaluations
 
         # 3. Compute ΔHV reward on the updated Global Pareto Archive
         hv_before = self._reward_tracker.current_hv
         reward = self._reward_tracker.compute_reward(self._portfolio.global_archive)
         hv_after = self._reward_tracker.current_hv
 
+        # Snapshot UCB values before update if available
+        ucb_snapshot: Optional[Dict[str, float]] = None
+        if hasattr(self._dmab, "get_stats"):
+            try:
+                stats = self._dmab.get_stats()
+                ucb_snapshot = {name: s.ucb for name, s in stats.items()}
+            except Exception:
+                pass
+
+        alarms_before = 0
+        if hasattr(self._dmab, "num_alarms"):
+            alarms_before = self._dmab.num_alarms
+
         # 4. DMAB updates with observed scalar reward
         self._dmab.update(arm_name, reward)
+
+        alarms_after = 0
+        alarm_triggered_in_block = False
+        ph_stat = 0.0
+        if hasattr(self._dmab, "num_alarms"):
+            alarms_after = self._dmab.num_alarms
+            alarm_triggered_in_block = (alarms_after > alarms_before)
+            if hasattr(self._dmab, "detector"):
+                ph_stat = self._dmab.detector.alarm_statistic
+            elif alarm_triggered_in_block and hasattr(self._dmab, "alarm_history") and self._dmab.alarm_history:
+                ph_stat = self._dmab.alarm_history[-1].alarm_statistic
+
+        cycle_idx = 0
+        if hasattr(self._dmab, "alarm_history"):
+            cycle_idx = len(self._dmab.alarm_history)
+
+        if is_probe:
+            phase_name = "initial_probe"
+        elif is_reexploring:
+            phase_name = "reexploration"
+        else:
+            phase_name = "adaptive"
 
         # 5. Record execution history
         record = BlockExecutionRecord(
@@ -173,7 +234,15 @@ class AdaptivePortfolioOrchestrator:
             hv_before=hv_before,
             hv_after=hv_after,
             completed=block_result.completed,
-            phase="initial_probe" if is_probe else "adaptive",
+            phase=phase_name,
+            fe_before=fe_before,
+            fe_after=fe_after,
+            ucb_indices=ucb_snapshot,
+            alarm_triggered=alarm_triggered_in_block,
+            num_alarms=alarms_after,
+            ph_statistic=ph_stat,
+            cycle_index=cycle_idx,
+            is_reexploration=is_reexploring,
         )
         self._history.append(record)
 
@@ -199,10 +268,12 @@ class AdaptivePortfolioOrchestrator:
         if block_budget <= 0:
             raise ValueError(f"block_budget must be positive, got {block_budget}")
 
+        fe_before = self._portfolio.total_evaluations
         hv_before = self._reward_tracker.current_hv
         block_result: PortfolioBlockResult = self._portfolio.run_arm(
             arm_name, budget=block_budget
         )
+        fe_after = self._portfolio.total_evaluations
         reward = self._reward_tracker.compute_reward(self._portfolio.global_archive)
         hv_after = self._reward_tracker.current_hv
 
@@ -220,6 +291,14 @@ class AdaptivePortfolioOrchestrator:
             hv_after=hv_after,
             completed=block_result.completed,
             phase="warmup",
+            fe_before=fe_before,
+            fe_after=fe_after,
+            ucb_indices=None,
+            alarm_triggered=False,
+            num_alarms=0,
+            ph_statistic=0.0,
+            cycle_index=0,
+            is_reexploration=False,
         )
         self._history.append(record)
 
@@ -300,6 +379,92 @@ class AdaptivePortfolioOrchestrator:
             global_archive=self._portfolio.global_archive,
             history=tuple(self._history),
         )
+
+    def run_fixed_quotas(self, quotas, block_size, neutral_warmup=True):
+        """Consume fixed total quotas, including warmup, without learning a policy.
+
+        After the initial pass, run the least completed quota proportion first.
+        Canonical arm order breaks ties; quotas never change with rewards.
+        """
+        names = tuple(self._portfolio.arms)
+        if set(quotas) != set(names) or any(
+            isinstance(value, bool) or not isinstance(value, int) or value <= 0
+            for value in quotas.values()
+        ):
+            raise ValueError('Expected a positive integer quota for every arm')
+        if block_size <= 0 or self._history or self._portfolio.total_evaluations:
+            raise ValueError('Fixed quotas require a fresh execution and positive block size')
+        used = dict.fromkeys(names, 0)
+
+        def execute(name, warmup=False):
+            amount = min(block_size, quotas[name] - used[name])
+            record = self.run_warmup_block(name, amount)
+            if record.evaluations_used != amount:
+                raise RuntimeError('Arm failed to consume its assigned fixed quota block')
+            used[name] += record.evaluations_used
+            if not warmup:
+                self._history[-1] = replace(record, phase='fixed')
+
+        if neutral_warmup:
+            for name in names:
+                execute(name, warmup=True)
+        while any(used[name] < quotas[name] for name in names):
+            available = [name for name in names if used[name] < quotas[name]]
+            name = min(available, key=lambda arm: used[arm] / quotas[arm])
+            execute(name)
+        return AdaptiveExecutionResult(
+            total_evaluations=self._portfolio.total_evaluations,
+            total_blocks=len(self._history),
+            global_archive=self._portfolio.global_archive,
+            history=tuple(self._history),
+        )
+
+    def run_dynamic_rounds(self, total_budget, block_size, round_size=300, minimum_share=.1):
+        """Reallocate each round from the previous round's gain per real FE.
+
+        The initial round is uniform. Its first block per arm is excluded from
+        scoring, so initializing an empty global archive does not earn credit.
+        Arm order rotates each round; the least completed quota goes first.
+        """
+        from .dynamic_budget import round_shares
+        from .fixed_budget import evaluation_quotas
+
+        names = tuple(self._portfolio.arms)
+        if self._history or self._portfolio.total_evaluations:
+            raise ValueError('Dynamic rounds require a fresh execution')
+        if any(isinstance(value, bool) or not isinstance(value, int) or value <= 0
+               for value in [total_budget, block_size, round_size]):
+            raise ValueError('Budgets and block size must be positive integers')
+        shares = round_shares(dict.fromkeys(names, 0.), minimum_share)
+        consumed, round_index = 0, 0
+        while consumed < total_budget:
+            order = names[round_index % len(names):] + names[:round_index % len(names)]
+            quotas = evaluation_quotas(min(round_size, total_budget-consumed),
+                                       {name:shares[name] for name in order})
+            used = dict.fromkeys(names, 0)
+            scored_fe = dict.fromkeys(names, 0)
+            gains = dict.fromkeys(names, 0.)
+            while any(used[name] < quotas[name] for name in names):
+                available = [name for name in order if used[name] < quotas[name]]
+                name = min(available, key=lambda arm: used[arm]/quotas[arm])
+                amount = min(block_size, quotas[name]-used[name])
+                warmup = round_index == 0 and used[name] == 0
+                record = self.run_warmup_block(name, amount)
+                if record.evaluations_used != amount:
+                    raise RuntimeError('Arm failed to consume its dynamic round quota')
+                self._history[-1] = replace(record, phase='warmup' if warmup else 'dynamic',
+                                            round_index=round_index)
+                used[name] += amount
+                consumed += amount
+                if not warmup:
+                    scored_fe[name] += amount
+                    gains[name] += record.reward
+            rates = {name: gains[name]/scored_fe[name] if scored_fe[name] else 0. for name in names}
+            shares = round_shares(rates, minimum_share)
+            round_index += 1
+        return AdaptiveExecutionResult(total_evaluations=self._portfolio.total_evaluations,
+            total_blocks=len(self._history),global_archive=self._portfolio.global_archive,
+            history=tuple(self._history))
 
     def reset(self) -> None:
         """Reset portfolio, dmab, reward tracker, and execution history."""

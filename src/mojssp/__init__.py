@@ -253,3 +253,5 @@ __all__ = _PAIRING_SYMBOLS + [
 
 
 
+
+from .page_hinkley import PageHinkleyDMABSelector, PageHinkleyAlarmRecord

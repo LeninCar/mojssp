@@ -30,9 +30,11 @@ from scipy import stats
 repo_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(repo_root / "src"))
 
-budget_dir = repo_root / "results" / "expanded_portfolio_phase2" / "budget_diagnostic"
-plots_dir = budget_dir / "plots"
-plots_dir.mkdir(parents=True, exist_ok=True)
+from mojssp.project_paths import HISTORICAL_ROOT, campaign_path
+budget_dir = campaign_path("phase2") / "budget_diagnostic"
+output_dir = None
+plots_dir = None
+
 
 
 def load_datasets() -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, List[Dict[str, Any]]]:
@@ -66,7 +68,7 @@ def analyze_performance_by_budget(runs_df: pd.DataFrame) -> pd.DataFrame:
 
     summary["range"] = summary["max"] - summary["min"]
     print(summary.to_string(index=False))
-    summary.to_csv(budget_dir / "analysis_performance_by_budget.csv", index=False)
+    summary.to_csv(output_dir / "analysis_performance_by_budget.csv", index=False)
     return summary
 
 
@@ -133,7 +135,7 @@ def analyze_paired_differences_by_budget(runs_df: pd.DataFrame) -> pd.DataFrame:
 
     paired_df = pd.DataFrame(paired_records)
     print(paired_df.to_string(index=False))
-    paired_df.to_csv(budget_dir / "analysis_paired_differences_by_budget.csv", index=False)
+    paired_df.to_csv(output_dir / "analysis_paired_differences_by_budget.csv", index=False)
     return paired_df
 
 
@@ -152,7 +154,7 @@ def analyze_allocations_and_differentiation(allocs_df: pd.DataFrame) -> pd.DataF
 
     summary["pct_of_budget"] = summary["mean_evals"] / summary["budget_milestone"] * 100
     print(summary.to_string(index=False))
-    summary.to_csv(budget_dir / "analysis_arm_allocations_by_budget.csv", index=False)
+    summary.to_csv(output_dir / "analysis_arm_allocations_by_budget.csv", index=False)
     return summary
 
 
@@ -193,7 +195,7 @@ def analyze_reward_dynamics_and_zeros(blocks_df: pd.DataFrame) -> pd.DataFrame:
 
     zero_summary["zero_pct"] = zero_summary["zero_blocks"] / zero_summary["total_blocks"] * 100
     print(zero_summary.to_string(index=False))
-    zero_summary.to_csv(budget_dir / "analysis_zero_reward_dynamics.csv", index=False)
+    zero_summary.to_csv(output_dir / "analysis_zero_reward_dynamics.csv", index=False)
     return zero_summary
 
 
@@ -205,12 +207,12 @@ def analyze_by_configuration_and_profile(runs_df: pd.DataFrame) -> Tuple[pd.Data
     cfg_df = runs_df.groupby(["budget", "configuration", "algorithm"])["final_hv"].mean().unstack(level="algorithm")
     print("Mean HV by Configuration and Budget:")
     print(cfg_df.to_string())
-    cfg_df.to_csv(budget_dir / "analysis_by_configuration_and_budget.csv")
+    cfg_df.to_csv(output_dir / "analysis_by_configuration_and_budget.csv")
 
     prof_df = runs_df.groupby(["budget", "profile", "algorithm"])["final_hv"].mean().unstack(level="algorithm")
     print("\nMean HV by Profile and Budget:")
     print(prof_df.to_string())
-    prof_df.to_csv(budget_dir / "analysis_by_profile_and_budget.csv")
+    prof_df.to_csv(output_dir / "analysis_by_profile_and_budget.csv")
 
     return cfg_df, prof_df
 
@@ -357,6 +359,18 @@ def generate_plots(runs_df: pd.DataFrame, checkpoints_df: pd.DataFrame, allocs_d
 
 
 def main() -> None:
+    global output_dir, plots_dir
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', type=Path, required=True)
+    args = parser.parse_args()
+    output_dir = args.output_dir.resolve()
+    if output_dir.exists():
+        parser.error('output directory already exists; choose a new directory')
+    if output_dir.is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside results/historical')
+    plots_dir = output_dir / 'plots'
+    plots_dir.mkdir(parents=True, exist_ok=True)
     runs_df, checkpoints_df, blocks_df, allocs_df, fronts = load_datasets()
     analyze_performance_by_budget(runs_df)
     analyze_paired_differences_by_budget(runs_df)
