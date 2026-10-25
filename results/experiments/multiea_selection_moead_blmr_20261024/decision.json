@@ -1,0 +1,41 @@
+{
+  "means": {
+    "development": {
+      "moead": 0.9629283675367607,
+      "nsga2_individual": 0.9462779695796795,
+      "spea2_individual": 0.9323960163464872,
+      "nsga2_ls_individual": 0.8100575712228811,
+      "mopso_individual": 0.7945204683931334,
+      "explorer_solo": 0.9747346040137356,
+      "passive": 0.9921949316705873,
+      "early_moead_600": 0.9960020919413335,
+      "multiea_own": 0.980065815024668,
+      "multiea_credit": 0.9890948173394382
+    },
+    "transfer": {
+      "moead": 0.9443328590291931,
+      "nsga2_individual": 0.9270265759760684,
+      "spea2_individual": 0.9206441413058741,
+      "nsga2_ls_individual": 0.78368585119803,
+      "mopso_individual": 0.7737174500605359,
+      "explorer_solo": 0.9945804969112332,
+      "passive": 0.9927693314537973,
+      "early_moead_600": 1.0007030857719117,
+      "multiea_own": 0.9769817944239885,
+      "multiea_credit": 0.9798172229341607
+    }
+  },
+  "decision_rule": "A MultiEA variant is adopted only if its five-seed mean HV exceeds explorer_solo and passive on both banks. Among gate-passing methods including early_moead_600, the holdout candidate is the one with the largest minimum advantage over explorer_solo across the two banks.",
+  "adoption_gates": {
+    "multiea_own": false,
+    "multiea_credit": false,
+    "early_moead_600": true
+  },
+  "minimum_margin_over_explorer": {
+    "multiea_own": -0.01759870248724471,
+    "multiea_credit": -0.014763273977072444,
+    "early_moead_600": 0.006122588860678513
+  },
+  "holdout_candidate": "early_moead_600",
+  "individual_controls_reproduced": 6
+}

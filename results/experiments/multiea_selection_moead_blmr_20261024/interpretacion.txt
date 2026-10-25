@@ -1,0 +1,38 @@
+Selección tipo MultiEA para MOEA/D + BLMR v1, cinco semillas
+
+Diseño (Yuen et al., GECCO 2013, adaptado a un archivo compartido)
+Cada brazo tiene una curva contra sus propias FE. Se ajustan rectas sobre los últimos l puntos
+(l = 2..k), se predice en el punto futuro común max(FE del brazo + 50) con piso en el último valor,
+se muestrea una predicción y el ganador corre el siguiente bloque de 50 FE.
+multiea_own: HV del archivo propio del brazo. multiea_credit: ganancia acumulada de HV global
+acreditada al brazo; el primer bloque no acredita.
+La elección de curva y el arranque hasta que la curva cambie (máximo seis bloques) se añadieron
+tras pruebas de humo en tres instancias que mostraban bloqueo, antes de ver resultados del piloto.
+
+Condiciones: 19 instancias, semillas 100 a 500, 3000 FE, población 30, bloques de 50.
+Semillas 100 a 300 de controles reutilizadas; 400 y 500 corridas nuevas; seis controles reproducidos exactamente.
+
+HV medio (medias por instancia, luego instancias con igual peso)
+                  desarrollo  adicional
+explorer_solo       0,97471    0,99464
+passive             0,99222    0,99277
+early_moead_600     0,99605    1,00074
+multiea_own         0,98013    0,97704
+multiea_credit      0,98911    0,97984
+
+Decisión según la regla predeclarada
+Ninguna variante MultiEA pasa: en el banco adicional quedan por debajo de BLMR solo
+(own -0,0176 con intervalo -0,0279 a -0,0063; credit -0,0148 con intervalo -0,0286 a -0,0020).
+early_moead_600 pasa en ambos bancos y es el candidato para el holdout:
+desarrollo +0,0213 sobre BLMR solo (intervalo +0,0117 a +0,0289, 5 de 6 instancias);
+adicional +0,0061 (intervalo -0,0063 a +0,0173, 9 de 13 instancias).
+
+Por qué falla MultiEA aquí
+MultiEA supone algoritmos independientes. Con archivo compartido, la curva del archivo propio
+subestima a BLMR, que mejora el frente común con padres de MOEA/D, y la curva de crédito favorece
+a quien corrió cuando las mejoras eran fáciles. El ganador se lleva todo y se bloquea: MOEA/D recibió
+entre 100 y 2900 FE según la instancia. Es una limitación del supuesto, no sólo de un parámetro.
+
+Alcance
+Ambos bancos ya se habían observado; no es una confirmación independiente.
+La ventaja de early_moead_600 en el banco adicional sigue siendo pequeña y su intervalo incluye cero.

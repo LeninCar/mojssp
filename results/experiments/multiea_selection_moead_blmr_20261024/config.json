@@ -1,0 +1,393 @@
+{
+  "cases": [
+    {
+      "group": "development",
+      "name": "development_00_5x5",
+      "source": "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_00_5x5.dzn",
+      "sha256": "49b93ab9b91d713d68e4677e400d26ecabdf2dea1533b1147333e5780bdf5c4f",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "development",
+      "name": "development_01_10x10",
+      "source": "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_01_10x10.dzn",
+      "sha256": "34339d1fd2ce5625033fb095087e23b49fda947e4c161e315986fd4be18008b3",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "development",
+      "name": "development_02_20x10",
+      "source": "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_02_20x10.dzn",
+      "sha256": "94518ce0625d569f6b0a873e352fb9925f9f20cb0ebc682c53f33b175e27cf82",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "development",
+      "name": "development_03_10x20",
+      "source": "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_03_10x20.dzn",
+      "sha256": "16944e0933e652fc9bcf4d955414df7ef2c3c6d06d40d93087090a12a767305d",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "development",
+      "name": "development_04_20x20",
+      "source": "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_04_20x20.dzn",
+      "sha256": "2585e398e2aa40e6497f2129fae0741feb9796cf079274d2dd460238420b4fb8",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "development",
+      "name": "development_05_30x20",
+      "source": "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_05_30x20.dzn",
+      "sha256": "14f2d23b122df3a04b69995de33b9d2fab64733b4a77e06a1d6efe6ea3b0d39b",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "base_01_5x10",
+      "source": "data\\generated\\f86_3\\base\\base_01_5x10.dzn",
+      "sha256": "54b94aaca3fa2a7b44c17754acd4a69d538bfd1c23a554b5829bb52dacfd6235",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "base_02_10x10",
+      "source": "data\\generated\\f86_3\\base\\base_02_10x10.dzn",
+      "sha256": "09c4074d69219b45e6d441ddd36e08d81d396ef23ec73944b30110ad49555370",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "base_03_15x10",
+      "source": "data\\generated\\f86_3\\base\\base_03_15x10.dzn",
+      "sha256": "681f11856a515fb480226bddd566ef4876b858a52a6d52a2caca8db47ea73382",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "base_04_20x10",
+      "source": "data\\generated\\f86_3\\base\\base_04_20x10.dzn",
+      "sha256": "e255cd84287a0b0d378285d8a815e079610308302a38cf45d95da297a88bfe23",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "base_05_20x20",
+      "source": "data\\generated\\f86_3\\base\\base_05_20x20.dzn",
+      "sha256": "f358542c0b38fddeffb66f51f31e302576ca9d5d8c26a284feecdba3ce056795",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "int_btnk_load_20x10",
+      "source": "data\\generated\\f86_3\\interactions\\int_btnk_load_20x10.dzn",
+      "sha256": "4712644905076406d60150ba42a28d04218a53e8e1a3eef5c2a74c4ee6d55e61",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "int_dur_btnk_10x10",
+      "source": "data\\generated\\f86_3\\interactions\\int_dur_btnk_10x10.dzn",
+      "sha256": "75a87e557eabf36b226d0ef2c25d09e09bb2aa7ae4fb317c0b5f05bc829e4c85",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "int_dur_nrg_10x10",
+      "source": "data\\generated\\f86_3\\interactions\\int_dur_nrg_10x10.dzn",
+      "sha256": "571be546af26a70875d111f7bea85527d7e2d19ffaa6563b275f3466f3862552",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "int_nrg_load_20x10",
+      "source": "data\\generated\\f86_3\\interactions\\int_nrg_load_20x10.dzn",
+      "sha256": "a6c8fb2d390cf912d09a2fdd14245fe496412253de1100748f058b4b57959fd0",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "int_rel_btnk_10x10",
+      "source": "data\\generated\\f86_3\\interactions\\int_rel_btnk_10x10.dzn",
+      "sha256": "b2d3debd5aa77d68d879e4628ad84ad0cd8e6f70ba0b8dd7d2c9fedb4c12fa4c",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "int_tard_btnk_10x10",
+      "source": "data\\generated\\f86_3\\interactions\\int_tard_btnk_10x10.dzn",
+      "sha256": "1e00d4212e05803fb31018acbd2e8bf8fa0a16a2090dd6f5b40d22b7dd4beeff",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "int_tard_load_20x10",
+      "source": "data\\generated\\f86_3\\interactions\\int_tard_load_20x10.dzn",
+      "sha256": "9bdd5b4bd064fbd62bffe59120b28d1246ddb05da47289bf0343413e11343cf6",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "group": "transfer",
+      "name": "int_tard_nrg_10x10",
+      "source": "data\\generated\\f86_3\\interactions\\int_tard_nrg_10x10.dzn",
+      "sha256": "b5ecd5eecf4c6b8515df9de8e8dc2c1f8bcff0b8c70afb609ef8e18ad42f50d1",
+      "seeds": [
+        100,
+        200,
+        300
+      ]
+    }
+  ],
+  "seeds": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "new_seeds": [
+    400,
+    500
+  ],
+  "budget": 3000,
+  "population_size": 30,
+  "block_size": 50,
+  "arms": [
+    "MOEA/D",
+    "RegionExplorer"
+  ],
+  "pairs": {
+    "passive": [
+      "dynamic",
+      null
+    ],
+    "early_moead_600": [
+      "dynamic",
+      {
+        "exclusive_arm": "RegionExplorer",
+        "exclusive_after": 600
+      }
+    ],
+    "multiea_own": [
+      "multiea",
+      null
+    ],
+    "multiea_credit": [
+      "multiea_credit",
+      null
+    ]
+  },
+  "controls": [
+    "moead",
+    "nsga2_individual",
+    "spea2_individual",
+    "nsga2_ls_individual",
+    "mopso_individual",
+    "explorer_solo",
+    "passive",
+    "early_moead_600"
+  ],
+  "candidates": [
+    "multiea_own",
+    "multiea_credit"
+  ],
+  "decision_rule": "A MultiEA variant is adopted only if its five-seed mean HV exceeds explorer_solo and passive on both banks. Among gate-passing methods including early_moead_600, the holdout candidate is the one with the largest minimum advantage over explorer_solo across the two banks.",
+  "fixed_before_running": true,
+  "design": {
+    "predictor": "Least-squares lines on the last l=2..k curve points, floored at the latest value, one prediction sampled with equal weight (MultiEA, Yuen et al. GECCO 2013)",
+    "target": "Nearest common future point max(arm FE + 50)",
+    "selection": "Winner takes the next 50 FE block",
+    "initialization": "Two blocks per arm, continued until the curve changes, at most six blocks",
+    "curves": {
+      "multiea_own": "HV of the arm own archive vs its FE",
+      "multiea_credit": "Cumulative global HV gain credited to the arm vs its FE; first block earns nothing"
+    }
+  },
+  "development_note": "Curve choice and change-based initialization were added after smoke runs on three instances showed lock-in; no pilot results were seen before fixing the design.",
+  "source_sha256": {
+    "src/mojssp/__init__.py": "938c9a287ec41c4faa90a03e0e0e9fa3f71bae547c6f118c4644902f186b8acd",
+    "src/mojssp/algorithm_contract.py": "9b29b0eef1e6257708943ab06fac7f75b3ca70841a635dd65dd7d628edb6883f",
+    "src/mojssp/archive_injection.py": "0b453e494296617c0d9d80f74c6b9e6601618065478e5b4cb0e8ddae0cc6cf14",
+    "src/mojssp/arms.py": "3d8ec0941ff5ca2ff17aefb0f40a1de9eeb7484c5ac324e3bcce361b3eca6fe0",
+    "src/mojssp/change_detection.py": "4890f2d05b9a4b500e622c1760f8a08be59e146cf69592d54e6476cf5f8d0028",
+    "src/mojssp/contribution_report.py": "8d44ffc40a8a5032247761b7750c291f18c4eca3509db984b65290a373d7fb94",
+    "src/mojssp/cooperation.py": "961bd8879abdae23b112052d85c8036aa089c476359f5d5bad3c51485389c6c2",
+    "src/mojssp/critical_path.py": "2cd7c97a64acbdd8348d6e39860536e2f70cf884f8e3dab305b45a9805f2dcd8",
+    "src/mojssp/curve_prediction.py": "43248e5288bb2bc3a345182546480c0418bd6277fea1739f58a3854b8b1c51ba",
+    "src/mojssp/decoder.py": "99b53d508951b27718e9ed3c96c8d3adfd159d69b423494837ead6aa48097914",
+    "src/mojssp/dmab.py": "011e2b346f11123ca4ec5b2948021b1f8ade970afe320a3e627c193a0b0f5099",
+    "src/mojssp/dominance.py": "0f6e7c18caa8742501ae2cca1bd264b7ba1abe714dec0eaa11470574b4c59508",
+    "src/mojssp/dynamic_budget.py": "651f9168e724869d7c4ae523d8e8d5f78555909f7ffa264f380bfed323e2d37b",
+    "src/mojssp/evaluator.py": "6faefc950cd0f479bdadaf792401614562ec8a421fd2b95d7f689289c2d88591",
+    "src/mojssp/fixed_budget.py": "f888eadeaef651e33f353dd2ba6145089ac5cb7564ce46f7963aa5fc71368fc4",
+    "src/mojssp/hypervolume.py": "29eb947ba639878ad9fe97ab33c93c82bfe504fef94e7652fee4fcdab8b5e7fc",
+    "src/mojssp/igd.py": "7261db82f3dc23f358f6c3e53399f6ee56cc14938b25315c481e6037fee81f30",
+    "src/mojssp/instance.py": "be5b457d0e6f2907a47e887cafe865be594e1c3edd47cad99a52098dc44f1982",
+    "src/mojssp/io.py": "baa123f152c4fdc46ee9c05b58d6e54e4946718b5912f64f8b6eb50aba807fca",
+    "src/mojssp/job.py": "bcafe025eb733ed20630e01038a0c29250843fb445e9dc67f2298e9dc10e8ea7",
+    "src/mojssp/local_search.py": "2ada1b9e93d5decb3feef6458af1828f156c27866f6a6201148ce16200be8141",
+    "src/mojssp/mode.py": "71809460b27fa73fa7c974b20fcec716fa8ed8d93c96ba8479719ef97d1337cd",
+    "src/mojssp/moead.py": "2b255aa71044544e43ea38b56f8afb40562e18d3a59ed0fb401382cdfc5981fa",
+    "src/mojssp/mopso.py": "71be976773d2aea9ac7d563eed6bd4b983d79cfa416cd268471c55903562af50",
+    "src/mojssp/normalization.py": "a8ee007482647562f4180c37bcc5e7b1d87f1bcbd634eff5d125216814812425",
+    "src/mojssp/nsga2.py": "ab972b335676e57e68e23c1a4882bf24b3b1bc83f46263fe27524323eb6290c2",
+    "src/mojssp/nsga2_ls.py": "48be8d1184bd0922310a6329662d27af7293b1f7e8caf86b783ef8bd3cb93729",
+    "src/mojssp/operation.py": "2375872b7c960a903b2f939276ba9167618c94463a6f2c79c7541dfe759510b5",
+    "src/mojssp/orchestrator.py": "69652cb4eeccb9fcecc8ab0f2832f95af2539a662d186354aedd83818950f629",
+    "src/mojssp/page_hinkley.py": "e0fa8323dec4c495c36a71c7af7562a56f3a7e79a12f3ec5e28f54524c5d712d",
+    "src/mojssp/pareto_archive.py": "88d648cfa44bf5fbe90bab0aa6be79b556b9776717d83d6529326b2c5a5e6318",
+    "src/mojssp/portfolio.py": "57ffd3bb86363f881ca8f517fc0b38409600f24e73f923f6fb8642af3e422bf0",
+    "src/mojssp/project_paths.py": "64b86ed73fae9d6ad5fbfa261d7123b935919292ff538a073d7380a01fd3c0fb",
+    "src/mojssp/provenance.py": "25785185fa23a80955305c8c2311f4d3afbb64578dea531b33d67bfc88462053",
+    "src/mojssp/regional_explorer.py": "9bde2fc3919021ea7d9ca9b17f70b938452ea4fec7725b987f3337926317b141",
+    "src/mojssp/regional_injection.py": "c8a9689fb73b65918c990feeec3b5a2e2b776918c2e07cdc1bccd3f489de84d5",
+    "src/mojssp/regional_portfolio.py": "11a6cb08e34be1d1b918eb5ade8b3779e3be8d398fcb01c5302cc37e830ed2be",
+    "src/mojssp/reward.py": "92df551224b1a7bdd9b2ffbb3f138e8944705820be3a65cc32923f6e26be6785",
+    "src/mojssp/runner.py": "375ad8f7d60933ec2a2c60653997e1f869d5da27d41abb9d50d13072e0efc6f4",
+    "src/mojssp/schedule.py": "d172a77a5e3e887f0dacb93104ce2cbb2ae9bede3edfa77929aca1e4e00a95b8",
+    "src/mojssp/schedule_validator.py": "5ebccb1a86e571e8e007e21f14cea8e255889e113072344a0c211faccde81cd4",
+    "src/mojssp/selectors.py": "a1d9e494ac4e3bc3da533574ffedf4a3008058032c058690f64b50c9b26ce62b",
+    "src/mojssp/shared_credit.py": "bcccef5cc20630da490a0982d347ef57e845230976351a995465bc319d86e9ba",
+    "src/mojssp/solution.py": "52df758611f9f4ee4c58f72b1b975948223a997fac021334863048185e475a45",
+    "src/mojssp/spea2.py": "99a25b29ccb35b64cdefd6828c1f5de80aa75dbf1026629b951d49f9d7aa506e",
+    "src/mojssp/subproblem_injection.py": "23164007b322128b4a43f24d5b335597237ba0792daac152b63dd630a4c1b4d0",
+    "src/mojssp/subproblem_replay.py": "5a35c4d187130c8df1281c5bb4615bf7e50d61de48886d49b97886e809df445e",
+    "src/mojssp/validator.py": "13778e573b0a19df347c2802bb7cb7d56eb8c290d654f46ac611ee0ea175b7d6",
+    "scripts/analyze_generated_instances.py": "28b4fd8fbdd55b747838d19e736ee5f913498c80f440dc5d38b606b16f042058",
+    "scripts/analyze_instance_diversity.py": "7850a6e4c87c96b5e9002f91941b33141a9d5ec9e49f6edb103342c8c6f4d9d3",
+    "scripts/analyze_phase2_budget_diagnostic.py": "6cfdf290279c9aaaff5157d1ba429fc9a53677dce9c963b1fb0f6d2e79889681",
+    "scripts/analyze_phase2_pilot.py": "142176417deea5bbb240be3e62f06257bd3aa3bcaa2975bf254cc53b0ba3af7b",
+    "scripts/analyze_pilot_results.py": "1a1f3b2bc1d28619a119d4895d58c338dfc197b58bec5fc6cd8b3cdbe7dd9fbd",
+    "scripts/analyze_portfolio_loop.py": "a3048ddab722c80d43180d6a17fb0efd661fed99765ccd6d72b32921095e864d",
+    "scripts/audit_f864_diversity.py": "2ce8869fee3e0680d0c52d379ed890373a86129248a3fe737d687cd04f22f500",
+    "scripts/audit_phase2_closure.py": "aa1e962813a5167e6811275d3a850c13e2c823a048635dc8356be4afadf6315d",
+    "scripts/audit_portfolio_loop.py": "facab2433f0fa80944db81a82777f65fd6a3b196ae1264f6b2a8fce7972141d6",
+    "scripts/compare_budget_signals.py": "adeaaebbd68fd5e706bfe37d595db25ad80d2b6d10add1f44f86f16f7fab7d25",
+    "scripts/demo_adaptive_portfolio.py": "da6549a484d9a8136a5eb9d7a0649f709e8d7416bbeed6a3551d80d11378bd18",
+    "scripts/demo_nsga2.py": "bb4b9f58691fc6dcc1ce2a9e9ff6ea53de352d033dbf3c83784e8857e15ab367",
+    "scripts/derive_budget_weights.py": "4fdddcb4b5a264d7656bd724469c21109eca93d52d6cfefd172b9bd4bb943dff",
+    "scripts/diagnose_dmab_sensitivity.py": "70e5d41daa51f4c2d86acf3b39a1ab959e0cd27d474e8232cbf327283571f0c8",
+    "scripts/diagnose_dmab_window_horizon.py": "ea46aa34857442df45f41472a4dbb55ba382fcc644e3c26ba0d33478e69411fb",
+    "scripts/generate_analysis_plots.py": "b3c1739abfcc2ea5899367037b35a29a2ecb18fd7f87cd02e4fe01ff71f574ff",
+    "scripts/generate_mojssp_instances.py": "ba8e7826415fbb11c93b55dfc0afa62531a995cdd8867cfce241d93e6ec63c75",
+    "scripts/pilot_analysis.py": "2046e443b3565e180ce23fc48f0ae85858bd3860109d1067ccc9f7d380941965",
+    "scripts/plot_portfolio_loop.py": "f8f02ce2a7cd109586c66fb8725deb388bdcfaaa589c35633a64b3562ce9a2ba",
+    "scripts/report_portfolio_contribution.py": "085978ef847053831ef8d586616f40d21c4bc919b7c3bc39363065607e5b91a5",
+    "scripts/report_portfolio_loop.py": "9e580f550f386d8249381cb5186dd72f5542d5fa756f92afc028e475549fb331",
+    "scripts/reproduce_portfolio_baseline.py": "2001ef883668fe4569969161adc5b72d710185d61b4f8517b9a07d0e3a5f053e",
+    "scripts/run_allocation_variants_pilot.py": "da47e140abafc168977755cf93191f1e9ef0faea71f00c2e0b833ac036c8b503",
+    "scripts/run_archive_injection_pilot.py": "54ad4dbc20d8764cc0d7be03d62b61bce2bfa0735d710b7291108f15757c7e71",
+    "scripts/run_blmr_injection_pilot.py": "bdac1daab006290cda99ab845b9245e06abafbbccd1d38ce73aadf2332f86fc2",
+    "scripts/run_calibration_f83.py": "8a53610008a0d61c129b0b465985d13faf662d2fad3257baf004b55efc464769",
+    "scripts/run_composition_pilot.py": "4ae6d98466afa0f189def06a291c42d2d2e5bcf8966ec5657418fba22bfec5c3",
+    "scripts/run_dynamic_pilot.py": "590d102d864fcdb2c67780b1b774ebd71227d64930748819ec07f719f8ea7b1f",
+    "scripts/run_experiment.py": "ad4664df2cad47ba8bcfe88a0e4d431411b88e833d5c15b61b5cca5b724c8f46",
+    "scripts/run_f85_experiment.py": "c99acb36047261090bb655ca7727462518e2bf397f3393d7a091d3bf256839df",
+    "scripts/run_f86_experiment.py": "e7868123eac5da9c6ab7542b0598dd9c6c96ff9a60ea79936e8f41b24563bac8",
+    "scripts/run_instance.py": "ddb10b9e2a9961ced61492a61bb207482ca481efc90c296a8f5028c7a029b14e",
+    "scripts/run_instance_probe_selection.py": "64421930f0beac93365da1951d3cb660d8d4de7a4052620d2a0483f42f47551c",
+    "scripts/run_instance_selection.py": "5f0788b59f1d869a33c4346f43fe2540d054f6972ce34a315de588f6ffcd5a1a",
+    "scripts/run_multiea_pilot.py": "e8a38305668f9833329605ecbb2d83b2afe57e05ff742855de99d8f9d651b929",
+    "scripts/run_pair_pilot.py": "6e97692949cd8d1fe884f3091478b48c6ff7b58a64004904680f2b55e6751c44",
+    "scripts/run_phase2_budget_diagnostic.py": "6b90e38339ce32bac44ea5d0a3e581f0405233a4518eed6c95fd658cd039c42b",
+    "scripts/run_phase2_pilot.py": "f792fd8d2af0b2b53e44e80c543182c8919f4f908250f95e92a1a2e67f820ab1",
+    "scripts/run_pilot_125_experiments.py": "664e495e65db92b3135fb3d475d317221b2b0152e2b81486feba11d4192afaae",
+    "scripts/run_portfolio_campaign.py": "7b92198c136dddb3e5045614be25016a2fdd167c91227a945d6fa4f1b5c48666",
+    "scripts/run_portfolio_loop.py": "6b9d502fd21d73361a3563b2ec3c3514de89d914856729d787a99712fbbdf669",
+    "scripts/run_regional_budget_pilot.py": "e50fec22e8e229668e364241df5595b0f946659edd25bea570b1e61f9c08cc9c",
+    "scripts/run_regional_composition_comparison.py": "69ffad59fc2118c63a39643c59a11ef2220be872c4982ec423f73af167f2f441",
+    "scripts/run_regional_cooperation_pilot.py": "0a6961a12e498ca9da3a9b26063755d58e42a16b8d858eab72d395bd1da46dec",
+    "scripts/run_regional_experiment.py": "316e0c4122e40fbb01f93e0c97acc6a010587e5d093cf9b53d1ef4cab544e2ce",
+    "scripts/run_regional_explorer_controls.py": "7ea9bb12f202b5279514407eddd2b8def17d7e46fa4560700a24c19eee3b75cc",
+    "scripts/run_regional_policy_comparison.py": "f9f26106d3a0590e0ea4b66b5526a8cc2d6daafefcab3c3207404e17ecc9439d",
+    "scripts/run_regional_policy_pilot.py": "a89112016cbc888f431a66fa935fff3d3f77fcde42187dbb0c7b1baee2ef0393",
+    "scripts/run_regional_reserve_pilot.py": "d699f44502bac02ce117576f3df56305c412aead18950175e4493036e76045c8",
+    "scripts/run_shared_credit_pilot.py": "137ab45c52bf35d25e4c28daa448d87fa3225fc177bd0027ece5a8e3ad89a973",
+    "scripts/run_stagnation_pilot.py": "f8b37d93e07fe246c30a76963603e6babf3acfc553496b02adb0c09dcb79b722",
+    "scripts/run_subproblem_injection_pilot.py": "f6bf4d2159b7eaebe3a3c023d9a5f3c3aee5478ee280ef8dbfadd2de7cee769a",
+    "scripts/run_subproblem_replay_pilot.py": "c4a8505c43f471462e954a722d8938825c8dbdf7fe6f36e7f00af64e43ced0cf",
+    "scripts/run_weighted_pilot.py": "7458076df136d32bf05659ca61142f3e120cb16e564e0a80f5dac5300ea9e50e",
+    "scripts/smoke_multi_instance.py": "f0637e513c973f100a3d245daf6294f2a1ae0d4ad63f692afeeb533ddf2cdcea",
+    "scripts/smoke_test_generated_instances.py": "109ad79230c078e26b32ab9e64994a77e8ac183b71b35278539f840492cd743c",
+    "scripts/validate_neutral_warmup.py": "9599a6cb4ffd2cbf9c7667472a64e1866d624b995aa439c6133810285c136beb",
+    "scripts/validate_portfolio_loop.py": "2884270236cd7481ea80d54f025c8e880d8d219703ccb73ded06366f1c6fe85e",
+    "scripts/validate_regional_expansion.py": "b32caac46315eee0c995edd54b3acdff43ae461f5d70ec37ebbf555f2b723266",
+    "scripts/verify_portfolio_closure.py": "184da846b35c7c9dbe31aa6b5d43fbaf4a923b31607267aeb486f17cdaf6d9a9"
+  },
+  "reference": "results/experiments/blmr_to_moead_dynamic_injection_20261024",
+  "allocation_reference": "results/experiments/allocation_variants_moead_blmr_20261024",
+  "scope": "Exploratory: both banks were observed before; the untouched holdout is reserved",
+  "timings": "Concurrent execution and reused controls; not a fixed-wall-time comparison"
+}
