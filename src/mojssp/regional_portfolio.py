@@ -24,6 +24,8 @@ POLICY_PROFILES = {
     'scaled':dict(window_size=10,exploration_factor=.07),
     'ph':dict(exploration_factor=.07,delta=.001,threshold=.05,min_instances=5),
     'dynamic':dict(round_size=300,minimum_share=.1),
+    'multiea':dict(initial_blocks=2,curve='own'),
+    'multiea_credit':dict(initial_blocks=2,curve='credit'),
 }
 
 
@@ -148,8 +150,8 @@ def run_regional_policy_experiment(instance,seed,selected_arms,policy='scaled',g
         profile['minimum_share'] = minimum_share
     if dynamic_options:
         profile.update(dynamic_options)
-    selector = make_selector('uniform' if policy=='dynamic' else policy,names,seed=seed,
-                             **({} if policy=='dynamic' else profile))
+    selector = make_selector('uniform' if policy in ('dynamic','multiea','multiea_credit') else policy,names,seed=seed,
+                             **({} if policy in ('dynamic','multiea','multiea_credit') else profile))
     tracker = HypervolumeRewardTracker(norm)
     orchestrator = AdaptivePortfolioOrchestrator(portfolio,selector,tracker)
     started = time.perf_counter()
@@ -157,6 +159,9 @@ def run_regional_policy_experiment(instance,seed,selected_arms,policy='scaled',g
         if profile['round_size']//len(names)<block_size:
             raise ValueError('First dynamic round must cover all initialization blocks')
         execution = orchestrator.run_dynamic_rounds(budget,block_size,**profile)
+    elif policy in ('multiea','multiea_credit'):
+        execution = orchestrator.run_predicted_winner(budget,block_size,norm,
+                                                      seed=(seed*10007+101)%(2**31-1),**profile)
     else:
         execution = orchestrator.run(budget,block_size,neutral_warmup=True)
     elapsed = time.perf_counter()-started
@@ -175,4 +180,5 @@ def run_regional_policy_experiment(instance,seed,selected_arms,policy='scaled',g
                        for e in portfolio.global_archive.entries],
         region_trace=arms['RegionExplorer'].trace if 'RegionExplorer' in arms else [],
         guidance_trace=[t for guide in portfolio.guides.values() for t in guide.trace],
-        guidance_events=[e for guide in portfolio.guides.values() for e in guide.events],completed=True)
+        guidance_events=[e for guide in portfolio.guides.values() for e in guide.events],
+        prediction_trace=getattr(orchestrator,'prediction_trace',[]),completed=True)

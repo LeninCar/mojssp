@@ -273,6 +273,7 @@ class AdaptivePortfolioOrchestrator:
         block_result: PortfolioBlockResult = self._portfolio.run_arm(
             arm_name, budget=block_budget
         )
+        self._last_block_result = block_result
         fe_after = self._portfolio.total_evaluations
         reward = self._reward_tracker.compute_reward(self._portfolio.global_archive)
         hv_after = self._reward_tracker.current_hv
@@ -474,6 +475,73 @@ class AdaptivePortfolioOrchestrator:
             rates = {name: gains[name]/scored_fe[name] if scored_fe[name] else 0. for name in names}
             shares = round_shares(rates, minimum_share, share_power)
             round_index += 1
+        return AdaptiveExecutionResult(total_evaluations=self._portfolio.total_evaluations,
+            total_blocks=len(self._history),global_archive=self._portfolio.global_archive,
+            history=tuple(self._history))
+
+    def run_predicted_winner(self, total_budget, block_size, normalizer, initial_blocks=2, seed=0,
+                             curve='own', max_initial_blocks=6):
+        """Winner-take-all selection by predicted own-archive HV at a common future FE.
+
+        With curve='own', an arm's curve is the HV of its own archive against the
+        FE it has used; with curve='credit' it is the cumulative global HV gain
+        credited to its blocks, the first initialization block earning nothing.
+        After initial_blocks blocks per arm, every block goes to the arm whose
+        sampled line prediction at max(arm FE + block_size) is highest (MultiEA).
+        As in MultiEA's first step, initialization continues for each arm until
+        its curve changes, up to max_initial_blocks blocks per arm.
+        Predictions are traced in prediction_trace; no learning statistics are fed.
+        """
+        import random
+        from .curve_prediction import sampled_prediction
+        from .hypervolume import compute_archive_hypervolume
+
+        names = tuple(self._portfolio.arms)
+        if self._history or self._portfolio.total_evaluations:
+            raise ValueError('Predicted selection requires a fresh execution')
+        if any(isinstance(value, bool) or not isinstance(value, int) or value <= 0
+               for value in [total_budget, block_size, initial_blocks]):
+            raise ValueError('Budgets, block size and initial blocks must be positive integers')
+        if curve not in ('own', 'credit'):
+            raise ValueError('Curve must be own or credit')
+        if (initial_blocks < 2 or max_initial_blocks < initial_blocks
+                or total_budget < initial_blocks*block_size*len(names)):
+            raise ValueError('Each arm needs two initial blocks to fit a line')
+        rng = random.Random(seed)
+        curves = {name: [] for name in names}
+        used = dict.fromkeys(names, 0)
+        credit = dict.fromkeys(names, 0.)
+        self.prediction_trace = []
+
+        def execute(name, phase):
+            amount = min(block_size, total_budget-self._portfolio.total_evaluations)
+            record = self.run_warmup_block(name, amount)
+            if record.evaluations_used != amount:
+                raise RuntimeError('Arm failed to consume its predicted block')
+            self._history[-1] = replace(record, phase=phase)
+            used[name] += amount
+            if curve == 'own':
+                value = compute_archive_hypervolume(self._last_block_result.arm_result.solutions, normalizer)
+            else:
+                credit[name] += 0. if phase == 'warmup' else record.reward
+                value = credit[name]
+            curves[name].append((used[name], value))
+
+        for index in range(max_initial_blocks):
+            pending = [name for name in names if index < initial_blocks or
+                       curves[name][-1][1] <= curves[name][0][1]]
+            if not pending:
+                break
+            for name in pending:
+                if self._portfolio.total_evaluations < total_budget:
+                    execute(name, 'warmup' if index == 0 else 'probe')
+        while self._portfolio.total_evaluations < total_budget:
+            target = max(used[name] + block_size for name in names)
+            draws = {name: sampled_prediction(curves[name], target, rng)[0] for name in names}
+            chosen = max(names, key=lambda name: draws[name])
+            self.prediction_trace.append(dict(fe_before=self._portfolio.total_evaluations,
+                target=target, predictions=draws, chosen=chosen))
+            execute(chosen, 'predicted')
         return AdaptiveExecutionResult(total_evaluations=self._portfolio.total_evaluations,
             total_blocks=len(self._history),global_archive=self._portfolio.global_archive,
             history=tuple(self._history))

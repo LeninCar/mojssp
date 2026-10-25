@@ -21,7 +21,7 @@ from mojssp.normalization import ObjectiveNormalizer,compute_instance_bounds
 from mojssp.hypervolume import compute_archive_hypervolume
 from mojssp.regional_portfolio import POLICY_PROFILES,run_regional_policy_experiment
 
-POLICIES=tuple(POLICY_PROFILES)
+POLICIES=('uniform','sw_ucb','scaled','ph','dynamic')
 CONTROLS=('spea2_individual','explorer_solo','mopso_individual')
 
 def native_individual(instance,seed,name,budget=3000):
