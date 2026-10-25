@@ -1,0 +1,13 @@
+{
+  "runs": 144,
+  "search_fe": 432000,
+  "extra_audit_fe": 10504,
+  "validated_genotypes": 10504,
+  "selector_decisions_replayed": 4176,
+  "dynamic_rounds_recomputed": 180,
+  "all_budgets_exact": true,
+  "all_fronts_valid": true,
+  "all_hv_independent": true,
+  "all_auc_recomputed": true,
+  "all_source_hashes_unchanged": true
+}

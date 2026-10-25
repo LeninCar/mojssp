@@ -1,0 +1,16 @@
+{
+  "records": 162,
+  "new_runs": 18,
+  "new_search_fe": 54000,
+  "reused_runs": 144,
+  "saved_genotypes_validated": 10814,
+  "extra_audit_fe": 10814,
+  "reused_rows_without_genotypes": 36,
+  "validated_compatible_parent_uses": 1954,
+  "dynamic_rounds_recomputed": 180,
+  "all_target_subproblem_indices_verified": true,
+  "all_donor_scores_independently_recomputed": true,
+  "all_budgets_exact": true,
+  "all_hv_independent": true,
+  "all_available_schedules_valid": true
+}

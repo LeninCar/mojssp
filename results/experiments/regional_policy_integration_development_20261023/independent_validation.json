@@ -1,0 +1,14 @@
+{
+  "runs": 234,
+  "search_fe": 702000,
+  "all_exact_fe": true,
+  "all_hv_independent": true,
+  "all_auc_recomputed": true,
+  "all_selector_decisions_replayed": true,
+  "all_dynamic_round_quotas_recomputed": true,
+  "all_guidance_parents_available_and_valid": true,
+  "validated_saved_genotypes": 17680,
+  "extra_audit_fe": 17680,
+  "parent_injections": 1999,
+  "source_hashes_unchanged": true
+}

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "new_runs": 150,
+  "reused_runs": 36,
+  "new_search_fe": 450000,
+  "training_cases": 18,
+  "evaluation_cases": 13,
+  "no_duplicate_instance_bytes": true,
+  "primary_model": "constant_best",
+  "selection_recreated_from_training_only": true,
+  "route_file_predates_all_evaluation_runs": true,
+  "all_final_hv_and_auc_recomputed": true,
+  "summary_means_verified": true,
+  "moead_search_evaluations": 0
+}

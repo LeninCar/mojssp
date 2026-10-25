@@ -1,0 +1,6 @@
+{
+  "passed": 549,
+  "subtests_passed": 174,
+  "seconds": 74.57,
+  "command": ".venv/Scripts/python.exe -m pytest -q"
+}

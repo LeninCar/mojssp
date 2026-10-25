@@ -1,0 +1,8 @@
+{
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "all_quotas_exact": true,
+  "all_final_hv_recomputed": true,
+  "all_local_search_fe_included": true,
+  "reused_controls": 54
+}

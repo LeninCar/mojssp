@@ -1,0 +1,32 @@
+Comparación de cinco políticas con SPEA2 y BLMR
+
+Desarrollo: seis instancias conocidas, semillas 100 200 300; 3000 FE, población 30, bloques 50.
+144 corridas nuevas, 432000 FE de búsqueda; auditoría separada 10504 FE.
+Guía de padres nativos desactivada. BLMR v1 random sin cambios.
+MOPSO individual incluido por defecto con población 30 y desplazamiento de semilla 97.
+
+HV medio por instancia y luego entre instancias:
+spea2_regional_dynamic: 0.99426593
+spea2_regional_scaled: 0.98526624
+explorer_solo: 0.97388622
+spea2_regional_sw_ucb: 0.97146604
+spea2_regional_uniform: 0.96224321
+spea2_regional_ph: 0.95368005
+spea2_individual: 0.93256440
+mopso_individual: 0.79352015
+
+Interpretación
+Estos resultados son desarrollo. Las políticas se comparan sobre casos previamente estudiados.
+Los IC bootstrap son descriptivos por instancia; no se trataron las semillas como instancias independientes.
+No se usa esta campaña para afirmar superioridad en un test final independiente.
+La transferencia anterior de la pareja dinámica sigue siendo un resultado negativo frente a BLMR.
+No se ha añadido MOPSO al portafolio regional: aquí se mide como control individual.
+Uniforme, escalado y dinámico se repitieron para comprobar su trayectoria frente a la campaña anterior.
+Los tiempos concurrentes no sirven como comparación de presupuesto temporal fijo.
+
+Reproducción
+.venv/Scripts/python.exe scripts/run_regional_policy_comparison.py --output-dir results/experiments/<nuevo-nombre> --workers 4
+La salida debe ser nueva. No se sobrescriben corridas existentes.
+
+Pruebas
+533 pruebas y 174 subpruebas. Se añadió pythonpath=src scripts a pytest.ini para ejecutar sin PYTHONPATH externo.

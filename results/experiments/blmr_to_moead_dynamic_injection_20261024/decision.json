@@ -1,0 +1,191 @@
+{
+  "means": {
+    "development": {
+      "moead": 0.9643833778747756,
+      "nsga2_individual": 0.9447045948602452,
+      "spea2_individual": 0.9325643956049504,
+      "nsga2_ls_individual": 0.8117818417618455,
+      "mopso_individual": 0.7935201517873246,
+      "explorer_solo": 0.9738862165984857,
+      "passive": 0.9913420813648001,
+      "active": 0.9896201885240776
+    },
+    "transfer": {
+      "moead": 0.9442670234070771,
+      "nsga2_individual": 0.9264867489780089,
+      "spea2_individual": 0.9197113283773434,
+      "nsga2_ls_individual": 0.7833281456562493,
+      "mopso_individual": 0.7721084093488566,
+      "explorer_solo": 0.9978557222121961,
+      "passive": 0.9938849711868669,
+      "active": 0.9791078420044107
+    }
+  },
+  "comparisons": [
+    {
+      "group": "development",
+      "control": "passive",
+      "mean_difference": -0.0017218928407222351,
+      "bootstrap95_low": -0.020146947483319817,
+      "bootstrap95_high": 0.010100784601113078,
+      "wins": 5,
+      "ties": 0,
+      "losses": 1
+    },
+    {
+      "group": "development",
+      "control": "moead",
+      "mean_difference": 0.02523681064930222,
+      "bootstrap95_low": 0.002660299607085507,
+      "bootstrap95_high": 0.04876805193496072,
+      "wins": 4,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "group": "development",
+      "control": "nsga2_individual",
+      "mean_difference": 0.04491559366383254,
+      "bootstrap95_low": 0.02120839184799045,
+      "bootstrap95_high": 0.07429885012868702,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "development",
+      "control": "spea2_individual",
+      "mean_difference": 0.0570557929191271,
+      "bootstrap95_low": 0.035317540274084604,
+      "bootstrap95_high": 0.08159325955336783,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "development",
+      "control": "nsga2_ls_individual",
+      "mean_difference": 0.17783834676223223,
+      "bootstrap95_low": 0.12317156172548388,
+      "bootstrap95_high": 0.2341815956420891,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "development",
+      "control": "mopso_individual",
+      "mean_difference": 0.19610003673675314,
+      "bootstrap95_low": 0.1396985176872926,
+      "bootstrap95_high": 0.2563631869586135,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "development",
+      "control": "explorer_solo",
+      "mean_difference": 0.015733971925591894,
+      "bootstrap95_low": -0.002137290357111107,
+      "bootstrap95_high": 0.03328581650988192,
+      "wins": 4,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "group": "development",
+      "control": "best_individual_per_instance",
+      "mean_difference": 0.004214317062863719,
+      "bootstrap95_low": -0.009237292568003652,
+      "bootstrap95_high": 0.018804309215024517,
+      "wins": 3,
+      "ties": 0,
+      "losses": 3
+    },
+    {
+      "group": "transfer",
+      "control": "passive",
+      "mean_difference": -0.014777129182456345,
+      "bootstrap95_low": -0.028364545848091786,
+      "bootstrap95_high": -0.0023194155208650404,
+      "wins": 3,
+      "ties": 0,
+      "losses": 10
+    },
+    {
+      "group": "transfer",
+      "control": "moead",
+      "mean_difference": 0.03484081859733357,
+      "bootstrap95_low": 0.016964302358404685,
+      "bootstrap95_high": 0.054433130880244415,
+      "wins": 11,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "group": "transfer",
+      "control": "nsga2_individual",
+      "mean_difference": 0.05262109302640183,
+      "bootstrap95_low": 0.03258279278089469,
+      "bootstrap95_high": 0.07085103756318714,
+      "wins": 12,
+      "ties": 0,
+      "losses": 1
+    },
+    {
+      "group": "transfer",
+      "control": "spea2_individual",
+      "mean_difference": 0.059396513627067375,
+      "bootstrap95_low": 0.040991052880171894,
+      "bootstrap95_high": 0.07742263063206146,
+      "wins": 12,
+      "ties": 0,
+      "losses": 1
+    },
+    {
+      "group": "transfer",
+      "control": "nsga2_ls_individual",
+      "mean_difference": 0.19577969634816145,
+      "bootstrap95_low": 0.17168621949013363,
+      "bootstrap95_high": 0.2206911255309719,
+      "wins": 13,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "transfer",
+      "control": "mopso_individual",
+      "mean_difference": 0.20699943265555407,
+      "bootstrap95_low": 0.1833310572029469,
+      "bootstrap95_high": 0.23190985242838844,
+      "wins": 13,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "transfer",
+      "control": "explorer_solo",
+      "mean_difference": -0.018747880207785412,
+      "bootstrap95_low": -0.03349817396242006,
+      "bootstrap95_high": -0.004413618700135098,
+      "wins": 3,
+      "ties": 0,
+      "losses": 10
+    },
+    {
+      "group": "transfer",
+      "control": "best_individual_per_instance",
+      "mean_difference": -0.021508511653645365,
+      "bootstrap95_low": -0.034945084290023506,
+      "bootstrap95_high": -0.009636932757574502,
+      "wins": 2,
+      "ties": 0,
+      "losses": 11
+    }
+  ],
+  "scope": "Exploratory observed banks; injection live feedback can alter both quotas and future BLMR parents; no untouched confirmation",
+  "migration_uses": 5418,
+  "active_runs_with_uses": 57,
+  "adopt_as_default": false,
+  "conclusion": "No default adoption unless both banks improve over passive pair and BLMR solo; observed means retained"
+}

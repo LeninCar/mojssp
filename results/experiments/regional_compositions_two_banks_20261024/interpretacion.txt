@@ -1,0 +1,60 @@
+Composiciones regionales con escalado y reparto dinámico
+
+Seis instancias de desarrollo y trece adicionales, tres semillas por instancia y método.
+Presupuesto 3000 FE, población 30, bloque máximo 50. Dinámico: rondas 300, reserva 10% por brazo.
+Cuatro composiciones: SPEA2+BLMR, NSGA-II+BLMR, MOEA/D+BLMR y cuarteto MOEA/D+NSGA-II+SPEA2+BLMR.
+Seis controles: MOEA/D, NSGA-II, SPEA2, NSGA-II+LS, MOPSO y BLMR.
+444 corridas nuevas, 1332000 FE de búsqueda. 354 registros reutilizados, no contados como nuevas corridas.
+El registro completo tiene 798 filas. Las auditorías extra no se utilizan en la búsqueda.
+
+Resultados separados por banco
+development
+spea2_regional_dynamic: 0.99426593
+moead_regional_dynamic: 0.99134208
+nsga2_regional_scaled: 0.98998366
+moead_regional_scaled: 0.98810543
+spea2_regional_scaled: 0.98526624
+nsga2_regional_dynamic: 0.98002163
+explorer_solo: 0.97388622
+quartet_regional_scaled: 0.96858468
+quartet_regional_dynamic: 0.96724554
+moead: 0.96438338
+nsga2_individual: 0.94470459
+spea2_individual: 0.93256440
+nsga2_ls_individual: 0.81178184
+mopso_individual: 0.79352015
+transfer
+explorer_solo: 0.99785572
+moead_regional_dynamic: 0.99388497
+nsga2_regional_dynamic: 0.99058432
+moead_regional_scaled: 0.98160719
+spea2_regional_dynamic: 0.97975752
+nsga2_regional_scaled: 0.97965320
+spea2_regional_scaled: 0.97799893
+quartet_regional_scaled: 0.96253035
+quartet_regional_dynamic: 0.95127421
+moead: 0.94426702
+nsga2_individual: 0.92648675
+spea2_individual: 0.91971133
+nsga2_ls_individual: 0.78332815
+mopso_individual: 0.77210841
+
+Criterios e interpretación
+Selección por desarrollo: spea2_regional_dynamic
+Mejor portafolio observado en banco adicional: moead_regional_dynamic
+Ambos bancos han sido utilizados antes. Las comparaciones son exploratorias; no hay un test final independiente.
+El máximo individual por instancia es un oráculo descriptivo, no una política que se pueda ejecutar con conocimiento del futuro.
+Los intervalos bootstrap remuestrean instancias después de promediar tres semillas; no se consideran 39 instancias las 13 por 3 semillas.
+Los tiempos mezclan controles previos y procesos concurrentes, por lo que no permiten concluir superioridad a tiempo fijo.
+No se cambiaron operadores de los brazos ni BLMR. Guía de padres nativos desactivada.
+En el cuarteto dinámico la primera ronda da 75 FE a cada brazo. La reserva mínima total es 40%, frente a 20% en parejas; es la misma regla por brazo.
+La compatibilidad histórica se verifica por hashes o por igualdad AST al retirar el argumento opcional minimum_share=None y sus ramas inactivas.
+
+Validación
+Genotipos guardados validados: 61114.
+Filas históricas individuales sin genotipos: 114; se auditaron sus HV y trayectorias, no se afirma nueva validación de sus agendas.
+541 pruebas y 174 subpruebas aprobadas.
+
+Reproducción
+.venv/Scripts/python.exe scripts/run_regional_composition_comparison.py --output-dir results/experiments/<nombre-nuevo> --workers 4
+El ejecutor requiere los controles históricos verificados. No sobrescribir resultados existentes.

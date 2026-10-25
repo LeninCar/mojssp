@@ -1,0 +1,70 @@
+{
+  "status": "defined_not_implemented_or_executed",
+  "new_search_fe": 0,
+  "retained": {
+    "arms": [
+      "MOEA/D",
+      "RegionExplorer"
+    ],
+    "explorer": "BLMR v1 random",
+    "policy": "dynamic rounds",
+    "round_fe": 300,
+    "block_max_fe": 50,
+    "budget": 3000,
+    "population": 30,
+    "minimum_share_per_arm": 0.1,
+    "donor_selection": "current-subproblem Tchebycheff",
+    "donor_every": 10,
+    "max_donors_per_block": 5
+  },
+  "proposed_change": "Credit explicit assisted offspring to both donor source and recipient, not whole assisted blocks",
+  "credit_rule": {
+    "unassisted_child": "All marginal HV gain to executing arm",
+    "explicitly_assisted_moead_child": "Half marginal HV gain to MOEA/D, half to RegionExplorer",
+    "alpha": 0.5,
+    "alpha_status": "Fixed experimental convention for two direct participants; not estimated causal contribution",
+    "warmup": "Exclude each initial neutral block from learning as before",
+    "next_round": "Compute credited gain divided by actual scored FE of each arm, then existing round_shares",
+    "conservation": "Sum arm credits equals scored marginal global HV; do not double count reward"
+  },
+  "required_telemetry": [
+    "child evaluation ID and executing arm",
+    "explicit donor ID and source if used",
+    "objective vector of every evaluated child in instrumented MOEA/D blocks",
+    "marginal HV versus a shadow global archive in actual evaluation order",
+    "raw block reward, per-arm credited reward and actual FE separately"
+  ],
+  "observational_limits": "Cannot reconstruct this offspring credit from existing block-only rewards",
+  "implementation_invariants": [
+    "Do not update the real global archive mid-block",
+    "Do not change RNG, parents, native operators, initialization, bounds or reference",
+    "All native evaluations including rejected or duplicate children count once",
+    "Observer alpha=0 must reproduce all original live trajectories",
+    "Shadow child gains must telescope to recorded global block gain",
+    "HV instrumentation consumes CPU time, not extra objective FE; measure overhead"
+  ],
+  "evaluation_plan": {
+    "status": "proposal_not_executed",
+    "cases": 6,
+    "seeds": [
+      100,
+      200,
+      300
+    ],
+    "new_runs": 36,
+    "new_search_fe": 108000,
+    "variants": [
+      "instrumented alpha=0 conservation control",
+      "alpha=0.5 shared offspring credit"
+    ],
+    "references": [
+      "passive pair",
+      "compatible live alpha=0",
+      "BLMR solo",
+      "five native individuals including MOPSO"
+    ],
+    "development_gate": "Shared-credit mean exceeds passive pair, alpha=0 and BLMR; wins versus passive in at least four of six instance means",
+    "confirmation": "Only after passing the frozen development gate use genuinely new cases; no parameter tuning on additional bank"
+  },
+  "expected_gain": "Unknown; no hypothetical HV or guaranteed advantage inferred"
+}

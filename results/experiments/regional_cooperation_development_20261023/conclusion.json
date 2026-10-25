@@ -1,0 +1,116 @@
+{
+  "means": {
+    "moead": 0.9650861049311729,
+    "random_regions": 0.9637856284495799,
+    "sparse_regions": 0.9560649671445102,
+    "explorer_random_individual": 0.9846545874280497,
+    "explorer_sparse_individual": 0.845994370815527,
+    "explorer_dominant_random": 0.9779101916404963
+  },
+  "comparisons": [
+    {
+      "candidate": "sparse_regions",
+      "control": "random_regions",
+      "mean_difference": -0.007720661305069802,
+      "bootstrap95_low": -0.012823267017365877,
+      "bootstrap95_high": -0.002405203361624142,
+      "positive_cases": 1,
+      "tied_cases": 0,
+      "negative_cases": 5
+    },
+    {
+      "candidate": "sparse_regions",
+      "control": "moead",
+      "mean_difference": -0.009021137786662655,
+      "bootstrap95_low": -0.01789368595306932,
+      "bootstrap95_high": 0.0006855700324936801,
+      "positive_cases": 1,
+      "tied_cases": 0,
+      "negative_cases": 5
+    },
+    {
+      "candidate": "random_regions",
+      "control": "moead",
+      "mean_difference": -0.0013004764815928531,
+      "bootstrap95_low": -0.010464972230989522,
+      "bootstrap95_high": 0.010651604732312914,
+      "positive_cases": 2,
+      "tied_cases": 0,
+      "negative_cases": 4
+    },
+    {
+      "candidate": "sparse_regions",
+      "control": "explorer_sparse_individual",
+      "mean_difference": 0.11007059632898315,
+      "bootstrap95_low": 0.07752479207055996,
+      "bootstrap95_high": 0.1456574884408482,
+      "positive_cases": 6,
+      "tied_cases": 0,
+      "negative_cases": 0
+    },
+    {
+      "candidate": "random_regions",
+      "control": "explorer_random_individual",
+      "mean_difference": -0.020868958978469725,
+      "bootstrap95_low": -0.044386893909142376,
+      "bootstrap95_high": -0.0014430226450620198,
+      "positive_cases": 1,
+      "tied_cases": 0,
+      "negative_cases": 5
+    },
+    {
+      "candidate": "explorer_dominant_random",
+      "control": "moead",
+      "mean_difference": 0.012824086709323465,
+      "bootstrap95_low": -0.011340830533462576,
+      "bootstrap95_high": 0.038620662856121535,
+      "positive_cases": 3,
+      "tied_cases": 0,
+      "negative_cases": 3
+    },
+    {
+      "candidate": "explorer_dominant_random",
+      "control": "explorer_random_individual",
+      "mean_difference": -0.006744395787553407,
+      "bootstrap95_low": -0.020551198666631854,
+      "bootstrap95_high": 0.00745667749860975,
+      "positive_cases": 2,
+      "tied_cases": 0,
+      "negative_cases": 4
+    },
+    {
+      "candidate": "random_regions",
+      "control": "best_individual_mean_reselected_per_bootstrap",
+      "mean_difference": -0.020868958978469743,
+      "bootstrap95_low": -0.044914067583355366,
+      "bootstrap95_high": -0.004137977287632544,
+      "positive_cases": "",
+      "tied_cases": "",
+      "negative_cases": ""
+    },
+    {
+      "candidate": "sparse_regions",
+      "control": "best_individual_mean_reselected_per_bootstrap",
+      "mean_difference": -0.028589620283539507,
+      "bootstrap95_low": -0.05605106868275362,
+      "bootstrap95_high": -0.008682117779387544,
+      "positive_cases": "",
+      "tied_cases": "",
+      "negative_cases": ""
+    },
+    {
+      "candidate": "explorer_dominant_random",
+      "control": "best_individual_mean_reselected_per_bootstrap",
+      "mean_difference": -0.00674439578755337,
+      "bootstrap95_low": -0.02067039902154788,
+      "bootstrap95_high": 0.0070649305491868875,
+      "positive_cases": "",
+      "tied_cases": "",
+      "negative_cases": ""
+    }
+  ],
+  "scope": "Six development instances; three seeds; 3000 FE; no unseen-instance confirmation",
+  "treatment": "Low-density targeting versus random targeting with identical archive-seeded region operators",
+  "budget_followup": "Explorer-dominant 20/80 variant motivated by development outcomes; exploratory on the same cases",
+  "individual_controls": "Same explorer with 30 random initial solutions and 2970 evolution FE; no MOEA/D parents"
+}

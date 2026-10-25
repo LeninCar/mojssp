@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "runs": 54,
+  "search_evaluations": 162000,
+  "blocks_replayed": 3240,
+  "exact_rescue_budgets": true,
+  "final_hv_recomputed": true,
+  "auc_recomputed": true,
+  "source_and_input_hashes_verified": true,
+  "artifact_hashes_verified": 112
+}

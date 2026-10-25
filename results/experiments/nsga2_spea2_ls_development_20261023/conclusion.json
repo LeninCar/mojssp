@@ -1,0 +1,23 @@
+{
+  "result": "Removing MOEA/D and adding NSGA-II+LS did not beat either NSGA-II or SPEA2 individually on any development base mean.",
+  "new_runs": 36,
+  "new_search_fe": 108000,
+  "moead_search_fe": 0,
+  "mean_hv_uniform": 0.8961559439621481,
+  "mean_hv_scaled": 0.9281757620635572,
+  "spea2_individual_mean_hv": 0.9372889112229866,
+  "previous_pair_scaled_mean_hv": 0.9311116204375338,
+  "mean_budget_percent": {
+    "nsga2_spea2_ls_scaled": {
+      "NSGA-II": 41.666666666666664,
+      "SPEA2": 45.27777777777778,
+      "NSGA-II+LS": 13.055555555555555
+    },
+    "nsga2_spea2_ls_uniform": {
+      "NSGA-II": 33.333333333333336,
+      "SPEA2": 33.333333333333336,
+      "NSGA-II+LS": 33.333333333333336
+    }
+  },
+  "decision": "Keep MOEA/D outside the tested portfolio; NSGA-II+LS does not justify inclusion with this configuration."
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "new_runs": 18,
+  "new_search_fe": 54000,
+  "reused_controls": 72,
+  "all_allocations_verified": true,
+  "all_new_hv_recomputed": true,
+  "control_compatibility": {
+    "changed_module": [
+      "src/mojssp/runner.py"
+    ],
+    "standalone_function_and_result_contract_unchanged": true,
+    "all_other_original_modules_identical": true,
+    "timing_limitation": "Individual timings were measured in the earlier pilot; quality comparisons reuse identical inputs and implementation"
+  },
+  "statistical_unit": "Six development bases; mean of three seeds first",
+  "search_wall_seconds": 114.75446470000315
+}

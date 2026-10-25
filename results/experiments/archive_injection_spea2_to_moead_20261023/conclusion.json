@@ -1,0 +1,21 @@
+{
+  "mean_hv": {
+    "moead": 0.9650861049311729,
+    "passive": 0.9476692308485838,
+    "active": 0.950228186100807
+  },
+  "active_vs_passive_wins": 4,
+  "active_vs_solo_wins": 0,
+  "mean_moead_local_delta_active_passive": 0.004205215769622332,
+  "total_parent_transfers": 921,
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "definition": "SPEA2 to MOEA/D through external parents; no direct incumbent insertion",
+  "comparison": "Matched 80/20 active and passive pairs, each 3000 total FE; solo MOEA/D uses 3000 FE",
+  "active_minus_passive_mean_hv": 0.002558955252223235,
+  "active_minus_passive_bootstrap95": [
+    -0.003387061929777798,
+    0.008372943005926281
+  ],
+  "interpretation": "Positive mean final-HV difference against passive pair with mixed instance effects; interval includes zero. Does not beat MOEA/D alone."
+}

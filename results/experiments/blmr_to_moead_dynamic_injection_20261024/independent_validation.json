@@ -1,0 +1,19 @@
+{
+  "records": 456,
+  "new_runs": 114,
+  "new_search_fe": 342000,
+  "reused_individuals": 342,
+  "saved_genotypes_validated": 28645,
+  "extra_audit_fe": 28645,
+  "reused_rows_without_genotypes": 114,
+  "dynamic_rounds_recomputed": 1140,
+  "validated_injection_events": 5418,
+  "active_runs_with_injection": 57,
+  "active_runs": 57,
+  "passive_reproductions_exact": 57,
+  "all_new_budgets_exact": true,
+  "all_hv_independent": true,
+  "all_available_schedules_valid": true,
+  "all_donor_selection_recomputed": true,
+  "source_hashes_unchanged": true
+}

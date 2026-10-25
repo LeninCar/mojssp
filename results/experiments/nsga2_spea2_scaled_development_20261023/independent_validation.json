@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "new_valid_runs": 18,
+  "new_valid_search_fe": 54000,
+  "discarded_serialization_attempt_fe": 3000,
+  "total_new_search_fe_including_discarded_attempt": 57000,
+  "auc_verified_independently": true,
+  "input_and_source_hashes_verified": true,
+  "average_nsga2_budget_percent": 51.01851851851852,
+  "average_spea2_budget_percent": 48.98148148148148,
+  "bases_beating_moead": [
+    "development_00_5x5"
+  ],
+  "bases_beating_both_constituent_individuals": [
+    "development_04_20x20"
+  ],
+  "result": "Scaled pair improves the uniform pair but does not beat MOEA/D on average"
+}

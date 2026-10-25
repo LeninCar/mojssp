@@ -1,0 +1,24 @@
+{
+  "objective": "Portfolio better than its best individual component",
+  "objective_achieved": false,
+  "ratio": {
+    "MOEA/D": 0.2,
+    "regional_explorer": 0.8
+  },
+  "transfer": {
+    "instances": 13,
+    "seeds_per_instance": 3,
+    "portfolio_vs_moead_wins": 11,
+    "portfolio_vs_explorer_wins": 3,
+    "portfolio_minus_moead": 0.03442096690446513,
+    "portfolio_minus_explorer": -0.019167731900653847
+  },
+  "interpretation": "Portfolio improves over MOEA/D on this transfer bank but loses to standalone regional explorer. Keep explorer as mandatory individual baseline.",
+  "mechanism_controls": "Random region switching and directed mode mutation each outperform their respective ablated controls on all six development instance means.",
+  "next_test": "Active solution exchange rather than another ratio adjustment; compare against both individual components at equal total FE.",
+  "limits": [
+    "FE-matched, not wall-time-matched",
+    "Only budget 3000",
+    "Synthetic transfer instances are new to this regional experiment, not an untouched project-wide holdout"
+  ]
+}

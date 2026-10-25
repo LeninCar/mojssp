@@ -1,0 +1,6 @@
+{
+  "new_runs": 36,
+  "new_search_fe": 108000,
+  "all_initialization_fe_included": true,
+  "all_budgets_exact": true
+}

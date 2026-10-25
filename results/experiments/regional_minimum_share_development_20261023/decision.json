@@ -1,0 +1,24 @@
+{
+  "selected_method": "reserve_10",
+  "development_means": {
+    "moead": 0.9643833778747756,
+    "spea2_solo": 0.9325643956049504,
+    "explorer_solo": 0.9738862165984857,
+    "reserve_10": 0.9942659280153038,
+    "reserve_05": 0.9802987895832093,
+    "reserve_01": 0.9851656915884641
+  },
+  "transfer_means": {
+    "moead": 0.9442670234070771,
+    "spea2_solo": 0.9197113283773434,
+    "explorer_solo": 0.9978557222121961,
+    "reserve_10": 0.9797575187935557
+  },
+  "better_than_regional_solo_on_transfer": false,
+  "scope": "Previously observed development and transfer banks; experimental comparison, no untouched holdout",
+  "reserve_reduction_improved_development": false,
+  "recommendation": "Keep the 10% default among these three tested floors; retain two-arm pairing as experimental, not a final winner over regional solo",
+  "additional_bank": "No new transfer runs; unchanged 10% candidate reuses its validated thirteen-case comparison",
+  "interpretation": "Mean explorer allocation stays near 66% for all floors. Lower reserve does not force a 99/1 allocation.",
+  "composition": "SPEA2 and regional explorer are both algorithm arms; MOEA/D and NSGA-II remain available"
+}

@@ -1,0 +1,18 @@
+{
+  "result": "Fixed win-based weighted portfolio did not improve over MOEA/D in this development pilot",
+  "runs": 108,
+  "actual_search_fe": 324000,
+  "search_wall_seconds": 549.6,
+  "weighted_minus_moead_mean_hv": -0.030958225122336702,
+  "weighted_minus_moead_bootstrap95": [
+    -0.03602734819715825,
+    -0.0268916091113639
+  ],
+  "weighted_wins_vs_moead_by_base": 0,
+  "weighted_losses_vs_moead_by_base": 6,
+  "relative_mean_hv_difference": -0.03207820003225992,
+  "scope": "Six development bases and three master seeds; same bases used to derive prior weights; no confirmation or test data accessed; historical runs not pooled",
+  "seed_caveat": "Current individual and portfolio arm streams match by derived seed; these streams differ from the older source campaign used to derive weights",
+  "interpretation": "Favors moving on from this fixed quota as an improvement candidate; does not establish that all weighted allocations or all portfolios fail",
+  "next_step": "Design a dynamic budget redistribution pilot before adding cooperation or changing several mechanisms at once"
+}

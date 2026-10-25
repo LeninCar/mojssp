@@ -1,0 +1,26 @@
+{
+  "result": "Portfolios heavily biased towards MOEA/D (80%) and MOEA/D pairs improve over uniform, scaled, weighted and dynamic trios, but do not beat standalone MOEA/D on any development instance.",
+  "mean_hv": {
+    "moead": 0.9650861049311729,
+    "moead_spea2_80_20": 0.9476692308485838,
+    "moead_nsga2_scaled": 0.9467374804600915,
+    "moead_nsga2_80_20": 0.9465961071068995,
+    "trio_moead_80_10_10": 0.9458759129338361,
+    "moead_spea2_scaled": 0.9388865198817036,
+    "spea2": 0.9372889112229866,
+    "nsga2": 0.9360105141040317,
+    "scaled": 0.9352484109271506,
+    "weighted": 0.9341278798088362,
+    "dynamic": 0.9294230836632332,
+    "uniform": 0.9080882446957683
+  },
+  "best_candidate": "moead_spea2_80_20",
+  "delta_hv_vs_moead": -0.017416874082589018,
+  "delta_hv_vs_uniform": 0.03958098615281543,
+  "new_runs": 90,
+  "new_search_fe": 270000,
+  "bases_tested": 6,
+  "seeds_per_base": 3,
+  "budget_per_run": 3000
+}
+

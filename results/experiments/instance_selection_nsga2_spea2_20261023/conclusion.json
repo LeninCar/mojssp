@@ -1,0 +1,14 @@
+{
+  "primary_model": "constant_best",
+  "best_individual": "nsga2",
+  "primary_mean_hv": 0.9250704796653518,
+  "best_individual_mean_hv": 0.9250704796653518,
+  "primary_delta_vs_best_individual": 0.0,
+  "primary_exceeds_both_individual_means": false,
+  "evaluation_cases": 13,
+  "training_cases": 18,
+  "new_runs": 150,
+  "new_search_fe": 450000,
+  "oracle_note": "Retrospective best algorithm per case; diagnostic ceiling among these two saved individual performances, not a deployable result",
+  "moead_search_evaluations": 0
+}

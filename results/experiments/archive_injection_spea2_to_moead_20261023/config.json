@@ -1,0 +1,126 @@
+{
+  "cases": [
+    {
+      "name": "development_00_5x5",
+      "sha256": "49b93ab9b91d713d68e4677e400d26ecabdf2dea1533b1147333e5780bdf5c4f"
+    },
+    {
+      "name": "development_01_10x10",
+      "sha256": "34339d1fd2ce5625033fb095087e23b49fda947e4c161e315986fd4be18008b3"
+    },
+    {
+      "name": "development_02_20x10",
+      "sha256": "94518ce0625d569f6b0a873e352fb9925f9f20cb0ebc682c53f33b175e27cf82"
+    },
+    {
+      "name": "development_03_10x20",
+      "sha256": "16944e0933e652fc9bcf4d955414df7ef2c3c6d06d40d93087090a12a767305d"
+    },
+    {
+      "name": "development_04_20x20",
+      "sha256": "2585e398e2aa40e6497f2129fae0741feb9796cf079274d2dd460238420b4fb8"
+    },
+    {
+      "name": "development_05_30x20",
+      "sha256": "14f2d23b122df3a04b69995de33b9d2fab64733b4a77e06a1d6efe6ea3b0d39b"
+    }
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "methods": [
+    "moead",
+    "passive",
+    "active"
+  ],
+  "budget": 3000,
+  "block_size": 50,
+  "population_size": 30,
+  "pair_quotas": {
+    "MOEA/D": 2400,
+    "SPEA2": 600
+  },
+  "migration": {
+    "source": "SPEA2",
+    "recipient": "MOEA/D",
+    "m": 5,
+    "every": 10,
+    "type": "External parent replacement during native mating, not incumbent population replacement",
+    "eligibility": "Global Pareto archive; first observed in SPEA2; never observed in MOEA/D archive or population",
+    "selection": "Deterministic max-min normalized objective distance from recipient archive and already selected donors",
+    "cadence": "Prepare before each MOEA/D block; use one donor every ten mating calls, at most five per block",
+    "provenance": "Observe executed arm immediately after each block; archive and current MOEA/D population membership"
+  },
+  "schedule": "Least consumed quota proportion, stable MOEA/D then SPEA2 tie order; identical active/passive schedule",
+  "seed_formula": "(master_seed*10007+offset) modulo (2**31-1)",
+  "seed_offsets": {
+    "MOEA/D": 17,
+    "SPEA2": 43
+  },
+  "evaluation_accounting": "All native offspring and initial population evaluations counted; donors already evaluated on same instance; no donor-only extra FE",
+  "primary_comparisons": [
+    "active minus passive global HV",
+    "active minus solo global HV"
+  ],
+  "secondary": "MOEA/D local archive HV; source SPEA2 trace equality; used migration events",
+  "source_sha256": {
+    "src\\mojssp\\__init__.py": "938c9a287ec41c4faa90a03e0e0e9fa3f71bae547c6f118c4644902f186b8acd",
+    "src\\mojssp\\algorithm_contract.py": "9b29b0eef1e6257708943ab06fac7f75b3ca70841a635dd65dd7d628edb6883f",
+    "src\\mojssp\\archive_injection.py": "0b453e494296617c0d9d80f74c6b9e6601618065478e5b4cb0e8ddae0cc6cf14",
+    "src\\mojssp\\arms.py": "3d8ec0941ff5ca2ff17aefb0f40a1de9eeb7484c5ac324e3bcce361b3eca6fe0",
+    "src\\mojssp\\change_detection.py": "4890f2d05b9a4b500e622c1760f8a08be59e146cf69592d54e6476cf5f8d0028",
+    "src\\mojssp\\contribution_report.py": "8d44ffc40a8a5032247761b7750c291f18c4eca3509db984b65290a373d7fb94",
+    "src\\mojssp\\cooperation.py": "961bd8879abdae23b112052d85c8036aa089c476359f5d5bad3c51485389c6c2",
+    "src\\mojssp\\critical_path.py": "2cd7c97a64acbdd8348d6e39860536e2f70cf884f8e3dab305b45a9805f2dcd8",
+    "src\\mojssp\\decoder.py": "99b53d508951b27718e9ed3c96c8d3adfd159d69b423494837ead6aa48097914",
+    "src\\mojssp\\dmab.py": "011e2b346f11123ca4ec5b2948021b1f8ade970afe320a3e627c193a0b0f5099",
+    "src\\mojssp\\dominance.py": "0f6e7c18caa8742501ae2cca1bd264b7ba1abe714dec0eaa11470574b4c59508",
+    "src\\mojssp\\dynamic_budget.py": "9f7e13ca0d1a1c8274db95ffe182de0ec3ddc95966e0674f17faf6d1c68fb46f",
+    "src\\mojssp\\evaluator.py": "6faefc950cd0f479bdadaf792401614562ec8a421fd2b95d7f689289c2d88591",
+    "src\\mojssp\\fixed_budget.py": "f888eadeaef651e33f353dd2ba6145089ac5cb7564ce46f7963aa5fc71368fc4",
+    "src\\mojssp\\hypervolume.py": "29eb947ba639878ad9fe97ab33c93c82bfe504fef94e7652fee4fcdab8b5e7fc",
+    "src\\mojssp\\igd.py": "7261db82f3dc23f358f6c3e53399f6ee56cc14938b25315c481e6037fee81f30",
+    "src\\mojssp\\instance.py": "be5b457d0e6f2907a47e887cafe865be594e1c3edd47cad99a52098dc44f1982",
+    "src\\mojssp\\io.py": "baa123f152c4fdc46ee9c05b58d6e54e4946718b5912f64f8b6eb50aba807fca",
+    "src\\mojssp\\job.py": "bcafe025eb733ed20630e01038a0c29250843fb445e9dc67f2298e9dc10e8ea7",
+    "src\\mojssp\\local_search.py": "2ada1b9e93d5decb3feef6458af1828f156c27866f6a6201148ce16200be8141",
+    "src\\mojssp\\mode.py": "71809460b27fa73fa7c974b20fcec716fa8ed8d93c96ba8479719ef97d1337cd",
+    "src\\mojssp\\moead.py": "2b255aa71044544e43ea38b56f8afb40562e18d3a59ed0fb401382cdfc5981fa",
+    "src\\mojssp\\mopso.py": "71be976773d2aea9ac7d563eed6bd4b983d79cfa416cd268471c55903562af50",
+    "src\\mojssp\\normalization.py": "a8ee007482647562f4180c37bcc5e7b1d87f1bcbd634eff5d125216814812425",
+    "src\\mojssp\\nsga2.py": "ab972b335676e57e68e23c1a4882bf24b3b1bc83f46263fe27524323eb6290c2",
+    "src\\mojssp\\nsga2_ls.py": "48be8d1184bd0922310a6329662d27af7293b1f7e8caf86b783ef8bd3cb93729",
+    "src\\mojssp\\operation.py": "2375872b7c960a903b2f939276ba9167618c94463a6f2c79c7541dfe759510b5",
+    "src\\mojssp\\orchestrator.py": "e17d1ab6b2ac95244a931ac02173f50480bc8eb057bc394b55c3af55a49cc422",
+    "src\\mojssp\\page_hinkley.py": "e0fa8323dec4c495c36a71c7af7562a56f3a7e79a12f3ec5e28f54524c5d712d",
+    "src\\mojssp\\pareto_archive.py": "88d648cfa44bf5fbe90bab0aa6be79b556b9776717d83d6529326b2c5a5e6318",
+    "src\\mojssp\\portfolio.py": "57ffd3bb86363f881ca8f517fc0b38409600f24e73f923f6fb8642af3e422bf0",
+    "src\\mojssp\\project_paths.py": "64b86ed73fae9d6ad5fbfa261d7123b935919292ff538a073d7380a01fd3c0fb",
+    "src\\mojssp\\provenance.py": "25785185fa23a80955305c8c2311f4d3afbb64578dea531b33d67bfc88462053",
+    "src\\mojssp\\reward.py": "92df551224b1a7bdd9b2ffbb3f138e8944705820be3a65cc32923f6e26be6785",
+    "src\\mojssp\\runner.py": "4f0f976b389828f18f3942fd818dad0a1528061c27c0edd108c4ef905cefe3b6",
+    "src\\mojssp\\schedule.py": "d172a77a5e3e887f0dacb93104ce2cbb2ae9bede3edfa77929aca1e4e00a95b8",
+    "src\\mojssp\\schedule_validator.py": "5ebccb1a86e571e8e007e21f14cea8e255889e113072344a0c211faccde81cd4",
+    "src\\mojssp\\selectors.py": "a1d9e494ac4e3bc3da533574ffedf4a3008058032c058690f64b50c9b26ce62b",
+    "src\\mojssp\\solution.py": "52df758611f9f4ee4c58f72b1b975948223a997fac021334863048185e475a45",
+    "src\\mojssp\\spea2.py": "99a25b29ccb35b64cdefd6828c1f5de80aa75dbf1026629b951d49f9d7aa506e",
+    "src\\mojssp\\validator.py": "13778e573b0a19df347c2802bb7cb7d56eb8c290d654f46ac611ee0ea175b7d6",
+    "scripts\\run_archive_injection_pilot.py": "54ad4dbc20d8764cc0d7be03d62b61bce2bfa0735d710b7291108f15757c7e71",
+    "scripts\\run_weighted_pilot.py": "7458076df136d32bf05659ca61142f3e120cb16e564e0a80f5dac5300ea9e50e",
+    "scripts\\run_portfolio_campaign.py": "7b92198c136dddb3e5045614be25016a2fdd167c91227a945d6fa4f1b5c48666",
+    "scripts\\run_dynamic_pilot.py": "590d102d864fcdb2c67780b1b774ebd71227d64930748819ec07f719f8ea7b1f"
+  },
+  "input_sha256": {
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_00_5x5.dzn": "49b93ab9b91d713d68e4677e400d26ecabdf2dea1533b1147333e5780bdf5c4f",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_01_10x10.dzn": "34339d1fd2ce5625033fb095087e23b49fda947e4c161e315986fd4be18008b3",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_02_20x10.dzn": "94518ce0625d569f6b0a873e352fb9925f9f20cb0ebc682c53f33b175e27cf82",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_03_10x20.dzn": "16944e0933e652fc9bcf4d955414df7ef2c3c6d06d40d93087090a12a767305d",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_04_20x20.dzn": "2585e398e2aa40e6497f2129fae0741feb9796cf079274d2dd460238420b4fb8",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_05_30x20.dzn": "14f2d23b122df3a04b69995de33b9d2fab64733b4a77e06a1d6efe6ea3b0d39b"
+  },
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "scope": "Six development instances, three seeds; exploratory, no holdout selection"
+}

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "new_runs": 90,
+  "new_search_fe": 270000,
+  "reused_controls": 126,
+  "all_hv_recomputed": true,
+  "all_fixed_quotas_verified": true,
+  "source_code_unchanged_during_campaign": true,
+  "search_wall_seconds": 477.7626687000011
+}

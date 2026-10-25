@@ -1,0 +1,5 @@
+{
+  "only_change": "JSON normalization in saved-control comparison; no search change",
+  "original_sha256": "ec05968dc3b95e50c25422074189f6f46529068505a2dd8cd6372ee704ff0c81",
+  "corrected_sha256": "bdac1daab006290cda99ab845b9245e06abafbbccd1d38ce73aadf2332f86fc2"
+}

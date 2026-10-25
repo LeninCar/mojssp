@@ -1,0 +1,37 @@
+Inyección BLMR compatible con subproblemas de MOEA/D
+
+Dos brazos: MOEA/D y BLMR v1. Misma política dinámica, rondas de 300 FE, mínimo 10% por brazo, población 30 y bloques de hasta 50.
+Se elige el padre que minimiza el Tchebycheff nativo para el peso y punto ideal del subproblema que ejecuta el cruce.
+El conjunto elegible se congela al comenzar el bloque. Puede contener más de cinco candidatos; se usan como máximo cinco donantes distintos cada diez cruces.
+No se aplica un umbral adicional de mejora del padre; no se cambian operadores, reemplazo de vecinos ni BLMR.
+18 corridas nuevas, 54000 FE de búsqueda, 144 controles reutilizados. Las FE de auditoría y pruebas son separadas.
+
+Resultados de desarrollo
+passive: 0.99134208
+maxmin: 0.98962019
+compatible: 0.98955919
+explorer_solo: 0.97388622
+moead: 0.96438338
+nsga2_individual: 0.94470459
+spea2_individual: 0.93256440
+nsga2_ls_individual: 0.81178184
+mopso_individual: 0.79352015
+
+Decisión
+La variante no supera la pareja sin inyección ni la inyección max-min en HV medio. Gana a la pareja sin inyección en 1 de 6 medias por instancia.
+No cumple la condición predeclarada para avanzar a instancias nuevas; esa fase no se ejecutó.
+No se modifica el comportamiento por defecto de las parejas existentes.
+
+Controles
+Se conservan MOEA/D, NSGA-II, SPEA2, NSGA-II+LS, MOPSO y BLMR.
+BLMR sigue siendo la referencia individual más fuerte en promedio en los bancos recientes; no gana todas las instancias.
+Quitar MOEA/D de la ejecución no elimina a BLMR como control. Las parejas NSGA-II+BLMR y SPEA2+BLMR ya fueron evaluadas sin MOEA/D.
+
+Auditoría
+Donantes usados y verificados: 1954.
+Genotipos guardados validados: 10814.
+Se comprobaron índices del subproblema a partir de FE nativas, pesos de MOEA/D, scores y elección mínima por evento, procedencia, agendas, HV y cuotas dinámicas.
+549 pruebas y 174 subpruebas aprobadas.
+
+Reproducción
+.venv/Scripts/python.exe scripts/run_subproblem_injection_pilot.py --stage development --output-dir results/experiments/<nuevo-nombre> --workers 4

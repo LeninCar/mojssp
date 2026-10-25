@@ -1,0 +1,21 @@
+{
+  "original_runner_sha256": "ec05968dc3b95e50c25422074189f6f46529068505a2dd8cd6372ee704ff0c81",
+  "corrected_runner_sha256": "bdac1daab006290cda99ab845b9245e06abafbbccd1d38ce73aadf2332f86fc2",
+  "correction": "Compare JSON-normalized region traces; no search algorithm changed",
+  "active_rows": "57 valid rows from original driver retained without editing",
+  "passive_rows": "57 newly executed by corrected driver; prior failed controls discarded",
+  "original_completed_search_runs": 114,
+  "valid_active_runs_retained": 57,
+  "discarded_passive_search_runs": 57,
+  "discarded_passive_search_fe": 171000,
+  "recovery_search_runs": 57,
+  "recovery_search_fe": 171000,
+  "diagnostic_bridge_search_runs": 1,
+  "diagnostic_bridge_search_fe": 3000,
+  "total_campaign_and_diagnostic_search_runs": 172,
+  "total_campaign_and_diagnostic_search_fe": 516000,
+  "valid_analysis_new_runs": 114,
+  "valid_analysis_new_search_fe": 342000,
+  "extra_search_not_used_in_analysis_fe": 174000,
+  "test_and_audit_fe": "Not part of search; accounted separately"
+}

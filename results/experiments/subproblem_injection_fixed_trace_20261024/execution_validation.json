@@ -1,0 +1,8 @@
+{
+  "new_runs": 36,
+  "new_search_fe": 108000,
+  "reused_analysis_runs": 144,
+  "exact_passive_reproductions": 18,
+  "all_actual_fe_exact": true,
+  "all_replay_block_allocations_identical": true
+}

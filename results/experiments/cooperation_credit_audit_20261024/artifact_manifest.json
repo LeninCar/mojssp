@@ -1,0 +1,15 @@
+{
+  "analisis_y_siguiente_experimento.txt": "fb1c0972fb9e2e0f0335e372966e52ee24ea267bf5cab81fd56aa40ea2ef5125",
+  "analysis.json": "6d2f4078e8d5734075e29313a5c84f62d20e9b124de7c9cbfc26abcf821e81c4",
+  "blocks.csv": "80d87cee17cd4269843fd2ef4c41b81b47d52f7496b40dfcae87ddd18a993fad",
+  "by_instance.csv": "d7ac0351cebea3b316d6c3f19c4861c1c278669b45c87aea0a82703e0cd4a1e6",
+  "decision_and_protocol.json": "cd2e54019daef21df13127d1712259fb269e14e1ee4a09542b28f2442f906800",
+  "first_divergences.csv": "dcfbde0c6a629648e93b8e3cdbc7721811f9a88dc3f0437073efc0449bffe891",
+  "input_manifest.json": "68456f213150ff9b11faf422301638b08ca6c35aa94cc685286ebc45b107bc0b",
+  "paired_run_effects.csv": "f5f83526c03d30cf3dc871dc68f5bb63404495e73de2083889f2eb506a74dfb0",
+  "rounds.csv": "f2418663df361f67e3c965d44b46210789037828ee122e3c023e35db0be50d51",
+  "runs.csv": "97b808e82551cbe678211f8196b93eeab05f405030692076df9ee757fcd60e90",
+  "summary.csv": "4680a1d2c6b242b165f846fb785d6fd97d4ccf777381e156d4a3ab752ff80093",
+  "validation.json": "8738801c5eb367254d11d8f3e4fef4288719d3a8dd134effb0988d7d0de95606",
+  "code\\analyze_cooperation_credit.py": "f797fe3894f6cb828b4a171c86771127e15c8c135987d88e4adc69cc9ab442cd"
+}

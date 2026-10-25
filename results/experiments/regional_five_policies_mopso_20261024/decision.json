@@ -1,0 +1,16 @@
+{
+  "means": {
+    "spea2_individual": 0.9325643956049504,
+    "explorer_solo": 0.9738862165984857,
+    "mopso_individual": 0.7935201517873246,
+    "spea2_regional_uniform": 0.9622432052155254,
+    "spea2_regional_sw_ucb": 0.9714660427486504,
+    "spea2_regional_scaled": 0.9852662413561095,
+    "spea2_regional_ph": 0.953680054702907,
+    "spea2_regional_dynamic": 0.9942659280153038
+  },
+  "best_policy": "spea2_regional_dynamic",
+  "best_individual": "explorer_solo",
+  "scope": "Development only; five policies compared on previously studied cases; no final superiority claim",
+  "mopso": "Included as an individual control and required in this runner by default"
+}

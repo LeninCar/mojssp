@@ -1,0 +1,16 @@
+{
+  "records": 180,
+  "new_runs": 36,
+  "new_search_fe": 108000,
+  "reused_records": 144,
+  "all_budgets_exact": true,
+  "all_hv_independent": true,
+  "all_auc_checked": true,
+  "all_saved_schedules_valid": true,
+  "saved_genotypes_validated": 12557,
+  "extra_audit_fe": 12557,
+  "historical_rows_without_genotypes": 36,
+  "exact_passive_reproductions": 18,
+  "block_allocations_matched": 2482,
+  "compatible_donor_uses_verified": 1491
+}

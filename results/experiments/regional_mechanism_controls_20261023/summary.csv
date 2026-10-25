@@ -1,0 +1,4 @@
+﻿method,mean_hv,baseline_minus_control,baseline_wins,baseline_ties,baseline_losses
+random_regions_directed_mode,0.9738862165984857,0.0,0,6,0
+balanced_region,0.7891942177537802,0.18469199884470552,6,0,0
+random_mode,0.9154540139749061,0.05843220262357973,6,0,0

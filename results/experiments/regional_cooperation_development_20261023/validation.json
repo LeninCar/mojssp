@@ -1,0 +1,8 @@
+{
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "all_budgets_exact": true,
+  "moead_traces_identical_in_pairs": true,
+  "pair_schedules_identical": true,
+  "total_explorer_blocks": 432
+}

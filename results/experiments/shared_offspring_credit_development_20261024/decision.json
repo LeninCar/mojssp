@@ -1,0 +1,22 @@
+{
+  "means": {
+    "alpha0": 0.989559192322007,
+    "compatible_replay": 0.9981359016883725,
+    "explorer_solo": 0.9738862165984857,
+    "moead": 0.9643833778747756,
+    "mopso_individual": 0.7935201517873246,
+    "nsga2_individual": 0.9447045948602452,
+    "nsga2_ls_individual": 0.8117818417618455,
+    "passive": 0.9913420813648001,
+    "shared": 0.9867397974976394,
+    "spea2_individual": 0.9325643956049504
+  },
+  "advance_to_fresh": false,
+  "wins_vs_passive": 2,
+  "scope": "Fixed alpha 0.5 development pilot, not untouched confirmation; external replay not autonomous control",
+  "rule": "Mean exceeds passive alpha0 and BLMR and at least four case wins versus passive",
+  "autonomous": true,
+  "adopt_as_default": false,
+  "fresh_stage_executed": false,
+  "interpretation": "Shared alpha=0.5 credit did not improve the reference means or satisfy the predeclared development gate; no alpha tuning performed"
+}

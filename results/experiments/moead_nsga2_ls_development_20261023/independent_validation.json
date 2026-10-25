@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "blocks_replayed": 3240,
+  "exact_quotas": true,
+  "local_search_fe_included": true,
+  "final_hv_recomputed": true,
+  "auc_recomputed": true,
+  "summary_means_recomputed": true,
+  "hashes_verified": true,
+  "added_hv_over_moead_same_prefix": {
+    "moead_nsga2_ls_50_50": {
+      "mean": 0.005737131703777358,
+      "positive_runs": 14,
+      "runs": 18
+    },
+    "moead_nsga2_ls_80_20": {
+      "mean": 0.0012365138369535998,
+      "positive_runs": 9,
+      "runs": 18
+    }
+  }
+}

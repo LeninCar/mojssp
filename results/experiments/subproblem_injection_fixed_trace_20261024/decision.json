@@ -1,0 +1,50 @@
+{
+  "means": {
+    "moead": 0.9643833778747756,
+    "nsga2_individual": 0.9447045948602452,
+    "spea2_individual": 0.9325643956049504,
+    "nsga2_ls_individual": 0.8117818417618455,
+    "mopso_individual": 0.7935201517873246,
+    "explorer_solo": 0.9738862165984857,
+    "passive": 0.9913420813648001,
+    "maxmin": 0.9896201885240776,
+    "compatible_live": 0.989559192322007,
+    "compatible_replay": 0.9981359016883725
+  },
+  "contrasts": [
+    {
+      "control": "passive",
+      "mean_difference": 0.006793820323572693,
+      "bootstrap95_low": -0.014083198306053332,
+      "bootstrap95_high": 0.027835828797192597,
+      "wins": 4,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "control": "compatible_live",
+      "mean_difference": 0.008576709366365806,
+      "bootstrap95_low": -0.008843034855811782,
+      "bootstrap95_high": 0.029011767362990288,
+      "wins": 4,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "control": "explorer_solo",
+      "mean_difference": 0.024249685089886824,
+      "bootstrap95_low": 0.005525733937312432,
+      "bootstrap95_high": 0.047785132578284394,
+      "wins": 5,
+      "ties": 0,
+      "losses": 1
+    }
+  ],
+  "improves_passive_mean": true,
+  "improves_live_mean": true,
+  "autonomous": false,
+  "trace_plus_treatment_cost_fe": 6000,
+  "scope": "Diagnostic under external passive allocation, six development cases; no deployable superiority claim",
+  "adopt_as_autonomous_policy": false,
+  "interpretation": "Fixed-trace conditional mean improves; intervals against passive and live include zero; budget-feedback hypothesis remains unconfirmed"
+}

@@ -1,0 +1,7 @@
+﻿case,winner,best_individual
+development_00_5x5,spea2_regional_dynamic,explorer_solo
+development_01_10x10,spea2_regional_dynamic,explorer_solo
+development_02_20x10,explorer_solo,explorer_solo
+development_03_10x20,spea2_regional_dynamic,explorer_solo
+development_04_20x20,spea2_regional_ph,spea2_individual
+development_05_30x20,spea2_regional_dynamic,explorer_solo

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "new_runs": 18,
+  "new_search_fe": 54000,
+  "controls_and_instances_hash_verified": true,
+  "quotas_exact": [
+    1500,
+    1500
+  ],
+  "auc_independently_verified": true
+}

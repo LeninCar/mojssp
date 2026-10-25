@@ -1,0 +1,7 @@
+{
+  "resumed_completed_runs": 41,
+  "workers": 4,
+  "reason": "Independent processes reduce elapsed time; evaluator counters isolated per process",
+  "aborted_incomplete_search_not_used": true,
+  "timing": "Concurrent process wall times are descriptive only and unsuitable for speed ranking"
+}

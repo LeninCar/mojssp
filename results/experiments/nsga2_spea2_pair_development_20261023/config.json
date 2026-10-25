@@ -1,0 +1,171 @@
+{
+  "split": "development",
+  "cases": [
+    {
+      "name": "development_00_5x5",
+      "sha256": "49b93ab9b91d713d68e4677e400d26ecabdf2dea1533b1147333e5780bdf5c4f"
+    },
+    {
+      "name": "development_01_10x10",
+      "sha256": "34339d1fd2ce5625033fb095087e23b49fda947e4c161e315986fd4be18008b3"
+    },
+    {
+      "name": "development_02_20x10",
+      "sha256": "94518ce0625d569f6b0a873e352fb9925f9f20cb0ebc682c53f33b175e27cf82"
+    },
+    {
+      "name": "development_03_10x20",
+      "sha256": "16944e0933e652fc9bcf4d955414df7ef2c3c6d06d40d93087090a12a767305d"
+    },
+    {
+      "name": "development_04_20x20",
+      "sha256": "2585e398e2aa40e6497f2129fae0741feb9796cf079274d2dd460238420b4fb8"
+    },
+    {
+      "name": "development_05_30x20",
+      "sha256": "14f2d23b122df3a04b69995de33b9d2fab64733b4a77e06a1d6efe6ea3b0d39b"
+    }
+  ],
+  "master_seeds": [
+    42,
+    43,
+    44
+  ],
+  "methods": [
+    "moead",
+    "nsga2",
+    "spea2",
+    "nsga2_spea2_uniform"
+  ],
+  "selected_arms": [
+    "NSGA-II",
+    "SPEA2"
+  ],
+  "policy": "uniform",
+  "budget": 3000,
+  "quotas": {
+    "NSGA-II": 1500,
+    "SPEA2": 1500
+  },
+  "population_size": 30,
+  "block_size": 50,
+  "expected_new_runs": 18,
+  "expected_new_search_fe": 54000,
+  "reused_controls": 54,
+  "control_provenance": {
+    "changed_module": [
+      "src/mojssp/runner.py"
+    ],
+    "standalone_function_and_result_contract_unchanged": true,
+    "all_other_original_modules_identical": true,
+    "timing_limitation": "Individual timings were measured in the earlier pilot; quality comparisons reuse identical inputs and implementation"
+  },
+  "input_sha256": {
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_00_5x5.dzn": "49b93ab9b91d713d68e4677e400d26ecabdf2dea1533b1147333e5780bdf5c4f",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__42__moead.json": "b57bc536b6fe0ea8707f1cbfe0c9929646021717e6f9e47d4a47b0d8936521c3",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__42__nsga2.json": "de816e28b22dfe0018c702e6a65c3813da424b9b7ceecc1a6da4d297f16b6d3d",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__42__spea2.json": "93029ddd8b551fb78355b997b0ce1b4297e63b10d7d503031c28ed55f4d2b596",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__43__moead.json": "fa10bed7e1bf5258cf486b6ce92538689960b2be2c4c101301179a0c7806d932",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__43__nsga2.json": "a9f9325d55825a3fbe44f4b8d71afb32a733f8090177a2cded628463bac35ebb",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__43__spea2.json": "686ed8762a544390111d6a4c2e3118465667a4bee59a139784bef62321137775",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__44__moead.json": "e5dc52fca8d5c46fc6f069c58f230d97f4553770b93a623e9266107202c8ba66",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__44__nsga2.json": "bb60f8967213ce5ad3d23a03d2f9573b7cce8a2287d0a311096cf790941e0a01",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_00_5x5__44__spea2.json": "524d2c4e9729c3f9ca56d33b516b7d67d65dbcf359d55bcf0785215331fdbd0a",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_01_10x10.dzn": "34339d1fd2ce5625033fb095087e23b49fda947e4c161e315986fd4be18008b3",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__42__moead.json": "72ec03d6b7ecda62bdd955335a703dad55fbbce8a428383fed867461ab712c28",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__42__nsga2.json": "b731be0a90e70eed394cf09b2e9a7d0f6c729c8b2d605067328070deb75ee6b6",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__42__spea2.json": "4fb78026db3cf1d8c353034539e93753bf9839f2d6048668aec2b7518ff6ad18",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__43__moead.json": "3c9fc04dbd628f0e9961703247a38dab9141a26820caeb4cd0a2fc7e4d5920dd",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__43__nsga2.json": "5cc8eb3eccc1cb615d358d8fcbd11be872c0ba27601ee5d3057aa8389f8bf219",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__43__spea2.json": "7277f2fb60240d05f874657a9fcf90e1343b29a1d6209136e81e2206cdcf8e7e",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__44__moead.json": "2e6e7a07215575a1dab8b74fa3b14a668addfcbd42a3fc46f7d096df96660ab1",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__44__nsga2.json": "6771b5fcafb8d0c63270c9dd8c578b20866327062a6f8cb2228e896896ab70ed",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_01_10x10__44__spea2.json": "b82f407a10c84f937485890025339000c7e3d1b9bdea06188aa042d10a11e414",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_02_20x10.dzn": "94518ce0625d569f6b0a873e352fb9925f9f20cb0ebc682c53f33b175e27cf82",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__42__moead.json": "61cb6e4be9e3a159ae41aabfe41c7052de538ad4da1c14cdc4d0ac561d6a183e",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__42__nsga2.json": "fbac82ba312bee698b0c93d50bad9071681e8f78db70807717496531362d00ef",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__42__spea2.json": "d5ab9d1dcfc370c32f9a2025e93a60feb15361ca188a96e0a347f8c74bada321",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__43__moead.json": "dbb5948af4303c8bbffcad0fc03604a49a3122767969392cd9188913c87d7536",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__43__nsga2.json": "23c24fe67b228565a8b0ae40400d934053e8148b3bbcca34d0b48da4add7a6ea",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__43__spea2.json": "70b9cfbe8a1bcd9a4d31d8b4810e9e972a573183775e672b014fdb664bf0f333",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__44__moead.json": "46a65dc3606a4131b484a9a3d73c8eec477643ca29872fa2de2cc08d7522850f",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__44__nsga2.json": "d5fe969c8d2a492480e0efaab25e3d9cfedc7ad052a518fe9e86af0ff01a2829",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_02_20x10__44__spea2.json": "375be9a11513d61bd9bdf7a873fce27925a1dbce78799637dcd75a315b9359a5",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_03_10x20.dzn": "16944e0933e652fc9bcf4d955414df7ef2c3c6d06d40d93087090a12a767305d",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__42__moead.json": "4278dae3321ed6161251fb99008c05a2a69af4b6eb3aca099efd4e67d3c8f091",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__42__nsga2.json": "a66157d84897f97e6ba8c99f41571d1df9b99628be61d57ad411ce8cad0f10e7",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__42__spea2.json": "2e62b59a5f0f832b1f5641fdd4900a070d57dfa8fb4b01cbcb57a71543baf921",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__43__moead.json": "b436b7895ad0099fd9ae9fdda9626d766f5fbfa48605b90369631094863966a6",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__43__nsga2.json": "97e19a0487bfc6ba0ce036d86389d8624bcb61a8ed649c49c43ffca59a4ae9f0",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__43__spea2.json": "2d302721206b016654e86bc35100663db8d81e2d42c99fa7e0da61d9e3cceafe",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__44__moead.json": "2a76669ec3ee06a06ab8a53070b0b598ab110bb20ec3ebe73f4ba376ee719f3b",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__44__nsga2.json": "0da902f607f45d53de2f6b3630e13b8d18b4000647549369d983310def7f0f94",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_03_10x20__44__spea2.json": "5c2e204abd7d41d50fb4678cf0d695b2b28a5237e9e12145bede2cbc0f1581da",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_04_20x20.dzn": "2585e398e2aa40e6497f2129fae0741feb9796cf079274d2dd460238420b4fb8",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__42__moead.json": "79d7e4bdab3d8214b6fc78b16a06d62572e407dc35cab97d20cdf6cfe7974712",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__42__nsga2.json": "5d0cff9ec82326f2c9ff3b740f95f52279bacd51e207b387f171dbd4ea1d21c8",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__42__spea2.json": "9ba69a324b065943214d1a8caa4ee275f67c9ac001ef519f568cb1927e7c9592",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__43__moead.json": "e8cb0b8890d82457197d4bad6ca37e2e10109b4e9996fb8972e96d857f26b622",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__43__nsga2.json": "57a1fa64f5667e88ddab7b1215326a5240ac1d725642083c6e387214782d9200",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__43__spea2.json": "ae2455f718b8976892678be2dd8269b9962a4f63b4cabf642deac5207aff1c33",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__44__moead.json": "ac1d7440cd169aa3f1cbcd88542e2e1f52ef20000699b0be20845d5a49a246f1",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__44__nsga2.json": "480180c855d2145efd80aa9854bbab0d852a7584a4d1f0d463d98c828e62c303",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_04_20x20__44__spea2.json": "a26861d9acedb20e0844fac3550229453a1b801be0d1b00da43c43327d35fbd1",
+    "results\\experiments\\weighted_pilot_development_20261023\\instances\\development_05_30x20.dzn": "14f2d23b122df3a04b69995de33b9d2fab64733b4a77e06a1d6efe6ea3b0d39b",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__42__moead.json": "b567d0b94f91bd4ba076a1b161cc7107eab964f755ee06f966bbce8c9badf0b5",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__42__nsga2.json": "1293e06549926889c9b799d5ffd02bd3d91dfc7ac10e3d903903539fefdf02cd",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__42__spea2.json": "b269724ac032d7f503759b93ca29a98cdccbae987ea0694a7685fa88ce322c2d",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__43__moead.json": "198a758d8d7859dea2abb496ebc966e7deb2bba8f2d11091d17c271a462bdd8a",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__43__nsga2.json": "b1f3f5e742f60fea4970e63fc88ed9de4c54f7ffbae07e35f09a7f553fb3d793",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__43__spea2.json": "b6ce6ae99471a959c558638c7be30fe8095e316675754441c16a79b7865ffe92",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__44__moead.json": "c177886e8c53f027c9f9f249d2c203736622ac2650c1e0318eebff37ded89acf",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__44__nsga2.json": "8874a4d325e5d5aab2f0a5b378f3a03c6d00c42db862fd5c314c2a63fef59150",
+    "results\\experiments\\weighted_pilot_development_20261023\\runs\\development_05_30x20__44__spea2.json": "b60094d4247e75b1df83ccc954718415972cebf87208575d36c81aaa8095b9cd"
+  },
+  "source_sha256": {
+    "src/mojssp/__init__.py": "938c9a287ec41c4faa90a03e0e0e9fa3f71bae547c6f118c4644902f186b8acd",
+    "src/mojssp/algorithm_contract.py": "9b29b0eef1e6257708943ab06fac7f75b3ca70841a635dd65dd7d628edb6883f",
+    "src/mojssp/arms.py": "3d8ec0941ff5ca2ff17aefb0f40a1de9eeb7484c5ac324e3bcce361b3eca6fe0",
+    "src/mojssp/change_detection.py": "4890f2d05b9a4b500e622c1760f8a08be59e146cf69592d54e6476cf5f8d0028",
+    "src/mojssp/contribution_report.py": "8d44ffc40a8a5032247761b7750c291f18c4eca3509db984b65290a373d7fb94",
+    "src/mojssp/cooperation.py": "961bd8879abdae23b112052d85c8036aa089c476359f5d5bad3c51485389c6c2",
+    "src/mojssp/critical_path.py": "2cd7c97a64acbdd8348d6e39860536e2f70cf884f8e3dab305b45a9805f2dcd8",
+    "src/mojssp/decoder.py": "99b53d508951b27718e9ed3c96c8d3adfd159d69b423494837ead6aa48097914",
+    "src/mojssp/dmab.py": "011e2b346f11123ca4ec5b2948021b1f8ade970afe320a3e627c193a0b0f5099",
+    "src/mojssp/dominance.py": "0f6e7c18caa8742501ae2cca1bd264b7ba1abe714dec0eaa11470574b4c59508",
+    "src/mojssp/evaluator.py": "6faefc950cd0f479bdadaf792401614562ec8a421fd2b95d7f689289c2d88591",
+    "src/mojssp/fixed_budget.py": "f888eadeaef651e33f353dd2ba6145089ac5cb7564ce46f7963aa5fc71368fc4",
+    "src/mojssp/hypervolume.py": "29eb947ba639878ad9fe97ab33c93c82bfe504fef94e7652fee4fcdab8b5e7fc",
+    "src/mojssp/igd.py": "7261db82f3dc23f358f6c3e53399f6ee56cc14938b25315c481e6037fee81f30",
+    "src/mojssp/instance.py": "be5b457d0e6f2907a47e887cafe865be594e1c3edd47cad99a52098dc44f1982",
+    "src/mojssp/io.py": "baa123f152c4fdc46ee9c05b58d6e54e4946718b5912f64f8b6eb50aba807fca",
+    "src/mojssp/job.py": "bcafe025eb733ed20630e01038a0c29250843fb445e9dc67f2298e9dc10e8ea7",
+    "src/mojssp/local_search.py": "2ada1b9e93d5decb3feef6458af1828f156c27866f6a6201148ce16200be8141",
+    "src/mojssp/mode.py": "71809460b27fa73fa7c974b20fcec716fa8ed8d93c96ba8479719ef97d1337cd",
+    "src/mojssp/moead.py": "2b255aa71044544e43ea38b56f8afb40562e18d3a59ed0fb401382cdfc5981fa",
+    "src/mojssp/mopso.py": "71be976773d2aea9ac7d563eed6bd4b983d79cfa416cd268471c55903562af50",
+    "src/mojssp/normalization.py": "a8ee007482647562f4180c37bcc5e7b1d87f1bcbd634eff5d125216814812425",
+    "src/mojssp/nsga2.py": "ab972b335676e57e68e23c1a4882bf24b3b1bc83f46263fe27524323eb6290c2",
+    "src/mojssp/nsga2_ls.py": "48be8d1184bd0922310a6329662d27af7293b1f7e8caf86b783ef8bd3cb93729",
+    "src/mojssp/operation.py": "2375872b7c960a903b2f939276ba9167618c94463a6f2c79c7541dfe759510b5",
+    "src/mojssp/orchestrator.py": "1883a73cc8a65fffe2fc9be62a89af133444bca5621de7c388a0f743c8b53560",
+    "src/mojssp/page_hinkley.py": "e0fa8323dec4c495c36a71c7af7562a56f3a7e79a12f3ec5e28f54524c5d712d",
+    "src/mojssp/pareto_archive.py": "88d648cfa44bf5fbe90bab0aa6be79b556b9776717d83d6529326b2c5a5e6318",
+    "src/mojssp/portfolio.py": "57ffd3bb86363f881ca8f517fc0b38409600f24e73f923f6fb8642af3e422bf0",
+    "src/mojssp/project_paths.py": "64b86ed73fae9d6ad5fbfa261d7123b935919292ff538a073d7380a01fd3c0fb",
+    "src/mojssp/provenance.py": "25785185fa23a80955305c8c2311f4d3afbb64578dea531b33d67bfc88462053",
+    "src/mojssp/reward.py": "92df551224b1a7bdd9b2ffbb3f138e8944705820be3a65cc32923f6e26be6785",
+    "src/mojssp/runner.py": "7fd49b4fb373f3039ca5d73f0b83290d672635e3aac18b73ef0dc312c8b33860",
+    "src/mojssp/schedule.py": "d172a77a5e3e887f0dacb93104ce2cbb2ae9bede3edfa77929aca1e4e00a95b8",
+    "src/mojssp/schedule_validator.py": "5ebccb1a86e571e8e007e21f14cea8e255889e113072344a0c211faccde81cd4",
+    "src/mojssp/selectors.py": "a1d9e494ac4e3bc3da533574ffedf4a3008058032c058690f64b50c9b26ce62b",
+    "src/mojssp/solution.py": "52df758611f9f4ee4c58f72b1b975948223a997fac021334863048185e475a45",
+    "src/mojssp/spea2.py": "99a25b29ccb35b64cdefd6828c1f5de80aa75dbf1026629b951d49f9d7aa506e",
+    "src/mojssp/validator.py": "13778e573b0a19df347c2802bb7cb7d56eb8c290d654f46ac611ee0ea175b7d6",
+    "scripts/run_pair_pilot.py": "7ae70e5acde4b42f1ee70f0ebed3fa9c9f1cc23d2ae2d77e8dbc65a5ad5e3ba7",
+    "scripts/run_weighted_pilot.py": "7458076df136d32bf05659ca61142f3e120cb16e564e0a80f5dac5300ea9e50e"
+  },
+  "seed_derivation": "Individual arm seeds match their portfolio seeds: (master_seed*10007+offset) mod (2**31-1); offsets MOEA/D=17, NSGA-II=29, SPEA2=43",
+  "primary_comparison": "Pair minus MOEA/D final HV; comparisons with NSGA-II and SPEA2 secondary",
+  "timing": "Reused control timings are descriptive, not a contemporaneous runtime comparison"
+}

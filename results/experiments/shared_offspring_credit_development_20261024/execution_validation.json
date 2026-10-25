@@ -1,0 +1,7 @@
+{
+  "new_runs": 36,
+  "new_search_fe": 108000,
+  "alpha0_exact_reproductions": 18,
+  "all_actual_fe_exact": true,
+  "all_hv_independent": true
+}

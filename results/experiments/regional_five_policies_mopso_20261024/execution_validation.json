@@ -1,0 +1,7 @@
+{
+  "runs": 144,
+  "search_fe": 432000,
+  "all_actual_fe_exact": true,
+  "all_final_hv_independent": true,
+  "prior_trajectories_reproduced": 72
+}

@@ -1,0 +1,17 @@
+{
+  "records": 180,
+  "new_runs": 36,
+  "new_search_fe": 108000,
+  "reused_records": 144,
+  "child_evaluations_audited": 41757,
+  "assisted_children_verified": 3798,
+  "unique_genotypes_validated": 45239,
+  "extra_audit_fe": 45239,
+  "historical_rows_without_genotypes": 36,
+  "round_quotas_recomputed": 360,
+  "alpha0_exact_reproductions": 18,
+  "all_fe_exact": true,
+  "all_child_hv_independent": true,
+  "all_credit_conserved": true,
+  "all_saved_schedules_valid": true
+}

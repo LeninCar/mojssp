@@ -1,0 +1,42 @@
+Crédito compartido por hijo asistido
+
+Se mantuvieron MOEA/D y BLMR v1, población 30, presupuesto 3000 FE, rondas 300, bloques hasta 50 y reserva mínima 10% por brazo.
+La instrumentación usa un archivo de objetivos sombra. El archivo global real sigue actualizándose al terminar cada bloque.
+Los donantes se eligen por el Tchebycheff del subproblema actual de MOEA/D, con máximo cinco usos por bloque cada diez cruces.
+Cada hijo asistido recibe crédito alfa para BLMR y 1-alfa para MOEA/D. Los hijos sin donantes acreditan al ejecutor.
+La tasa usada en el reparto sigue siendo crédito dividido por FE puntuadas reales. El primer bloque neutral por brazo no aprende.
+Alfa se fijó en 0.5 antes de correr; no se buscaron otros porcentajes.
+
+Comparación
+compatible_replay: 0.99813590
+passive: 0.99134208
+alpha0: 0.98955919
+shared: 0.98673980
+explorer_solo: 0.97388622
+moead: 0.96438338
+nsga2_individual: 0.94470459
+spea2_individual: 0.93256440
+nsga2_ls_individual: 0.81178184
+mopso_individual: 0.79352015
+
+Decisión
+La variante compartida no supera en media a la pareja pasiva ni al crédito normal y no cumple la puerta predeclarada de desarrollo.
+No se adopta por defecto ni se ejecuta una confirmación en instancias nuevas. No se concluye que todo crédito compartido sea inútil.
+Los intervalos de las diferencias frente a ambas parejas incluyen cero; la pérdida media observada no es prueba de inferioridad universal.
+Esta ejecución sí decide durante la corrida sin copiar turnos. El replay se conserva sólo como contexto diagnóstico externo.
+
+Validación
+18 reproducciones alfa=0 exactas. 41757 evaluaciones de hijos auditadas.
+3798 usos de padres externos enlazados a los hijos.
+45239 genotipos únicos decodificados y validados; mismas FE extra de auditoría, separadas de la búsqueda.
+Se recomputó independientemente la contribución HV de cada hijo, la conservación del crédito y las cuotas de todas las rondas.
+559 pruebas y 174 subpruebas aprobadas.
+
+Presupuesto
+36 corridas nuevas válidas, 108000 FE de búsqueda; 144 registros reutilizados, no contados como corridas nuevas.
+Se conservan los seis controles individuales, incluido MOPSO.
+La instrumentación calcula HV y guarda descendencia: consume tiempo y memoria, aunque no evaluaciones extra del problema.
+Los tiempos de procesos concurrentes son descriptivos; no se afirma superioridad a tiempo fijo.
+
+Reproducción
+.venv/Scripts/python.exe scripts/run_shared_credit_pilot.py --output-dir results/experiments/<nuevo-nombre> --workers 4

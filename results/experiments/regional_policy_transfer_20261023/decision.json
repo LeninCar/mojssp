@@ -1,0 +1,50 @@
+{
+  "chosen": {
+    "name": "spea2_regional_dynamic",
+    "phase": "assignment",
+    "arms": [
+      "SPEA2",
+      "RegionExplorer"
+    ],
+    "policy": "dynamic",
+    "guidance": false
+  },
+  "comparisons": [
+    {
+      "candidate": "spea2_regional_dynamic",
+      "control": "moead",
+      "mean_difference": 0.035490495386478464,
+      "bootstrap95_low": 0.01715959635299861,
+      "bootstrap95_high": 0.05596444424442353,
+      "wins": 11,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "candidate": "spea2_regional_dynamic",
+      "control": "explorer_solo",
+      "mean_difference": -0.01809820341864051,
+      "bootstrap95_low": -0.02991117346101444,
+      "bootstrap95_high": -0.004917423931376696,
+      "wins": 3,
+      "ties": 0,
+      "losses": 10
+    },
+    {
+      "candidate": "spea2_regional_dynamic",
+      "control": "native_individual",
+      "mean_difference": 0.06004619041621228,
+      "bootstrap95_low": 0.0429550516337747,
+      "bootstrap95_high": 0.07773839281218729,
+      "wins": 13,
+      "ties": 0,
+      "losses": 0
+    }
+  ],
+  "recommendation": "Use observed transfer comparisons, not development rank, to judge improvement over individual controls",
+  "objective_achieved_on_transfer": false,
+  "default_recommendation": "Preserve regional solo v1 as validated reference; retain dynamic integration as experimental",
+  "interpretation": "Selected dynamic pair improves over MOEA/D and SPEA2 on this bank but loses to regional solo on 10 of 13 case means",
+  "next_hypothesis": "Measure lower mandatory exploration and shorter initial exploration; no guarantee of improvement",
+  "scope": "Candidate frozen after development selection; thirteen synthetic cases previously measured for base regional algorithm, not used to choose this policy"
+}

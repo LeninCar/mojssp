@@ -1,0 +1,8 @@
+{
+  "valid_new_runs": 114,
+  "valid_new_search_fe": 342000,
+  "reused_individuals": 342,
+  "passive_trajectories_exact": 57,
+  "total_search_fe_including_discarded_controls_and_diagnostic": 516000,
+  "discarded_control_and_diagnostic_fe": 174000
+}

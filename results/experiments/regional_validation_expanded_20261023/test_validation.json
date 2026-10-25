@@ -1,0 +1,19 @@
+{
+  "pytest_passed": 505,
+  "subtests_passed": 174,
+  "runtime_seconds": 110.41,
+  "prior_runs_reaudited": {
+    "runs": 108,
+    "all_manifests_valid": true,
+    "independent_hv_valid": true,
+    "max_hv_error": 1.7763568394002505e-15
+  },
+  "independent_hv_randomized_cases": 150,
+  "independent_hv_randomized_max_error": 1.3322676295501878e-15,
+  "original_runs_reexecuted": 18,
+  "original_runs_all_identical": true,
+  "new_comparison_runs": 207,
+  "mechanism_runs": 36,
+  "total_new_completed_search_runs": 261,
+  "total_new_completed_search_fe": 783000
+}

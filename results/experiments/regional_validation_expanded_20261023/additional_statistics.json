@@ -1,0 +1,44 @@
+[
+  {
+    "group": "fresh_seeds",
+    "control": "moead",
+    "mean_difference": 0.012691561313312524,
+    "case_sign_flip_two_sided_p": 0.46875,
+    "interpretation": "Exploratory case-level symmetry assumption; synthetic related instances are not independent population draws"
+  },
+  {
+    "group": "fresh_seeds",
+    "control": "explorer_solo",
+    "mean_difference": 0.0008853248363376864,
+    "case_sign_flip_two_sided_p": 0.9375,
+    "interpretation": "Exploratory case-level symmetry assumption; synthetic related instances are not independent population draws"
+  },
+  {
+    "group": "fresh_seeds",
+    "control": "best_individual_mean_reselected_in_each_bootstrap",
+    "mean_difference": 0.0008853248363374089,
+    "bootstrap95_low": -0.01651107389780826,
+    "bootstrap95_high": 0.015140354958063762
+  },
+  {
+    "group": "transfer",
+    "control": "moead",
+    "mean_difference": 0.03442096690446513,
+    "case_sign_flip_two_sided_p": 0.0107421875,
+    "interpretation": "Exploratory case-level symmetry assumption; synthetic related instances are not independent population draws"
+  },
+  {
+    "group": "transfer",
+    "control": "explorer_solo",
+    "mean_difference": -0.019167731900653847,
+    "case_sign_flip_two_sided_p": 0.017822265625,
+    "interpretation": "Exploratory case-level symmetry assumption; synthetic related instances are not independent population draws"
+  },
+  {
+    "group": "transfer",
+    "control": "best_individual_mean_reselected_in_each_bootstrap",
+    "mean_difference": -0.019167731900654128,
+    "bootstrap95_low": -0.03257153475809686,
+    "bootstrap95_high": -0.006355180405024137
+  }
+]

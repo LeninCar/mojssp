@@ -1,0 +1,10 @@
+{
+  "runs": 207,
+  "search_fe": 621000,
+  "independent_hv_all_passed": true,
+  "exact_fe_all_passed": true,
+  "moead_prefix_all_passed": true,
+  "unique_saved_genotypes_redecoded_and_validated": 17046,
+  "extra_validation_fe": 17046,
+  "note": "Search FE excludes independent post-run audits and one abandoned partial search; retained runs each have exactly 3000 FE"
+}

@@ -1,0 +1,15 @@
+{
+  "ratio_order": "MOEA/D then regional explorer",
+  "prior_moead_80_explorer_20_mean": 0.9637856284495799,
+  "prior_moead_mean": 0.9650861049311729,
+  "prior_moead_20_explorer_80_mean": 0.9779101916404963,
+  "prior_explorer_solo_mean": 0.9846545874280497,
+  "exchange": "Evaluated global archive parents are reused by explorer. MOEA/D receives no explorer parents.",
+  "mechanism_scope": "Controls on six development cases, three fresh seeds; no claim about a unique causal mechanism",
+  "limits": [
+    "Same FE does not imply same computation time",
+    "Only budget 3000 tested in expanded comparison",
+    "Transfer cases previously existed in project, newly evaluated for frozen regional algorithm",
+    "Synthetic related cases and small seed counts limit generalization"
+  ]
+}

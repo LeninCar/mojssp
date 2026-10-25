@@ -1,0 +1,21 @@
+{
+  "means": {
+    "moead": 0.9643833778747756,
+    "nsga2_individual": 0.9447045948602452,
+    "spea2_individual": 0.9325643956049504,
+    "nsga2_ls_individual": 0.8117818417618455,
+    "mopso_individual": 0.7935201517873246,
+    "explorer_solo": 0.9738862165984857,
+    "passive": 0.9913420813648001,
+    "maxmin": 0.9896201885240776,
+    "compatible": 0.989559192322007
+  },
+  "wins_vs_passive": 1,
+  "instances": 6,
+  "advance_to_fresh": false,
+  "decision_rule": "Predeclared development gate; no post-hoc parameter changes",
+  "primary_reference": "BLMR alone remains mandatory",
+  "adopt_as_default": false,
+  "fresh_stage_executed": false,
+  "reason": "Compatible donor mean does not exceed passive pair or max-min injection; wins in only one of six cases"
+}

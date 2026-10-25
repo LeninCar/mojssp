@@ -1,0 +1,9 @@
+{
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "all_budgets_exact": true,
+  "source_traces_identical": true,
+  "pair_schedules_identical": true,
+  "total_migration_uses": 921,
+  "runs_with_migration": 17
+}

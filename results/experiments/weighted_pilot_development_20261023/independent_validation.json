@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "unique_cases": 108,
+  "actual_search_fe": 324000,
+  "quotas_verified": {
+    "MOEA/D": 2050,
+    "NSGA-II": 650,
+    "SPEA2": 300
+  },
+  "source_and_instance_hashes_verified": true,
+  "auc_checked_independently_with_trapezoidal_integration": true,
+  "method": "Independent saved-artifact checks; no optimizer or evaluator calls"
+}

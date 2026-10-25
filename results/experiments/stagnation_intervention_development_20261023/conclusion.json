@@ -1,0 +1,11 @@
+{
+  "result": "All three stagnation intervention settings lose to standalone MOEA/D on each of six development case means.",
+  "best_epsilon": 0.0001,
+  "best_mean_hv": 0.9620104144177238,
+  "moead_mean_hv": 0.9650861049311729,
+  "mean_moead_percent": 97.22222222222221,
+  "mean_interventions": 1.6666666666666667,
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "scope": "Six development instances, three seeds, B=3000; absolute global HV gain; k=2; one 50-FE rescue; no active solution exchange."
+}

@@ -1,0 +1,4 @@
+﻿candidate,control,mean_difference,bootstrap95_low,bootstrap95_high,wins,ties,losses
+spea2_regional_dynamic,moead,0.035490495386478464,0.01715959635299861,0.05596444424442353,11,0,2
+spea2_regional_dynamic,explorer_solo,-0.01809820341864051,-0.02991117346101444,-0.004917423931376696,3,0,10
+spea2_regional_dynamic,native_individual,0.06004619041621228,0.0429550516337747,0.07773839281218729,13,0,0

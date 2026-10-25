@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "new_runs": 108,
+  "new_search_fe": 324000,
+  "matched_moead_prefixes": true,
+  "pair_schedules_identical": true,
+  "all_hv_and_auc_recomputed": true,
+  "all_region_geometry_reconstructed": true,
+  "all_sparse_choices_have_minimum_density": true,
+  "constant_objectives_excluded": true,
+  "explorer_final_genotypes_decoded_and_evaluated": 7832,
+  "validation_fe_outside_search_budget": 7832,
+  "individual_initialization_included": true
+}

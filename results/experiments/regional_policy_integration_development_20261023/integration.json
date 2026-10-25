@@ -1,0 +1,36 @@
+{
+  "module": "src/mojssp/regional_portfolio.py",
+  "command": "scripts/run_regional_experiment.py",
+  "supported_arms": [
+    "MOEA/D",
+    "NSGA-II",
+    "SPEA2",
+    "RegionExplorer"
+  ],
+  "supported_policies": [
+    "uniform",
+    "sw_ucb",
+    "scaled",
+    "ph",
+    "dynamic"
+  ],
+  "measured_policies": [
+    "uniform",
+    "scaled",
+    "dynamic"
+  ],
+  "region_modes": [
+    "Standalone regional arm",
+    "Optional regional archive parents for native arms"
+  ],
+  "reward": "Global marginal hypervolume gain; no causal ancestry credit",
+  "dynamic_profile": {
+    "round_fe": 300,
+    "first_round": "Uniform; initial 10% at total FE 3000",
+    "minimum_share_per_arm": 0.1,
+    "redistribution": "Remaining 80% proportional to previous round HV gain per scored FE for two arms"
+  },
+  "reference": "Validated regional explorer v1 unchanged",
+  "transfer_campaign": "regional_policy_transfer_20261023",
+  "transfer_outcome": "Selected pair did not beat regional solo on transfer bank"
+}

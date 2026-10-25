@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "new_runs": 18,
+  "new_search_fe": 54000,
+  "reused_controls": 108,
+  "all_new_hv_recomputed": true,
+  "all_round_quotas_recomputed": true,
+  "initialization_excluded_from_scoring": true,
+  "control_compatibility": {
+    "changed_modules": [
+      "src/mojssp/orchestrator.py",
+      "src/mojssp/runner.py"
+    ],
+    "individual_execution_and_contract_unchanged": true,
+    "existing_orchestrator_methods_unchanged": true,
+    "other_original_modules_identical": true,
+    "new_telemetry": "Optional round_index field; existing policies unchanged"
+  },
+  "search_wall_seconds": 83.11775199999829
+}

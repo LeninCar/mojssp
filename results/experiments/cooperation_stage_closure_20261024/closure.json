@@ -1,0 +1,308 @@
+{
+  "status": "closed_not_adopted",
+  "scope": "BLMR to MOEA/D injection and reward credit experiments",
+  "new_search_fe": 0,
+  "decision": "Keep no-injection dynamic pairs and BLMR v1 as references; close tested injection and shared-credit variants",
+  "replay": "Conditional external-trace diagnostic, not deployable same-cost superiority",
+  "limits": "No claim that every possible cooperation mechanism fails; no further tuning in this closed stage",
+  "preservation": "Raw runs code tests and commands retained for reproduction; no historical evidence deleted",
+  "next_stage": "Frozen BLMR v2 operator specialization and separate sparse-region ablation",
+  "references": {
+    "results\\experiments\\blmr_to_moead_dynamic_injection_20261024\\decision.json": {
+      "sha256": "bca1c216dca3b286119e68e2c8251ebaa1ccdad9aca1921efe65372452570902",
+      "decision": {
+        "means": {
+          "development": {
+            "moead": 0.9643833778747756,
+            "nsga2_individual": 0.9447045948602452,
+            "spea2_individual": 0.9325643956049504,
+            "nsga2_ls_individual": 0.8117818417618455,
+            "mopso_individual": 0.7935201517873246,
+            "explorer_solo": 0.9738862165984857,
+            "passive": 0.9913420813648001,
+            "active": 0.9896201885240776
+          },
+          "transfer": {
+            "moead": 0.9442670234070771,
+            "nsga2_individual": 0.9264867489780089,
+            "spea2_individual": 0.9197113283773434,
+            "nsga2_ls_individual": 0.7833281456562493,
+            "mopso_individual": 0.7721084093488566,
+            "explorer_solo": 0.9978557222121961,
+            "passive": 0.9938849711868669,
+            "active": 0.9791078420044107
+          }
+        },
+        "comparisons": [
+          {
+            "group": "development",
+            "control": "passive",
+            "mean_difference": -0.0017218928407222351,
+            "bootstrap95_low": -0.020146947483319817,
+            "bootstrap95_high": 0.010100784601113078,
+            "wins": 5,
+            "ties": 0,
+            "losses": 1
+          },
+          {
+            "group": "development",
+            "control": "moead",
+            "mean_difference": 0.02523681064930222,
+            "bootstrap95_low": 0.002660299607085507,
+            "bootstrap95_high": 0.04876805193496072,
+            "wins": 4,
+            "ties": 0,
+            "losses": 2
+          },
+          {
+            "group": "development",
+            "control": "nsga2_individual",
+            "mean_difference": 0.04491559366383254,
+            "bootstrap95_low": 0.02120839184799045,
+            "bootstrap95_high": 0.07429885012868702,
+            "wins": 6,
+            "ties": 0,
+            "losses": 0
+          },
+          {
+            "group": "development",
+            "control": "spea2_individual",
+            "mean_difference": 0.0570557929191271,
+            "bootstrap95_low": 0.035317540274084604,
+            "bootstrap95_high": 0.08159325955336783,
+            "wins": 6,
+            "ties": 0,
+            "losses": 0
+          },
+          {
+            "group": "development",
+            "control": "nsga2_ls_individual",
+            "mean_difference": 0.17783834676223223,
+            "bootstrap95_low": 0.12317156172548388,
+            "bootstrap95_high": 0.2341815956420891,
+            "wins": 6,
+            "ties": 0,
+            "losses": 0
+          },
+          {
+            "group": "development",
+            "control": "mopso_individual",
+            "mean_difference": 0.19610003673675314,
+            "bootstrap95_low": 0.1396985176872926,
+            "bootstrap95_high": 0.2563631869586135,
+            "wins": 6,
+            "ties": 0,
+            "losses": 0
+          },
+          {
+            "group": "development",
+            "control": "explorer_solo",
+            "mean_difference": 0.015733971925591894,
+            "bootstrap95_low": -0.002137290357111107,
+            "bootstrap95_high": 0.03328581650988192,
+            "wins": 4,
+            "ties": 0,
+            "losses": 2
+          },
+          {
+            "group": "development",
+            "control": "best_individual_per_instance",
+            "mean_difference": 0.004214317062863719,
+            "bootstrap95_low": -0.009237292568003652,
+            "bootstrap95_high": 0.018804309215024517,
+            "wins": 3,
+            "ties": 0,
+            "losses": 3
+          },
+          {
+            "group": "transfer",
+            "control": "passive",
+            "mean_difference": -0.014777129182456345,
+            "bootstrap95_low": -0.028364545848091786,
+            "bootstrap95_high": -0.0023194155208650404,
+            "wins": 3,
+            "ties": 0,
+            "losses": 10
+          },
+          {
+            "group": "transfer",
+            "control": "moead",
+            "mean_difference": 0.03484081859733357,
+            "bootstrap95_low": 0.016964302358404685,
+            "bootstrap95_high": 0.054433130880244415,
+            "wins": 11,
+            "ties": 0,
+            "losses": 2
+          },
+          {
+            "group": "transfer",
+            "control": "nsga2_individual",
+            "mean_difference": 0.05262109302640183,
+            "bootstrap95_low": 0.03258279278089469,
+            "bootstrap95_high": 0.07085103756318714,
+            "wins": 12,
+            "ties": 0,
+            "losses": 1
+          },
+          {
+            "group": "transfer",
+            "control": "spea2_individual",
+            "mean_difference": 0.059396513627067375,
+            "bootstrap95_low": 0.040991052880171894,
+            "bootstrap95_high": 0.07742263063206146,
+            "wins": 12,
+            "ties": 0,
+            "losses": 1
+          },
+          {
+            "group": "transfer",
+            "control": "nsga2_ls_individual",
+            "mean_difference": 0.19577969634816145,
+            "bootstrap95_low": 0.17168621949013363,
+            "bootstrap95_high": 0.2206911255309719,
+            "wins": 13,
+            "ties": 0,
+            "losses": 0
+          },
+          {
+            "group": "transfer",
+            "control": "mopso_individual",
+            "mean_difference": 0.20699943265555407,
+            "bootstrap95_low": 0.1833310572029469,
+            "bootstrap95_high": 0.23190985242838844,
+            "wins": 13,
+            "ties": 0,
+            "losses": 0
+          },
+          {
+            "group": "transfer",
+            "control": "explorer_solo",
+            "mean_difference": -0.018747880207785412,
+            "bootstrap95_low": -0.03349817396242006,
+            "bootstrap95_high": -0.004413618700135098,
+            "wins": 3,
+            "ties": 0,
+            "losses": 10
+          },
+          {
+            "group": "transfer",
+            "control": "best_individual_per_instance",
+            "mean_difference": -0.021508511653645365,
+            "bootstrap95_low": -0.034945084290023506,
+            "bootstrap95_high": -0.009636932757574502,
+            "wins": 2,
+            "ties": 0,
+            "losses": 11
+          }
+        ],
+        "scope": "Exploratory observed banks; injection live feedback can alter both quotas and future BLMR parents; no untouched confirmation",
+        "migration_uses": 5418,
+        "active_runs_with_uses": 57,
+        "adopt_as_default": false,
+        "conclusion": "No default adoption unless both banks improve over passive pair and BLMR solo; observed means retained"
+      }
+    },
+    "results\\experiments\\subproblem_compatible_injection_development_20261024\\decision.json": {
+      "sha256": "44bdeb9b225dc70153cb8d6d55230f663d09ccac4a06aeb9a49f035a6038a1cf",
+      "decision": {
+        "means": {
+          "moead": 0.9643833778747756,
+          "nsga2_individual": 0.9447045948602452,
+          "spea2_individual": 0.9325643956049504,
+          "nsga2_ls_individual": 0.8117818417618455,
+          "mopso_individual": 0.7935201517873246,
+          "explorer_solo": 0.9738862165984857,
+          "passive": 0.9913420813648001,
+          "maxmin": 0.9896201885240776,
+          "compatible": 0.989559192322007
+        },
+        "wins_vs_passive": 1,
+        "instances": 6,
+        "advance_to_fresh": false,
+        "decision_rule": "Predeclared development gate; no post-hoc parameter changes",
+        "primary_reference": "BLMR alone remains mandatory",
+        "adopt_as_default": false,
+        "fresh_stage_executed": false,
+        "reason": "Compatible donor mean does not exceed passive pair or max-min injection; wins in only one of six cases"
+      }
+    },
+    "results\\experiments\\subproblem_injection_fixed_trace_20261024\\decision.json": {
+      "sha256": "b106dac379c749a42f05aefdca470328fa9ef429009e5f96458cca55f810c191",
+      "decision": {
+        "means": {
+          "moead": 0.9643833778747756,
+          "nsga2_individual": 0.9447045948602452,
+          "spea2_individual": 0.9325643956049504,
+          "nsga2_ls_individual": 0.8117818417618455,
+          "mopso_individual": 0.7935201517873246,
+          "explorer_solo": 0.9738862165984857,
+          "passive": 0.9913420813648001,
+          "maxmin": 0.9896201885240776,
+          "compatible_live": 0.989559192322007,
+          "compatible_replay": 0.9981359016883725
+        },
+        "contrasts": [
+          {
+            "control": "passive",
+            "mean_difference": 0.006793820323572693,
+            "bootstrap95_low": -0.014083198306053332,
+            "bootstrap95_high": 0.027835828797192597,
+            "wins": 4,
+            "ties": 0,
+            "losses": 2
+          },
+          {
+            "control": "compatible_live",
+            "mean_difference": 0.008576709366365806,
+            "bootstrap95_low": -0.008843034855811782,
+            "bootstrap95_high": 0.029011767362990288,
+            "wins": 4,
+            "ties": 0,
+            "losses": 2
+          },
+          {
+            "control": "explorer_solo",
+            "mean_difference": 0.024249685089886824,
+            "bootstrap95_low": 0.005525733937312432,
+            "bootstrap95_high": 0.047785132578284394,
+            "wins": 5,
+            "ties": 0,
+            "losses": 1
+          }
+        ],
+        "improves_passive_mean": true,
+        "improves_live_mean": true,
+        "autonomous": false,
+        "trace_plus_treatment_cost_fe": 6000,
+        "scope": "Diagnostic under external passive allocation, six development cases; no deployable superiority claim",
+        "adopt_as_autonomous_policy": false,
+        "interpretation": "Fixed-trace conditional mean improves; intervals against passive and live include zero; budget-feedback hypothesis remains unconfirmed"
+      }
+    },
+    "results\\experiments\\shared_offspring_credit_development_20261024\\decision.json": {
+      "sha256": "6835581ae8f4214905e1b86ed67c6ae4c2e902957faab705cae84ce28544adc1",
+      "decision": {
+        "means": {
+          "alpha0": 0.989559192322007,
+          "compatible_replay": 0.9981359016883725,
+          "explorer_solo": 0.9738862165984857,
+          "moead": 0.9643833778747756,
+          "mopso_individual": 0.7935201517873246,
+          "nsga2_individual": 0.9447045948602452,
+          "nsga2_ls_individual": 0.8117818417618455,
+          "passive": 0.9913420813648001,
+          "shared": 0.9867397974976394,
+          "spea2_individual": 0.9325643956049504
+        },
+        "advance_to_fresh": false,
+        "wins_vs_passive": 2,
+        "scope": "Fixed alpha 0.5 development pilot, not untouched confirmation; external replay not autonomous control",
+        "rule": "Mean exceeds passive alpha0 and BLMR and at least four case wins versus passive",
+        "autonomous": true,
+        "adopt_as_default": false,
+        "fresh_stage_executed": false,
+        "interpretation": "Shared alpha=0.5 credit did not improve the reference means or satisfy the predeclared development gate; no alpha tuning performed"
+      }
+    }
+  }
+}

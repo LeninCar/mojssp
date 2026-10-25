@@ -1,0 +1,41 @@
+{
+  "policy": {
+    "rule": "greedy",
+    "probe_fe": 50,
+    "loo_lower_bound_mean_hv": 0.954488577744929
+  },
+  "means": {
+    "nsga2": 0.9250704796653518,
+    "spea2": 0.9193566227625655,
+    "probe_selection": 0.9196787003587771
+  },
+  "comparisons": [
+    {
+      "control": "nsga2",
+      "mean_difference": -0.005391779306574717,
+      "bootstrap95_low": -0.009103008697315146,
+      "bootstrap95_high": -0.0014952804416489011,
+      "positive_cases": 2,
+      "tied_cases": 0,
+      "negative_cases": 11
+    },
+    {
+      "control": "spea2",
+      "mean_difference": 0.0003220775962116545,
+      "bootstrap95_low": -0.0028415782098237504,
+      "bootstrap95_high": 0.004570518078874417,
+      "positive_cases": 3,
+      "tied_cases": 0,
+      "negative_cases": 10
+    }
+  ],
+  "selected_counts": {
+    "spea2": 28,
+    "nsga2": 11
+  },
+  "training_cases": 18,
+  "evaluation_cases": 13,
+  "actual_new_search_fe": 117000,
+  "selected_solver_fe": 2950,
+  "other_solver_fe": 50
+}

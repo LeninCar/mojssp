@@ -1,0 +1,11 @@
+﻿method,arm,mean_percentage,minimum_percentage,maximum_percentage
+spea2_regional_dynamic,RegionExplorer,66.03333333333335,45.3,79.5
+spea2_regional_dynamic,SPEA2,33.96666666666667,20.5,54.7
+spea2_regional_ph,RegionExplorer,51.851851851851855,48.333333333333336,55.0
+spea2_regional_ph,SPEA2,48.148148148148145,45.0,51.666666666666664
+spea2_regional_scaled,RegionExplorer,58.24074074074075,18.333333333333332,88.33333333333333
+spea2_regional_scaled,SPEA2,41.75925925925925,11.666666666666666,81.66666666666667
+spea2_regional_sw_ucb,RegionExplorer,52.50000000000001,48.333333333333336,56.666666666666664
+spea2_regional_sw_ucb,SPEA2,47.49999999999999,43.333333333333336,51.666666666666664
+spea2_regional_uniform,RegionExplorer,50.0,50.0,50.0
+spea2_regional_uniform,SPEA2,50.0,50.0,50.0

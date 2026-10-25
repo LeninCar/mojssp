@@ -1,0 +1,7 @@
+﻿phase,method,arm,mean_percentage,minimum_percentage,maximum_percentage
+development,reserve_01,RegionExplorer,66.41111111111111,41.93333333333333,91.3
+development,reserve_01,SPEA2,33.588888888888896,8.7,58.06666666666667
+development,reserve_05,RegionExplorer,66.03703703703704,38.3,84.73333333333333
+development,reserve_05,SPEA2,33.96296296296297,15.266666666666667,61.7
+development,reserve_10,RegionExplorer,66.03333333333335,45.3,79.5
+development,reserve_10,SPEA2,33.96666666666667,20.5,54.7

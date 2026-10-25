@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "new_runs": 36,
+  "new_search_fe": 108000,
+  "blocks_verified": 2160,
+  "moead_search_evaluations": 0,
+  "exact_uniform_quotas": true,
+  "hashes_verified": true,
+  "all_final_hv_and_auc_recomputed": true,
+  "local_search_fe_included": true
+}

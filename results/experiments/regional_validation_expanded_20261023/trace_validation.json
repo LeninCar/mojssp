@@ -1,0 +1,7 @@
+{
+  "traces": 7452,
+  "all_operator_counts_exact": true,
+  "all_available_parent_checks_passed": true,
+  "all_hv_trajectories_monotonic": true,
+  "all_auc_recomputed": true
+}

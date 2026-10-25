@@ -1,0 +1,7 @@
+{
+  "command": ".venv/Scripts/python.exe -m pytest -q",
+  "passed": 547,
+  "subtests_passed": 174,
+  "seconds": 77.87,
+  "regression": "Serialized JSON control and portfolio reset covered"
+}

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "new_runs": 39,
+  "new_search_fe": 117000,
+  "probe_fe_per_arm": 50,
+  "all_probe_hv_match_individual_prefixes": true,
+  "selected_states_preserved": true,
+  "all_final_hv_and_auc_recomputed": true,
+  "model_recreated_from_training_only": true,
+  "moead_search_fe": 0,
+  "selected_counts": {
+    "spea2": 28,
+    "nsga2": 11
+  }
+}

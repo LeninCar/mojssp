@@ -1,0 +1,45 @@
+Inyección activa desde BLMR hacia MOEA/D con reparto dinámico
+
+La implementación permanece opt-in. Los brazos y la política anteriores conservan su comportamiento por defecto.
+Se comparan 57 corridas activas y 57 pasivas válidas, más 342 controles individuales reutilizados.
+Cada corrida válida usa 3000 FE. La primera ronda es uniforme; después se redistribuye por ganancia global reciente por FE, con mínimo 10% por brazo.
+En cada bloque MOEA/D se preparan hasta cinco donantes del archivo global observados primero en BLMR y no observados en MOEA/D.
+Se sustituye el segundo padre cada diez llamadas de cruce. No se insertan incumbentes directamente ni se reutiliza fitness para hijos nuevos.
+Donantes y preparación consumen tiempo, pero no FE nuevas. Todos los hijos de MOEA/D se evalúan normalmente.
+La procedencia observada no constituye ascendencia genética completa.
+
+Resultados
+development
+MOEA/D individual 0.96438338
+BLMR individual 0.97388622
+Pareja sin inyección 0.99134208
+Pareja con inyección 0.98962019
+Diferencia activa menos pasiva -0.00172189
+transfer
+MOEA/D individual 0.94426702
+BLMR individual 0.99785572
+Pareja sin inyección 0.99388497
+Pareja con inyección 0.97910784
+Diferencia activa menos pasiva -0.01477713
+
+Auditoría
+Inyecciones reales verificadas 5418. Corridas activas con uso 57 de 57.
+Genotipos guardados validados 28645; FE de auditoría separadas 28645.
+Controles históricos sin genotipos 114; se revisó HV y trayectoria, no se afirma nueva validación de sus agendas.
+Se reconstruyeron cuotas dinámicas y selección max-min de todos los donantes preparados.
+
+Incidencia y contabilidad
+La comparación original de trazas trató tuplas en memoria y listas JSON como diferentes. Se corrigió únicamente esa comprobación.
+Se conservaron las 57 corridas activas válidas y se repitieron 57 controles rechazados por formato.
+Comparación nueva válida: 342000 FE. Controles descartados: 171000 FE. Corrida diagnóstica: 3000 FE.
+Total de búsqueda y diagnóstico de esta campaña: 516000 FE; las FE de pruebas y auditoría se contabilizan aparte.
+Las dos versiones del ejecutor y el registro de recuperación están preservados.
+
+Interpretación
+Ambos bancos se habían utilizado antes. Comparación exploratoria, sin test final independiente.
+La intervención altera potencialmente las cuotas y los padres posteriores de BLMR; el contraste mide el efecto total con feedback vivo.
+No se deduce que la transferencia sea universalmente mala. Este resultado corresponde a donantes max-min, cadencia diez y máximo cinco por bloque.
+Los tiempos concurrentes y controles previos no permiten una comparación válida a tiempo fijo.
+
+Reproducción
+.venv/Scripts/python.exe scripts/run_blmr_injection_pilot.py --output-dir results/experiments/<nuevo-nombre> --workers 4

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "matched_pair_schedules": true,
+  "source_spea2_traces_identical": true,
+  "all_final_global_and_local_hv_recomputed": true,
+  "all_auc_recomputed": true,
+  "all_donor_origins_replayed": true,
+  "total_parent_transfers": 921,
+  "unique_donors_decoded_and_evaluated": 180,
+  "validation_evaluations_outside_search_budget": 180
+}

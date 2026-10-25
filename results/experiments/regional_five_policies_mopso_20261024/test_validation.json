@@ -1,0 +1,7 @@
+{
+  "command": ".venv/Scripts/python.exe -m pytest -q",
+  "passed": 533,
+  "subtests_passed": 174,
+  "runtime_seconds": 79.81,
+  "collection_config": "pytest.ini declares testpaths=tests and pythonpath=src scripts"
+}

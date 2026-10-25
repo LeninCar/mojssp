@@ -1,0 +1,60 @@
+Análisis del crédito de cooperación y siguiente variante definida
+
+Alcance
+Se analizaron 72 trayectorias guardadas de seis instancias y tres semillas por método.
+No se ejecutó búsqueda ni se llamó al evaluador. Se verificaron los hashes de las entradas y la reconstrucción del reparto.
+El análisis se repitió en otro directorio y sus tablas principales coincidieron byte a byte.
+
+Hallazgos
+Sin inyección, MOEA/D recibió 30,42% y BLMR 69,58% del presupuesto medio; HV 0,99134.
+Con inyección compatible y dinámica libre, MOEA/D recibió 40,04% y BLMR 59,96%; HV 0,98956.
+Con inyección compatible y turnos pasivos reproducidos, se conservaron 30,42% y 69,58%; HV 0,99814.
+La inyección compatible elevó la cuota media de MOEA/D en 9,62 puntos porcentuales.
+La primera diferencia de cuotas aparece en la segunda ronda, después de 300 FE, en las 18 corridas compatibles libres.
+MOEA/D recibió una cuota mayor en cinco de seis medias por instancia; cuatro de ellas combinaron más cuota con menor HV.
+En 10x20 la cuota de MOEA/D subió de 20,56% a 46,43% y el HV bajó de 0,89744 a 0,88481.
+Sin embargo, fijar cuotas tampoco arregló 10x20: el replay obtuvo 0,86590. No hay una causa única demostrada.
+
+Crédito observado
+De 488 bloques puntuados de MOEA/D con inyección compatible, 464 usaron donantes.
+El 99,90% de su crédito registrado ocurrió en esos bloques.
+Eso NO significa que el 99,90% de su mejora fuera causado por BLMR: los bloques mezclan hijos asistidos y no asistidos.
+Los pocos bloques sin asistencia también difieren en longitud, momento y disponibilidad de donantes.
+No se utiliza la comparación de sus tasas como un efecto causal de la transferencia.
+Las diferencias del replay frente a la pareja pasiva y la inyección libre tienen intervalos que incluyen cero con seis instancias.
+
+Decisión
+Mantener dos brazos, BLMR v1 y el mismo algoritmo de reparto por rondas.
+No fijar un 70/30 para imitar a posteriori el control ni copiar turnos futuros.
+No repartir por mitades todo el HV de un bloque sólo porque hubo algún donante.
+La siguiente hipótesis será crédito compartido por HIJO realmente asistido.
+
+Regla propuesta
+Un hijo sin padre externo acredita toda su mejora marginal al brazo que lo evalúa.
+Un hijo de MOEA/D generado usando un donante explícito de BLMR acredita la mitad a MOEA/D y la mitad a BLMR.
+La mitad es una convención experimental fijada antes de correr, no una estimación de la contribución causal.
+Si el hijo no agrega HV, ambos reciben cero por ese hijo.
+La suma de créditos debe coincidir con la ganancia total puntuada: no se duplica la recompensa.
+Las FE siguen cargándose sólo al brazo que evaluó el hijo.
+Al cerrar cada ronda se divide el crédito de cada brazo por sus FE puntuadas reales.
+Se aplica la fórmula dinámica ya existente, con reserva mínima de 10% por brazo.
+El primer bloque neutral de cada brazo continúa fuera del aprendizaje.
+
+Qué falta medir
+Los registros actuales guardan HV por bloque, pero no el aporte de todos los hijos evaluados ni una atribución completa de descendencia.
+Por ello no es posible calcular retrospectivamente el nuevo crédito con precisión.
+Hace falta un observador por evaluación de MOEA/D que enlace donante explícito, hijo, objetivos y mejora marginal.
+El observador usará un archivo global SOMBRA actualizado en orden de evaluación. El archivo global real seguirá actualizándose al final del bloque.
+La suma de mejoras de los hijos del bloque debe reproducir su recompensa registrada.
+Esto no introduce evaluaciones extra, pero puede elevar el coste de calcular HV: se medirá tiempo además de FE.
+
+Prueba definida y pendiente
+Primero probar que el observador con alpha=0 conserva frentes, bloques, RNG y cuotas originales.
+Después comparar alpha=0 y alpha=0,5 en seis instancias con semillas 100, 200 y 300 y 3000 FE por ejecución.
+Propuesta: 36 corridas nuevas, 108000 FE, aún NO ejecutadas.
+Conservar la pareja sin inyección, BLMR y los cinco individuales nativos incluido MOPSO como controles.
+Sólo si supera el criterio predefinido de desarrollo se congelará y evaluará en instancias realmente nuevas.
+No se ha implementado todavía el nuevo crédito ni se afirma que produzca mayor HV.
+
+Reproducir este análisis sin búsqueda
+.venv/Scripts/python.exe results/experiments/cooperation_credit_audit_20261024/code/analyze_cooperation_credit.py --output-dir .local/validation/<nombre-nuevo>

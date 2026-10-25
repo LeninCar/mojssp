@@ -1,0 +1,41 @@
+Diagnóstico de inyección compatible bajo cuotas idénticas
+
+Se ejecutó cada bloque de la traza dinámica pasiva con el mismo brazo, tamaño y posición global de FE.
+La recompensa nueva se registra pero no cambia los turnos futuros. No se incorpora una política nueva al selector.
+Dos brazos: MOEA/D y BLMR v1. Mismos operadores, semillas, población 30 y presupuesto de 3000 FE por trayectoria.
+18 trayectorias con inyección y 18 sin inyección para comprobar reproducción. 36 corridas nuevas, 108000 FE de búsqueda.
+144 controles reutilizados. Los seis individuales se conservan, incluido MOPSO.
+
+HV medio de desarrollo
+compatible_replay: 0.99813590
+passive: 0.99134208
+maxmin: 0.98962019
+compatible_live: 0.98955919
+explorer_solo: 0.97388622
+moead: 0.96438338
+nsga2_individual: 0.94470459
+spea2_individual: 0.93256440
+nsga2_ls_individual: 0.81178184
+mopso_individual: 0.79352015
+
+Interpretación
+La media con turnos fijos supera a la pareja pasiva y a la inyección con dinámica libre. Ambos contrastes tienen intervalos bootstrap que incluyen cero.
+Por tanto, no demuestra una mejora consistente ni prueba que toda la pérdida anterior venga del selector.
+El contraste identifica el efecto total de la inyección condicionado a la asignación pasiva realizada; los padres posteriores de BLMR también pueden cambiar.
+La señal justifica estudiar la interacción entre crédito de cooperación y reparto; no permite adoptar el replay como política autónoma.
+
+Coste y límites
+La traza se obtiene ejecutando primero 3000 FE pasivas. Reproducirla con inyección usa otras 3000: 6000 FE desde cero para la pareja control y tratamiento.
+Los HV de replay son calidad condicional tras 3000 FE del tratamiento; no constituyen superioridad desplegable contra un individual de 3000 FE.
+Seis instancias ya estudiadas, tres semillas. Los intervalos remuestrean instancias después de promediar semillas.
+El banco adicional no se ha ejecutado para este diagnóstico. No es una evaluación final independiente.
+
+Validación
+Reproducciones pasivas exactas: 18.
+Bloques con asignación verificada: 2482.
+Usos de donantes compatibles verificados: 1491.
+Genotipos guardados validados: 12557; FE de auditoría adicionales: 12557.
+554 pruebas y 174 subpruebas aprobadas.
+
+Reproducción
+.venv/Scripts/python.exe scripts/run_subproblem_replay_pilot.py --output-dir results/experiments/<nuevo-nombre> --workers 4

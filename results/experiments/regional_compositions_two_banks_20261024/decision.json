@@ -1,0 +1,119 @@
+{
+  "selected_by_development": "spea2_regional_dynamic",
+  "best_portfolio_transfer_descriptive": "moead_regional_dynamic",
+  "means": {
+    "development": {
+      "moead": 0.9643833778747756,
+      "nsga2_individual": 0.9447045948602452,
+      "spea2_individual": 0.9325643956049504,
+      "nsga2_ls_individual": 0.8117818417618455,
+      "mopso_individual": 0.7935201517873246,
+      "explorer_solo": 0.9738862165984857,
+      "spea2_regional_scaled": 0.9852662413561095,
+      "spea2_regional_dynamic": 0.9942659280153038,
+      "nsga2_regional_scaled": 0.989983658249741,
+      "nsga2_regional_dynamic": 0.980021634010245,
+      "moead_regional_scaled": 0.9881054335099395,
+      "moead_regional_dynamic": 0.9913420813648001,
+      "quartet_regional_scaled": 0.9685846783190377,
+      "quartet_regional_dynamic": 0.9672455398772102
+    },
+    "transfer": {
+      "moead": 0.9442670234070771,
+      "nsga2_individual": 0.9264867489780089,
+      "spea2_individual": 0.9197113283773434,
+      "nsga2_ls_individual": 0.7833281456562493,
+      "mopso_individual": 0.7721084093488566,
+      "explorer_solo": 0.9978557222121961,
+      "spea2_regional_scaled": 0.977998931802695,
+      "spea2_regional_dynamic": 0.9797575187935557,
+      "nsga2_regional_scaled": 0.9796531995060526,
+      "nsga2_regional_dynamic": 0.9905843248420465,
+      "moead_regional_scaled": 0.9816071858194102,
+      "moead_regional_dynamic": 0.9938849711868669,
+      "quartet_regional_scaled": 0.9625303508791506,
+      "quartet_regional_dynamic": 0.9512742131604093
+    }
+  },
+  "selected_transfer_contrasts": [
+    {
+      "group": "transfer",
+      "candidate": "spea2_regional_dynamic",
+      "control": "moead",
+      "mean_difference": 0.035490495386478464,
+      "bootstrap95_low": 0.01756357386895374,
+      "bootstrap95_high": 0.05601129468978584,
+      "wins": 11,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "group": "transfer",
+      "candidate": "spea2_regional_dynamic",
+      "control": "nsga2_individual",
+      "mean_difference": 0.05327076981554673,
+      "bootstrap95_low": 0.03485638747521998,
+      "bootstrap95_high": 0.07125880890644017,
+      "wins": 13,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "transfer",
+      "candidate": "spea2_regional_dynamic",
+      "control": "spea2_individual",
+      "mean_difference": 0.06004619041621228,
+      "bootstrap95_low": 0.04286950838102911,
+      "bootstrap95_high": 0.07767690342818312,
+      "wins": 13,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "transfer",
+      "candidate": "spea2_regional_dynamic",
+      "control": "nsga2_ls_individual",
+      "mean_difference": 0.19642937313730638,
+      "bootstrap95_low": 0.17065652420176747,
+      "bootstrap95_high": 0.22248074665700743,
+      "wins": 13,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "transfer",
+      "candidate": "spea2_regional_dynamic",
+      "control": "mopso_individual",
+      "mean_difference": 0.207649109444699,
+      "bootstrap95_low": 0.18243107827922056,
+      "bootstrap95_high": 0.23397044096747446,
+      "wins": 13,
+      "ties": 0,
+      "losses": 0
+    },
+    {
+      "group": "transfer",
+      "candidate": "spea2_regional_dynamic",
+      "control": "explorer_solo",
+      "mean_difference": -0.01809820341864051,
+      "bootstrap95_low": -0.029933049639616786,
+      "bootstrap95_high": -0.005237617794949878,
+      "wins": 3,
+      "ties": 0,
+      "losses": 10
+    },
+    {
+      "group": "transfer",
+      "candidate": "spea2_regional_dynamic",
+      "control": "best_individual_per_instance",
+      "mean_difference": -0.020858834864500464,
+      "bootstrap95_low": -0.030715063740049613,
+      "bootstrap95_high": -0.010959239273961911,
+      "wins": 2,
+      "ties": 0,
+      "losses": 11
+    }
+  ],
+  "scope": "Eight compositions and policies specified before this campaign; both banks already used previously. Exploratory, no untouched test.",
+  "next": "Freeze a candidate and validate on new instances only if its advantage warrants further evaluation; never select instances post hoc"
+}

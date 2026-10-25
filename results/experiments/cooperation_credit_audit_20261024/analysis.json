@@ -1,0 +1,90 @@
+{
+  "search_fe": 0,
+  "new_search_runs": 0,
+  "saved_runs": 72,
+  "source_hashes_verified": true,
+  "dynamic_round_transitions_reproduced": true,
+  "limitations": [
+    "Rewards are per block, not per offspring",
+    "A block with donor use also contains unassisted evaluations",
+    "First-observed source is not complete ancestry",
+    "Association of allocation and HV is not a causal mediation estimate",
+    "Replay requires an external trace and does not define an autonomous policy"
+  ],
+  "summary": [
+    {
+      "method": "passive",
+      "mean_hv": 0.9913420813648001,
+      "mean_moead_share": 0.30418518518518517,
+      "mean_blmr_share": 0.6958148148148148,
+      "donor_uses": 0,
+      "assisted_scored_moead_blocks": 0,
+      "scored_moead_blocks": 384,
+      "reward_in_assisted_moead_blocks": 0,
+      "total_scored_moead_reward": 0.6887589617591952,
+      "fraction_moead_reward_in_assisted_blocks": 0.0
+    },
+    {
+      "method": "maxmin",
+      "mean_hv": 0.9896201885240777,
+      "mean_moead_share": 0.35896296296296293,
+      "mean_blmr_share": 0.641037037037037,
+      "donor_uses": 1741,
+      "assisted_scored_moead_blocks": 415,
+      "scored_moead_blocks": 443,
+      "reward_in_assisted_moead_blocks": 0.9057195273382165,
+      "total_scored_moead_reward": 0.9172068544240293,
+      "fraction_moead_reward_in_assisted_blocks": 0.9874757509384005
+    },
+    {
+      "method": "compatible_live",
+      "mean_hv": 0.9895591923220066,
+      "mean_moead_share": 0.40040740740740743,
+      "mean_blmr_share": 0.5995925925925926,
+      "donor_uses": 1954,
+      "assisted_scored_moead_blocks": 464,
+      "scored_moead_blocks": 488,
+      "reward_in_assisted_moead_blocks": 1.0759739695693158,
+      "total_scored_moead_reward": 1.07700727822945,
+      "fraction_moead_reward_in_assisted_blocks": 0.9990405741158659
+    },
+    {
+      "method": "compatible_replay",
+      "mean_hv": 0.9981359016883725,
+      "mean_moead_share": 0.30418518518518517,
+      "mean_blmr_share": 0.6958148148148148,
+      "donor_uses": 1491,
+      "assisted_scored_moead_blocks": 363,
+      "scored_moead_blocks": 384,
+      "reward_in_assisted_moead_blocks": 0.8328294395455096,
+      "total_scored_moead_reward": 0.8421573347827023,
+      "fraction_moead_reward_in_assisted_blocks": 0.9889238093026886
+    }
+  ],
+  "allocation_quality_associations": [
+    {
+      "method": "maxmin",
+      "instances": 6,
+      "descriptive_pearson": -0.5184851798247672,
+      "higher_moead_share_bases": 4,
+      "lower_hv_bases": 1,
+      "higher_share_and_lower_hv_bases": 1
+    },
+    {
+      "method": "compatible_live",
+      "instances": 6,
+      "descriptive_pearson": -0.4964636983251604,
+      "higher_moead_share_bases": 5,
+      "lower_hv_bases": 5,
+      "higher_share_and_lower_hv_bases": 4
+    },
+    {
+      "method": "compatible_replay",
+      "instances": 6,
+      "descriptive_pearson": null,
+      "higher_moead_share_bases": 0,
+      "lower_hv_bases": 2,
+      "higher_share_and_lower_hv_bases": 0
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "moead_in_new_execution": false,
+  "reference": "NSGA-II",
+  "reference_mean_hv": 0.9250704796653518,
+  "probe_mean_hv": 0.9196787003587771,
+  "oracle_mean_hv": 0.9262733679550438,
+  "oracle_gap": 0.00120288828969195,
+  "validated_improvement_over_best_individual": false,
+  "decision": "Do not promote a size rule, feature tree or greedy probe selector. Current evidence supports NSGA-II as reference on the evaluation bank; SPEA2 specialization needs stability checks before deployment.",
+  "new_runs_across_both_campaigns": 189,
+  "new_search_fe_across_both_campaigns": 567000,
+  "related_probe_conclusion_sha256": "ebb1fce2ea62b1e5ab92c38e0e122e30641466fcdd6f137d7ce5268988716960"
+}

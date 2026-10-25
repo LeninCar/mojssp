@@ -1,0 +1,10 @@
+{
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "exact_evaluator_calls": true,
+  "independent_hv": true,
+  "all_round_quotas_recomputed": true,
+  "original_10_percent_profile_reproduced_in_18_runs": true,
+  "validated_saved_genotypes": 5142,
+  "extra_audit_fe": 5142
+}

@@ -1,0 +1,4 @@
+{
+  "command": "python -m pytest tests/test_regional_explorer.py tests/test_archive_injection.py tests/test_cooperation.py -q",
+  "passed": 16
+}

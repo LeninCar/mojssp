@@ -1,0 +1,106 @@
+{
+  "primary_model": "constant_best",
+  "cross_validation": [
+    {
+      "model": "constant_best",
+      "loo_mean_hv": 0.9586341560734394
+    },
+    {
+      "model": "tree_depth1",
+      "loo_mean_hv": 0.9548855760580239
+    },
+    {
+      "model": "tree_depth2",
+      "loo_mean_hv": 0.952828407830684
+    }
+  ],
+  "plans": {
+    "constant_best": {
+      "base_01_5x10": "nsga2",
+      "base_02_10x10": "nsga2",
+      "base_03_15x10": "nsga2",
+      "base_04_20x10": "nsga2",
+      "base_05_20x20": "nsga2",
+      "int_btnk_load_20x10": "nsga2",
+      "int_dur_btnk_10x10": "nsga2",
+      "int_dur_nrg_10x10": "nsga2",
+      "int_nrg_load_20x10": "nsga2",
+      "int_rel_btnk_10x10": "nsga2",
+      "int_tard_btnk_10x10": "nsga2",
+      "int_tard_load_20x10": "nsga2",
+      "int_tard_nrg_10x10": "nsga2"
+    },
+    "tree_depth1": {
+      "base_01_5x10": "nsga2",
+      "base_02_10x10": "nsga2",
+      "base_03_15x10": "nsga2",
+      "base_04_20x10": "nsga2",
+      "base_05_20x20": "nsga2",
+      "int_btnk_load_20x10": "nsga2",
+      "int_dur_btnk_10x10": "nsga2",
+      "int_dur_nrg_10x10": "nsga2",
+      "int_nrg_load_20x10": "nsga2",
+      "int_rel_btnk_10x10": "nsga2",
+      "int_tard_btnk_10x10": "nsga2",
+      "int_tard_load_20x10": "nsga2",
+      "int_tard_nrg_10x10": "nsga2"
+    },
+    "tree_depth2": {
+      "base_01_5x10": "nsga2",
+      "base_02_10x10": "nsga2",
+      "base_03_15x10": "spea2",
+      "base_04_20x10": "nsga2",
+      "base_05_20x20": "spea2",
+      "int_btnk_load_20x10": "spea2",
+      "int_dur_btnk_10x10": "spea2",
+      "int_dur_nrg_10x10": "spea2",
+      "int_nrg_load_20x10": "spea2",
+      "int_rel_btnk_10x10": "nsga2",
+      "int_tard_btnk_10x10": "spea2",
+      "int_tard_load_20x10": "spea2",
+      "int_tard_nrg_10x10": "spea2"
+    }
+  },
+  "rules": {
+    "constant_best": "nsga2",
+    "tree_depth1": "|--- duration_cv <= 0.23426965\n|   |--- value: [0.01443380]\n|--- duration_cv >  0.23426965\n|   |--- value: [0.00428495]\n",
+    "tree_depth2": "|--- duration_cv <= 0.23426965\n|   |--- machine_load_cv <= 0.33393189\n|   |   |--- value: [0.00277547]\n|   |--- machine_load_cv >  0.33393189\n|   |   |--- value: [0.02317755]\n|--- duration_cv >  0.23426965\n|   |--- due_date_ratio <= 0.95102760\n|   |   |--- value: [-0.00018215]\n|   |--- due_date_ratio >  0.95102760\n|   |   |--- value: [0.01210239]\n"
+  },
+  "training_cases": [
+    "development_00_5x5",
+    "development_01_10x10",
+    "development_02_20x10",
+    "development_03_10x20",
+    "development_04_20x20",
+    "development_05_30x20",
+    "btnk_high_10x10",
+    "btnk_low_10x10",
+    "dur_high_10x10",
+    "dur_low_10x10",
+    "load_high_20x10",
+    "load_low_10x20",
+    "nrg_strong_10x10",
+    "nrg_weak_10x10",
+    "rel_high_10x10",
+    "rel_zero_10x10",
+    "tard_high_10x10",
+    "tard_low_10x10"
+  ],
+  "evaluation_cases": [
+    "base_01_5x10",
+    "base_02_10x10",
+    "base_03_15x10",
+    "base_04_20x10",
+    "base_05_20x20",
+    "int_btnk_load_20x10",
+    "int_dur_btnk_10x10",
+    "int_dur_nrg_10x10",
+    "int_nrg_load_20x10",
+    "int_rel_btnk_10x10",
+    "int_tard_btnk_10x10",
+    "int_tard_load_20x10",
+    "int_tard_nrg_10x10"
+  ],
+  "rule": "Tree leaf predicts NSGA-II minus SPEA2 mean HV; choose NSGA-II if nonnegative, SPEA2 otherwise",
+  "fitting": "Leave-one-instance-out model selection on training instances only; one algorithm per instance for all seeds"
+}

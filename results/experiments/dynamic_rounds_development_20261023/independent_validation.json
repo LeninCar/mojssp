@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "new_runs": 18,
+  "new_search_fe": 54000,
+  "rounds_verified": 180,
+  "minimum_share_verified": 0.1,
+  "warmup_excluded_from_scoring_verified": true,
+  "prior_round_redistribution_verified_independently": true,
+  "source_and_control_hashes_verified": true,
+  "auc_verified_independently": true,
+  "average_budget_percent": {
+    "MOEA/D": 41.53703703703704,
+    "NSGA-II": 23.61111111111111,
+    "SPEA2": 34.851851851851855
+  },
+  "rounds_with_all_zero_scored_gain": 0,
+  "auc_limit": "Trapezoidal approximation from recorded block endpoints; checkpoint spacing varies by policy; final HV is primary"
+}

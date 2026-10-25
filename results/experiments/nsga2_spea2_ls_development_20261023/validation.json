@@ -1,0 +1,8 @@
+{
+  "new_runs": 36,
+  "new_search_fe": 108000,
+  "all_budgets_exact": true,
+  "all_final_hv_recomputed": true,
+  "all_local_search_fe_included": true,
+  "reused_controls": 108
+}

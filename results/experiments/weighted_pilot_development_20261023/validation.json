@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "runs": 108,
+  "actual_search_fe": 324000,
+  "expected_search_fe": 324000,
+  "all_hv_recomputed": true,
+  "all_quotas_verified": true,
+  "inference": "Exploratory development pilot; weights were learned on these same bases; bootstrap resamples six base-level means, not eighteen independent seeds",
+  "timing": "Sequential execution; method order rotated by case and master seed; analysis is outside run timing"
+}

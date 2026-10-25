@@ -1,0 +1,9 @@
+{
+  "result": "Uniform NSGA-II + SPEA2 lost to each individual on all six development bases",
+  "new_search_fe": 54000,
+  "allocation": {
+    "NSGA-II": 1500,
+    "SPEA2": 1500
+  },
+  "comparison_unit": "Mean of three seeds within each of six development instances"
+}

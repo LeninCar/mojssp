@@ -1,0 +1,32 @@
+{
+  "result": "Reducing from 3 algorithms to 2 uniform algorithms (50/50) improves over the 3-arm uniform portfolio, but fails to outperform individual constituents or standalone MOEA/D.",
+  "mean_hv": {
+    "moead": 0.9650861049311729,
+    "spea2": 0.9372889112229866,
+    "nsga2": 0.9360105141040317,
+    "scaled": 0.9352484109271506,
+    "weighted": 0.9341278798088362,
+    "dynamic": 0.9294230836632332,
+    "moead_spea2_uniform": 0.924421369802209,
+    "moead_nsga2_uniform": 0.9220673528544414,
+    "uniform": 0.9080882446957683
+  },
+  "delta_hv_vs_uniform_trio": {
+    "moead_spea2_uniform": 0.01633312510644075,
+    "moead_nsga2_uniform": 0.013979108158673037
+  },
+  "delta_hv_vs_moead": {
+    "moead_spea2_uniform": -0.0406647351289637,
+    "moead_nsga2_uniform": -0.04301875207673141
+  },
+  "positive_bases_vs_moead": 0,
+  "negative_bases_vs_moead": 6,
+  "positive_bases_vs_uniform": {
+    "moead_spea2_uniform": 6,
+    "moead_nsga2_uniform": 5
+  },
+  "evaluation_budget_per_arm": 1500,
+  "total_budget": 3000,
+  "conclusion": "Reducing portfolio arms from 3 to 2 raises the baseline uniform quality by +0.014 to +0.016 HV by providing 1500 FE per algorithm instead of 1000 FE. However, equal 50/50 splitting still severely hurts MOEA/D compared to its standalone quality (0.9651), and even underperforms NSGA-II and SPEA2 standalone."
+}
+

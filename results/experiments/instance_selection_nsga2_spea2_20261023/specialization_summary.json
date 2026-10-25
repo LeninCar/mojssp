@@ -1,0 +1,22 @@
+{
+  "winners_by_split": {
+    "training": {
+      "spea2": 5,
+      "nsga2": 13
+    },
+    "evaluation": {
+      "nsga2": 10,
+      "spea2": 3
+    }
+  },
+  "total_winners": {
+    "spea2": 8,
+    "nsga2": 23
+  },
+  "evaluation_spea2_cases": [
+    "base_04_20x10",
+    "int_nrg_load_20x10",
+    "int_tard_load_20x10"
+  ],
+  "interpretation": "Observed three-seed means; instance winners do not imply a validated feature rule or stability across new seeds."
+}

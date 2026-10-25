@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "name": "development_00_5x5",
+      "sha256": "49b93ab9b91d713d68e4677e400d26ecabdf2dea1533b1147333e5780bdf5c4f"
+    },
+    {
+      "name": "development_01_10x10",
+      "sha256": "34339d1fd2ce5625033fb095087e23b49fda947e4c161e315986fd4be18008b3"
+    },
+    {
+      "name": "development_02_20x10",
+      "sha256": "94518ce0625d569f6b0a873e352fb9925f9f20cb0ebc682c53f33b175e27cf82"
+    },
+    {
+      "name": "development_03_10x20",
+      "sha256": "16944e0933e652fc9bcf4d955414df7ef2c3c6d06d40d93087090a12a767305d"
+    },
+    {
+      "name": "development_04_20x20",
+      "sha256": "2585e398e2aa40e6497f2129fae0741feb9796cf079274d2dd460238420b4fb8"
+    },
+    {
+      "name": "development_05_30x20",
+      "sha256": "14f2d23b122df3a04b69995de33b9d2fab64733b4a77e06a1d6efe6ea3b0d39b"
+    }
+  ],
+  "seeds": [
+    100,
+    200,
+    300
+  ],
+  "budget": 3000,
+  "planned_runs": 36,
+  "controls": [
+    "balanced_region",
+    "random_mode"
+  ],
+  "scope": "Mechanism diagnostics on development only, not parameter selection; compare fresh-seed explorer_solo from expanded validation",
+  "balanced": "Only prepare region choice fixed to equal weights on active objectives; other operations unchanged",
+  "random_mode": "Only mode mutation replaced by uniform eligible operation then uniform alternate mode; random regions and sequence moves retained",
+  "caution": "Changing RNG consumption changes subsequent random draws; these controls identify aggregate mechanisms, not identical child paths"
+}

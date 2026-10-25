@@ -1,0 +1,27 @@
+{
+  "primary_density_hypothesis_supported": false,
+  "sparse_loses_to_random_on": 5,
+  "total_cases": 6,
+  "best_individual": "explorer_random_individual",
+  "best_individual_mean_hv": 0.9846545874280497,
+  "original_moead_mean_hv": 0.9650861049311729,
+  "best_portfolio": "explorer_dominant_random",
+  "best_portfolio_mean_hv": 0.9779101916404963,
+  "portfolio_exceeds_moead_mean": true,
+  "portfolio_exceeds_best_component_mean": false,
+  "individual_explorer_wins_against_moead_cases": [
+    "5x5",
+    "10x10",
+    "20x10",
+    "10x20"
+  ],
+  "moead_wins_against_individual_explorer_cases": [
+    "20x20",
+    "30x20"
+  ],
+  "tested": "Density-based cell targeting; separate random-region control; native offspring evaluations and initialization counted",
+  "not_tested": "Cell selection by marginal hypervolume contribution",
+  "scope": "Six development instances, three seeds; explorer-dominant budget is an exploratory follow-up, not confirmation",
+  "new_runs": 108,
+  "new_search_fe": 324000
+}

@@ -1,0 +1,14 @@
+{
+  "result": "NSGA-II+LS alone and its MOEA/D pairs lose to MOEA/D on all six development case means.",
+  "best_candidate": "moead_nsga2_ls_80_20",
+  "best_mean_hv": 0.9464335429155231,
+  "moead_mean_hv": 0.9650861049311729,
+  "mean_added_hv_over_moead_2400": 0.0012365138369535998,
+  "positive_prefix_contribution_runs": 9,
+  "total_runs_per_method": 18,
+  "individual_ls_fe": 2910,
+  "individual_total_fe": 3000,
+  "new_runs": 54,
+  "new_search_fe": 162000,
+  "decision": "Retain evidence as a tested candidate; do not promote this composition to the default."
+}

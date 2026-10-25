@@ -1,0 +1,5 @@
+﻿candidate,control,metric,mean_difference,bootstrap95_low,bootstrap95_high,positive_bases,tied_bases,negative_bases
+sparse_regions,moead,hypervolume,-0.009021137786662655,-0.017814389647054913,0.0006855700324936801,1,0,5
+sparse_regions,moead,auc_hv,-0.0040215534248461875,-0.008755866196648402,0.0023910153268355363,1,0,5
+sparse_regions,random_regions,hypervolume,-0.007720661305069802,-0.012740506842377874,-0.002268747898418133,1,0,5
+sparse_regions,random_regions,auc_hv,-0.005990496076169212,-0.010583787893215976,-0.0014907871733765659,1,0,5

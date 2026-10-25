@@ -1,0 +1,7 @@
+﻿method,mean_hv,primary
+nsga2,0.9250704796653518,False
+spea2,0.9193566227625655,False
+constant_best,0.9250704796653518,True
+tree_depth1,0.9250704796653518,False
+tree_depth2,0.9214662374096012,False
+oracle_per_instance,0.9262733679550438,False

@@ -1,0 +1,12 @@
+{
+  "full_suite_passed": 529,
+  "subtests_passed": 174,
+  "runtime_seconds": 90.28,
+  "focused_integration_tests_passed": 24,
+  "all_five_policies_tested": true,
+  "four_arm_composition_tested": true,
+  "command_line_native_guidance_passed": true,
+  "command_line_dynamic_passed": true,
+  "new_completed_search_runs": 312,
+  "new_completed_search_fe": 936000
+}

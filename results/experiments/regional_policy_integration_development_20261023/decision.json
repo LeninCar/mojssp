@@ -1,0 +1,113 @@
+{
+  "means": {
+    "nsga2_individual": 0.9447045948602452,
+    "spea2_individual": 0.9325643956049504,
+    "moead_regional_dynamic": 0.9913420813648001,
+    "moead_regional_scaled": 0.9881054335099395,
+    "moead_regional_uniform": 0.9692372045107032,
+    "nsga2_regional_dynamic": 0.980021634010245,
+    "nsga2_regional_scaled": 0.989983658249741,
+    "nsga2_regional_uniform": 0.9512583536595921,
+    "spea2_regional_dynamic": 0.9942659280153038,
+    "spea2_regional_scaled": 0.9852662413561095,
+    "spea2_regional_uniform": 0.9622432052155254,
+    "nsga2_spea2_scaled_plain": 0.9355918806326061,
+    "nsga2_spea2_scaled_regions": 0.9367330186369096,
+    "explorer_solo": 0.9738862165984857,
+    "moead": 0.9643833778747756,
+    "portfolio_20_80": 0.9726988417441446
+  },
+  "best_component_comparisons": [
+    {
+      "method": "moead_regional_uniform",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.9692372045107032,
+      "mean_difference": -0.004649012087782567,
+      "bootstrap95_low": -0.021668767643084452,
+      "bootstrap95_high": 0.008274786049075944
+    },
+    {
+      "method": "moead_regional_scaled",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.9881054335099395,
+      "mean_difference": 0.01421921691145378,
+      "bootstrap95_low": 0.0005426354717618098,
+      "bootstrap95_high": 0.02338148671239937
+    },
+    {
+      "method": "moead_regional_dynamic",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.9913420813648001,
+      "mean_difference": 0.017455864766314333,
+      "bootstrap95_low": 0.000450829035764988,
+      "bootstrap95_high": 0.02758581502873314
+    },
+    {
+      "method": "nsga2_regional_uniform",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.9512583536595921,
+      "mean_difference": -0.022627862938893628,
+      "bootstrap95_low": -0.049124414119989246,
+      "bootstrap95_high": 0.0018663597036013835
+    },
+    {
+      "method": "nsga2_regional_scaled",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.989983658249741,
+      "mean_difference": 0.016097441651255262,
+      "bootstrap95_low": -0.003913832441331699,
+      "bootstrap95_high": 0.033582746985744594
+    },
+    {
+      "method": "nsga2_regional_dynamic",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.980021634010245,
+      "mean_difference": 0.00613541741175927,
+      "bootstrap95_low": -0.01972305495393153,
+      "bootstrap95_high": 0.031835204950243834
+    },
+    {
+      "method": "spea2_regional_uniform",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.9622432052155254,
+      "mean_difference": -0.011643011382960311,
+      "bootstrap95_low": -0.03279333666541995,
+      "bootstrap95_high": 0.007781080316849542
+    },
+    {
+      "method": "spea2_regional_scaled",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.9852662413561095,
+      "mean_difference": 0.011380024757623786,
+      "bootstrap95_low": -0.003416456296019721,
+      "bootstrap95_high": 0.025139277534441118
+    },
+    {
+      "method": "spea2_regional_dynamic",
+      "best_component_mean": 0.9738862165984857,
+      "candidate_mean": 0.9942659280153038,
+      "mean_difference": 0.020379711416818047,
+      "bootstrap95_low": 0.006474082108544721,
+      "bootstrap95_high": 0.032179716956538436
+    },
+    {
+      "method": "nsga2_spea2_scaled_plain",
+      "best_component_mean": 0.9447045948602452,
+      "candidate_mean": 0.9355918806326061,
+      "mean_difference": -0.00911271422763904,
+      "bootstrap95_low": -0.01512714559046402,
+      "bootstrap95_high": -0.004339424586327412
+    },
+    {
+      "method": "nsga2_spea2_scaled_regions",
+      "best_component_mean": 0.9447045948602452,
+      "candidate_mean": 0.9367330186369096,
+      "mean_difference": -0.007971576223335552,
+      "bootstrap95_low": -0.012337321078712438,
+      "bootstrap95_high": -0.0028827431802931347
+    }
+  ],
+  "scope": "Exploratory development; not a final selection after comparing multiple policies on these same six cases",
+  "reward": "Global marginal HV credited to current arm; shared ancestry credit not estimated",
+  "reference": "Regional explorer solo remains mandatory global individual baseline, including for native-only variants"
+}

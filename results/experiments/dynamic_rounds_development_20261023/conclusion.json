@@ -1,0 +1,15 @@
+{
+  "result": "Dynamic round budgets did not beat MOEA/D; lost on all six instance means",
+  "mean_hv": {
+    "moead": 0.9650861049311729,
+    "dynamic": 0.9294230836632332
+  },
+  "mean_delta_hv": -0.035663021267939465,
+  "new_runs": 18,
+  "new_search_fe": 54000,
+  "round_size": 300,
+  "minimum_share": 0.1,
+  "tests_passed": 483,
+  "subtests_passed": 174,
+  "next_step_in_agreed_order": "Pairs MOEA/D + NSGA-II and MOEA/D + SPEA2; not executed in this pilot"
+}
