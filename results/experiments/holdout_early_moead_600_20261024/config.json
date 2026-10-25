@@ -1,0 +1,625 @@
+{
+  "frozen_commit": "f78076b657aad143575e0212742de35419dfa5cc",
+  "split": "data/generated/expanded_200/experimental_split.csv",
+  "split_sha256": "fecec443abe6efbd38bdee12827ef80fca2021f79ee4d93e5a01975eec62d996",
+  "instances": [
+    {
+      "name": "base_c01_5x5_b01",
+      "dimensions": "5x5",
+      "profile": "base",
+      "sha256": "df237f3de55ec8857377fb627462406bfd918aafa240982affb3fb299efdf45c"
+    },
+    {
+      "name": "base_c01_5x5_b01_tard_med",
+      "dimensions": "5x5",
+      "profile": "tard_med",
+      "sha256": "83ed1a13a822413e92d0fca96116c84a1b0b9bb02d84ce97f8c5c28352c18bb3"
+    },
+    {
+      "name": "base_c01_5x5_b01_tard_high",
+      "dimensions": "5x5",
+      "profile": "tard_high",
+      "sha256": "d1a34b19aaeba10bf73517149f11ead8850ddbe16be6140e339f0cb4b90a0819"
+    },
+    {
+      "name": "base_c01_5x5_b01_nrg_strong",
+      "dimensions": "5x5",
+      "profile": "nrg_strong",
+      "sha256": "50ea402080b4c1b087b6b0e878f6340a77458a830002177b1373629c3d8fd9b2"
+    },
+    {
+      "name": "base_c01_5x5_b01_btnk_high",
+      "dimensions": "5x5",
+      "profile": "btnk_high",
+      "sha256": "d0ce94a0d3c50117f375cc76e73a8ec7310e777f83899cea36b0671a53d4509e"
+    },
+    {
+      "name": "base_c01_5x5_b04",
+      "dimensions": "5x5",
+      "profile": "base",
+      "sha256": "d3cb8afab9905ba1549a961d359599031694a7695cf268d6f05b7e1cc1aa6492"
+    },
+    {
+      "name": "base_c01_5x5_b04_tard_med",
+      "dimensions": "5x5",
+      "profile": "tard_med",
+      "sha256": "d64e29c31d82af971f37061d0f0e248f876db64c5f2ef51ed773fabb43e53203"
+    },
+    {
+      "name": "base_c01_5x5_b04_tard_high",
+      "dimensions": "5x5",
+      "profile": "tard_high",
+      "sha256": "8ac069259b4d4989df25582ce090774b4e71b6557ae281a304cbf158d3f39244"
+    },
+    {
+      "name": "base_c01_5x5_b04_nrg_strong",
+      "dimensions": "5x5",
+      "profile": "nrg_strong",
+      "sha256": "32843e16e838b06737485297e8b631ca684523795bbe0898a966a9053ed0f741"
+    },
+    {
+      "name": "base_c01_5x5_b04_btnk_high",
+      "dimensions": "5x5",
+      "profile": "btnk_high",
+      "sha256": "df798d650215d1b097d47fc7ea45bcec32c24ae4bad96d7cddda4fd588c5321d"
+    },
+    {
+      "name": "base_c02_10x10_b01",
+      "dimensions": "10x10",
+      "profile": "base",
+      "sha256": "a06cb581dce23bf1ecdafd084256f4197698f38f3a5f495130038469d4c966f7"
+    },
+    {
+      "name": "base_c02_10x10_b01_tard_med",
+      "dimensions": "10x10",
+      "profile": "tard_med",
+      "sha256": "da0d3d1bb924ce3f24a3e8623a35f739668a826d256c68bcf89a4e1e6fb20f4a"
+    },
+    {
+      "name": "base_c02_10x10_b01_tard_high",
+      "dimensions": "10x10",
+      "profile": "tard_high",
+      "sha256": "29b10ed1c37bb1d65cdf06f33eefe55e101a5587091004ff55b97bd666bcd16e"
+    },
+    {
+      "name": "base_c02_10x10_b01_nrg_strong",
+      "dimensions": "10x10",
+      "profile": "nrg_strong",
+      "sha256": "9a2bf4e246260b0362fbee1a07416e8b08ecadd54a7537a0bc2eda75eaf60be8"
+    },
+    {
+      "name": "base_c02_10x10_b01_btnk_high",
+      "dimensions": "10x10",
+      "profile": "btnk_high",
+      "sha256": "01391dc78306470de71df17d586f0866c788cb54923848c38b3135faee233e6b"
+    },
+    {
+      "name": "base_c02_10x10_b05",
+      "dimensions": "10x10",
+      "profile": "base",
+      "sha256": "942c1864c7e6038b53dfc7762b14744ecd02b7e8e6d2ca799fc1522741508e61"
+    },
+    {
+      "name": "base_c02_10x10_b05_tard_med",
+      "dimensions": "10x10",
+      "profile": "tard_med",
+      "sha256": "d99f94290205cbd0d619002203c002d0680974c233603228202fd6d0053c5504"
+    },
+    {
+      "name": "base_c02_10x10_b05_tard_high",
+      "dimensions": "10x10",
+      "profile": "tard_high",
+      "sha256": "db045a493fa5f67f1f04b28423ef257e7e9718f70c48e8cdcc24e424413e1324"
+    },
+    {
+      "name": "base_c02_10x10_b05_nrg_strong",
+      "dimensions": "10x10",
+      "profile": "nrg_strong",
+      "sha256": "814baecd97c8df2f836ae90cb180b6ca9733bf5aeba3f03489e2d7de8255c0a4"
+    },
+    {
+      "name": "base_c02_10x10_b05_btnk_high",
+      "dimensions": "10x10",
+      "profile": "btnk_high",
+      "sha256": "3acfb9f7c0a815dc4f8c2d38f173d22d31855d459d94171fdfb08af17fc98c3c"
+    },
+    {
+      "name": "base_c03_20x10_b01",
+      "dimensions": "20x10",
+      "profile": "base",
+      "sha256": "282e4769174bd29659ace5c101327a37dd0c3d6f38d6bc1101835a612f7a44af"
+    },
+    {
+      "name": "base_c03_20x10_b01_tard_med",
+      "dimensions": "20x10",
+      "profile": "tard_med",
+      "sha256": "5258cc49bb58568afb8cb98755e094bb08ba56aae7335335bb15930472379267"
+    },
+    {
+      "name": "base_c03_20x10_b01_tard_high",
+      "dimensions": "20x10",
+      "profile": "tard_high",
+      "sha256": "35e5c919dbc71f2f86a0fd19df92f7fc76b6ead1a041bd3983cc824b2d823d18"
+    },
+    {
+      "name": "base_c03_20x10_b01_nrg_strong",
+      "dimensions": "20x10",
+      "profile": "nrg_strong",
+      "sha256": "67e330400aabdc364c29ac6221541bd3cb85b8adafa35fb149053ba348033419"
+    },
+    {
+      "name": "base_c03_20x10_b01_btnk_high",
+      "dimensions": "20x10",
+      "profile": "btnk_high",
+      "sha256": "d0ac8f237803bec54c1a16c3e7edc90c8cc8032ef499b3bed32f1874e60260c9"
+    },
+    {
+      "name": "base_c03_20x10_b02",
+      "dimensions": "20x10",
+      "profile": "base",
+      "sha256": "499e0d773b8493d1a6d7150b7e9f6c7f0b14859a3d97a46a81d866e309483bad"
+    },
+    {
+      "name": "base_c03_20x10_b02_tard_med",
+      "dimensions": "20x10",
+      "profile": "tard_med",
+      "sha256": "67515548117fbd7506140c658058ab3ca74e5ded88b44b9099f14db1e157a237"
+    },
+    {
+      "name": "base_c03_20x10_b02_tard_high",
+      "dimensions": "20x10",
+      "profile": "tard_high",
+      "sha256": "adfc7ce30d7aa15339f291212f017c5a2de59174fe572debb99d36eb4c64dacd"
+    },
+    {
+      "name": "base_c03_20x10_b02_nrg_strong",
+      "dimensions": "20x10",
+      "profile": "nrg_strong",
+      "sha256": "de2e774f5ef502eef9f9fa1a7a9b03f22105d33ae135e095f020e89572f28509"
+    },
+    {
+      "name": "base_c03_20x10_b02_btnk_high",
+      "dimensions": "20x10",
+      "profile": "btnk_high",
+      "sha256": "50cf5dcf76dd16172685d4bc39f435d9e7c6e16b0ee925905722711fbbb94c1e"
+    },
+    {
+      "name": "base_c04_10x20_b01",
+      "dimensions": "10x20",
+      "profile": "base",
+      "sha256": "3c4d5b3a1f347396966adb50a04136ab13df9f96a2a3759ed0d9704a923da2f9"
+    },
+    {
+      "name": "base_c04_10x20_b01_tard_med",
+      "dimensions": "10x20",
+      "profile": "tard_med",
+      "sha256": "bbe15eca5b60c00ae2df46d7071b9cb54882c797bc10679f55c47416fc06f4f6"
+    },
+    {
+      "name": "base_c04_10x20_b01_tard_high",
+      "dimensions": "10x20",
+      "profile": "tard_high",
+      "sha256": "9ab33777fc9a8554aa74d43b2b84749dfeddfdb92f1f042f488e1bd3646f8d6c"
+    },
+    {
+      "name": "base_c04_10x20_b01_nrg_strong",
+      "dimensions": "10x20",
+      "profile": "nrg_strong",
+      "sha256": "c3f9796e21b228327f6322605e6b3dc5201688c2c177565792072f9ce2524267"
+    },
+    {
+      "name": "base_c04_10x20_b01_btnk_high",
+      "dimensions": "10x20",
+      "profile": "btnk_high",
+      "sha256": "57b95217d6b0212bd8fab9f167470149806a067760600d9d1cceaa3d1b13871f"
+    },
+    {
+      "name": "base_c04_10x20_b02",
+      "dimensions": "10x20",
+      "profile": "base",
+      "sha256": "2dd3146057db032562b8dc256c7946240d83dd31c0c8363144c3c4b314357a53"
+    },
+    {
+      "name": "base_c04_10x20_b02_tard_med",
+      "dimensions": "10x20",
+      "profile": "tard_med",
+      "sha256": "7f7aae3227ae23eabb0dce19676c39064fb5f9b0635cb4785447a2733ade9e90"
+    },
+    {
+      "name": "base_c04_10x20_b02_tard_high",
+      "dimensions": "10x20",
+      "profile": "tard_high",
+      "sha256": "2460d96e1c64d22681d44564c9c7b13aabf4f62362fdb249e1651c727aaaa9ec"
+    },
+    {
+      "name": "base_c04_10x20_b02_nrg_strong",
+      "dimensions": "10x20",
+      "profile": "nrg_strong",
+      "sha256": "827d97c77dde229835d1514e89dd2821d654246fcb5616757452033aac327334"
+    },
+    {
+      "name": "base_c04_10x20_b02_btnk_high",
+      "dimensions": "10x20",
+      "profile": "btnk_high",
+      "sha256": "11a2cf475747ba42dae1c601b386af24eeebbfac63d7140196e36b30b87a5cde"
+    },
+    {
+      "name": "base_c05_20x20_b01",
+      "dimensions": "20x20",
+      "profile": "base",
+      "sha256": "d6a7db02f8e6dc25e9e52f5e4216900deee4fb7009e4981b644f954807a28c46"
+    },
+    {
+      "name": "base_c05_20x20_b01_tard_med",
+      "dimensions": "20x20",
+      "profile": "tard_med",
+      "sha256": "3f421d8c7715e8e06d8f99bf2fb46c97a0e64c48686301b8e5c5ce90344c2e0e"
+    },
+    {
+      "name": "base_c05_20x20_b01_tard_high",
+      "dimensions": "20x20",
+      "profile": "tard_high",
+      "sha256": "a1c041f5ffe9faab8c9c5ed8a34686e9fe7426a723426e69c553f419fb4337ae"
+    },
+    {
+      "name": "base_c05_20x20_b01_nrg_strong",
+      "dimensions": "20x20",
+      "profile": "nrg_strong",
+      "sha256": "127564fafb4cc8c9f7bc09a64be9cb6af92e1f4e4b98f6e5e088a98299ed3870"
+    },
+    {
+      "name": "base_c05_20x20_b01_btnk_high",
+      "dimensions": "20x20",
+      "profile": "btnk_high",
+      "sha256": "e87ce9473811728469265eee558b8c22b8dc2ad4ed1c6c94dbed756b4fdc07de"
+    },
+    {
+      "name": "base_c05_20x20_b04",
+      "dimensions": "20x20",
+      "profile": "base",
+      "sha256": "b6f54df3fefd6d460f55d833e9052fb72457e5936428c92d5a60be6cd2705514"
+    },
+    {
+      "name": "base_c05_20x20_b04_tard_med",
+      "dimensions": "20x20",
+      "profile": "tard_med",
+      "sha256": "0d197042e325a180335cb484f9bb1b6972c3b09c0374dde8ab31168b1a8d7944"
+    },
+    {
+      "name": "base_c05_20x20_b04_tard_high",
+      "dimensions": "20x20",
+      "profile": "tard_high",
+      "sha256": "cec2529c16c40d6a14d884ac07876733a01d48ed190eebfe9914f5dd09eb3d6c"
+    },
+    {
+      "name": "base_c05_20x20_b04_nrg_strong",
+      "dimensions": "20x20",
+      "profile": "nrg_strong",
+      "sha256": "0b72d13863ed3675502964fea37f0430dcd9f446877146557100ebb1fc8d333e"
+    },
+    {
+      "name": "base_c05_20x20_b04_btnk_high",
+      "dimensions": "20x20",
+      "profile": "btnk_high",
+      "sha256": "99893824ba81dc22d3bc648e5f8daf2d1f1c6a50b167eba4cd9fed6de6fefaae"
+    },
+    {
+      "name": "base_c06_30x20_b01",
+      "dimensions": "30x20",
+      "profile": "base",
+      "sha256": "e337b9f93084cfc11d93622e7144dea1afe681c2c142f08b5eb1779693f65811"
+    },
+    {
+      "name": "base_c06_30x20_b01_tard_med",
+      "dimensions": "30x20",
+      "profile": "tard_med",
+      "sha256": "6d4391ea500e71d28f734ecd4d712dece4dc6a573c15bb1dbccdb86810b8969b"
+    },
+    {
+      "name": "base_c06_30x20_b01_tard_high",
+      "dimensions": "30x20",
+      "profile": "tard_high",
+      "sha256": "f2e44db51f5855a046f32c4be55c8debb0d5ecd58b7066546db3a5fa3c58a530"
+    },
+    {
+      "name": "base_c06_30x20_b01_nrg_strong",
+      "dimensions": "30x20",
+      "profile": "nrg_strong",
+      "sha256": "8b927aff51bbbd0690800fa9211cddb6032dff156dca0e44f5c28af2bbaf8f85"
+    },
+    {
+      "name": "base_c06_30x20_b01_btnk_high",
+      "dimensions": "30x20",
+      "profile": "btnk_high",
+      "sha256": "d314979d93866639ddcdd6226683b38f29de6f92fcd4eda4235516d97f52e371"
+    },
+    {
+      "name": "base_c06_30x20_b05",
+      "dimensions": "30x20",
+      "profile": "base",
+      "sha256": "62a7e61c18e30aae57cce2bc0b3d41fab1b83f28308c0081a7fca797e63c6ddd"
+    },
+    {
+      "name": "base_c06_30x20_b05_tard_med",
+      "dimensions": "30x20",
+      "profile": "tard_med",
+      "sha256": "d896c195511e94d15d5d829e10f07af87b97c917e7cdb7de857da1fab1db4be8"
+    },
+    {
+      "name": "base_c06_30x20_b05_tard_high",
+      "dimensions": "30x20",
+      "profile": "tard_high",
+      "sha256": "c2547bbb947b0a997d464437fe6bb1417149967f05978d087c41b6399da3d720"
+    },
+    {
+      "name": "base_c06_30x20_b05_nrg_strong",
+      "dimensions": "30x20",
+      "profile": "nrg_strong",
+      "sha256": "909bfb186e2ce276a3303b402ace77e07eb2a3907eca3091f5b7148184aa9e4e"
+    },
+    {
+      "name": "base_c06_30x20_b05_btnk_high",
+      "dimensions": "30x20",
+      "profile": "btnk_high",
+      "sha256": "456e3c6c13c958d4f77a52f1f8b2645acf0a42301b8c1af94fb4815b70110ac9"
+    },
+    {
+      "name": "base_c07_40x20_b02",
+      "dimensions": "40x20",
+      "profile": "base",
+      "sha256": "9bb2efc525ec36e8195a933c6fa33bc0a1dc496f34e0854143b6152c577c9a98"
+    },
+    {
+      "name": "base_c07_40x20_b02_tard_med",
+      "dimensions": "40x20",
+      "profile": "tard_med",
+      "sha256": "154b1666ac72bb484aec0122e63c544c862b8654a68f3cb612d75f385177bbb1"
+    },
+    {
+      "name": "base_c07_40x20_b02_tard_high",
+      "dimensions": "40x20",
+      "profile": "tard_high",
+      "sha256": "682765b2e24921c41dec9ae782079a52ccb7aca19060a2135f9370badda8de0a"
+    },
+    {
+      "name": "base_c07_40x20_b02_nrg_strong",
+      "dimensions": "40x20",
+      "profile": "nrg_strong",
+      "sha256": "0a9fb1a19127ae7ba169781cfed5047c89ddb0709f43bad854c3add6f631d5d2"
+    },
+    {
+      "name": "base_c07_40x20_b02_btnk_high",
+      "dimensions": "40x20",
+      "profile": "btnk_high",
+      "sha256": "20a6ab4f23ec7d41c18a24827eaaba31748b160893664f543a127bcf7437564e"
+    },
+    {
+      "name": "base_c07_40x20_b05",
+      "dimensions": "40x20",
+      "profile": "base",
+      "sha256": "7ea805e5e7ed0239b79a26d7e9d6fc4a2b1c9b206a4bc6490a734586719a5b4c"
+    },
+    {
+      "name": "base_c07_40x20_b05_tard_med",
+      "dimensions": "40x20",
+      "profile": "tard_med",
+      "sha256": "b6d184dc3e3242b92818934b2165996a20ee4ddd2f71d78c8a4dbf298451b97c"
+    },
+    {
+      "name": "base_c07_40x20_b05_tard_high",
+      "dimensions": "40x20",
+      "profile": "tard_high",
+      "sha256": "eb114a882fda41c94f6e0b549486cd36ebe35531e39d9dd515bbf4915477819f"
+    },
+    {
+      "name": "base_c07_40x20_b05_nrg_strong",
+      "dimensions": "40x20",
+      "profile": "nrg_strong",
+      "sha256": "dfc5fe965ce68c4aaa3d64486b99fdb7f2be31400d0ef05b132fa1a69c4ac4d2"
+    },
+    {
+      "name": "base_c07_40x20_b05_btnk_high",
+      "dimensions": "40x20",
+      "profile": "btnk_high",
+      "sha256": "d59a6db4673e547643f56d82d0a0551b3e195f605afc4671736821c5ec5b6a17"
+    },
+    {
+      "name": "base_c08_50x50_b02",
+      "dimensions": "50x50",
+      "profile": "base",
+      "sha256": "40e07670992be8fe0a0d92cd5489a30391a40d8cbb03de68ddaec6791ffb39cc"
+    },
+    {
+      "name": "base_c08_50x50_b02_tard_med",
+      "dimensions": "50x50",
+      "profile": "tard_med",
+      "sha256": "463c428fc55d2d5a39a722de33113caad2efef593791314d6fb895dd3a2cf017"
+    },
+    {
+      "name": "base_c08_50x50_b02_tard_high",
+      "dimensions": "50x50",
+      "profile": "tard_high",
+      "sha256": "8e71c8ddf190ce3f2ca4c1d2cdc31304e6bcd213b6d9da93e1ae6de8accc70d9"
+    },
+    {
+      "name": "base_c08_50x50_b02_nrg_strong",
+      "dimensions": "50x50",
+      "profile": "nrg_strong",
+      "sha256": "63b771382e37953e5a018f99cbaf4a64a93ef99f937a4bf5f2d64b1fcff524a9"
+    },
+    {
+      "name": "base_c08_50x50_b02_btnk_high",
+      "dimensions": "50x50",
+      "profile": "btnk_high",
+      "sha256": "08df18666d791980a459897221900838ba1b8a7e8610076aa53792aeb7d41887"
+    },
+    {
+      "name": "base_c08_50x50_b05",
+      "dimensions": "50x50",
+      "profile": "base",
+      "sha256": "f2c38c37447445e396fd2f97a4f88f4cdf072f6cd3e0f463dfe1171a87f5ee7a"
+    },
+    {
+      "name": "base_c08_50x50_b05_tard_med",
+      "dimensions": "50x50",
+      "profile": "tard_med",
+      "sha256": "1350e76b7a1c08f7f671460190c8c9f390e780179454458bc16b60ec6e8b2d52"
+    },
+    {
+      "name": "base_c08_50x50_b05_tard_high",
+      "dimensions": "50x50",
+      "profile": "tard_high",
+      "sha256": "484398d5992769d4529b9fa3af1a0450e8f2a12345ebf7967ae532d03885f811"
+    },
+    {
+      "name": "base_c08_50x50_b05_nrg_strong",
+      "dimensions": "50x50",
+      "profile": "nrg_strong",
+      "sha256": "97328a4ee49cd7c4aa9a5c811f7d8c32159b6c382f8fd830030bb97ebc278a5e"
+    },
+    {
+      "name": "base_c08_50x50_b05_btnk_high",
+      "dimensions": "50x50",
+      "profile": "btnk_high",
+      "sha256": "fab3a88e116e1b4cf76401e78fefd9a1f2973c465d6ec64f8989fd0a270caf25"
+    }
+  ],
+  "seeds": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "budget": 3000,
+  "population_size": 30,
+  "block_size": 50,
+  "candidate": "early_moead_600",
+  "candidate_definition": "MOEA/D + BLMR v1, dynamic rounds of 300 FE with 10% floor for the first 600 FE, then every round to BLMR (exclusive_arm=RegionExplorer, exclusive_after=600)",
+  "controls": [
+    "explorer_solo",
+    "passive",
+    "moead",
+    "nsga2_individual",
+    "spea2_individual",
+    "nsga2_ls_individual",
+    "mopso_individual"
+  ],
+  "decision_rule": "Fixed before the holdout: early_moead_600 is declared better than the best individual only if its mean HV (five-seed instance means, then equal instance weights) exceeds explorer_solo and the current dynamic pair (passive). Superiority is called statistically supported only if the instance-level bootstrap 95% interval of the difference against explorer_solo excludes zero. Size and profile breakdowns and the Wilcoxon test are descriptive and do not change the decision.",
+  "source_sha256": {
+    "src/mojssp/__init__.py": "938c9a287ec41c4faa90a03e0e0e9fa3f71bae547c6f118c4644902f186b8acd",
+    "src/mojssp/algorithm_contract.py": "9b29b0eef1e6257708943ab06fac7f75b3ca70841a635dd65dd7d628edb6883f",
+    "src/mojssp/archive_injection.py": "0b453e494296617c0d9d80f74c6b9e6601618065478e5b4cb0e8ddae0cc6cf14",
+    "src/mojssp/arms.py": "3d8ec0941ff5ca2ff17aefb0f40a1de9eeb7484c5ac324e3bcce361b3eca6fe0",
+    "src/mojssp/change_detection.py": "4890f2d05b9a4b500e622c1760f8a08be59e146cf69592d54e6476cf5f8d0028",
+    "src/mojssp/contribution_report.py": "8d44ffc40a8a5032247761b7750c291f18c4eca3509db984b65290a373d7fb94",
+    "src/mojssp/cooperation.py": "961bd8879abdae23b112052d85c8036aa089c476359f5d5bad3c51485389c6c2",
+    "src/mojssp/critical_path.py": "2cd7c97a64acbdd8348d6e39860536e2f70cf884f8e3dab305b45a9805f2dcd8",
+    "src/mojssp/curve_prediction.py": "43248e5288bb2bc3a345182546480c0418bd6277fea1739f58a3854b8b1c51ba",
+    "src/mojssp/decoder.py": "99b53d508951b27718e9ed3c96c8d3adfd159d69b423494837ead6aa48097914",
+    "src/mojssp/dmab.py": "011e2b346f11123ca4ec5b2948021b1f8ade970afe320a3e627c193a0b0f5099",
+    "src/mojssp/dominance.py": "0f6e7c18caa8742501ae2cca1bd264b7ba1abe714dec0eaa11470574b4c59508",
+    "src/mojssp/dynamic_budget.py": "651f9168e724869d7c4ae523d8e8d5f78555909f7ffa264f380bfed323e2d37b",
+    "src/mojssp/evaluator.py": "6faefc950cd0f479bdadaf792401614562ec8a421fd2b95d7f689289c2d88591",
+    "src/mojssp/fixed_budget.py": "f888eadeaef651e33f353dd2ba6145089ac5cb7564ce46f7963aa5fc71368fc4",
+    "src/mojssp/hypervolume.py": "29eb947ba639878ad9fe97ab33c93c82bfe504fef94e7652fee4fcdab8b5e7fc",
+    "src/mojssp/igd.py": "7261db82f3dc23f358f6c3e53399f6ee56cc14938b25315c481e6037fee81f30",
+    "src/mojssp/instance.py": "be5b457d0e6f2907a47e887cafe865be594e1c3edd47cad99a52098dc44f1982",
+    "src/mojssp/io.py": "baa123f152c4fdc46ee9c05b58d6e54e4946718b5912f64f8b6eb50aba807fca",
+    "src/mojssp/job.py": "bcafe025eb733ed20630e01038a0c29250843fb445e9dc67f2298e9dc10e8ea7",
+    "src/mojssp/local_search.py": "2ada1b9e93d5decb3feef6458af1828f156c27866f6a6201148ce16200be8141",
+    "src/mojssp/mode.py": "71809460b27fa73fa7c974b20fcec716fa8ed8d93c96ba8479719ef97d1337cd",
+    "src/mojssp/moead.py": "2b255aa71044544e43ea38b56f8afb40562e18d3a59ed0fb401382cdfc5981fa",
+    "src/mojssp/mopso.py": "71be976773d2aea9ac7d563eed6bd4b983d79cfa416cd268471c55903562af50",
+    "src/mojssp/normalization.py": "a8ee007482647562f4180c37bcc5e7b1d87f1bcbd634eff5d125216814812425",
+    "src/mojssp/nsga2.py": "ab972b335676e57e68e23c1a4882bf24b3b1bc83f46263fe27524323eb6290c2",
+    "src/mojssp/nsga2_ls.py": "48be8d1184bd0922310a6329662d27af7293b1f7e8caf86b783ef8bd3cb93729",
+    "src/mojssp/operation.py": "2375872b7c960a903b2f939276ba9167618c94463a6f2c79c7541dfe759510b5",
+    "src/mojssp/orchestrator.py": "bc480b3abe3ea526e37271f2e87bc6b9bc6865936a3809174e80a32594efaddb",
+    "src/mojssp/page_hinkley.py": "e0fa8323dec4c495c36a71c7af7562a56f3a7e79a12f3ec5e28f54524c5d712d",
+    "src/mojssp/pareto_archive.py": "88d648cfa44bf5fbe90bab0aa6be79b556b9776717d83d6529326b2c5a5e6318",
+    "src/mojssp/portfolio.py": "57ffd3bb86363f881ca8f517fc0b38409600f24e73f923f6fb8642af3e422bf0",
+    "src/mojssp/project_paths.py": "64b86ed73fae9d6ad5fbfa261d7123b935919292ff538a073d7380a01fd3c0fb",
+    "src/mojssp/provenance.py": "25785185fa23a80955305c8c2311f4d3afbb64578dea531b33d67bfc88462053",
+    "src/mojssp/regional_explorer.py": "9bde2fc3919021ea7d9ca9b17f70b938452ea4fec7725b987f3337926317b141",
+    "src/mojssp/regional_injection.py": "c8a9689fb73b65918c990feeec3b5a2e2b776918c2e07cdc1bccd3f489de84d5",
+    "src/mojssp/regional_portfolio.py": "11a6cb08e34be1d1b918eb5ade8b3779e3be8d398fcb01c5302cc37e830ed2be",
+    "src/mojssp/reward.py": "92df551224b1a7bdd9b2ffbb3f138e8944705820be3a65cc32923f6e26be6785",
+    "src/mojssp/runner.py": "375ad8f7d60933ec2a2c60653997e1f869d5da27d41abb9d50d13072e0efc6f4",
+    "src/mojssp/schedule.py": "d172a77a5e3e887f0dacb93104ce2cbb2ae9bede3edfa77929aca1e4e00a95b8",
+    "src/mojssp/schedule_validator.py": "5ebccb1a86e571e8e007e21f14cea8e255889e113072344a0c211faccde81cd4",
+    "src/mojssp/selectors.py": "a1d9e494ac4e3bc3da533574ffedf4a3008058032c058690f64b50c9b26ce62b",
+    "src/mojssp/shared_credit.py": "bcccef5cc20630da490a0982d347ef57e845230976351a995465bc319d86e9ba",
+    "src/mojssp/solution.py": "52df758611f9f4ee4c58f72b1b975948223a997fac021334863048185e475a45",
+    "src/mojssp/spea2.py": "99a25b29ccb35b64cdefd6828c1f5de80aa75dbf1026629b951d49f9d7aa506e",
+    "src/mojssp/subproblem_injection.py": "23164007b322128b4a43f24d5b335597237ba0792daac152b63dd630a4c1b4d0",
+    "src/mojssp/subproblem_replay.py": "5a35c4d187130c8df1281c5bb4615bf7e50d61de48886d49b97886e809df445e",
+    "src/mojssp/validator.py": "13778e573b0a19df347c2802bb7cb7d56eb8c290d654f46ac611ee0ea175b7d6",
+    "scripts/analyze_generated_instances.py": "28b4fd8fbdd55b747838d19e736ee5f913498c80f440dc5d38b606b16f042058",
+    "scripts/analyze_instance_diversity.py": "7850a6e4c87c96b5e9002f91941b33141a9d5ec9e49f6edb103342c8c6f4d9d3",
+    "scripts/analyze_phase2_budget_diagnostic.py": "6cfdf290279c9aaaff5157d1ba429fc9a53677dce9c963b1fb0f6d2e79889681",
+    "scripts/analyze_phase2_pilot.py": "142176417deea5bbb240be3e62f06257bd3aa3bcaa2975bf254cc53b0ba3af7b",
+    "scripts/analyze_pilot_results.py": "1a1f3b2bc1d28619a119d4895d58c338dfc197b58bec5fc6cd8b3cdbe7dd9fbd",
+    "scripts/analyze_portfolio_loop.py": "a3048ddab722c80d43180d6a17fb0efd661fed99765ccd6d72b32921095e864d",
+    "scripts/audit_f864_diversity.py": "2ce8869fee3e0680d0c52d379ed890373a86129248a3fe737d687cd04f22f500",
+    "scripts/audit_phase2_closure.py": "aa1e962813a5167e6811275d3a850c13e2c823a048635dc8356be4afadf6315d",
+    "scripts/audit_portfolio_loop.py": "facab2433f0fa80944db81a82777f65fd6a3b196ae1264f6b2a8fce7972141d6",
+    "scripts/compare_budget_signals.py": "adeaaebbd68fd5e706bfe37d595db25ad80d2b6d10add1f44f86f16f7fab7d25",
+    "scripts/demo_adaptive_portfolio.py": "da6549a484d9a8136a5eb9d7a0649f709e8d7416bbeed6a3551d80d11378bd18",
+    "scripts/demo_nsga2.py": "bb4b9f58691fc6dcc1ce2a9e9ff6ea53de352d033dbf3c83784e8857e15ab367",
+    "scripts/derive_budget_weights.py": "4fdddcb4b5a264d7656bd724469c21109eca93d52d6cfefd172b9bd4bb943dff",
+    "scripts/diagnose_dmab_sensitivity.py": "70e5d41daa51f4c2d86acf3b39a1ab959e0cd27d474e8232cbf327283571f0c8",
+    "scripts/diagnose_dmab_window_horizon.py": "ea46aa34857442df45f41472a4dbb55ba382fcc644e3c26ba0d33478e69411fb",
+    "scripts/generate_analysis_plots.py": "b3c1739abfcc2ea5899367037b35a29a2ecb18fd7f87cd02e4fe01ff71f574ff",
+    "scripts/generate_mojssp_instances.py": "ba8e7826415fbb11c93b55dfc0afa62531a995cdd8867cfce241d93e6ec63c75",
+    "scripts/pilot_analysis.py": "2046e443b3565e180ce23fc48f0ae85858bd3860109d1067ccc9f7d380941965",
+    "scripts/plot_portfolio_loop.py": "f8f02ce2a7cd109586c66fb8725deb388bdcfaaa589c35633a64b3562ce9a2ba",
+    "scripts/report_portfolio_contribution.py": "085978ef847053831ef8d586616f40d21c4bc919b7c3bc39363065607e5b91a5",
+    "scripts/report_portfolio_loop.py": "9e580f550f386d8249381cb5186dd72f5542d5fa756f92afc028e475549fb331",
+    "scripts/reproduce_portfolio_baseline.py": "2001ef883668fe4569969161adc5b72d710185d61b4f8517b9a07d0e3a5f053e",
+    "scripts/run_allocation_variants_pilot.py": "da47e140abafc168977755cf93191f1e9ef0faea71f00c2e0b833ac036c8b503",
+    "scripts/run_archive_injection_pilot.py": "54ad4dbc20d8764cc0d7be03d62b61bce2bfa0735d710b7291108f15757c7e71",
+    "scripts/run_blmr_injection_pilot.py": "bdac1daab006290cda99ab845b9245e06abafbbccd1d38ce73aadf2332f86fc2",
+    "scripts/run_calibration_f83.py": "8a53610008a0d61c129b0b465985d13faf662d2fad3257baf004b55efc464769",
+    "scripts/run_composition_pilot.py": "4ae6d98466afa0f189def06a291c42d2d2e5bcf8966ec5657418fba22bfec5c3",
+    "scripts/run_dynamic_pilot.py": "590d102d864fcdb2c67780b1b774ebd71227d64930748819ec07f719f8ea7b1f",
+    "scripts/run_experiment.py": "ad4664df2cad47ba8bcfe88a0e4d431411b88e833d5c15b61b5cca5b724c8f46",
+    "scripts/run_f85_experiment.py": "c99acb36047261090bb655ca7727462518e2bf397f3393d7a091d3bf256839df",
+    "scripts/run_f86_experiment.py": "e7868123eac5da9c6ab7542b0598dd9c6c96ff9a60ea79936e8f41b24563bac8",
+    "scripts/run_holdout_evaluation.py": "1a9cd22b0c0c35522f074e1436fd76a7478729eaa802cb59de3b093df811929d",
+    "scripts/run_instance.py": "ddb10b9e2a9961ced61492a61bb207482ca481efc90c296a8f5028c7a029b14e",
+    "scripts/run_instance_probe_selection.py": "64421930f0beac93365da1951d3cb660d8d4de7a4052620d2a0483f42f47551c",
+    "scripts/run_instance_selection.py": "5f0788b59f1d869a33c4346f43fe2540d054f6972ce34a315de588f6ffcd5a1a",
+    "scripts/run_multiea_pilot.py": "e8a38305668f9833329605ecbb2d83b2afe57e05ff742855de99d8f9d651b929",
+    "scripts/run_pair_pilot.py": "6e97692949cd8d1fe884f3091478b48c6ff7b58a64004904680f2b55e6751c44",
+    "scripts/run_phase2_budget_diagnostic.py": "6b90e38339ce32bac44ea5d0a3e581f0405233a4518eed6c95fd658cd039c42b",
+    "scripts/run_phase2_pilot.py": "f792fd8d2af0b2b53e44e80c543182c8919f4f908250f95e92a1a2e67f820ab1",
+    "scripts/run_pilot_125_experiments.py": "664e495e65db92b3135fb3d475d317221b2b0152e2b81486feba11d4192afaae",
+    "scripts/run_portfolio_campaign.py": "7b92198c136dddb3e5045614be25016a2fdd167c91227a945d6fa4f1b5c48666",
+    "scripts/run_portfolio_loop.py": "6b9d502fd21d73361a3563b2ec3c3514de89d914856729d787a99712fbbdf669",
+    "scripts/run_regional_budget_pilot.py": "e50fec22e8e229668e364241df5595b0f946659edd25bea570b1e61f9c08cc9c",
+    "scripts/run_regional_composition_comparison.py": "69ffad59fc2118c63a39643c59a11ef2220be872c4982ec423f73af167f2f441",
+    "scripts/run_regional_cooperation_pilot.py": "0a6961a12e498ca9da3a9b26063755d58e42a16b8d858eab72d395bd1da46dec",
+    "scripts/run_regional_experiment.py": "316e0c4122e40fbb01f93e0c97acc6a010587e5d093cf9b53d1ef4cab544e2ce",
+    "scripts/run_regional_explorer_controls.py": "7ea9bb12f202b5279514407eddd2b8def17d7e46fa4560700a24c19eee3b75cc",
+    "scripts/run_regional_policy_comparison.py": "54a8e75ba720a1efca4b0af404f2887e34804c6073f20dca63e78629663160a6",
+    "scripts/run_regional_policy_pilot.py": "a89112016cbc888f431a66fa935fff3d3f77fcde42187dbb0c7b1baee2ef0393",
+    "scripts/run_regional_reserve_pilot.py": "d699f44502bac02ce117576f3df56305c412aead18950175e4493036e76045c8",
+    "scripts/run_shared_credit_pilot.py": "137ab45c52bf35d25e4c28daa448d87fa3225fc177bd0027ece5a8e3ad89a973",
+    "scripts/run_stagnation_pilot.py": "f8b37d93e07fe246c30a76963603e6babf3acfc553496b02adb0c09dcb79b722",
+    "scripts/run_subproblem_injection_pilot.py": "f6bf4d2159b7eaebe3a3c023d9a5f3c3aee5478ee280ef8dbfadd2de7cee769a",
+    "scripts/run_subproblem_replay_pilot.py": "c4a8505c43f471462e954a722d8938825c8dbdf7fe6f36e7f00af64e43ced0cf",
+    "scripts/run_weighted_pilot.py": "7458076df136d32bf05659ca61142f3e120cb16e564e0a80f5dac5300ea9e50e",
+    "scripts/smoke_multi_instance.py": "f0637e513c973f100a3d245daf6294f2a1ae0d4ad63f692afeeb533ddf2cdcea",
+    "scripts/smoke_test_generated_instances.py": "109ad79230c078e26b32ab9e64994a77e8ac183b71b35278539f840492cd743c",
+    "scripts/validate_neutral_warmup.py": "9599a6cb4ffd2cbf9c7667472a64e1866d624b995aa439c6133810285c136beb",
+    "scripts/validate_portfolio_loop.py": "2884270236cd7481ea80d54f025c8e880d8d219703ccb73ded06366f1c6fe85e",
+    "scripts/validate_regional_expansion.py": "b32caac46315eee0c995edd54b3acdff43ae461f5d70ec37ebbf555f2b723266",
+    "scripts/verify_portfolio_closure.py": "184da846b35c7c9dbe31aa6b5d43fbaf4a923b31607267aeb486f17cdaf6d9a9"
+  },
+  "selection_history": [
+    "allocation_variants_moead_blmr_20261024",
+    "multiea_selection_moead_blmr_20261024"
+  ],
+  "scope": "First and only use of the 80 holdout_test instances; nothing is tuned after this run"
+}

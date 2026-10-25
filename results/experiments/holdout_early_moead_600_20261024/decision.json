@@ -1,0 +1,89 @@
+{
+  "means": {
+    "early_moead_600": 0.9924471200741702,
+    "explorer_solo": 0.9788656100769664,
+    "passive": 0.9875616057535204,
+    "moead": 0.9766293530298025,
+    "nsga2_individual": 0.952468386220205,
+    "spea2_individual": 0.9452407062559944,
+    "nsga2_ls_individual": 0.8419066290670681,
+    "mopso_individual": 0.8321942335685957
+  },
+  "decision_rule": "Fixed before the holdout: early_moead_600 is declared better than the best individual only if its mean HV (five-seed instance means, then equal instance weights) exceeds explorer_solo and the current dynamic pair (passive). Superiority is called statistically supported only if the instance-level bootstrap 95% interval of the difference against explorer_solo excludes zero. Size and profile breakdowns and the Wilcoxon test are descriptive and do not change the decision.",
+  "candidate_better_than_best_individual": true,
+  "statistically_supported": true,
+  "beats_every_control": true,
+  "versus": {
+    "explorer_solo": {
+      "mean_difference": 0.013581509997203978,
+      "bootstrap95": [
+        0.008450893831260006,
+        0.01851690938584039
+      ],
+      "wins": 63,
+      "losses": 17,
+      "wilcoxon_p": 2.7942103299178234e-07
+    },
+    "passive": {
+      "mean_difference": 0.0048855143206499915,
+      "bootstrap95": [
+        0.0005683946539147411,
+        0.009273212807728368
+      ],
+      "wins": 43,
+      "losses": 37,
+      "wilcoxon_p": 0.08773319883982465
+    },
+    "moead": {
+      "mean_difference": 0.015817767044367874,
+      "bootstrap95": [
+        0.009488422676931398,
+        0.022607623050123503
+      ],
+      "wins": 47,
+      "losses": 33,
+      "wilcoxon_p": 0.0005064752419251877
+    },
+    "nsga2_individual": {
+      "mean_difference": 0.0399787338539654,
+      "bootstrap95": [
+        0.03248027695119149,
+        0.047957191433374166
+      ],
+      "wins": 72,
+      "losses": 8,
+      "wilcoxon_p": 9.094405623085374e-14
+    },
+    "spea2_individual": {
+      "mean_difference": 0.04720641381817599,
+      "bootstrap95": [
+        0.039541396643715865,
+        0.05528921351525724
+      ],
+      "wins": 77,
+      "losses": 3,
+      "wilcoxon_p": 1.1449828359123387e-14
+    },
+    "nsga2_ls_individual": {
+      "mean_difference": 0.15054049100710215,
+      "bootstrap95": [
+        0.13451349839938456,
+        0.16688685694234556
+      ],
+      "wins": 80,
+      "losses": 0,
+      "wilcoxon_p": 7.849526548031477e-15
+    },
+    "mopso_individual": {
+      "mean_difference": 0.16025288650557448,
+      "bootstrap95": [
+        0.14417230185519309,
+        0.17671060774337816
+      ],
+      "wins": 80,
+      "losses": 0,
+      "wilcoxon_p": 7.849526548031477e-15
+    }
+  },
+  "frozen_commit": "f78076b657aad143575e0212742de35419dfa5cc"
+}

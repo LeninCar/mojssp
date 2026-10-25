@@ -1,0 +1,40 @@
+Evaluación final en el holdout: portafolio early_moead_600
+
+Primer y único uso de las 80 instancias holdout_test de expanded_200 (10 por tamaño de 5x5 a 50x50,
+16 por perfil). Código e instancias congelados en f78076b (etiqueta holdout-v2-freeze).
+3200 corridas: 8 métodos x 80 instancias x 5 semillas (100-500), 3000 FE cada una.
+Una interrupción por corte de energía se reanudó con --resume; ninguna corrida guardada quedó corrupta.
+
+Portafolio: MOEA/D + BLMR v1 con archivo de Pareto compartido. Primera ronda uniforme (300 FE),
+segunda ronda según ganancia de HV por FE con piso de 10 %, y desde 600 FE todo el presupuesto a BLMR.
+
+HV medio (medias de cinco semillas por instancia, luego 80 instancias con igual peso)
+early_moead_600   0,9924
+passive           0,9876   (pareja con reparto proporcional)
+explorer_solo     0,9789   (BLMR v1, mejor individual en media)
+moead             0,9766
+nsga2_individual  0,9525
+spea2_individual  0,9452
+nsga2_ls          0,8419
+mopso             0,8322
+
+Diferencia del portafolio, intervalo bootstrap 95 % por instancia, instancias ganadas/perdidas
+vs BLMR solo   +0,0136 [+0,0085, +0,0185]  63/17  Wilcoxon p = 2,8e-7
+vs MOEA/D      +0,0158 [+0,0095, +0,0226]  47/33  p = 5,1e-4
+vs pareja      +0,0049 [+0,0006, +0,0093]  43/37  p = 0,088
+vs NSGA-II     +0,0400; vs SPEA2 +0,0472; vs NSGA-II+LS +0,1505; vs MOPSO +0,1603
+
+Decisión según la regla fijada antes de correr
+Supera a BLMR solo y a la pareja: sí. Intervalo contra BLMR excluye cero: sí (respaldo estadístico).
+Supera en media a los siete controles, incluido MOEA/D: sí.
+
+Lectura (descriptiva, no cambia la decisión)
+Ningún individual domina: BLMR es el mejor individual en 5x5 a 20x10 y MOEA/D en 20x20 a 50x50.
+Por instancia, el mejor individual es MOEA/D en 44, BLMR en 33 y NSGA-II en 3.
+El portafolio supera a BLMR en todos los tamaños y gana a MOEA/D en los tamaños pequeños y medianos;
+en 20x20 a 50x50 queda entre 0,001 y 0,008 por debajo de MOEA/D, pero muy por encima de BLMR.
+Frente al mejor individual de cada instancia elegido a posteriori (oráculo, 0,9931), el portafolio
+queda a -0,0007 con intervalo [-0,0053, +0,0043] y lo supera en 31 de 80 instancias:
+un único método fijo iguala, en media, a la elección retrospectiva del mejor algoritmo por instancia.
+En instancias grandes MOEA/D sigue aportando más allá de 600 FE; un corte adaptativo es una mejora
+posible que exigiría otro conjunto reservado para validarla.
