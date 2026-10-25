@@ -1,7 +1,0 @@
-﻿split,feature_status,n_unique,n_copies
-confirmation,parsed,8,8
-development,parsed,126,250
-historical_or_unassigned,parsed,1066,2216
-holdout_test,reserved_metadata_only,80,160
-validation,parse_error,50,100
-validation,parsed,6,12

@@ -1,0 +1,368 @@
+{
+  "iterations_completed": 3,
+  "gates": {
+    "scaled": {
+      "tests": {
+        "full_8_bases_3_seeds": true,
+        "HV_CI_positive": true,
+        "AUC_CI_positive": true,
+        "HV_win_6_of_8": true,
+        "AUC_win_6_of_8": true,
+        "genetic_diversity_retained": true,
+        "runtime_under_1_30": true
+      },
+      "accepted": true,
+      "comparison": {
+        "hv": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.020679948338370065,
+          "bootstrap95": [
+            0.014152659934421871,
+            0.02745690929529035
+          ],
+          "permutation_p_two_sided": 0.0078125,
+          "base_wtl": [
+            8,
+            0,
+            0
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.027870748907432647,
+            "confirmation_01_10x10": 0.02961674795758462,
+            "confirmation_02_20x10": 0.03583098908147223,
+            "confirmation_03_10x20": 0.01377478389931086,
+            "confirmation_04_20x20": 0.025457759693920574,
+            "confirmation_05_30x20": 0.014412838815587562,
+            "confirmation_06_40x20": 0.012359598790579055,
+            "confirmation_07_50x50": 0.006116119561072979
+          },
+          "holm_p": 0.015625
+        },
+        "auc_hv": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.014672867234823389,
+          "bootstrap95": [
+            0.010178813101761145,
+            0.019526401384942403
+          ],
+          "permutation_p_two_sided": 0.0078125,
+          "base_wtl": [
+            8,
+            0,
+            0
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.020111056578990743,
+            "confirmation_01_10x10": 0.025993294008226586,
+            "confirmation_02_20x10": 0.021587896012517354,
+            "confirmation_03_10x20": 0.013585304383870475,
+            "confirmation_04_20x20": 0.01286880445626933,
+            "confirmation_05_30x20": 0.00948833221969462,
+            "confirmation_06_40x20": 0.008292101987878627,
+            "confirmation_07_50x50": 0.005456148231139379
+          }
+        },
+        "seconds": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.15629641249931103,
+          "bootstrap95": [
+            -0.135953312394228,
+            0.5208648083298613
+          ],
+          "permutation_p_two_sided": 0.4765625,
+          "base_wtl": [
+            5,
+            0,
+            3
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.5727699333316801,
+            "confirmation_01_10x10": -0.044035466659503676,
+            "confirmation_02_20x10": -0.18728413334853636,
+            "confirmation_03_10x20": 0.09726796667382587,
+            "confirmation_04_20x20": -0.44699646666413173,
+            "confirmation_05_30x20": 0.05271809999734008,
+            "confirmation_06_40x20": 0.004951000000194957,
+            "confirmation_07_50x50": 1.2009803666636192
+          }
+        },
+        "unique_vectors": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 6.583333333333332,
+          "bootstrap95": [
+            2.5822916666666673,
+            11.5
+          ],
+          "permutation_p_two_sided": 0.015625,
+          "base_wtl": [
+            7,
+            0,
+            1
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 20.666666666666668,
+            "confirmation_01_10x10": 3.3333333333333335,
+            "confirmation_02_20x10": 12.0,
+            "confirmation_03_10x20": 5.333333333333333,
+            "confirmation_04_20x20": 8.0,
+            "confirmation_05_30x20": 0.6666666666666666,
+            "confirmation_06_40x20": -0.3333333333333333,
+            "confirmation_07_50x50": 3.0
+          }
+        },
+        "mean_nn_distance": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": -0.0007536640989270842,
+          "bootstrap95": [
+            -0.0011946856114142292,
+            -0.000286717064500055
+          ],
+          "permutation_p_two_sided": 0.0546875,
+          "base_wtl": [
+            2,
+            0,
+            6
+          ],
+          "by_base": {
+            "confirmation_00_5x5": -0.001309055556194095,
+            "confirmation_01_10x10": -4.8819164419669436e-05,
+            "confirmation_02_20x10": -0.0012436380956909188,
+            "confirmation_03_10x20": 0.00012456299390579845,
+            "confirmation_04_20x20": -0.0015513909672588008,
+            "confirmation_05_30x20": -0.000717059128308808,
+            "confirmation_06_40x20": 8.126231040190516e-05,
+            "confirmation_07_50x50": -0.0013651751838520852
+          }
+        },
+        "genetic_diversity": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.060413938111962544,
+          "bootstrap95": [
+            0.04513526999521078,
+            0.07566874201787994
+          ],
+          "permutation_p_two_sided": 0.0078125,
+          "base_wtl": [
+            8,
+            0,
+            0
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.043008939974457205,
+            "confirmation_01_10x10": 0.06432439335887613,
+            "confirmation_02_20x10": 0.07797445721583651,
+            "confirmation_03_10x20": 0.084441251596424,
+            "confirmation_04_20x20": 0.09341762452107279,
+            "confirmation_05_30x20": 0.04265559812686248,
+            "confirmation_06_40x20": 0.025073914431673134,
+            "confirmation_07_50x50": 0.05241532567049808
+          }
+        }
+      },
+      "runtime_ratio": 1.0146490007492206,
+      "genetic_diversity_ratio": 1.115646282268247
+    },
+    "guidance": {
+      "tests": {
+        "full_8_bases_3_seeds": true,
+        "HV_CI_positive": true,
+        "AUC_CI_positive": true,
+        "HV_win_6_of_8": true,
+        "AUC_win_6_of_8": true,
+        "genetic_diversity_retained": true,
+        "runtime_under_1_30": true
+      },
+      "accepted": true,
+      "comparison": {
+        "hv": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.008539484574999178,
+          "bootstrap95": [
+            0.0016258329982855012,
+            0.013894114785035794
+          ],
+          "permutation_p_two_sided": 0.0546875,
+          "base_wtl": [
+            7,
+            0,
+            1
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.021195171392101326,
+            "confirmation_01_10x10": -0.01229444097758344,
+            "confirmation_02_20x10": 0.01057753131041883,
+            "confirmation_03_10x20": 0.006312565844962759,
+            "confirmation_04_20x20": 0.011315350311648173,
+            "confirmation_05_30x20": 0.013129970036017125,
+            "confirmation_06_40x20": 0.009294379809661635,
+            "confirmation_07_50x50": 0.008785348872767015
+          },
+          "holm_p": 0.0546875
+        },
+        "auc_hv": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.007884897495801508,
+          "bootstrap95": [
+            0.005457614897969143,
+            0.011073511124685964
+          ],
+          "permutation_p_two_sided": 0.0078125,
+          "base_wtl": [
+            8,
+            0,
+            0
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.017992552208839108,
+            "confirmation_01_10x10": 0.003179842712103883,
+            "confirmation_02_20x10": 0.006652860891861197,
+            "confirmation_03_10x20": 0.006160864722233835,
+            "confirmation_04_20x20": 0.004715571905336335,
+            "confirmation_05_30x20": 0.008830604444681903,
+            "confirmation_06_40x20": 0.00854056742576951,
+            "confirmation_07_50x50": 0.007006315655586293
+          }
+        },
+        "seconds": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.48993943333516654,
+          "bootstrap95": [
+            0.21479304521173312,
+            0.8201372666662792
+          ],
+          "permutation_p_two_sided": 0.0078125,
+          "base_wtl": [
+            8,
+            0,
+            0
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.5352027999955075,
+            "confirmation_01_10x10": 0.12238490001376097,
+            "confirmation_02_20x10": 0.338265533335895,
+            "confirmation_03_10x20": 0.08674803333997261,
+            "confirmation_04_20x20": 0.9547530333317505,
+            "confirmation_05_30x20": 0.14869010000256822,
+            "confirmation_06_40x20": 0.3081132666605602,
+            "confirmation_07_50x50": 1.4253578000013174
+          }
+        },
+        "unique_vectors": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 2.916666666666667,
+          "bootstrap95": [
+            -2.3333333333333335,
+            8.75
+          ],
+          "permutation_p_two_sided": 0.3984375,
+          "base_wtl": [
+            4,
+            0,
+            4
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 18.666666666666668,
+            "confirmation_01_10x10": -1.0,
+            "confirmation_02_20x10": 10.666666666666666,
+            "confirmation_03_10x20": -1.6666666666666667,
+            "confirmation_04_20x20": 5.666666666666667,
+            "confirmation_05_30x20": -7.666666666666667,
+            "confirmation_06_40x20": 3.0,
+            "confirmation_07_50x50": -4.333333333333333
+          }
+        },
+        "mean_nn_distance": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.0006379833966232477,
+          "bootstrap95": [
+            5.371839043061345e-05,
+            0.0012725647464657715
+          ],
+          "permutation_p_two_sided": 0.1015625,
+          "base_wtl": [
+            6,
+            0,
+            2
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.0009274323326284925,
+            "confirmation_01_10x10": 0.0013647056696594023,
+            "confirmation_02_20x10": -0.0005405176936007861,
+            "confirmation_03_10x20": 0.0023217120712786337,
+            "confirmation_04_20x20": -0.00044718461500225175,
+            "confirmation_05_30x20": 0.0007627775576471277,
+            "confirmation_06_40x20": 0.00034198517016698483,
+            "confirmation_07_50x50": 0.00037295668020837836
+          }
+        },
+        "genetic_diversity": {
+          "n_bases": 8,
+          "n_paired_runs": 24,
+          "mean_delta": 0.06185326761387824,
+          "bootstrap95": [
+            0.04581459590517242,
+            0.07975311196253726
+          ],
+          "permutation_p_two_sided": 0.0078125,
+          "base_wtl": [
+            8,
+            0,
+            0
+          ],
+          "by_base": {
+            "confirmation_00_5x5": 0.06214048531289906,
+            "confirmation_01_10x10": 0.07610089399744574,
+            "confirmation_02_20x10": 0.11388186462324394,
+            "confirmation_03_10x20": 0.06183077905491698,
+            "confirmation_04_20x20": 0.06457471264367816,
+            "confirmation_05_30x20": 0.04352979991485739,
+            "confirmation_06_40x20": 0.02273419540229889,
+            "confirmation_07_50x50": 0.050033409961685815
+          }
+        }
+      },
+      "runtime_ratio": 1.045919947945262,
+      "genetic_diversity_ratio": 1.1184014925898633
+    }
+  },
+  "frozen_primary": "scaled",
+  "confirmation_complete": true,
+  "confirmation_missing_runs": [],
+  "stop_reason": "reproducible_improvement",
+  "all_search_fe_including_reproduction": 951000,
+  "experimental_seconds_including_final_metrics_and_reproduction": 2657.459850400148,
+  "runtime_cap_overshoot_seconds": 0.0,
+  "audit_reevaluation_fe_separate": 20131,
+  "final_test_accessed": false,
+  "pushes": 0,
+  "original_branch_modified": false,
+  "integrity_passed": true,
+  "reproduction_passed": true,
+  "default_behavior": "Original public Portfolio/runner defaults preserved; mechanisms are opt-in in experimental runner.",
+  "rejected": [
+    "combined"
+  ],
+  "adoptable_research_mechanisms": [
+    "scaled",
+    "guidance"
+  ],
+  "operational_recommendation": {
+    "selector": "mojssp.cooperation.ScaleAwareUCB",
+    "window_size": 10,
+    "exploration_factor": 0.07,
+    "enable_live_guidance": false,
+    "guidance_scope": "Replay is a causal fixed-allocation experiment. Obtaining its control trace from scratch costs another 3000 FE; not an autonomous equal-budget policy.",
+    "combined_live_policy": "Rejected in development; not confirmed or recommended."
+  }
+}

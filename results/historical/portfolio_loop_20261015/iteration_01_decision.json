@@ -1,0 +1,150 @@
+{
+  "iteration": 1,
+  "decision": "Pass development screen; retain as opt-in candidate pending independent confirmation.",
+  "evidence": {
+    "hv": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.013995837640068051,
+      "bootstrap95": [
+        0.007474873058340727,
+        0.020987720571660443
+      ],
+      "permutation_p_two_sided": 0.03125,
+      "base_wtl": [
+        6,
+        0,
+        0
+      ],
+      "by_base": {
+        "development_00_5x5": 0.007167368822821836,
+        "development_01_10x10": 0.028179335489225465,
+        "development_02_20x10": 0.007240004566074765,
+        "development_03_10x20": 0.008292179996724195,
+        "development_04_20x20": 0.025362183500537722,
+        "development_05_30x20": 0.007733953465024331
+      },
+      "holm_p": 0.03125
+    },
+    "auc_hv": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.010156592076328396,
+      "bootstrap95": [
+        0.005352160315244788,
+        0.015128742657866302
+      ],
+      "permutation_p_two_sided": 0.03125,
+      "base_wtl": [
+        6,
+        0,
+        0
+      ],
+      "by_base": {
+        "development_00_5x5": 0.004559052971509899,
+        "development_01_10x10": 0.017916005159433073,
+        "development_02_20x10": 0.0024306572643407374,
+        "development_03_10x20": 0.01042407030184874,
+        "development_04_20x20": 0.01841130686253904,
+        "development_05_30x20": 0.007198459898298888
+      }
+    },
+    "seconds": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 1.298267161111451,
+      "bootstrap95": [
+        0.682103738889661,
+        1.8849917499998508
+      ],
+      "permutation_p_two_sided": 0.03125,
+      "base_wtl": [
+        6,
+        0,
+        0
+      ],
+      "by_base": {
+        "development_00_5x5": 1.1593368999941351,
+        "development_01_10x10": 1.7348738000000594,
+        "development_02_20x10": 2.4729961000023954,
+        "development_03_10x20": 1.1348598333376383,
+        "development_04_20x20": 1.2663523666657663,
+        "development_05_30x20": 0.021183966668710735
+      }
+    },
+    "unique_vectors": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 3.4999999999999996,
+      "bootstrap95": [
+        0.33333333333333326,
+        6.5555555555555545
+      ],
+      "permutation_p_two_sided": 0.125,
+      "base_wtl": [
+        4,
+        0,
+        2
+      ],
+      "by_base": {
+        "development_00_5x5": 3.0,
+        "development_01_10x10": 9.0,
+        "development_02_20x10": 6.333333333333333,
+        "development_03_10x20": -2.3333333333333335,
+        "development_04_20x20": -0.3333333333333333,
+        "development_05_30x20": 5.333333333333333
+      }
+    },
+    "mean_nn_distance": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.0006021052372232732,
+      "bootstrap95": [
+        0.00017588367095517962,
+        0.0010361350893672383
+      ],
+      "permutation_p_two_sided": 0.09375,
+      "base_wtl": [
+        5,
+        0,
+        1
+      ],
+      "by_base": {
+        "development_00_5x5": 0.001392850650210866,
+        "development_01_10x10": 9.344096576280874e-05,
+        "development_02_20x10": -0.00013455358348629206,
+        "development_03_10x20": 0.001170215844929441,
+        "development_04_20x20": 0.0005880971969170339,
+        "development_05_30x20": 0.0005025803490057813
+      }
+    },
+    "genetic_diversity": {
+      "n_bases": 6,
+      "n_paired_runs": 18,
+      "mean_delta": 0.051522385412232176,
+      "bootstrap95": [
+        0.02870487441464455,
+        0.07155427841634741
+      ],
+      "permutation_p_two_sided": 0.03125,
+      "base_wtl": [
+        6,
+        0,
+        0
+      ],
+      "by_base": {
+        "development_00_5x5": 0.03348148148148152,
+        "development_01_10x10": 0.07854661558109836,
+        "development_02_20x10": 0.07466922094508298,
+        "development_03_10x20": 0.08087611749680722,
+        "development_04_20x20": 0.03332950191570879,
+        "development_05_30x20": 0.008231375053214177
+      }
+    }
+  },
+  "runtime_ratio": 1.243747241249791,
+  "genetic_diversity_ratio": 1.0992777833205043,
+  "guided_crossovers": 3255,
+  "interpretation": "Higher HV and AUC on all six base means with exactly identical per-arm FE; genuine active mating, no direct archive copying. Genetic diversity increases, but unique objective counts improve in only 4/6 bases. Exclusive marginal HV falls, consistent with increased overlap; not proof of balanced ancestry.",
+  "limits": "Small development sample; interim p-values will be Holm-adjusted across all screened treatments. Runtime inference requires counterbalanced confirmation. Still inferior to standalone MOEA/D in all base means."
+}

@@ -1,8 +1,0 @@
-{
-  "system_python": "3.12.8 (tags/v3.12.8:2dc476b, Dec  3 2024, 19:30:04) [MSC v.1942 64 bit (AMD64)]",
-  "numpy": "2.5.3",
-  "pandas": "2.2.3",
-  "scipy": "1.16.2",
-  "matplotlib": "3.10.1",
-  "purpose": "Existing missing capabilities for figures and supplementary statistics; no installation"
-}

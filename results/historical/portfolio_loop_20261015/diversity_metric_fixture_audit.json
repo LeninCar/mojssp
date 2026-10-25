@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "expected_pairwise_normalized_Hamming": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "expected_population_mean": 0.5,
+  "evaluations": 0,
+  "scope": "Analytical 3-genotype fixture checks metric arithmetic. Full reproductive populations were not persisted; population diversity per run is recomputable by replaying frozen seeds and code, not from Pareto archives alone."
+}

@@ -1,0 +1,913 @@
+{
+  "purpose": "Additional early-selection audit before C1; existing results only",
+  "created_utc": "2026-10-16T07:06:30.518019+00:00",
+  "entry": "ENTREGA.md",
+  "protocol_sha256": "a3c0a9b9ea7a6452bfbf7c7a396319567b97b7da20020d3f6b8629aa9e851030",
+  "authoritative_tables": "tables/v3",
+  "authoritative_figures": "figures/v2",
+  "authoritative_reports": "final",
+  "products": [
+    {
+      "path": "ENTREGA.md",
+      "bytes": 1691,
+      "sha256": "1c6a9e7b2d36dcc6c951425f674e92078428349f777cbea35e2e3fec8342434e"
+    },
+    {
+      "path": "INDICE.md",
+      "bytes": 1623,
+      "sha256": "31c0d2d43a68a47310d3ac8f35728e3da06a77efb02670187f2cf487d0f678bf"
+    },
+    {
+      "path": "INFORME_SELECCION_TEMPRANA.md",
+      "bytes": 23492,
+      "sha256": "e13373405deee4aabd177b9f9aad7eb3e1ae47e69bac9174f475f3d4acb63d97"
+    },
+    {
+      "path": "REPRODUCIR.md",
+      "bytes": 1666,
+      "sha256": "f3559fb850f069c22ae46fb3c4db38debff00667e2aada9a95ba5a22c660cc22"
+    },
+    {
+      "path": "RESPUESTAS_Y_RECOMENDACION_C1.md",
+      "bytes": 3519,
+      "sha256": "50006afa7713d4851c1b444dac88ad1728c1c22fc27f36b71d52309332595ff9"
+    },
+    {
+      "path": "evidence/before.json",
+      "bytes": 834612,
+      "sha256": "5ab5179002e68962aae7b305777fb07f1114e8579abdb56565ca1135ad38335f"
+    },
+    {
+      "path": "evidence/protocol.json",
+      "bytes": 1170,
+      "sha256": "a3c0a9b9ea7a6452bfbf7c7a396319567b97b7da20020d3f6b8629aa9e851030"
+    },
+    {
+      "path": "evidence/reproduction_final.json",
+      "bytes": 5113,
+      "sha256": "ffaebb6b674cc3d1463825d34352ce2b0d11ba9aef9396fc9c25201d36553b71"
+    },
+    {
+      "path": "evidence/reproduction_result.json",
+      "bytes": 5113,
+      "sha256": "20e6d96674cbbedda56e351af9b91f674b7374d750c1982a4982b863164cd6a7"
+    },
+    {
+      "path": "evidence/versions_and_errors.json",
+      "bytes": 752,
+      "sha256": "36ffda884ec469236666760faf9643ae3521132574a0891a79d044e8dea91665"
+    },
+    {
+      "path": "final/AUDITORIA_FINAL.md",
+      "bytes": 3330,
+      "sha256": "3eada1afc7bcb53bcbcc2fb644d9f888c25264d8f67635ee81c4c26249bae2ac"
+    },
+    {
+      "path": "final/INDICE.md",
+      "bytes": 1659,
+      "sha256": "8f2c53b1c737045b5b0a661e95acca6c841d35e8870e0faeaabec08580e0b33a"
+    },
+    {
+      "path": "final/INFORME_SELECCION_TEMPRANA.md",
+      "bytes": 23629,
+      "sha256": "cb8d6069b9ea5eec85fc6c5634a78c81d786c285e45e51ed4281ea8cee5d90fd"
+    },
+    {
+      "path": "final/REPRODUCCION_FINAL.md",
+      "bytes": 2320,
+      "sha256": "9bb849becf5dc6068f12ce1ee89fc03268c7dc176fbe556d92caa8a0a2d76f63"
+    },
+    {
+      "path": "final/REPRODUCIR.md",
+      "bytes": 1675,
+      "sha256": "07e0c993e792a2521195df5ee0639286bca6e8488f7a6d1c161fc1b93bca6611"
+    },
+    {
+      "path": "final/RESPUESTAS_Y_RECOMENDACION_C1.md",
+      "bytes": 3525,
+      "sha256": "f0dcad5205f38ea2ef6de9dfb54a9a41eeadf68692ff8b680269a47789101d3d"
+    },
+    {
+      "path": "scripts/analyze.py",
+      "bytes": 21124,
+      "sha256": "dcfc2441bd1493ed364d6c2e5bf7b2b7e254384c5fc3d2e0c867c4c4f5025743"
+    },
+    {
+      "path": "scripts/analyze_v2.py",
+      "bytes": 21123,
+      "sha256": "44f3f650504bd2555cff7d1b7cd1fdad88e995c36837f270a806dc9621ca3630"
+    },
+    {
+      "path": "scripts/analyze_v3.py",
+      "bytes": 21491,
+      "sha256": "7663e8f5a1cc1317c5b98e05d53240e934e8b418469d0c5588438e0910be69dc"
+    },
+    {
+      "path": "scripts/analyze_v4.py",
+      "bytes": 21547,
+      "sha256": "8867a1efccc22f027012df11946a590ab295c79226a594fd3090ba15de1658ab"
+    },
+    {
+      "path": "scripts/finalize.py",
+      "bytes": 9872,
+      "sha256": "7a72c18c3a697f50b5f7ef8267d6b67e997228a16215a6b36d68090ba5bc3412"
+    },
+    {
+      "path": "scripts/metrics.py",
+      "bytes": 2668,
+      "sha256": "b6d276b59228540b84b00c4e30e967fd231524dd87af7fb60787472b39e1c59d"
+    },
+    {
+      "path": "scripts/plot.py",
+      "bytes": 9442,
+      "sha256": "7805d6003e7669f33372b5629ff60e96a99ad96f07e7e14d80498b930787fe0c"
+    },
+    {
+      "path": "scripts/plot_v2.py",
+      "bytes": 9442,
+      "sha256": "f80b804aa55956646ed2ec433d0b9f6c9b820b64cf72bc13b94969fc7afbf25b"
+    },
+    {
+      "path": "scripts/render_final.py",
+      "bytes": 26539,
+      "sha256": "701fc1bee72507c38bda09a219ae4e6af32d23118e6467c2edef68e52235aaae"
+    },
+    {
+      "path": "scripts/report.py",
+      "bytes": 26266,
+      "sha256": "850aa87b24f988c2c3162fcb57f4c61aab7ee2f48bc5842d59a14d54b98ca96f"
+    },
+    {
+      "path": "scripts/report_v2.py",
+      "bytes": 26480,
+      "sha256": "953a8ac301ab73a8b17003a412f5853a7b837bd1ad5c7c46fcdcf08798da0a05"
+    },
+    {
+      "path": "scripts/reproduce_check.py",
+      "bytes": 1497,
+      "sha256": "da84dec21d7e5c8f7178fab75846043a6dba2a315b788445f5619399607363b8"
+    },
+    {
+      "path": "scripts/reproduce_final.py",
+      "bytes": 1520,
+      "sha256": "54510bca7793bb1c07c7e42bdd7b57c985c9790afd50a3acda1099bc0a3c4e60"
+    },
+    {
+      "path": "scripts/supplement.py",
+      "bytes": 7446,
+      "sha256": "a0d7c305745064f40a4925d5fc83812c5a3a10fb288869d427da82cb3fc2add1"
+    },
+    {
+      "path": "scripts/supplement_v2.py",
+      "bytes": 7444,
+      "sha256": "a13f4f1486ae27d124666cebb244b0581abde7a345187339adf4b489532bc2db"
+    },
+    {
+      "path": "scripts/supplement_v3.py",
+      "bytes": 7444,
+      "sha256": "6dd628865c880982e45df56d465cee8f78a48f0b667b784e59a7ceade38394a5"
+    },
+    {
+      "path": "scripts/verify.py",
+      "bytes": 7609,
+      "sha256": "9b761ed72d2422ac0e5eadf00194581b889cb46de7defbb6839b89f64ff6651f"
+    },
+    {
+      "path": "scripts/verify_complete.py",
+      "bytes": 8047,
+      "sha256": "d633bca9b0dc00974340709218348f0fa4eebec31c60bdce59e331e9ade51ecf"
+    },
+    {
+      "path": "evidence/replica/analysis_manifest.json",
+      "bytes": 28900,
+      "sha256": "dafcef72f20c8be63dab891fd6ffc6dca8ffd9decec5c65df6eb8e0f8e97fed2"
+    },
+    {
+      "path": "evidence/replica_final/analysis_manifest.json",
+      "bytes": 28900,
+      "sha256": "dafcef72f20c8be63dab891fd6ffc6dca8ffd9decec5c65df6eb8e0f8e97fed2"
+    },
+    {
+      "path": "evidence/v1/analysis_manifest.json",
+      "bytes": 28900,
+      "sha256": "dafcef72f20c8be63dab891fd6ffc6dca8ffd9decec5c65df6eb8e0f8e97fed2"
+    },
+    {
+      "path": "evidence/v2/analysis_manifest.json",
+      "bytes": 28900,
+      "sha256": "dafcef72f20c8be63dab891fd6ffc6dca8ffd9decec5c65df6eb8e0f8e97fed2"
+    },
+    {
+      "path": "evidence/v3/analysis_manifest.json",
+      "bytes": 28900,
+      "sha256": "dafcef72f20c8be63dab891fd6ffc6dca8ffd9decec5c65df6eb8e0f8e97fed2"
+    },
+    {
+      "path": "figures/v1/01_acierto_por_corte.png",
+      "bytes": 187191,
+      "sha256": "9a5fd8bc83bb7fa943a0d06dddc0dfbb859d6cf3425acd0276d82a6c6438c89c"
+    },
+    {
+      "path": "figures/v1/02_matriz_desarrollo.png",
+      "bytes": 108864,
+      "sha256": "cf654c20d5e74e7baed4fdcd1f657a763718608a3d08fbc0bb3df430b3723ce8"
+    },
+    {
+      "path": "figures/v1/03_trayectorias_representativas.png",
+      "bytes": 202734,
+      "sha256": "a44bd3ac0cb6e07eb46ec304892549a6b58c87c51a2906bd4cb7aab956e09021"
+    },
+    {
+      "path": "figures/v1/04_transiciones_lider_ganador.png",
+      "bytes": 51302,
+      "sha256": "324712a108de19242fa829681bc0a7674be7336d2b278546dacfb024336b0d5f"
+    },
+    {
+      "path": "figures/v1/05_portafolio_y_standalone.png",
+      "bytes": 159177,
+      "sha256": "bcb56fdf6b36a3d6bffb928564fd0248e622ae953feab62b67c4a92fbd35e488"
+    },
+    {
+      "path": "figures/v1/06_caracteristicas_y_ganadores.png",
+      "bytes": 104067,
+      "sha256": "9f21b16f320cacc259a2e19ddffceaa80e5e7d6d69ec15e868b54622275b249e"
+    },
+    {
+      "path": "figures/v1/figure_manifest.json",
+      "bytes": 4437,
+      "sha256": "5a009dd65c9bba1e17f712de3351be4b81814bec6eedbe31322df8862b10d7a9"
+    },
+    {
+      "path": "figures/v2/01_acierto_por_corte.png",
+      "bytes": 187191,
+      "sha256": "9a5fd8bc83bb7fa943a0d06dddc0dfbb859d6cf3425acd0276d82a6c6438c89c"
+    },
+    {
+      "path": "figures/v2/02_matriz_desarrollo.png",
+      "bytes": 108864,
+      "sha256": "cf654c20d5e74e7baed4fdcd1f657a763718608a3d08fbc0bb3df430b3723ce8"
+    },
+    {
+      "path": "figures/v2/03_trayectorias_representativas.png",
+      "bytes": 202734,
+      "sha256": "a44bd3ac0cb6e07eb46ec304892549a6b58c87c51a2906bd4cb7aab956e09021"
+    },
+    {
+      "path": "figures/v2/04_transiciones_lider_ganador.png",
+      "bytes": 51302,
+      "sha256": "324712a108de19242fa829681bc0a7674be7336d2b278546dacfb024336b0d5f"
+    },
+    {
+      "path": "figures/v2/05_portafolio_y_standalone.png",
+      "bytes": 159177,
+      "sha256": "bcb56fdf6b36a3d6bffb928564fd0248e622ae953feab62b67c4a92fbd35e488"
+    },
+    {
+      "path": "figures/v2/06_caracteristicas_y_ganadores.png",
+      "bytes": 104067,
+      "sha256": "9f21b16f320cacc259a2e19ddffceaa80e5e7d6d69ec15e868b54622275b249e"
+    },
+    {
+      "path": "figures/v2/figure_manifest.json",
+      "bytes": 4437,
+      "sha256": "b1a29b13ed96c8a3469bd2b8f68917ab3e45a85db4daa6a9dbabcb7ac1c6712e"
+    },
+    {
+      "path": "tables/replica/accuracy_regret_matrix.csv",
+      "bytes": 80759,
+      "sha256": "d879bec234d1c9d6b3899f43274a049a00b1bb7f8b18d1df6b57286ad2474b16"
+    },
+    {
+      "path": "tables/replica/accuracy_regret_matrix_with_provenance.csv",
+      "bytes": 578479,
+      "sha256": "11c6ba0c5f240fac02ed04252c51ce2e3457da7ee91861394e68afff2712ddf3"
+    },
+    {
+      "path": "tables/replica/all_instance_winners_with_alternative_flags.csv",
+      "bytes": 74191,
+      "sha256": "16ffaa43f8a391cfecc35a1c3a477019dab73df16af0046e73bd61abf17d7c71"
+    },
+    {
+      "path": "tables/replica/alternative_advantage_navigation.csv",
+      "bytes": 22102,
+      "sha256": "d5d3cb31f62e13d099fa8be068920dff5ee77f289bdbc510019556b0470740b0"
+    },
+    {
+      "path": "tables/replica/cohort_inventory.csv",
+      "bytes": 13006,
+      "sha256": "7bc5e3c0525ebce5d7e676cd0d66dfcd9f07ee34c73b11bff86ddf841344f4c3"
+    },
+    {
+      "path": "tables/replica/cost_feasible_selected_only_proxy.csv",
+      "bytes": 365622,
+      "sha256": "689b23f7642399a58e7c6723f682bd909efb8be6b06cdb8f49fbc093b8179b9c"
+    },
+    {
+      "path": "tables/replica/criterion_base_means.csv",
+      "bytes": 275790,
+      "sha256": "ad151c66b742dd4f2067f75399b0ac52fbee8bf7df90a2b917651715363dc7de"
+    },
+    {
+      "path": "tables/replica/criterion_decisions.csv",
+      "bytes": 4857230,
+      "sha256": "d5e0acbc75ca4773719ed8a40ae3054b0c0e07fa4010e1f39fb17f114efaab9e"
+    },
+    {
+      "path": "tables/replica/cut_availability.csv",
+      "bytes": 853270,
+      "sha256": "b73d69ef539562fa3f9a4ad2a1a9d4d7080a9268b0b4e584946268dd58a16c96"
+    },
+    {
+      "path": "tables/replica/duplicate_trajectory_checks.csv",
+      "bytes": 4167,
+      "sha256": "5e2edba8369f0017c27382fc65fb36242ef2afdbdcb7205e0c6565636a57459f"
+    },
+    {
+      "path": "tables/replica/early_leaders_and_final_winners.csv",
+      "bytes": 832239,
+      "sha256": "5605835f0c64960b1d65ddc7add66ac7e0347d1c931c4ac9d616d7fd7db228d5"
+    },
+    {
+      "path": "tables/replica/exploratory_structural_associations.csv",
+      "bytes": 36752,
+      "sha256": "f0c20ab6c6569bbe85ffc2df1ee3be7fdb18dcffb6ab1780a7862d9a628fa32a"
+    },
+    {
+      "path": "tables/replica/initial_leader_final_worst_cases.csv",
+      "bytes": 153251,
+      "sha256": "d25ebd53f18961615a4a521f6072bb0a2bb39e728a303fe8031adc77313c67ff"
+    },
+    {
+      "path": "tables/replica/leader_final_confusion_counts.csv",
+      "bytes": 13778,
+      "sha256": "9227de5000d713ee9a3ffe9c708f0b9be49e3f0f137976bf6d2504fba0dbe714"
+    },
+    {
+      "path": "tables/replica/leader_stability_by_run.csv",
+      "bytes": 84559,
+      "sha256": "4a6088cb1ada903578fcb1f08f828f58d71d9801bf18b1782a0a62e65fe86b3f"
+    },
+    {
+      "path": "tables/replica/leader_transitions.csv",
+      "bytes": 281302,
+      "sha256": "c74c3f1aab50d1a79af19bfe969aa3fbd789280010a1d8cfeb9a8486583a8123"
+    },
+    {
+      "path": "tables/replica/missing_data_inventory.csv",
+      "bytes": 2052,
+      "sha256": "304b9312c95c5476fa5f330f4a19ca4e196b445f25b6638595c55dd7bb012298"
+    },
+    {
+      "path": "tables/replica/regret_difference_vs_MOEAD.csv",
+      "bytes": 70658,
+      "sha256": "40fd4e5de5d51f120f324e9611ca21fdb844c8fbbe333f8df395c80b96cc7236"
+    },
+    {
+      "path": "tables/replica/scaled_portfolio_recommendations.csv",
+      "bytes": 28644,
+      "sha256": "c90e98eba188aa17f5afad7b5b0a02013de6111ea56f6394b8061e8aeced3226"
+    },
+    {
+      "path": "tables/replica/standalone_final_long.csv",
+      "bytes": 504929,
+      "sha256": "b409233f075683bf1cd277d4ec9a420ecbc28972cd6baaa53c9e511edb98b917"
+    },
+    {
+      "path": "tables/replica/standalone_trajectories.csv",
+      "bytes": 6135655,
+      "sha256": "e0b2b75d1b584eefa0ea260c3778a53522234896e391099e2bdc94b53398999b"
+    },
+    {
+      "path": "tables/replica/structural_features_and_performance_gaps.csv",
+      "bytes": 106139,
+      "sha256": "a48ba35601c036132781303eb3895c98ff8ca5bbf57ab8c3466b00cdc3111a41"
+    },
+    {
+      "path": "tables/replica/winners_by_base.csv",
+      "bytes": 8147,
+      "sha256": "abc24f323343c6c0f434f779ae99be9984edbb7621713f50012a94f237cdf695"
+    },
+    {
+      "path": "tables/replica/winners_by_base_with_provenance.csv",
+      "bytes": 39107,
+      "sha256": "de2a3d92cc77d2c972e419572740abbaea7a36cbe935e61fdabbe6f0c9750496"
+    },
+    {
+      "path": "tables/replica/winners_by_instance.csv",
+      "bytes": 74952,
+      "sha256": "0a36182889891b516b3b828dfe7438c2621427f03c489369631f04ada989b8b7"
+    },
+    {
+      "path": "tables/replica/winners_by_seed.csv",
+      "bytes": 206083,
+      "sha256": "8821ea69cc83b344233a25524e01e24efc9e9fd27756ec280f610bf05960c844"
+    },
+    {
+      "path": "tables/replica_final/accuracy_regret_matrix.csv",
+      "bytes": 80759,
+      "sha256": "d879bec234d1c9d6b3899f43274a049a00b1bb7f8b18d1df6b57286ad2474b16"
+    },
+    {
+      "path": "tables/replica_final/accuracy_regret_matrix_with_provenance.csv",
+      "bytes": 578479,
+      "sha256": "11c6ba0c5f240fac02ed04252c51ce2e3457da7ee91861394e68afff2712ddf3"
+    },
+    {
+      "path": "tables/replica_final/all_instance_winners_with_alternative_flags.csv",
+      "bytes": 74191,
+      "sha256": "16ffaa43f8a391cfecc35a1c3a477019dab73df16af0046e73bd61abf17d7c71"
+    },
+    {
+      "path": "tables/replica_final/alternative_advantage_navigation.csv",
+      "bytes": 22102,
+      "sha256": "d5d3cb31f62e13d099fa8be068920dff5ee77f289bdbc510019556b0470740b0"
+    },
+    {
+      "path": "tables/replica_final/cohort_inventory.csv",
+      "bytes": 13006,
+      "sha256": "7bc5e3c0525ebce5d7e676cd0d66dfcd9f07ee34c73b11bff86ddf841344f4c3"
+    },
+    {
+      "path": "tables/replica_final/cost_feasible_selected_only_proxy.csv",
+      "bytes": 365445,
+      "sha256": "9cfe4ee7cc81c59fbfbf44d03192546923dcba7ad744c039aafc5b03bfc1d5be"
+    },
+    {
+      "path": "tables/replica_final/criterion_base_means.csv",
+      "bytes": 275790,
+      "sha256": "ad151c66b742dd4f2067f75399b0ac52fbee8bf7df90a2b917651715363dc7de"
+    },
+    {
+      "path": "tables/replica_final/criterion_decisions.csv",
+      "bytes": 4857232,
+      "sha256": "7b00d8508008ec418cdb37ee8547430e53b570746063d955b265dabe40ad5618"
+    },
+    {
+      "path": "tables/replica_final/cut_availability.csv",
+      "bytes": 853270,
+      "sha256": "b73d69ef539562fa3f9a4ad2a1a9d4d7080a9268b0b4e584946268dd58a16c96"
+    },
+    {
+      "path": "tables/replica_final/duplicate_trajectory_checks.csv",
+      "bytes": 4167,
+      "sha256": "5e2edba8369f0017c27382fc65fb36242ef2afdbdcb7205e0c6565636a57459f"
+    },
+    {
+      "path": "tables/replica_final/early_leaders_and_final_winners.csv",
+      "bytes": 832239,
+      "sha256": "5605835f0c64960b1d65ddc7add66ac7e0347d1c931c4ac9d616d7fd7db228d5"
+    },
+    {
+      "path": "tables/replica_final/exploratory_structural_associations.csv",
+      "bytes": 36752,
+      "sha256": "f0c20ab6c6569bbe85ffc2df1ee3be7fdb18dcffb6ab1780a7862d9a628fa32a"
+    },
+    {
+      "path": "tables/replica_final/initial_leader_final_worst_cases.csv",
+      "bytes": 153251,
+      "sha256": "d25ebd53f18961615a4a521f6072bb0a2bb39e728a303fe8031adc77313c67ff"
+    },
+    {
+      "path": "tables/replica_final/leader_final_confusion_counts.csv",
+      "bytes": 13778,
+      "sha256": "9227de5000d713ee9a3ffe9c708f0b9be49e3f0f137976bf6d2504fba0dbe714"
+    },
+    {
+      "path": "tables/replica_final/leader_stability_by_run.csv",
+      "bytes": 84559,
+      "sha256": "4a6088cb1ada903578fcb1f08f828f58d71d9801bf18b1782a0a62e65fe86b3f"
+    },
+    {
+      "path": "tables/replica_final/leader_transitions.csv",
+      "bytes": 281302,
+      "sha256": "c74c3f1aab50d1a79af19bfe969aa3fbd789280010a1d8cfeb9a8486583a8123"
+    },
+    {
+      "path": "tables/replica_final/missing_data_inventory.csv",
+      "bytes": 2052,
+      "sha256": "304b9312c95c5476fa5f330f4a19ca4e196b445f25b6638595c55dd7bb012298"
+    },
+    {
+      "path": "tables/replica_final/regret_difference_vs_MOEAD.csv",
+      "bytes": 70658,
+      "sha256": "40fd4e5de5d51f120f324e9611ca21fdb844c8fbbe333f8df395c80b96cc7236"
+    },
+    {
+      "path": "tables/replica_final/scaled_portfolio_recommendations.csv",
+      "bytes": 28644,
+      "sha256": "c90e98eba188aa17f5afad7b5b0a02013de6111ea56f6394b8061e8aeced3226"
+    },
+    {
+      "path": "tables/replica_final/standalone_final_long.csv",
+      "bytes": 504929,
+      "sha256": "b409233f075683bf1cd277d4ec9a420ecbc28972cd6baaa53c9e511edb98b917"
+    },
+    {
+      "path": "tables/replica_final/standalone_trajectories.csv",
+      "bytes": 6135655,
+      "sha256": "e0b2b75d1b584eefa0ea260c3778a53522234896e391099e2bdc94b53398999b"
+    },
+    {
+      "path": "tables/replica_final/structural_features_and_performance_gaps.csv",
+      "bytes": 106139,
+      "sha256": "a48ba35601c036132781303eb3895c98ff8ca5bbf57ab8c3466b00cdc3111a41"
+    },
+    {
+      "path": "tables/replica_final/winners_by_base.csv",
+      "bytes": 8147,
+      "sha256": "abc24f323343c6c0f434f779ae99be9984edbb7621713f50012a94f237cdf695"
+    },
+    {
+      "path": "tables/replica_final/winners_by_base_with_provenance.csv",
+      "bytes": 39107,
+      "sha256": "de2a3d92cc77d2c972e419572740abbaea7a36cbe935e61fdabbe6f0c9750496"
+    },
+    {
+      "path": "tables/replica_final/winners_by_instance.csv",
+      "bytes": 74952,
+      "sha256": "0a36182889891b516b3b828dfe7438c2621427f03c489369631f04ada989b8b7"
+    },
+    {
+      "path": "tables/replica_final/winners_by_seed.csv",
+      "bytes": 206083,
+      "sha256": "8821ea69cc83b344233a25524e01e24efc9e9fd27756ec280f610bf05960c844"
+    },
+    {
+      "path": "tables/v1/accuracy_regret_matrix.csv",
+      "bytes": 80868,
+      "sha256": "fdeab9b5bc4a12023a98fbddd12c2a55fa87bfebe5534a0dea730d794ee098a2"
+    },
+    {
+      "path": "tables/v1/cohort_inventory.csv",
+      "bytes": 13006,
+      "sha256": "7bc5e3c0525ebce5d7e676cd0d66dfcd9f07ee34c73b11bff86ddf841344f4c3"
+    },
+    {
+      "path": "tables/v1/criterion_base_means.csv",
+      "bytes": 275790,
+      "sha256": "ad151c66b742dd4f2067f75399b0ac52fbee8bf7df90a2b917651715363dc7de"
+    },
+    {
+      "path": "tables/v1/criterion_decisions.csv",
+      "bytes": 4849382,
+      "sha256": "e3829687b6b944ced4eab28e7722de68e5cc1850d53f2c548769e67b97552fe6"
+    },
+    {
+      "path": "tables/v1/cut_availability.csv",
+      "bytes": 853270,
+      "sha256": "b73d69ef539562fa3f9a4ad2a1a9d4d7080a9268b0b4e584946268dd58a16c96"
+    },
+    {
+      "path": "tables/v1/duplicate_trajectory_checks.csv",
+      "bytes": 4167,
+      "sha256": "5e2edba8369f0017c27382fc65fb36242ef2afdbdcb7205e0c6565636a57459f"
+    },
+    {
+      "path": "tables/v1/early_leaders_and_final_winners.csv",
+      "bytes": 832239,
+      "sha256": "5605835f0c64960b1d65ddc7add66ac7e0347d1c931c4ac9d616d7fd7db228d5"
+    },
+    {
+      "path": "tables/v1/exploratory_structural_associations.csv",
+      "bytes": 36752,
+      "sha256": "f0c20ab6c6569bbe85ffc2df1ee3be7fdb18dcffb6ab1780a7862d9a628fa32a"
+    },
+    {
+      "path": "tables/v1/initial_leader_final_worst_cases.csv",
+      "bytes": 153251,
+      "sha256": "d25ebd53f18961615a4a521f6072bb0a2bb39e728a303fe8031adc77313c67ff"
+    },
+    {
+      "path": "tables/v1/regret_difference_vs_MOEAD.csv",
+      "bytes": 70658,
+      "sha256": "40fd4e5de5d51f120f324e9611ca21fdb844c8fbbe333f8df395c80b96cc7236"
+    },
+    {
+      "path": "tables/v1/scaled_portfolio_recommendations.csv",
+      "bytes": 28644,
+      "sha256": "c90e98eba188aa17f5afad7b5b0a02013de6111ea56f6394b8061e8aeced3226"
+    },
+    {
+      "path": "tables/v1/standalone_final_long.csv",
+      "bytes": 504929,
+      "sha256": "b409233f075683bf1cd277d4ec9a420ecbc28972cd6baaa53c9e511edb98b917"
+    },
+    {
+      "path": "tables/v1/standalone_trajectories.csv",
+      "bytes": 6135655,
+      "sha256": "e0b2b75d1b584eefa0ea260c3778a53522234896e391099e2bdc94b53398999b"
+    },
+    {
+      "path": "tables/v1/structural_features_and_performance_gaps.csv",
+      "bytes": 106139,
+      "sha256": "a48ba35601c036132781303eb3895c98ff8ca5bbf57ab8c3466b00cdc3111a41"
+    },
+    {
+      "path": "tables/v1/winners_by_base.csv",
+      "bytes": 8147,
+      "sha256": "abc24f323343c6c0f434f779ae99be9984edbb7621713f50012a94f237cdf695"
+    },
+    {
+      "path": "tables/v1/winners_by_instance.csv",
+      "bytes": 74952,
+      "sha256": "0a36182889891b516b3b828dfe7438c2621427f03c489369631f04ada989b8b7"
+    },
+    {
+      "path": "tables/v1/winners_by_seed.csv",
+      "bytes": 206083,
+      "sha256": "8821ea69cc83b344233a25524e01e24efc9e9fd27756ec280f610bf05960c844"
+    },
+    {
+      "path": "tables/v2/accuracy_regret_matrix.csv",
+      "bytes": 80759,
+      "sha256": "d879bec234d1c9d6b3899f43274a049a00b1bb7f8b18d1df6b57286ad2474b16"
+    },
+    {
+      "path": "tables/v2/accuracy_regret_matrix_with_provenance.csv",
+      "bytes": 578479,
+      "sha256": "11c6ba0c5f240fac02ed04252c51ce2e3457da7ee91861394e68afff2712ddf3"
+    },
+    {
+      "path": "tables/v2/all_instance_winners_with_alternative_flags.csv",
+      "bytes": 74191,
+      "sha256": "16ffaa43f8a391cfecc35a1c3a477019dab73df16af0046e73bd61abf17d7c71"
+    },
+    {
+      "path": "tables/v2/alternative_advantage_navigation.csv",
+      "bytes": 22102,
+      "sha256": "d5d3cb31f62e13d099fa8be068920dff5ee77f289bdbc510019556b0470740b0"
+    },
+    {
+      "path": "tables/v2/cohort_inventory.csv",
+      "bytes": 13006,
+      "sha256": "7bc5e3c0525ebce5d7e676cd0d66dfcd9f07ee34c73b11bff86ddf841344f4c3"
+    },
+    {
+      "path": "tables/v2/cost_feasible_selected_only_proxy.csv",
+      "bytes": 365622,
+      "sha256": "689b23f7642399a58e7c6723f682bd909efb8be6b06cdb8f49fbc093b8179b9c"
+    },
+    {
+      "path": "tables/v2/criterion_base_means.csv",
+      "bytes": 275790,
+      "sha256": "ad151c66b742dd4f2067f75399b0ac52fbee8bf7df90a2b917651715363dc7de"
+    },
+    {
+      "path": "tables/v2/criterion_decisions.csv",
+      "bytes": 4857230,
+      "sha256": "d5e0acbc75ca4773719ed8a40ae3054b0c0e07fa4010e1f39fb17f114efaab9e"
+    },
+    {
+      "path": "tables/v2/cut_availability.csv",
+      "bytes": 853270,
+      "sha256": "b73d69ef539562fa3f9a4ad2a1a9d4d7080a9268b0b4e584946268dd58a16c96"
+    },
+    {
+      "path": "tables/v2/duplicate_trajectory_checks.csv",
+      "bytes": 4167,
+      "sha256": "5e2edba8369f0017c27382fc65fb36242ef2afdbdcb7205e0c6565636a57459f"
+    },
+    {
+      "path": "tables/v2/early_leaders_and_final_winners.csv",
+      "bytes": 832239,
+      "sha256": "5605835f0c64960b1d65ddc7add66ac7e0347d1c931c4ac9d616d7fd7db228d5"
+    },
+    {
+      "path": "tables/v2/exploratory_structural_associations.csv",
+      "bytes": 36752,
+      "sha256": "f0c20ab6c6569bbe85ffc2df1ee3be7fdb18dcffb6ab1780a7862d9a628fa32a"
+    },
+    {
+      "path": "tables/v2/initial_leader_final_worst_cases.csv",
+      "bytes": 153251,
+      "sha256": "d25ebd53f18961615a4a521f6072bb0a2bb39e728a303fe8031adc77313c67ff"
+    },
+    {
+      "path": "tables/v2/leader_final_confusion_counts.csv",
+      "bytes": 13778,
+      "sha256": "9227de5000d713ee9a3ffe9c708f0b9be49e3f0f137976bf6d2504fba0dbe714"
+    },
+    {
+      "path": "tables/v2/leader_stability_by_run.csv",
+      "bytes": 84559,
+      "sha256": "4a6088cb1ada903578fcb1f08f828f58d71d9801bf18b1782a0a62e65fe86b3f"
+    },
+    {
+      "path": "tables/v2/leader_transitions.csv",
+      "bytes": 281302,
+      "sha256": "c74c3f1aab50d1a79af19bfe969aa3fbd789280010a1d8cfeb9a8486583a8123"
+    },
+    {
+      "path": "tables/v2/missing_data_inventory.csv",
+      "bytes": 2052,
+      "sha256": "304b9312c95c5476fa5f330f4a19ca4e196b445f25b6638595c55dd7bb012298"
+    },
+    {
+      "path": "tables/v2/regret_difference_vs_MOEAD.csv",
+      "bytes": 70658,
+      "sha256": "40fd4e5de5d51f120f324e9611ca21fdb844c8fbbe333f8df395c80b96cc7236"
+    },
+    {
+      "path": "tables/v2/representative_case_selection.csv",
+      "bytes": 1741,
+      "sha256": "e68fda1a54ca5f2698bc883361e1e48ed245344856c9f2fc95b177ee86dada9f"
+    },
+    {
+      "path": "tables/v2/scaled_portfolio_criterion_summary.csv",
+      "bytes": 612,
+      "sha256": "382cb5d4b10e0dd3e3c9e47d32407a77a13d3f59dc5e75d71564799bbe7f69e2"
+    },
+    {
+      "path": "tables/v2/scaled_portfolio_recommendations.csv",
+      "bytes": 28644,
+      "sha256": "c90e98eba188aa17f5afad7b5b0a02013de6111ea56f6394b8061e8aeced3226"
+    },
+    {
+      "path": "tables/v2/standalone_final_long.csv",
+      "bytes": 504929,
+      "sha256": "b409233f075683bf1cd277d4ec9a420ecbc28972cd6baaa53c9e511edb98b917"
+    },
+    {
+      "path": "tables/v2/standalone_trajectories.csv",
+      "bytes": 6135655,
+      "sha256": "e0b2b75d1b584eefa0ea260c3778a53522234896e391099e2bdc94b53398999b"
+    },
+    {
+      "path": "tables/v2/structural_features_and_performance_gaps.csv",
+      "bytes": 106139,
+      "sha256": "a48ba35601c036132781303eb3895c98ff8ca5bbf57ab8c3466b00cdc3111a41"
+    },
+    {
+      "path": "tables/v2/winners_by_base.csv",
+      "bytes": 8147,
+      "sha256": "abc24f323343c6c0f434f779ae99be9984edbb7621713f50012a94f237cdf695"
+    },
+    {
+      "path": "tables/v2/winners_by_base_with_provenance.csv",
+      "bytes": 39107,
+      "sha256": "de2a3d92cc77d2c972e419572740abbaea7a36cbe935e61fdabbe6f0c9750496"
+    },
+    {
+      "path": "tables/v2/winners_by_instance.csv",
+      "bytes": 74952,
+      "sha256": "0a36182889891b516b3b828dfe7438c2621427f03c489369631f04ada989b8b7"
+    },
+    {
+      "path": "tables/v2/winners_by_seed.csv",
+      "bytes": 206083,
+      "sha256": "8821ea69cc83b344233a25524e01e24efc9e9fd27756ec280f610bf05960c844"
+    },
+    {
+      "path": "tables/v3/accuracy_regret_matrix.csv",
+      "bytes": 80759,
+      "sha256": "d879bec234d1c9d6b3899f43274a049a00b1bb7f8b18d1df6b57286ad2474b16"
+    },
+    {
+      "path": "tables/v3/accuracy_regret_matrix_with_provenance.csv",
+      "bytes": 578479,
+      "sha256": "11c6ba0c5f240fac02ed04252c51ce2e3457da7ee91861394e68afff2712ddf3"
+    },
+    {
+      "path": "tables/v3/all_instance_winners_with_alternative_flags.csv",
+      "bytes": 74191,
+      "sha256": "16ffaa43f8a391cfecc35a1c3a477019dab73df16af0046e73bd61abf17d7c71"
+    },
+    {
+      "path": "tables/v3/alternative_advantage_navigation.csv",
+      "bytes": 22102,
+      "sha256": "d5d3cb31f62e13d099fa8be068920dff5ee77f289bdbc510019556b0470740b0"
+    },
+    {
+      "path": "tables/v3/cohort_inventory.csv",
+      "bytes": 13006,
+      "sha256": "7bc5e3c0525ebce5d7e676cd0d66dfcd9f07ee34c73b11bff86ddf841344f4c3"
+    },
+    {
+      "path": "tables/v3/cost_feasible_selected_only_proxy.csv",
+      "bytes": 365445,
+      "sha256": "9cfe4ee7cc81c59fbfbf44d03192546923dcba7ad744c039aafc5b03bfc1d5be"
+    },
+    {
+      "path": "tables/v3/criterion_base_means.csv",
+      "bytes": 275790,
+      "sha256": "ad151c66b742dd4f2067f75399b0ac52fbee8bf7df90a2b917651715363dc7de"
+    },
+    {
+      "path": "tables/v3/criterion_decisions.csv",
+      "bytes": 4857232,
+      "sha256": "7b00d8508008ec418cdb37ee8547430e53b570746063d955b265dabe40ad5618"
+    },
+    {
+      "path": "tables/v3/cut_availability.csv",
+      "bytes": 853270,
+      "sha256": "b73d69ef539562fa3f9a4ad2a1a9d4d7080a9268b0b4e584946268dd58a16c96"
+    },
+    {
+      "path": "tables/v3/duplicate_trajectory_checks.csv",
+      "bytes": 4167,
+      "sha256": "5e2edba8369f0017c27382fc65fb36242ef2afdbdcb7205e0c6565636a57459f"
+    },
+    {
+      "path": "tables/v3/early_leaders_and_final_winners.csv",
+      "bytes": 832239,
+      "sha256": "5605835f0c64960b1d65ddc7add66ac7e0347d1c931c4ac9d616d7fd7db228d5"
+    },
+    {
+      "path": "tables/v3/exploratory_structural_associations.csv",
+      "bytes": 36752,
+      "sha256": "f0c20ab6c6569bbe85ffc2df1ee3be7fdb18dcffb6ab1780a7862d9a628fa32a"
+    },
+    {
+      "path": "tables/v3/initial_leader_final_worst_cases.csv",
+      "bytes": 153251,
+      "sha256": "d25ebd53f18961615a4a521f6072bb0a2bb39e728a303fe8031adc77313c67ff"
+    },
+    {
+      "path": "tables/v3/leader_final_confusion_counts.csv",
+      "bytes": 13778,
+      "sha256": "9227de5000d713ee9a3ffe9c708f0b9be49e3f0f137976bf6d2504fba0dbe714"
+    },
+    {
+      "path": "tables/v3/leader_stability_by_run.csv",
+      "bytes": 84559,
+      "sha256": "4a6088cb1ada903578fcb1f08f828f58d71d9801bf18b1782a0a62e65fe86b3f"
+    },
+    {
+      "path": "tables/v3/leader_transitions.csv",
+      "bytes": 281302,
+      "sha256": "c74c3f1aab50d1a79af19bfe969aa3fbd789280010a1d8cfeb9a8486583a8123"
+    },
+    {
+      "path": "tables/v3/missing_data_inventory.csv",
+      "bytes": 2052,
+      "sha256": "304b9312c95c5476fa5f330f4a19ca4e196b445f25b6638595c55dd7bb012298"
+    },
+    {
+      "path": "tables/v3/regret_difference_vs_MOEAD.csv",
+      "bytes": 70658,
+      "sha256": "40fd4e5de5d51f120f324e9611ca21fdb844c8fbbe333f8df395c80b96cc7236"
+    },
+    {
+      "path": "tables/v3/representative_case_selection.csv",
+      "bytes": 1741,
+      "sha256": "e68fda1a54ca5f2698bc883361e1e48ed245344856c9f2fc95b177ee86dada9f"
+    },
+    {
+      "path": "tables/v3/scaled_portfolio_criterion_summary.csv",
+      "bytes": 612,
+      "sha256": "382cb5d4b10e0dd3e3c9e47d32407a77a13d3f59dc5e75d71564799bbe7f69e2"
+    },
+    {
+      "path": "tables/v3/scaled_portfolio_recommendations.csv",
+      "bytes": 28644,
+      "sha256": "c90e98eba188aa17f5afad7b5b0a02013de6111ea56f6394b8061e8aeced3226"
+    },
+    {
+      "path": "tables/v3/standalone_final_long.csv",
+      "bytes": 504929,
+      "sha256": "b409233f075683bf1cd277d4ec9a420ecbc28972cd6baaa53c9e511edb98b917"
+    },
+    {
+      "path": "tables/v3/standalone_trajectories.csv",
+      "bytes": 6135655,
+      "sha256": "e0b2b75d1b584eefa0ea260c3778a53522234896e391099e2bdc94b53398999b"
+    },
+    {
+      "path": "tables/v3/structural_features_and_performance_gaps.csv",
+      "bytes": 106139,
+      "sha256": "a48ba35601c036132781303eb3895c98ff8ca5bbf57ab8c3466b00cdc3111a41"
+    },
+    {
+      "path": "tables/v3/winners_by_base.csv",
+      "bytes": 8147,
+      "sha256": "abc24f323343c6c0f434f779ae99be9984edbb7621713f50012a94f237cdf695"
+    },
+    {
+      "path": "tables/v3/winners_by_base_with_provenance.csv",
+      "bytes": 39107,
+      "sha256": "de2a3d92cc77d2c972e419572740abbaea7a36cbe935e61fdabbe6f0c9750496"
+    },
+    {
+      "path": "tables/v3/winners_by_instance.csv",
+      "bytes": 74952,
+      "sha256": "0a36182889891b516b3b828dfe7438c2621427f03c489369631f04ada989b8b7"
+    },
+    {
+      "path": "tables/v3/winners_by_seed.csv",
+      "bytes": 206083,
+      "sha256": "8821ea69cc83b344233a25524e01e24efc9e9fd27756ec280f610bf05960c844"
+    }
+  ],
+  "bytes": 79981674,
+  "self_reference_exclusions": [
+    "evidence/final_gate.json",
+    "evidence/final_gate.sha256",
+    "evidence_manifest.json",
+    "evidence_manifest.sha256"
+  ],
+  "new_optimization_FE": 0,
+  "new_evaluator_calls": 0,
+  "holdout_payloads_opened": 0,
+  "C1_implemented_or_executed": false,
+  "stop_for_review_before_experiment": true
+}

@@ -28,11 +28,12 @@ from mojssp.dominance import dominates
 from mojssp.hypervolume import compute_hypervolume
 from mojssp.normalization import ObjectiveNormalizer, compute_instance_bounds
 
-audit_dir = repo_root / "results" / "expanded_portfolio_phase2" / "closure_audit"
-audit_dir.mkdir(parents=True, exist_ok=True)
+from mojssp.project_paths import HISTORICAL_ROOT, campaign_path
+audit_dir = campaign_path("phase2") / "closure_audit"
 
-pilot_dir = repo_root / "results" / "expanded_portfolio_phase2" / "pilot"
-budget_dir = repo_root / "results" / "expanded_portfolio_phase2" / "budget_diagnostic"
+
+pilot_dir = campaign_path("phase2") / "pilot"
+budget_dir = campaign_path("phase2") / "budget_diagnostic"
 
 
 def run_integrity_audit() -> pd.DataFrame:
@@ -643,6 +644,17 @@ El cierre formal se aprueba bajo la condición metodológica de incorporar las c
 
 
 def main() -> None:
+    global audit_dir
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', type=Path, required=True)
+    args = parser.parse_args()
+    audit_dir = args.output_dir.resolve()
+    if audit_dir.exists():
+        parser.error('output directory already exists; choose a new directory')
+    if audit_dir.is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside results/historical')
+    audit_dir.mkdir(parents=True)
     print("=" * 80)
     print("PHASE 2 CLOSURE AUDIT (F2.5.2)")
     print("=" * 80)

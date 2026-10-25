@@ -1,0 +1,7 @@
+{
+  "recorded_before_cap_reached": true,
+  "implementation": "max_experiment_seconds is checked before admitting each atomic 3000 FE run, using sum of search and final-metric seconds plus reproduction search seconds.",
+  "granularity": "An already admitted run is completed and recorded; the total may exceed the cap by at most its runtime. No new run is admitted after the cap is exceeded. No extension or threshold relaxation is authorized.",
+  "not_included": "Unit tests, independent integrity reevaluations, data loading/object construction, JSON persistence and offline analysis time are separate.",
+  "final_report_requirement": "Report exact measured total and any overshoot, and list incomplete method/case/seed combinations."
+}

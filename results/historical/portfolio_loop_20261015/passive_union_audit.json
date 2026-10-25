@@ -1,0 +1,114 @@
+{
+  "pairs": [
+    {
+      "case": "development_00_5x5",
+      "seed": 42,
+      "HV": 1.0700679661514418,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_00_5x5",
+      "seed": 43,
+      "HV": 1.0434756375357384,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_00_5x5",
+      "seed": 44,
+      "HV": 1.0415195502518424,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_01_10x10",
+      "seed": 42,
+      "HV": 0.9016336847024679,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_01_10x10",
+      "seed": 43,
+      "HV": 0.9173101179951348,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_01_10x10",
+      "seed": 44,
+      "HV": 0.907880260463286,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_02_20x10",
+      "seed": 42,
+      "HV": 0.9759511084338546,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_02_20x10",
+      "seed": 43,
+      "HV": 0.9606847931056681,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_02_20x10",
+      "seed": 44,
+      "HV": 0.984166174180446,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_03_10x20",
+      "seed": 42,
+      "HV": 0.8097639665938899,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_03_10x20",
+      "seed": 43,
+      "HV": 0.8290943495597407,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_03_10x20",
+      "seed": 44,
+      "HV": 0.7710730239393735,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_04_20x20",
+      "seed": 42,
+      "HV": 0.8432195694233027,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_04_20x20",
+      "seed": 43,
+      "HV": 0.8364846116665942,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_04_20x20",
+      "seed": 44,
+      "HV": 0.8607829551760284,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_05_30x20",
+      "seed": 42,
+      "HV": 0.8621906849674941,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_05_30x20",
+      "seed": 43,
+      "HV": 0.859225597805031,
+      "genotypes_identical": true
+    },
+    {
+      "case": "development_05_30x20",
+      "seed": 44,
+      "HV": 0.8638017654496728,
+      "genotypes_identical": true
+    }
+  ],
+  "additional_fe": 0,
+  "conclusion": "Uniform 3000 FE exactly equals nondominated union of three independent 1000 FE streams; this is aggregation, not active cooperation."
+}

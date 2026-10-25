@@ -54,9 +54,6 @@ cover/
 *.swo
 *~
 
-# Local agent instructions
-AGENTS.md
-
 # Non-benchmark instances and temporary files
 data/archive/
 data/invalid/
@@ -64,3 +61,11 @@ scratch/
 
 # Thesis drafts and working documents
 docs/tesis/
+
+# Local working notes and editorial guidance
+.local/
+
+# Experiment results: keep top-level summaries, ignore detailed runs and frozen code
+results/experiments/*/*/
+results/historical/*/*/
+results/**/*.py

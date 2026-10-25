@@ -10,6 +10,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'src'),str(ROOT/'scripts')]
 from run_portfolio_loop import OUT, write_new
+from mojssp.project_paths import HISTORICAL_ROOT
+from mojssp.project_paths import input_path
 from mojssp.decoder import Decoder
 from mojssp.evaluator import Evaluator
 from mojssp.hypervolume import compute_hypervolume
@@ -50,7 +52,7 @@ def audit():
         case=r['case']
         if case not in instances:
             record=next(c for c in manifest['cases'] if c['name']==case)
-            instance_path=ROOT/record['path']
+            instance_path=input_path(record['path'])
             assert hashlib.sha256(instance_path.read_bytes()).hexdigest()==record['sha256']
             instance=load_dzn(instance_path)
             instances[case]=(instance,ObjectiveNormalizer(compute_instance_bounds(instance)),record)
@@ -146,6 +148,14 @@ def audit():
 
 
 if __name__=='__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    if args.output.exists():
+        parser.error('output already exists; choose a new file')
+    if args.output.resolve().is_relative_to(HISTORICAL_ROOT):
+        parser.error('output must be outside the saved campaign')
     result=audit()
-    write_new(OUT/'integrity_audit.json',result)
+    write_new(args.output,result)
     print(json.dumps(result,indent=2))

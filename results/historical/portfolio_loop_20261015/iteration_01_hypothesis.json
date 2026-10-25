@@ -1,0 +1,13 @@
+{
+  "iteration": 1,
+  "parent": "adaptive",
+  "treatment": "guidance",
+  "status": "registered before treatment evaluation",
+  "limitation": "Disjoint populations only union local archives; uniform-ish selection fragments generational depth.",
+  "hypothesis": "A distant foreign nondominated parent in one of every ten crossover events accelerates complementary search at equal per-arm FE without population overwrite.",
+  "isolated_change": "External second mating parent only; deterministic replay of original adaptive trace.",
+  "parameters": {
+    "every": 10
+  },
+  "decision": "Prospective protocol gates; compare paired HV, AUC, genetic diversity, objective coverage, exclusive HV and runtime. No claim from raw union or donor use count alone."
+}
