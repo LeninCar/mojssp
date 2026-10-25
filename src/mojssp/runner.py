@@ -380,6 +380,9 @@ def run_phase2_portfolio_experiment(
     selected_arms=None,
     round_size: int = 300,
     minimum_share: float = .1,
+    share_power: float = 1.,
+    exclusive_arm=None,
+    exclusive_after=None,
 ) -> Tuple[RunResult, Tuple[BlockExecutionRecord, ...]]:
     """Execute a portfolio, defaulting to [MOEA/D, NSGA-II, SPEA2].
 
@@ -480,7 +483,8 @@ def run_phase2_portfolio_experiment(
         initial = evaluation_quotas(min(round_size,total_budget), round_shares(dict.fromkeys(arm_names,0.),minimum_share))
         if any(value < population_size for value in initial.values()):
             raise ValueError('Initial round must cover each full population')
-        exec_res = orchestrator.run_dynamic_rounds(total_budget, block_size, round_size, minimum_share)
+        exec_res = orchestrator.run_dynamic_rounds(total_budget, block_size, round_size, minimum_share,
+                                                   share_power, exclusive_arm, exclusive_after)
     elif quotas is not None:
         exec_res = orchestrator.run_fixed_quotas(quotas, block_size, neutral_warmup)
     else:

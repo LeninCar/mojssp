@@ -111,7 +111,8 @@ class RegionAwarePortfolio(Portfolio):
 
 
 def run_regional_policy_experiment(instance,seed,selected_arms,policy='scaled',guidance=False,
-                                   budget=3000,block_size=50,population_size=30,*,minimum_share=None):
+                                   budget=3000,block_size=50,population_size=30,*,minimum_share=None,
+                                   dynamic_options=None):
     names = tuple(selected_arms)
     if len(names)<2 or len(set(names))!=len(names) or not set(names)<=set(SUPPORTED_ARMS):
         raise ValueError('Choose at least two distinct supported arms')
@@ -121,6 +122,10 @@ def run_regional_policy_experiment(instance,seed,selected_arms,policy='scaled',g
         raise ValueError('Unknown policy')
     if minimum_share is not None and policy!='dynamic':
         raise ValueError('Minimum share applies only to dynamic rounds')
+    if dynamic_options and policy!='dynamic':
+        raise ValueError('Dynamic options apply only to dynamic rounds')
+    if dynamic_options and not set(dynamic_options)<={'share_power','exclusive_arm','exclusive_after'}:
+        raise ValueError('Unknown dynamic option')
     if block_size<population_size or budget<len(names)*block_size:
         raise ValueError('Budget must cover a full initial block for every arm')
     norm = ObjectiveNormalizer(compute_instance_bounds(instance))
@@ -141,6 +146,8 @@ def run_regional_policy_experiment(instance,seed,selected_arms,policy='scaled',g
         from .dynamic_budget import round_shares
         round_shares(dict.fromkeys(names,0.),minimum_share)
         profile['minimum_share'] = minimum_share
+    if dynamic_options:
+        profile.update(dynamic_options)
     selector = make_selector('uniform' if policy=='dynamic' else policy,names,seed=seed,
                              **({} if policy=='dynamic' else profile))
     tracker = HypervolumeRewardTracker(norm)

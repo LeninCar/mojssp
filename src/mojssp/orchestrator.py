@@ -419,12 +419,16 @@ class AdaptivePortfolioOrchestrator:
             history=tuple(self._history),
         )
 
-    def run_dynamic_rounds(self, total_budget, block_size, round_size=300, minimum_share=.1):
+    def run_dynamic_rounds(self, total_budget, block_size, round_size=300, minimum_share=.1,
+                           share_power=1., exclusive_arm=None, exclusive_after=None):
         """Reallocate each round from the previous round's gain per real FE.
 
         The initial round is uniform. Its first block per arm is excluded from
         scoring, so initializing an empty global archive does not earn credit.
         Arm order rotates each round; the least completed quota goes first.
+        share_power sharpens shares toward the most productive arm. Rounds that
+        start at or after exclusive_after FE give their whole budget to
+        exclusive_arm.
         """
         from .dynamic_budget import round_shares
         from .fixed_budget import evaluation_quotas
@@ -435,12 +439,20 @@ class AdaptivePortfolioOrchestrator:
         if any(isinstance(value, bool) or not isinstance(value, int) or value <= 0
                for value in [total_budget, block_size, round_size]):
             raise ValueError('Budgets and block size must be positive integers')
-        shares = round_shares(dict.fromkeys(names, 0.), minimum_share)
+        if (exclusive_arm is None) != (exclusive_after is None):
+            raise ValueError('Exclusive arm and start must be given together')
+        if exclusive_arm is not None and (exclusive_arm not in names or isinstance(exclusive_after, bool)
+                                          or not isinstance(exclusive_after, int) or exclusive_after < round_size):
+            raise ValueError('Exclusive phase needs a known arm and must start after the first round')
+        shares = round_shares(dict.fromkeys(names, 0.), minimum_share, share_power)
         consumed, round_index = 0, 0
         while consumed < total_budget:
             order = names[round_index % len(names):] + names[:round_index % len(names)]
-            quotas = evaluation_quotas(min(round_size, total_budget-consumed),
-                                       {name:shares[name] for name in order})
+            amount_round = min(round_size, total_budget-consumed)
+            if exclusive_arm is not None and consumed >= exclusive_after:
+                quotas = {name: amount_round if name == exclusive_arm else 0 for name in names}
+            else:
+                quotas = evaluation_quotas(amount_round, {name:shares[name] for name in order})
             used = dict.fromkeys(names, 0)
             scored_fe = dict.fromkeys(names, 0)
             gains = dict.fromkeys(names, 0.)
@@ -460,7 +472,7 @@ class AdaptivePortfolioOrchestrator:
                     scored_fe[name] += amount
                     gains[name] += record.reward
             rates = {name: gains[name]/scored_fe[name] if scored_fe[name] else 0. for name in names}
-            shares = round_shares(rates, minimum_share)
+            shares = round_shares(rates, minimum_share, share_power)
             round_index += 1
         return AdaptiveExecutionResult(total_evaluations=self._portfolio.total_evaluations,
             total_blocks=len(self._history),global_archive=self._portfolio.global_archive,
