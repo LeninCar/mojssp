@@ -1,0 +1,31 @@
+Variantes de reparto para MOEA/D + BLMR v1
+
+Diagnóstico previo (sin búsqueda nueva): la pareja dinámica supera a BLMR con el mismo
+presupuesto que recibe dentro de la pareja en las 19 instancias (+0,050 desarrollo, +0,046
+adicional), pero el reparto proporcional entrega cerca de 30 % a MOEA/D y BLMR no se satura a 3000 FE.
+
+Variantes fijadas antes de correr (sin probar otros valores)
+greedy_p3: cuotas proporcionales a tasa^3 sobre el piso de 10 %.
+early_moead_600: reparto dinámico normal en las dos primeras rondas (600 FE) y después solo BLMR.
+Control: 57 trayectorias de la pareja pasiva reproducidas exactamente con el código nuevo.
+
+HV medio (medias por instancia, luego instancias con igual peso)
+                  desarrollo  adicional
+explorer_solo       0,97389    0,99786
+passive             0,99134    0,99388
+greedy_p3           0,98630    0,99375
+early_moead_600     0,99283    0,99803
+
+Decisión según la regla predeclarada
+early_moead_600 supera en media a BLMR solo y a la pareja pasiva en ambos bancos, y a los seis
+individuales: pasa la puerta. greedy_p3 no pasa.
+
+Lectura honesta
+En el banco adicional la ventaja de early_moead_600 sobre BLMR solo es +0,0002, con intervalo
+bootstrap por instancia de -0,0149 a +0,0150 y 8 de 13 instancias a favor: es un empate práctico.
+En desarrollo la ventaja es +0,0189 con intervalo de +0,0076 a +0,0303, pero ese banco ya se había observado.
+Las diferencias por instancia van de -0,042 a +0,055 con tres semillas; el ruido es del mismo orden que el efecto.
+greedy_p3 no concentró presupuesto en BLMR: MOEA/D recibió en promedio unas 900 FE, hasta 1500.
+La tasa por ronda es ruidosa y el exponente amplifica ese ruido.
+Conclusión: cambiar sólo el reparto lleva a la pareja al nivel de BLMR solo, no claramente por encima.
+Ambos bancos ya se habían observado; no es una confirmación independiente.

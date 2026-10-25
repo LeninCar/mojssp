@@ -1,0 +1,43 @@
+{
+  "means": {
+    "development": {
+      "moead": 0.9643833778747756,
+      "nsga2_individual": 0.9447045948602452,
+      "spea2_individual": 0.9325643956049504,
+      "nsga2_ls_individual": 0.8117818417618455,
+      "mopso_individual": 0.7935201517873246,
+      "explorer_solo": 0.9738862165984857,
+      "passive": 0.9913420813648001,
+      "greedy_p3": 0.9862993490548736,
+      "early_moead_600": 0.9928309431225691
+    },
+    "transfer": {
+      "moead": 0.9442670234070771,
+      "nsga2_individual": 0.9264867489780089,
+      "spea2_individual": 0.9197113283773434,
+      "nsga2_ls_individual": 0.7833281456562493,
+      "mopso_individual": 0.7721084093488566,
+      "explorer_solo": 0.9978557222121961,
+      "passive": 0.9938849711868669,
+      "greedy_p3": 0.993754818504107,
+      "early_moead_600": 0.9980307158102149
+    }
+  },
+  "decision_rule": "A variant is adopted only if its mean HV exceeds explorer_solo and the current dynamic pair (passive) on both the development and the additional bank; instance means first, then equal instance weights.",
+  "adoption_gates": {
+    "greedy_p3": false,
+    "early_moead_600": true
+  },
+  "adopt_any": true,
+  "beats_every_control": {
+    "greedy_p3": {
+      "development": false,
+      "transfer": false
+    },
+    "early_moead_600": {
+      "development": true,
+      "transfer": true
+    }
+  },
+  "passive_trajectories_reproduced": 57
+}
