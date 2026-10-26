@@ -1,0 +1,42 @@
+{
+  "means": {
+    "early_moead_600": 0.9924471200741702,
+    "passive": 0.9875616057535204,
+    "explorer_solo": 0.9788656100769664,
+    "moead": 0.9766293530298025,
+    "nsga2_individual": 0.952468386220205,
+    "spea2_individual": 0.9452407062559944,
+    "nsga2_ls_individual": 0.8419066290670681,
+    "mopso_individual": 0.8321942335685957,
+    "moead_blmr_uniform": 0.9720986801447621,
+    "moead_blmr_sw_ucb": 0.9713373870272886,
+    "moead_blmr_scaled": 0.9899012871486764,
+    "moead_blmr_ph": 0.9711660348052563,
+    "spea2_blmr_uniform": 0.9629098785014442,
+    "spea2_blmr_sw_ucb": 0.9665114632427982,
+    "spea2_blmr_scaled": 0.9798418682455996,
+    "spea2_blmr_ph": 0.9653470503126748,
+    "spea2_blmr_dynamic": 0.9832255754451303,
+    "nsga2_blmr_uniform": 0.9670427037994245,
+    "nsga2_blmr_sw_ucb": 0.9670969130706272,
+    "nsga2_blmr_scaled": 0.9794998347848243,
+    "nsga2_blmr_ph": 0.9686888005124669,
+    "nsga2_blmr_dynamic": 0.9844971341291353,
+    "quartet_blmr_uniform": 0.9377007615074049,
+    "quartet_blmr_sw_ucb": 0.9426130823355402,
+    "quartet_blmr_scaled": 0.9728205399080906,
+    "quartet_blmr_ph": 0.9420198991444177,
+    "quartet_blmr_dynamic": 0.9660691075100212
+  },
+  "best_new_method": "moead_blmr_scaled",
+  "early_moead_600_still_first": true,
+  "new_methods_above_early_moead_600": [],
+  "new_methods_above_best_individual": [
+    "moead_blmr_scaled",
+    "spea2_blmr_scaled",
+    "spea2_blmr_dynamic",
+    "nsga2_blmr_scaled",
+    "nsga2_blmr_dynamic"
+  ],
+  "note": "Complementary analysis after the frozen decision; it does not change the holdout verdict."
+}
