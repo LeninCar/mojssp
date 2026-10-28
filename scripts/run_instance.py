@@ -17,22 +17,19 @@ from pathlib import Path
 import sys
 import time
 from types import SimpleNamespace
-from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from mojssp.decoder import Decoder
 from mojssp.evaluator import Evaluator
+from mojssp.experiments.common import count_evaluations
+from mojssp.experiments.methods import run_method as run_campaign_method, run_psmb
 from mojssp.io import load_dzn
 from mojssp.normalization import compute_instance_bounds
-from mojssp.regional_portfolio import run_regional_policy_experiment
 from mojssp.solution import Solution
 from plots import plot_convergence, plot_fronts_overlay, plot_gantt_chart, plot_pareto_front, print_ascii_gantt
-from run_regional_composition_comparison import native_individual
-from run_regional_explorer_controls import run_individual
 
-PAIR = ["MOEA/D", "RegionExplorer"]
 METHODS = {
     "psmb": ("PS-MB", "#1a1a1a"),
     "scaled": ("UCB escalado", "#8e44ad"),
@@ -44,34 +41,20 @@ METHODS = {
     "nsga2_ls": ("NSGA-II+LS", "#d4ac0d"),
     "mopso": ("MOPSO", "#6d4c41"),
 }
-# Nombre del método en run_regional_composition_comparison.native_individual
-NATIVE = {"moead": "moead", "nsga2": "nsga2_individual", "spea2": "spea2_individual",
-          "nsga2_ls": "nsga2_ls_individual", "mopso": "mopso_individual"}
+# Nombre de cada método en los archivos de las campañas
+CAMPAIGN_NAMES = {"scaled": "moead_blmr_scaled", "passive": "passive", "blmr": "explorer_solo", "moead": "moead",
+                  "nsga2": "nsga2_individual", "spea2": "spea2_individual", "nsga2_ls": "nsga2_ls_individual",
+                  "mopso": "mopso_individual"}
 
 
 def run_method(instance, seed, budget, method, cut):
     """Ejecuta un método contando las llamadas reales al evaluador."""
-    calls = 0
-    original = Evaluator.evaluate
-
-    def counted(self, *a, **kw):
-        nonlocal calls
-        calls += 1
-        return original(self, *a, **kw)
-
-    with patch.object(Evaluator, "evaluate", counted):
+    with count_evaluations() as calls:
         if method == "psmb":
-            result = run_regional_policy_experiment(instance, seed, PAIR, "dynamic", False, budget,
-                dynamic_options=dict(exclusive_arm="RegionExplorer", exclusive_after=cut))
-        elif method == "scaled":
-            result = run_regional_policy_experiment(instance, seed, PAIR, "scaled", False, budget)
-        elif method == "passive":
-            result = run_regional_policy_experiment(instance, seed, PAIR, "dynamic", False, budget)
-        elif method == "blmr":
-            result = run_individual(instance, seed, "random", budget=budget)
+            result = run_psmb(instance, seed, budget, cut)
         else:
-            result = native_individual(instance, seed, NATIVE[method], budget=budget)
-    assert calls == result["evaluations_used"] == budget, (method, calls, result["evaluations_used"])
+            result = run_campaign_method(instance, seed, CAMPAIGN_NAMES[method], budget)
+    assert calls[0] == result["evaluations_used"] == budget, (method, calls[0], result["evaluations_used"])
     return result
 
 

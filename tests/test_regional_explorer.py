@@ -9,9 +9,7 @@ from mojssp.pareto_archive import ArchiveEntry
 from mojssp.regional_explorer import RegionalExplorerArm, region_geometry
 from mojssp.solution import Solution
 import random
-from run_regional_cooperation_pilot import run_regional
-from run_regional_explorer_controls import run_individual
-from run_regional_budget_pilot import run_explorer_dominant
+from mojssp.experiments.methods import run_blmr
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -23,27 +21,6 @@ def test_constant_objectives_are_removed_and_duplicate_vectors_do_not_inflate_de
     assert len(geometry['weights'])==3
     assert all(w[1]==0 for w in geometry['weights'])
     assert geometry['densities']==[1,1,1]
-
-
-def test_regional_pair_uses_real_evaluations_and_leaves_moead_unchanged():
-    instance = load_dzn(ROOT/'data/validation/small_3x3.dzn')
-    random_control = run_regional(instance,42,'random_regions',budget=500,population_size=10)
-    original = Evaluator.evaluate
-    calls = []
-    def counted(self,*a,**kw):
-        calls.append(1)
-        return original(self,*a,**kw)
-    with patch.object(Evaluator,'evaluate',counted):
-        sparse = run_regional(instance,42,'sparse_regions',budget=500,population_size=10)
-    assert len(calls)==sparse['evaluations_used']==500
-    assert sparse['allocations']=={'MOEA/D':400,'RegionExplorer':100}
-    assert sparse['moead_trace']==random_control['moead_trace']
-    assert len(sparse['region_trace'])==2
-    assert sum(sum(row['operators'].values()) for row in sparse['region_trace'])==100
-    for row in sparse['region_trace']:
-        g = row['geometry']
-        assert g['densities'][row['selected_region']]==min(g['densities'])
-        assert set(row['seed_parent_ids'])<=set(row['global_parent_ids'])
 
 
 def test_energy_directed_mode_move_reduces_evaluated_energy():
@@ -71,22 +48,8 @@ def test_individual_explorer_pays_for_initialization_within_total_budget():
         calls.append(1)
         return original(self,*a,**kw)
     with patch.object(Evaluator,'evaluate',counted):
-        result = run_individual(instance,42,'sparse',budget=300,population_size=10)
+        result = run_blmr(instance,42,budget=300,population_size=10,policy='sparse')
     assert len(calls)==result['evaluations_used']==300
     assert result['initialization_fe']==10 and result['evolution_fe']==290
     assert sum(row['evaluations'] for row in result['region_trace'])==290
     assert result['checkpoints'][0][0]==50
-
-
-def test_explorer_dominant_pair_counts_both_quotas_exactly():
-    instance = load_dzn(ROOT/'data/validation/small_3x3.dzn')
-    original = Evaluator.evaluate
-    calls = []
-    def counted(self,*a,**kw):
-        calls.append(1)
-        return original(self,*a,**kw)
-    with patch.object(Evaluator,'evaluate',counted):
-        result = run_explorer_dominant(instance,42,budget=500,population_size=10)
-    assert len(calls)==result['evaluations_used']==500
-    assert result['allocations']=={'MOEA/D':100,'RegionExplorer':400}
-    assert sum(row['evaluations'] for row in result['region_trace'])==400

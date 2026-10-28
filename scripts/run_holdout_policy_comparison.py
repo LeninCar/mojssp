@@ -12,9 +12,8 @@ from concurrent.futures import ProcessPoolExecutor,as_completed
 from unittest.mock import patch
 import numpy as np
 from scipy.stats import wilcoxon
-from run_weighted_pilot import ROOT,digest,write_json,write_csv,auc
-from run_portfolio_campaign import analyze
-from validate_regional_expansion import independent_hv
+from mojssp.experiments.analysis import analyze
+from mojssp.experiments.common import ROOT,auc,digest,independent_hv,write_csv,write_json
 from mojssp.io import load_dzn
 from mojssp.evaluator import Evaluator
 from mojssp.normalization import ObjectiveNormalizer,compute_instance_bounds

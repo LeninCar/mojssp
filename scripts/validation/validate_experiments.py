@@ -14,7 +14,7 @@ import numpy as np
 from scipy.stats import wilcoxon
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path[:0] = [str(ROOT / "src"), str(ROOT / "scripts")]
+sys.path[:0] = [str(ROOT / "src")]
 from mojssp.io import load_dzn
 from mojssp.hypervolume import compute_hypervolume
 from mojssp.normalization import ObjectiveNormalizer, compute_instance_bounds
@@ -42,7 +42,7 @@ if changed: problems.append(f"src difiere del congelado: {changed}")
 
 # 2. Reproduction of a sample of holdout runs
 say("2. Reproduccion de una muestra del holdout")
-import run_multiea_pilot as runner
+from mojssp.experiments import methods as runner
 sample = ["base_c01_5x5_b01", "base_c02_10x10_b01_tard_high", "base_c03_20x10_b01_nrg_strong",
           "base_c04_10x20_b02_btnk_high"]
 repro = []

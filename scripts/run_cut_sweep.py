@@ -22,15 +22,12 @@ from pathlib import Path
 from unittest.mock import patch
 import numpy as np
 from scipy.stats import wilcoxon
-from run_weighted_pilot import ROOT,digest,write_json,write_csv,auc
-from run_portfolio_campaign import analyze
-from run_regional_explorer_controls import run_individual
-from run_regional_composition_comparison import native_individual
-from validate_regional_expansion import independent_hv
+from mojssp.experiments.analysis import analyze
+from mojssp.experiments.common import ROOT,auc,digest,independent_hv,write_csv,write_json
+from mojssp.experiments import methods
 from mojssp.io import load_dzn
 from mojssp.evaluator import Evaluator
 from mojssp.normalization import ObjectiveNormalizer,compute_instance_bounds
-from mojssp.regional_portfolio import run_regional_policy_experiment
 
 SPLIT=ROOT/'data/generated/expanded_200/experimental_split.csv'
 CUTS=[300,600,900,1200,1800]
@@ -58,13 +55,9 @@ CONFIRMATION_RULE=(
 
 
 def run_method(instance,seed,method,mapping=None):
-    if method=='explorer_solo':return run_individual(instance,seed,'random')
-    if method=='moead':return native_individual(instance,seed,'moead')
-    if method==SCALED:return run_regional_policy_experiment(instance,seed,['MOEA/D','RegionExplorer'],'scaled',False)
-    if method==PASSIVE:return run_regional_policy_experiment(instance,seed,['MOEA/D','RegionExplorer'],'dynamic',False)
+    if not method.startswith('cut_') and method!='selected':return methods.run_method(instance,seed,method)
     cut=mapping[dimension(instance)] if method=='selected' else int(method.split('_')[1])
-    r=run_regional_policy_experiment(instance,seed,['MOEA/D','RegionExplorer'],'dynamic',False,
-        dynamic_options=dict(exclusive_arm='RegionExplorer',exclusive_after=cut))
+    r=methods.run_psmb(instance,seed,cut=cut)
     r['exclusive_after']=cut
     return r
 

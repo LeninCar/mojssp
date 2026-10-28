@@ -3,16 +3,16 @@ import sys
 from pathlib import Path
 from unittest.mock import patch
 
-ROOT = Path(r"C:/Users/lenin/Documents/Ingeniería/2026-1/TG1/mojssp-loop-agent")
-sys.path[:0] = [str(ROOT / "src"), str(ROOT / "scripts")]
+ROOT = Path(__file__).resolve().parents[2]
+sys.path[:0] = [str(ROOT / "src")]
 from mojssp.decoder import Decoder
 from mojssp.evaluator import Evaluator
 from mojssp.io import load_dzn
-import run_multiea_pilot as m
+from mojssp.experiments import methods as m
 
 inst = load_dzn(ROOT / "data/generated/expanded_200/base_c02_10x10_b02.dzn")   # development split
 methods = ["moead", "nsga2_individual", "spea2_individual", "nsga2_ls_individual", "mopso_individual",
-           "explorer_solo", "passive", "early_moead_600"]
+           "explorer_solo", "passive", "moead_blmr_scaled", "early_moead_600"]
 orig_d, orig_e = Decoder.decode, Evaluator.evaluate
 for meth in methods:
     counts = {"decode": 0, "evaluate": 0}
