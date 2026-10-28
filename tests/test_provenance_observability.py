@@ -14,17 +14,17 @@ from typing import Dict
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from mojssp.algorithm_contract import PortfolioArm
-from mojssp.arms import NSGA2Arm
-from mojssp.dmab import SlidingWindowUCB
-from mojssp.evaluator import ObjectiveValues
-from mojssp.io import load_dzn
-from mojssp.moead import MOEADArm
-from mojssp.normalization import ObjectiveNormalizer, compute_instance_bounds
-from mojssp.orchestrator import AdaptivePortfolioOrchestrator
-from mojssp.pareto_archive import ArchiveEntry, ParetoArchive
-from mojssp.portfolio import Portfolio
-from mojssp.provenance import (
+from mojssp.algorithms.algorithm_contract import PortfolioArm
+from mojssp.algorithms.arms import NSGA2Arm
+from mojssp.portfolio.dmab import SlidingWindowUCB
+from mojssp.model.evaluator import ObjectiveValues
+from mojssp.model.io import load_dzn
+from mojssp.algorithms.moead import MOEADArm
+from mojssp.metrics.normalization import ObjectiveNormalizer, compute_instance_bounds
+from mojssp.portfolio.orchestrator import AdaptivePortfolioOrchestrator
+from mojssp.metrics.pareto_archive import ArchiveEntry, ParetoArchive
+from mojssp.portfolio.portfolio import Portfolio
+from mojssp.portfolio.provenance import (
     BlockProvenanceTrace,
     EvictionRecord,
     IngestionStatus,
@@ -34,10 +34,10 @@ from mojssp.provenance import (
     compute_genotype_id,
     compute_objective_key,
 )
-from mojssp.reward import HypervolumeRewardTracker
-from mojssp.schedule import Schedule, ScheduledOperation
-from mojssp.solution import Solution
-from mojssp.spea2 import SPEA2Arm
+from mojssp.metrics.reward import HypervolumeRewardTracker
+from mojssp.model.schedule import Schedule, ScheduledOperation
+from mojssp.model.solution import Solution
+from mojssp.algorithms.spea2 import SPEA2Arm
 
 
 class TestProvenanceObservability(unittest.TestCase):
@@ -86,7 +86,7 @@ class TestProvenanceObservability(unittest.TestCase):
             is_completed = False
             def run(self, budget):
                 arch = ParetoArchive([entry1])
-                from mojssp.algorithm_contract import AlgorithmBlockResult
+                from mojssp.algorithms.algorithm_contract import AlgorithmBlockResult
                 return AlgorithmBlockResult(solutions=arch, evaluations_used=10, completed=False)
 
         obs_portfolio.register_arm(MockArm(), name="Arm_A")
@@ -117,7 +117,7 @@ class TestProvenanceObservability(unittest.TestCase):
             is_completed = False
             def run(self, budget):
                 arch = ParetoArchive([entry2])
-                from mojssp.algorithm_contract import AlgorithmBlockResult
+                from mojssp.algorithms.algorithm_contract import AlgorithmBlockResult
                 return AlgorithmBlockResult(solutions=arch, evaluations_used=10, completed=False)
 
         obs_portfolio.register_arm(MockArmB(), name="Arm_B")
@@ -155,7 +155,7 @@ class TestProvenanceObservability(unittest.TestCase):
             total_evaluations = 5
             is_completed = False
             def run(self, budget):
-                from mojssp.algorithm_contract import AlgorithmBlockResult
+                from mojssp.algorithms.algorithm_contract import AlgorithmBlockResult
                 return AlgorithmBlockResult(solutions=ParetoArchive([entry_a]), evaluations_used=5, completed=False)
 
         class Arm2:
@@ -163,7 +163,7 @@ class TestProvenanceObservability(unittest.TestCase):
             total_evaluations = 5
             is_completed = False
             def run(self, budget):
-                from mojssp.algorithm_contract import AlgorithmBlockResult
+                from mojssp.algorithms.algorithm_contract import AlgorithmBlockResult
                 return AlgorithmBlockResult(solutions=ParetoArchive([entry_b]), evaluations_used=5, completed=False)
 
         obs_portfolio.register_arm(Arm1())

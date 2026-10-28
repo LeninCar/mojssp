@@ -27,8 +27,8 @@ import unittest
 # Add src directory to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from mojssp.page_hinkley import PageHinkleyAlarmRecord, PageHinkleyDMABSelector
-from mojssp.dmab import (
+from mojssp.portfolio.page_hinkley import PageHinkleyAlarmRecord, PageHinkleyDMABSelector
+from mojssp.portfolio.dmab import (
     ArmStats,
     DMABSelector,
     RoundRobinSelector,

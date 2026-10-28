@@ -21,13 +21,13 @@ from types import SimpleNamespace
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
-from mojssp.decoder import Decoder
-from mojssp.evaluator import Evaluator
+from mojssp.model.decoder import Decoder
+from mojssp.model.evaluator import Evaluator
 from mojssp.experiments.common import count_evaluations
 from mojssp.experiments.methods import run_method as run_campaign_method, run_psmb
-from mojssp.io import load_dzn
-from mojssp.normalization import compute_instance_bounds
-from mojssp.solution import Solution
+from mojssp.model.io import load_dzn
+from mojssp.metrics.normalization import compute_instance_bounds
+from mojssp.model.solution import Solution
 from plots import plot_convergence, plot_fronts_overlay, plot_gantt_chart, plot_pareto_front, print_ascii_gantt
 
 METHODS = {

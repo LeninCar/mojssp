@@ -4,10 +4,10 @@ from pathlib import Path
 
 ROOT = Path(r"C:/Users/lenin/Documents/Ingeniería/2026-1/TG1/mojssp-loop-agent")
 sys.path.insert(0, str(ROOT / "src"))
-from mojssp.io import load_dzn
-from mojssp.decoder import Decoder
-from mojssp.evaluator import Evaluator
-from mojssp.solution import Solution
+from mojssp.model.io import load_dzn
+from mojssp.model.decoder import Decoder
+from mojssp.model.evaluator import Evaluator
+from mojssp.model.solution import Solution
 
 SCRATCH = Path(__file__).parent  # writes hand_2x2.dzn next to this script
 

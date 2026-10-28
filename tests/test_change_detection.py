@@ -20,7 +20,7 @@ import unittest
 # Add src directory to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from mojssp.change_detection import PageHinkleyDetector, PageHinkleyState
+from mojssp.portfolio.change_detection import PageHinkleyDetector, PageHinkleyState
 
 
 

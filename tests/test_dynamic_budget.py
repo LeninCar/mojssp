@@ -3,10 +3,10 @@ from collections import defaultdict
 
 import pytest
 
-from mojssp.dynamic_budget import round_shares
-from mojssp.fixed_budget import evaluation_quotas
-from mojssp.io import load_dzn
-from mojssp.runner import run_phase2_portfolio_experiment
+from mojssp.portfolio.dynamic_budget import round_shares
+from mojssp.portfolio.fixed_budget import evaluation_quotas
+from mojssp.model.io import load_dzn
+from mojssp.portfolio.runner import run_phase2_portfolio_experiment
 
 
 def test_scores_are_productivity_not_raw_gain():

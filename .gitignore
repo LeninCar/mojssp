@@ -71,3 +71,6 @@ results/historical/*/*/
 results/**/*.py
 
 results/demo/
+
+# Written by scripts/validation/validate_model.py
+scripts/validation/hand_2x2.dzn

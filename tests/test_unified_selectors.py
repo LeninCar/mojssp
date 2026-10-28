@@ -3,9 +3,9 @@ from pathlib import Path
 
 import pytest
 
-from mojssp.io import load_dzn
-from mojssp.runner import run_phase2_portfolio_experiment
-from mojssp.selectors import POLICIES, make_selector
+from mojssp.model.io import load_dzn
+from mojssp.portfolio.runner import run_phase2_portfolio_experiment
+from mojssp.portfolio.selectors import POLICIES, make_selector
 
 ROOT = Path(__file__).resolve().parents[1]
 

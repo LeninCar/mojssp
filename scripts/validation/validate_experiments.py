@@ -7,7 +7,7 @@ It reads the saved holdout runs, re-runs a small sample, and writes
 results/experiments/holdout_early_moead_600_20261024/expert_validation.json.
 No search is run except the reproduction sample (about 5 minutes).
 """
-import csv, glob, hashlib, json, statistics as st, sys
+import csv, glob, hashlib, json, statistics as st, subprocess, sys
 from collections import defaultdict
 from pathlib import Path
 import numpy as np
@@ -15,9 +15,9 @@ from scipy.stats import wilcoxon
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "src")]
-from mojssp.io import load_dzn
-from mojssp.hypervolume import compute_hypervolume
-from mojssp.normalization import ObjectiveNormalizer, compute_instance_bounds
+from mojssp.model.io import load_dzn
+from mojssp.metrics.hypervolume import compute_hypervolume
+from mojssp.metrics.normalization import ObjectiveNormalizer, compute_instance_bounds
 
 HOLD = ROOT / "results/experiments/holdout_early_moead_600_20261024"
 SPLIT = ROOT / "data/generated/expanded_200/experimental_split.csv"
@@ -32,12 +32,20 @@ def say(msg): print(msg, flush=True)
 rows = [r for r in csv.DictReader(open(SPLIT, encoding="utf-8-sig")) if r["assigned_split"] == "holdout_test"]
 meta = {r["instance_name"]: r for r in rows}
 
-# 1. Frozen code: current src must match the hashes recorded when the holdout ran
-say("1. Codigo congelado")
+# 1. Frozen code: the src at the freeze tag must match the hashes recorded when the holdout ran.
+# The current src was reorganized afterwards; step 2 checks that it still reproduces the runs.
+say("1. Codigo congelado (etiqueta holdout-v2-freeze)")
 cfg = json.loads((HOLD / "config.json").read_text())
-changed = [p for p, h in cfg["source_sha256"].items() if p.startswith("src/") and sha(ROOT / p) != h]
+
+def frozen_shas(path):
+    blob = subprocess.run(["git", "show", f"holdout-v2-freeze:{path}"], cwd=ROOT, capture_output=True, check=True).stdout
+    # The recorded hashes were taken on the Windows working copy, where a file may have LF or CRLF endings
+    lf = blob.replace(b"\r\n", b"\n")
+    return {hashlib.sha256(lf).hexdigest(), hashlib.sha256(lf.replace(b"\n", b"\r\n")).hexdigest()}
+
+changed = [p for p, h in cfg["source_sha256"].items() if p.startswith("src/") and h not in frozen_shas(p)]
 report["src_matches_frozen"] = not changed
-say(f"   src identico al congelado: {not changed}" + (f" (cambiados: {changed})" if changed else ""))
+say(f"   src de la etiqueta identico al congelado: {not changed}" + (f" (cambiados: {changed})" if changed else ""))
 if changed: problems.append(f"src difiere del congelado: {changed}")
 
 # 2. Reproduction of a sample of holdout runs

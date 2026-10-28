@@ -7,11 +7,11 @@ from pathlib import Path
 # Add src directory to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from mojssp.mode import ProcessingMode
-from mojssp.operation import Operation
-from mojssp.job import Job
-from mojssp.instance import Instance
-from mojssp.validator import validate_instance, ValidationError
+from mojssp.model.mode import ProcessingMode
+from mojssp.model.operation import Operation
+from mojssp.model.job import Job
+from mojssp.model.instance import Instance
+from mojssp.model.validator import validate_instance, ValidationError
 
 
 class TestValidator(unittest.TestCase):

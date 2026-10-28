@@ -31,7 +31,7 @@ from mojssp import (
     tchebycheff_scalarizing,
     validate_schedule,
 )
-from mojssp.moead import compute_neighborhoods
+from mojssp.algorithms.moead import compute_neighborhoods
 
 
 class TestMOEADComponents(unittest.TestCase):

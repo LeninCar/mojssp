@@ -7,18 +7,18 @@ and cut_<FE> (PS-MB with another cut). Individuals: explorer_solo (BLMR) and the
 import random
 import time
 
-from mojssp.arms import MOPSOArm, NSGA2Arm, NSGA2LSArm
-from mojssp.decoder import Decoder
-from mojssp.evaluator import Evaluator
-from mojssp.hypervolume import compute_archive_hypervolume, compute_hypervolume
-from mojssp.moead import MOEADArm
-from mojssp.normalization import ObjectiveNormalizer, compute_instance_bounds
-from mojssp.pareto_archive import ParetoArchive
-from mojssp.regional_explorer import RegionalExplorerArm
-from mojssp.regional_portfolio import run_regional_policy_experiment
-from mojssp.reward import HypervolumeRewardTracker
-from mojssp.solution import Solution
-from mojssp.spea2 import SPEA2Arm
+from mojssp.algorithms.arms import MOPSOArm, NSGA2Arm, NSGA2LSArm
+from mojssp.model.decoder import Decoder
+from mojssp.model.evaluator import Evaluator
+from mojssp.metrics.hypervolume import compute_archive_hypervolume, compute_hypervolume
+from mojssp.algorithms.moead import MOEADArm
+from mojssp.metrics.normalization import ObjectiveNormalizer, compute_instance_bounds
+from mojssp.metrics.pareto_archive import ParetoArchive
+from mojssp.algorithms.regional_explorer import RegionalExplorerArm
+from mojssp.portfolio.regional_portfolio import run_regional_policy_experiment
+from mojssp.metrics.reward import HypervolumeRewardTracker
+from mojssp.model.solution import Solution
+from mojssp.algorithms.spea2 import SPEA2Arm
 
 from .common import auc
 

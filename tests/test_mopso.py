@@ -25,13 +25,13 @@ from mojssp import (
     load_dzn,
     validate_schedule,
 )
-from mojssp.mopso import (
+from mojssp.algorithms.mopso import (
     calculate_entries_crowding_distance,
     generate_mode_moves,
     generate_sequence_moves,
     select_guide_by_crowding,
 )
-from mojssp.pareto_archive import ArchiveEntry
+from mojssp.metrics.pareto_archive import ArchiveEntry
 
 
 class TestMOPSOComponents(unittest.TestCase):
@@ -366,7 +366,7 @@ class TestMOPSOExecution(unittest.TestCase):
             global_crowding_interval=10,
         )
 
-        from mojssp.mopso import calculate_entries_crowding_distance as orig_calc
+        from mojssp.algorithms.mopso import calculate_entries_crowding_distance as orig_calc
 
         # Track each call to calculate_entries_crowding_distance:
         # At iteration start (when global crowding is checked), if it runs, it is called BEFORE
@@ -377,7 +377,7 @@ class TestMOPSOExecution(unittest.TestCase):
             call_records.append(len(entries))
             return orig_calc(entries)
 
-        with patch("mojssp.mopso.calculate_entries_crowding_distance", side_effect=spy_calc):
+        with patch("mojssp.algorithms.mopso.calculate_entries_crowding_distance", side_effect=spy_calc):
             res = algo.run(self.instance, seed=42)
 
         self.assertEqual(res.iterations, 25)

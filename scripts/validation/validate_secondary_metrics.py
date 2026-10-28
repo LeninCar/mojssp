@@ -20,8 +20,8 @@ from scipy.stats import wilcoxon
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "src")]
-from mojssp.io import load_dzn
-from mojssp.normalization import compute_instance_bounds
+from mojssp.model.io import load_dzn
+from mojssp.metrics.normalization import compute_instance_bounds
 
 HOLD = ROOT / "results/experiments/holdout_early_moead_600_20261024"
 SPLIT = ROOT / "data/generated/expanded_200/experimental_split.csv"

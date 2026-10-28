@@ -6,15 +6,15 @@ from unittest.mock import patch
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from mojssp.arms import NSGA2Arm
-from mojssp.cooperation import ArchiveGuidance, ScaleAwareUCB
-from mojssp.evaluator import Evaluator
-from mojssp.io import load_dzn
-from mojssp.moead import MOEADArm
-from mojssp.normalization import ObjectiveNormalizer, compute_instance_bounds
-from mojssp.provenance import compute_genotype_id
-from mojssp.schedule_validator import validate_schedule
-from mojssp.spea2 import SPEA2Arm
+from mojssp.algorithms.arms import NSGA2Arm
+from mojssp.algorithms.cooperation import ArchiveGuidance, ScaleAwareUCB
+from mojssp.model.evaluator import Evaluator
+from mojssp.model.io import load_dzn
+from mojssp.algorithms.moead import MOEADArm
+from mojssp.metrics.normalization import ObjectiveNormalizer, compute_instance_bounds
+from mojssp.portfolio.provenance import compute_genotype_id
+from mojssp.model.schedule_validator import validate_schedule
+from mojssp.algorithms.spea2 import SPEA2Arm
 
 
 @pytest.fixture

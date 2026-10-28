@@ -3,9 +3,9 @@ from pathlib import Path
 
 import pytest
 
-from mojssp.curve_prediction import line_predictions, sampled_prediction
-from mojssp.io import load_dzn
-from mojssp.regional_portfolio import run_regional_policy_experiment
+from mojssp.portfolio.curve_prediction import line_predictions, sampled_prediction
+from mojssp.model.io import load_dzn
+from mojssp.portfolio.regional_portfolio import run_regional_policy_experiment
 
 
 def test_line_predictions_cover_every_recent_subcurve():

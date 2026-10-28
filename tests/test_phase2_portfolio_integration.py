@@ -27,17 +27,17 @@ from typing import Dict, List, Tuple
 repo_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(repo_root / "src"))
 
-from mojssp.dmab import DMABSelector, RoundRobinSelector, SlidingWindowUCB
-from mojssp.instance import Instance
-from mojssp.io import load_dzn
-from mojssp.moead import MOEADArm
-from mojssp.normalization import compute_instance_bounds, ObjectiveNormalizer
-from mojssp.orchestrator import AdaptivePortfolioOrchestrator
-from mojssp.portfolio import Portfolio
-from mojssp.reward import HypervolumeRewardTracker
-from mojssp.runner import run_phase2_portfolio_experiment
-from mojssp.spea2 import SPEA2Arm
-from mojssp.arms import NSGA2Arm
+from mojssp.portfolio.dmab import DMABSelector, RoundRobinSelector, SlidingWindowUCB
+from mojssp.model.instance import Instance
+from mojssp.model.io import load_dzn
+from mojssp.algorithms.moead import MOEADArm
+from mojssp.metrics.normalization import compute_instance_bounds, ObjectiveNormalizer
+from mojssp.portfolio.orchestrator import AdaptivePortfolioOrchestrator
+from mojssp.portfolio.portfolio import Portfolio
+from mojssp.metrics.reward import HypervolumeRewardTracker
+from mojssp.portfolio.runner import run_phase2_portfolio_experiment
+from mojssp.algorithms.spea2 import SPEA2Arm
+from mojssp.algorithms.arms import NSGA2Arm
 
 
 class TestPhase2PortfolioIntegration(unittest.TestCase):

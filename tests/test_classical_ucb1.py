@@ -5,8 +5,8 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from mojssp.page_hinkley import ClassicalUCB1Selector
-from mojssp.dmab import DMABSelector, ArmStats
+from mojssp.portfolio.page_hinkley import ClassicalUCB1Selector
+from mojssp.portfolio.dmab import DMABSelector, ArmStats
 
 class TestClassicalUCB1Selector(unittest.TestCase):
     def test_protocol_conformance(self):

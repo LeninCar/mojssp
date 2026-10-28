@@ -37,8 +37,13 @@ Detalle en `results/experiments/holdout_early_moead_600_20261024/` (`interpretac
 
 | Carpeta | Contenido |
 | --- | --- |
-| `src/mojssp/` | Modelo, decodificador, evaluador, archivo de Pareto, HV, los seis brazos (NSGA-II, NSGA-II+LS, MOPSO, MOEA/D, SPEA2, BLMR en `regional_explorer.py`), selectores y orquestador del portafolio |
-| `scripts/` | Runners de las campañas finales (holdout, comparación de políticas, barrido) y las funciones que reutilizan; `run_instance.py` corre cualquier método final sobre una instancia |
+| `src/mojssp/model/` | Instancia, solución, decodificador, agenda y evaluador de los tres objetivos |
+| `src/mojssp/metrics/` | Normalización, dominancia, archivo de Pareto e hipervolumen |
+| `src/mojssp/algorithms/` | Los seis brazos: NSGA-II, NSGA-II+LS, SPEA2, MOEA/D, MOPSO y BLMR (`regional_explorer.py`) |
+| `src/mojssp/portfolio/` | Selectores, políticas de reparto y orquestación del portafolio (`regional_portfolio.py`) |
+| `src/mojssp/experiments/` | Métodos de las campañas finales con su nombre en los archivos (`methods.py`), utilidades y tablas resumen |
+| `scripts/run_instance.py` | Corre cualquier método final sobre una instancia, con gráficas (`plots.py`) |
+| `scripts/campaigns/` | Runners del holdout, la comparación de políticas y el barrido; exportación de corridas compactas |
 | `scripts/validation/` | Validación experta del código, el modelo y el holdout |
 | `tests/` | Pruebas (`pytest`) |
 | `data/` | Instancias `.dzn`: validación, bancos experimentales y `generated/expanded_200` con su partición desarrollo/holdout |
@@ -57,8 +62,9 @@ siguen en la etiqueta `thesis-full-history`, junto con los comandos que citan
 
 Python 3.12 en `.venv`. `requirements.txt` fija las versiones usadas;
 `pandas`, `seaborn` y `scikit-learn` solo hacen falta para scripts de análisis
-anteriores. Los runners de campañas necesitan `src` y `scripts` en la ruta de
-módulos (`$env:PYTHONPATH = "src;scripts"`).
+anteriores. Los runners de `scripts/campaigns/` necesitan `src` en la ruta de
+módulos (`$env:PYTHONPATH = "src"`); `run_instance.py` y las validaciones la
+agregan solos.
 
 ```powershell
 python -m venv .venv
@@ -104,30 +110,32 @@ Desde la raíz, con `.venv\Scripts\python.exe scripts\validation\<script>`:
 
 ## Reproducir la evaluación final
 
-El código evaluado está congelado en la etiqueta `holdout-v2-freeze`. La
-política del PS-MB se invoca así:
+El código evaluado está congelado en la etiqueta `holdout-v2-freeze`. El código
+actual se reorganizó después, pero da los mismos resultados (`validate_experiments.py`
+reproduce una muestra de corridas). En el código actual, cada método se corre así:
 
 ```python
-run_regional_policy_experiment(instance, seed, ['MOEA/D', 'RegionExplorer'], 'dynamic', False,
-    dynamic_options=dict(exclusive_arm='RegionExplorer', exclusive_after=600))
+from mojssp.experiments.methods import run_method
+result = run_method(instance, seed, 'early_moead_600')   # PS-MB; también 'moead_blmr_scaled', 'explorer_solo', ...
 ```
 
-Desde PowerShell, en la raíz del proyecto:
+Para relanzar la campaña tal como se corrió, desde la etiqueta congelada (con las
+rutas de esa versión):
 
 ```powershell
+git checkout holdout-v2-freeze
 $env:PYTHONPATH = "src;scripts"
 .venv\Scripts\python.exe scripts\run_holdout_evaluation.py --output-dir results\experiments\holdout_early_moead_600_20261024 --resume
 .\scripts\run_holdout_policies.ps1
 ```
 
-El runner del holdout exige que el código sea exactamente el congelado: hay que
-ejecutarlo desde `git checkout holdout-v2-freeze`. Con `--resume` las corridas
+El runner del holdout exige que el código sea exactamente el congelado. Con `--resume` las corridas
 ya guardadas se reutilizan; sin las carpetas `runs/` locales, se vuelven a
 calcular.
 
 ## Barrido del corte
 
-El corte en 600 FE no se optimizó. `scripts/run_cut_sweep.py` lo estudia sin
+El corte en 600 FE no se optimizó. `scripts/campaigns/run_cut_sweep.py` lo estudia sin
 tocar el holdout ya usado. Resultado de `develop`: el corte de 600 queda
 justificado (empata con 900, el mejor fijo, y supera a 300, 1200 y 1800). Un
 corte por tamaño gana fuera de muestra unos +0,002 de HV sobre el PS-MB; solo
@@ -142,15 +150,15 @@ lo reemplazaría si `confirm` lo valida en instancias nuevas. Detalle en
    una sola vez en instancias nuevas que no estén en `expanded_200`.
 
 ```powershell
-$env:PYTHONPATH = "src;scripts"
-.venv\Scripts\python.exe scripts\run_cut_sweep.py develop --output-dir results\experiments\cut_sweep_development_20261028
+$env:PYTHONPATH = "src"
+.venv\Scripts\python.exe scripts\campaigns\run_cut_sweep.py develop --output-dir results\experiments\cut_sweep_development_20261028
 ```
 
 Exige el código commiteado; `--resume` continúa una corrida interrumpida.
 
 ## Corridas compactas
 
-Las carpetas `runs/` (varios GB) no están en git. `scripts/export_compact_runs.py`
+Las carpetas `runs/` (varios GB) no están en git. `scripts/campaigns/export_compact_runs.py`
 guarda en `compact_runs.jsonl.gz` de cada campaña final (holdout, comparación de
 políticas, barrido) la curva de HV, el brazo de cada bloque, el reparto y el
 frente de cada corrida, suficiente para rehacer figuras sin los `runs/`.

@@ -8,7 +8,7 @@ from pathlib import Path
 # Add src directory to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from mojssp.io import load_dzn
+from mojssp.model.io import load_dzn
 
 
 class TestIO(unittest.TestCase):

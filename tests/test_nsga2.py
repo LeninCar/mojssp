@@ -24,7 +24,7 @@ from mojssp import (
     nsga2,
     validate_schedule,
 )
-from mojssp.nsga2 import (
+from mojssp.algorithms.nsga2 import (
     Individual,
     binary_tournament,
     calculate_crowding_distance,

@@ -7,10 +7,10 @@ from pathlib import Path
 # Add src directory to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from mojssp.mode import ProcessingMode
-from mojssp.operation import Operation
-from mojssp.job import Job
-from mojssp.instance import Instance
+from mojssp.model.mode import ProcessingMode
+from mojssp.model.operation import Operation
+from mojssp.model.job import Job
+from mojssp.model.instance import Instance
 
 
 class TestInstanceEntities(unittest.TestCase):

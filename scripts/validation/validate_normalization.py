@@ -6,9 +6,9 @@ import numpy as np
 
 ROOT = Path(r"C:/Users/lenin/Documents/Ingeniería/2026-1/TG1/mojssp-loop-agent")
 sys.path.insert(0, str(ROOT / "src"))
-from mojssp.hypervolume import compute_hypervolume
-from mojssp.io import load_dzn
-from mojssp.normalization import ObjectiveNormalizer, compute_instance_bounds
+from mojssp.metrics.hypervolume import compute_hypervolume
+from mojssp.model.io import load_dzn
+from mojssp.metrics.normalization import ObjectiveNormalizer, compute_instance_bounds
 
 RUNS = ROOT / "results/experiments/holdout_early_moead_600_20261024/runs"
 METHODS = ["early_moead_600", "explorer_solo", "moead", "passive", "nsga2_individual", "spea2_individual",

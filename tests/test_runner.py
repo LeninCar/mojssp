@@ -13,7 +13,7 @@ from mojssp import (
     Instance,
     load_dzn,
 )
-from mojssp.runner import (
+from mojssp.portfolio.runner import (
     compute_arm_allocations,
     export_results_to_csv,
     run_portfolio_experiment,

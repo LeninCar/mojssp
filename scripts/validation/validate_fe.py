@@ -5,9 +5,9 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "src")]
-from mojssp.decoder import Decoder
-from mojssp.evaluator import Evaluator
-from mojssp.io import load_dzn
+from mojssp.model.decoder import Decoder
+from mojssp.model.evaluator import Evaluator
+from mojssp.model.io import load_dzn
 from mojssp.experiments import methods as m
 
 inst = load_dzn(ROOT / "data/generated/expanded_200/base_c02_10x10_b02.dzn")   # development split

@@ -33,7 +33,7 @@ from mojssp import (
     spea2,
     validate_schedule,
 )
-from mojssp.spea2 import SPEA2Individual, truncate_archive
+from mojssp.algorithms.spea2 import SPEA2Individual, truncate_archive
 
 
 class TestSPEA2Components(unittest.TestCase):

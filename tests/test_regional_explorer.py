@@ -1,13 +1,13 @@
 from pathlib import Path
 from unittest.mock import patch
 
-from mojssp.evaluator import Evaluator
-from mojssp.decoder import Decoder
-from mojssp.io import load_dzn
-from mojssp.normalization import ObjectiveNormalizer, compute_instance_bounds
-from mojssp.pareto_archive import ArchiveEntry
-from mojssp.regional_explorer import RegionalExplorerArm, region_geometry
-from mojssp.solution import Solution
+from mojssp.model.evaluator import Evaluator
+from mojssp.model.decoder import Decoder
+from mojssp.model.io import load_dzn
+from mojssp.metrics.normalization import ObjectiveNormalizer, compute_instance_bounds
+from mojssp.metrics.pareto_archive import ArchiveEntry
+from mojssp.algorithms.regional_explorer import RegionalExplorerArm, region_geometry
+from mojssp.model.solution import Solution
 import random
 from mojssp.experiments.methods import run_blmr
 

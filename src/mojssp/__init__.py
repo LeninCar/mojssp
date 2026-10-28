@@ -3,58 +3,58 @@
 Multi-Objective Job Shop Scheduling Problem with Speed Scaling.
 """
 
-from .mode import ProcessingMode
-from .operation import Operation
-from .job import Job
-from .instance import Instance
-from .validator import validate_instance, ValidationError
-from .io import load_dzn
-from .solution import Solution
-from .schedule import ScheduledOperation, Schedule
-from .decoder import Decoder, decode
-from .evaluator import ObjectiveValues, Evaluator, evaluate
-from .schedule_validator import (
+from .model.mode import ProcessingMode
+from .model.operation import Operation
+from .model.job import Job
+from .model.instance import Instance
+from .model.validator import validate_instance, ValidationError
+from .model.io import load_dzn
+from .model.solution import Solution
+from .model.schedule import ScheduledOperation, Schedule
+from .model.decoder import Decoder, decode
+from .model.evaluator import ObjectiveValues, Evaluator, evaluate
+from .model.schedule_validator import (
     ScheduleValidationError,
     ScheduleValidator,
     validate_schedule,
 )
-from .nsga2 import NSGA2, NSGA2Result, nsga2
-from .dominance import dominates
-from .pareto_archive import ArchiveEntry, ParetoArchive
-from .normalization import (
+from .algorithms.nsga2 import NSGA2, NSGA2Result, nsga2
+from .metrics.dominance import dominates
+from .metrics.pareto_archive import ArchiveEntry, ParetoArchive
+from .metrics.normalization import (
     NormalizationBoundError,
     ObjectiveBounds,
     ObjectiveNormalizer,
     compute_instance_bounds,
 )
-from .hypervolume import (
+from .metrics.hypervolume import (
     DEFAULT_REFERENCE_POINT,
     compute_hypervolume,
     compute_archive_hypervolume,
 )
-from .critical_path import (
+from .model.critical_path import (
     get_critical_operations,
     map_operation_to_sequence_index,
     get_critical_sequence_indices,
 )
-from .local_search import (
+from .algorithms.local_search import (
     ArchiveAddResult,
     LocalParetoArchive,
     LocalSearch,
     LocalSearchResult,
 )
-from .nsga2_ls import (
+from .algorithms.nsga2_ls import (
     NSGA2LS,
     NSGA2LSResult,
     nsga2_ls,
 )
-from .mopso import (
+from .algorithms.mopso import (
     MOPSO,
     MOPSOResult,
     mopso,
     PersonalParetoArchive,
 )
-from .algorithm_contract import (
+from .algorithms.algorithm_contract import (
     AlgorithmResult,
     OptimizationAlgorithm,
     NSGA2Adapter,
@@ -65,7 +65,7 @@ from .algorithm_contract import (
     AlgorithmBlockResult,
     PortfolioArm,
 )
-from .moead import (
+from .algorithms.moead import (
     MOEAD,
     MOEADResult,
     MOEADArm,
@@ -74,7 +74,7 @@ from .moead import (
     generate_uniform_weights,
     tchebycheff_scalarizing,
 )
-from .spea2 import (
+from .algorithms.spea2 import (
     SPEA2,
     SPEA2Result,
     SPEA2Arm,
@@ -82,17 +82,17 @@ from .spea2 import (
     calculate_spea2_fitness,
     environmental_selection,
 )
-from .arms import ActiveLSState, MOPSOArm, NSGA2Arm, NSGA2LSArm
-from .portfolio import Portfolio, PortfolioBlockResult
-from .dmab import (
+from .algorithms.arms import ActiveLSState, MOPSOArm, NSGA2Arm, NSGA2LSArm
+from .portfolio.portfolio import Portfolio, PortfolioBlockResult
+from .portfolio.dmab import (
     ArmStats,
     DMABSelector,
     RoundRobinSelector,
     SlidingWindowUCB,
     UniformRandomSelector,
 )
-from .reward import HypervolumeRewardTracker, RewardInvariantError
-from .orchestrator import (
+from .metrics.reward import HypervolumeRewardTracker, RewardInvariantError
+from .portfolio.orchestrator import (
     AdaptiveExecutionResult,
     AdaptivePortfolioOrchestrator,
     BlockExecutionRecord,
@@ -232,4 +232,4 @@ __all__ = _PAIRING_SYMBOLS + [
 
 
 
-from .page_hinkley import PageHinkleyDMABSelector, PageHinkleyAlarmRecord
+from .portfolio.page_hinkley import PageHinkleyDMABSelector, PageHinkleyAlarmRecord

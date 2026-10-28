@@ -5,10 +5,10 @@ import json
 import math
 import pytest
 
-from mojssp.evaluator import Evaluator
-from mojssp.io import load_dzn
-from mojssp.regional_portfolio import POLICY_PROFILES,run_regional_policy_experiment
-from mojssp.runner import run_phase2_portfolio_experiment
+from mojssp.model.evaluator import Evaluator
+from mojssp.model.io import load_dzn
+from mojssp.portfolio.regional_portfolio import POLICY_PROFILES,run_regional_policy_experiment
+from mojssp.portfolio.runner import run_phase2_portfolio_experiment
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -70,10 +70,10 @@ def test_regional_arm_cannot_start_without_an_evaluated_archive():
 
 
 def test_reset_restores_native_guidance_and_its_random_stream():
-    from mojssp.regional_portfolio import RegionAwarePortfolio
-    from mojssp.arms import NSGA2Arm
-    from mojssp.spea2 import SPEA2Arm
-    from mojssp.normalization import ObjectiveNormalizer,compute_instance_bounds
+    from mojssp.portfolio.regional_portfolio import RegionAwarePortfolio
+    from mojssp.algorithms.arms import NSGA2Arm
+    from mojssp.algorithms.spea2 import SPEA2Arm
+    from mojssp.metrics.normalization import ObjectiveNormalizer,compute_instance_bounds
     instance=load_dzn(ROOT/'data/validation/small_3x3.dzn')
     arms={'NSGA-II':NSGA2Arm(instance,population_size=10,max_generations=None,seed=1),
           'SPEA2':SPEA2Arm(instance,population_size=10,archive_size=10,seed=2)}

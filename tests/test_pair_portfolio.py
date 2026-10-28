@@ -3,9 +3,9 @@ from unittest.mock import patch
 
 import pytest
 
-from mojssp.evaluator import Evaluator
-from mojssp.io import load_dzn
-from mojssp.runner import run_phase2_portfolio_experiment, run_standalone_experiment
+from mojssp.model.evaluator import Evaluator
+from mojssp.model.io import load_dzn
+from mojssp.portfolio.runner import run_phase2_portfolio_experiment, run_standalone_experiment
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -18,7 +18,7 @@ def test_pair_has_equal_quotas_and_matches_union_of_its_individual_prefixes():
         nonlocal calls
         calls += 1
         return original(self, *args, **kwargs)
-    with patch.object(Evaluator, 'evaluate', counted), patch('mojssp.runner.MOEADArm', side_effect=AssertionError('MOEA/D must be absent')):
+    with patch.object(Evaluator, 'evaluate', counted), patch('mojssp.portfolio.runner.MOEADArm', side_effect=AssertionError('MOEA/D must be absent')):
         result, history = run_phase2_portfolio_experiment(instance, seed=42, total_budget=240,
             block_size=20, population_size=10, policy='uniform', selected_arms=['NSGA-II','SPEA2'])
     assert calls == result.evaluations_used == 240

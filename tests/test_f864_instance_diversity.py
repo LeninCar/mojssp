@@ -23,7 +23,7 @@ if str(PROJECT_ROOT / "src") not in sys.path:
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.mojssp.io import load_dzn
+from src.mojssp.model.io import load_dzn
 
 
 class TestF864InstanceDiversity(unittest.TestCase):

@@ -51,7 +51,7 @@ from mojssp import (
     compute_instance_bounds,
     load_dzn,
 )
-from mojssp.runner import export_results_to_csv, run_phase2_portfolio_experiment
+from mojssp.portfolio.runner import export_results_to_csv, run_phase2_portfolio_experiment
 
 
 class TestPageHinkleyOrchestratorIntegration(unittest.TestCase):

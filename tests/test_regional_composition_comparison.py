@@ -4,9 +4,9 @@ from pathlib import Path
 import pytest
 
 from mojssp.experiments.methods import NATIVE, run_native
-from mojssp.io import load_dzn
-from mojssp.runner import run_standalone_experiment
-from mojssp.regional_portfolio import run_regional_policy_experiment
+from mojssp.model.io import load_dzn
+from mojssp.portfolio.runner import run_standalone_experiment
+from mojssp.portfolio.regional_portfolio import run_regional_policy_experiment
 
 ROOT = Path(__file__).resolve().parents[1]
 ARM_NAMES = {'moead': 'MOEA/D', 'nsga2_individual': 'NSGA-II', 'spea2_individual': 'SPEA2',

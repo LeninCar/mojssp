@@ -3,9 +3,9 @@ from fractions import Fraction
 
 import pytest
 
-from mojssp.fixed_budget import evaluation_quotas
-from mojssp.io import load_dzn
-from mojssp.runner import run_phase2_portfolio_experiment, run_standalone_experiment
+from mojssp.portfolio.fixed_budget import evaluation_quotas
+from mojssp.model.io import load_dzn
+from mojssp.portfolio.runner import run_phase2_portfolio_experiment, run_standalone_experiment
 
 SHARES = {'MOEA/D': Fraction(41, 60), 'NSGA-II': Fraction(13, 60), 'SPEA2': Fraction(1, 10)}
 

@@ -24,7 +24,7 @@ from mojssp import (
     SPEA2Arm,
     load_dzn,
 )
-from mojssp.runner import run_standalone_experiment
+from mojssp.portfolio.runner import run_standalone_experiment
 
 
 class TestFEBudgetFairness(unittest.TestCase):
