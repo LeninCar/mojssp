@@ -69,3 +69,5 @@ docs/tesis/
 results/experiments/*/*/
 results/historical/*/*/
 results/**/*.py
+
+results/demo/
