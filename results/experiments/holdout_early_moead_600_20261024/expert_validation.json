@@ -121,7 +121,7 @@
       ],
       "wins": 63,
       "wilcoxon_p": 2.7942103299178234e-07,
-      "vargha_delaney_A": 0.54109375,
+      "vargha_delaney_A": 0.7045,
       "holm_p": 8.382630989753471e-07,
       "cluster_ci": [
         0.007180133884413092,
@@ -136,7 +136,7 @@
       ],
       "wins": 47,
       "wilcoxon_p": 0.0005064752419251877,
-      "vargha_delaney_A": 0.53671875,
+      "vargha_delaney_A": 0.5925,
       "holm_p": 0.0010129504838503754,
       "cluster_ci": [
         0.0040866178369089266,
@@ -151,7 +151,7 @@
       ],
       "wins": 43,
       "wilcoxon_p": 0.08773319883982465,
-      "vargha_delaney_A": 0.515625,
+      "vargha_delaney_A": 0.533,
       "holm_p": 0.08773319883982465,
       "cluster_ci": [
         -0.0008084697320932889,
@@ -166,7 +166,7 @@
       ],
       "wins": 72,
       "wilcoxon_p": 9.094405623085374e-14,
-      "vargha_delaney_A": 0.6125,
+      "vargha_delaney_A": 0.8154999999999999,
       "holm_p": 3.6377622492341494e-13
     },
     "spea2_individual": {
@@ -177,7 +177,7 @@
       ],
       "wins": 77,
       "wilcoxon_p": 1.1449828359123387e-14,
-      "vargha_delaney_A": 0.62890625,
+      "vargha_delaney_A": 0.8795,
       "holm_p": 5.724914179561693e-14
     },
     "nsga2_ls_individual": {
@@ -188,7 +188,7 @@
       ],
       "wins": 80,
       "wilcoxon_p": 7.849526548031477e-15,
-      "vargha_delaney_A": 0.90359375,
+      "vargha_delaney_A": 1.0,
       "holm_p": 5.4946685836220346e-14
     },
     "mopso_individual": {
@@ -199,7 +199,7 @@
       ],
       "wins": 80,
       "wilcoxon_p": 7.849526548031477e-15,
-      "vargha_delaney_A": 0.92,
+      "vargha_delaney_A": 1.0,
       "holm_p": 5.4946685836220346e-14
     }
   },

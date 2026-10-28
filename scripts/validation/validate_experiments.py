@@ -106,8 +106,9 @@ for ref in METHODS:
     d = np.array([inst_mean[c][PSMB] - inst_mean[c][ref] for c in cases])
     lo, hi = np.quantile(rng.choice(d, size=(20000, len(d))).mean(axis=1), [.025, .975])
     p = float(wilcoxon(d).pvalue); pvals[ref] = p
-    a12 = float(np.mean([(x > y) + 0.5 * (x == y) for x in [inst_mean[c][PSMB] for c in cases]
-                         for y in [inst_mean[c][ref] for c in cases]]))
+    # Paired A12: per instance over the five seeds (P[PS-MB HV > control HV]), then averaged
+    a12 = float(np.mean([np.mean([(hv[c][(PSMB, s)] > hv[c][(ref, t)]) + 0.5 * (hv[c][(PSMB, s)] == hv[c][(ref, t)])
+                                  for s in SEEDS for t in SEEDS]) for c in cases]))
     table[ref] = dict(mean_difference=float(d.mean()), ci=[float(lo), float(hi)], wins=int((d > 0).sum()),
                       wilcoxon_p=p, vargha_delaney_A=a12)
     stored = dec["versus"][ref]["mean_difference"]

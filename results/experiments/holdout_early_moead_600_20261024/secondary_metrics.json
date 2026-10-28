@@ -1,0 +1,724 @@
+{
+  "reference_front_size": {
+    "min": 32,
+    "median": 117,
+    "max": 310
+  },
+  "metrics": {
+    "hv": {
+      "lower_is_better": false,
+      "means": {
+        "early_moead_600": 0.9924471200741704,
+        "explorer_solo": 0.9788656100769664,
+        "moead": 0.9766293530298025,
+        "passive": 0.9875616057535204,
+        "nsga2_individual": 0.952468386220205,
+        "spea2_individual": 0.9452407062559944,
+        "nsga2_ls_individual": 0.8419066290670683,
+        "mopso_individual": 0.8321942335685959
+      },
+      "ranking": [
+        "early_moead_600",
+        "passive",
+        "explorer_solo",
+        "moead",
+        "nsga2_individual",
+        "spea2_individual",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "versus": {
+        "explorer_solo": {
+          "control_mean": 0.9788656100769664,
+          "advantage": 0.01358150999720396,
+          "ci": [
+            0.008472501375964895,
+            0.018667542655797426
+          ],
+          "wins": 63,
+          "losses": 17,
+          "wilcoxon_p": 2.7942103299178234e-07,
+          "paired_A12": 0.7045,
+          "cluster_ci": [
+            0.007105192775796456,
+            0.01951642286393301
+          ],
+          "holm_p": 8.382630989753471e-07
+        },
+        "moead": {
+          "control_mean": 0.9766293530298025,
+          "advantage": 0.015817767044367853,
+          "ci": [
+            0.009615777829224447,
+            0.02239875201517803
+          ],
+          "wins": 47,
+          "losses": 33,
+          "wilcoxon_p": 0.0005064752419251877,
+          "paired_A12": 0.5925,
+          "cluster_ci": [
+            0.004194922934675602,
+            0.02873071033535242
+          ],
+          "holm_p": 0.0010129504838503754
+        },
+        "passive": {
+          "control_mean": 0.9875616057535204,
+          "advantage": 0.004885514320649978,
+          "ci": [
+            0.0006084833893331144,
+            0.00928513309557801
+          ],
+          "wins": 43,
+          "losses": 37,
+          "wilcoxon_p": 0.08773319883982465,
+          "paired_A12": 0.533,
+          "cluster_ci": [
+            -0.0007642187334222797,
+            0.011374681653994929
+          ],
+          "holm_p": 0.08773319883982465
+        },
+        "nsga2_individual": {
+          "control_mean": 0.952468386220205,
+          "advantage": 0.039978733853965366,
+          "ci": [
+            0.032387652995892566,
+            0.04784908653505164
+          ],
+          "wins": 72,
+          "losses": 8,
+          "wilcoxon_p": 9.094405623085374e-14,
+          "paired_A12": 0.8154999999999999,
+          "holm_p": 3.6377622492341494e-13
+        },
+        "spea2_individual": {
+          "control_mean": 0.9452407062559944,
+          "advantage": 0.04720641381817597,
+          "ci": [
+            0.039498508337613626,
+            0.05526345145385981
+          ],
+          "wins": 77,
+          "losses": 3,
+          "wilcoxon_p": 1.1449828359123387e-14,
+          "paired_A12": 0.8795,
+          "holm_p": 5.724914179561693e-14
+        },
+        "nsga2_ls_individual": {
+          "control_mean": 0.8419066290670683,
+          "advantage": 0.15054049100710215,
+          "ci": [
+            0.13432542099796663,
+            0.16668449604751115
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.849526548031477e-15,
+          "paired_A12": 1.0,
+          "holm_p": 5.4946685836220346e-14
+        },
+        "mopso_individual": {
+          "control_mean": 0.8321942335685959,
+          "advantage": 0.16025288650557448,
+          "ci": [
+            0.14401993449723288,
+            0.17619131987854708
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.849526548031477e-15,
+          "paired_A12": 1.0,
+          "holm_p": 5.4946685836220346e-14
+        }
+      }
+    },
+    "igd_plus_ref": {
+      "lower_is_better": true,
+      "means": {
+        "early_moead_600": 0.1582793171206208,
+        "explorer_solo": 0.18022893540303797,
+        "moead": 0.27012916487528965,
+        "passive": 0.17241190314117563,
+        "nsga2_individual": 0.24213878875010594,
+        "spea2_individual": 0.2348103307687318,
+        "nsga2_ls_individual": 0.35407617093764665,
+        "mopso_individual": 1.0503602108295902
+      },
+      "ranking": [
+        "early_moead_600",
+        "passive",
+        "explorer_solo",
+        "spea2_individual",
+        "nsga2_individual",
+        "moead",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "versus": {
+        "explorer_solo": {
+          "control_mean": 0.18022893540303797,
+          "advantage": 0.02194961828241717,
+          "ci": [
+            0.010429709795066818,
+            0.03566744999467225
+          ],
+          "wins": 53,
+          "losses": 27,
+          "wilcoxon_p": 0.00032762237279141906,
+          "paired_A12": 0.6054999999999999,
+          "cluster_ci": [
+            0.00785327561989528,
+            0.04152354034695566
+          ],
+          "holm_p": 0.0006552447455828381
+        },
+        "moead": {
+          "control_mean": 0.27012916487528965,
+          "advantage": 0.11184984775466886,
+          "ci": [
+            0.08261997114118046,
+            0.14257095909901926
+          ],
+          "wins": 59,
+          "losses": 21,
+          "wilcoxon_p": 1.3807240554145769e-09,
+          "paired_A12": 0.744,
+          "cluster_ci": [
+            0.07120346606049219,
+            0.15222766515373187
+          ],
+          "holm_p": 6.903620277072884e-09
+        },
+        "passive": {
+          "control_mean": 0.17241190314117563,
+          "advantage": 0.014132586020554852,
+          "ci": [
+            0.005935891449911547,
+            0.02249273939371792
+          ],
+          "wins": 50,
+          "losses": 30,
+          "wilcoxon_p": 0.004255321800779508,
+          "paired_A12": 0.5485,
+          "cluster_ci": [
+            0.0024008541466205647,
+            0.025025984392710494
+          ],
+          "holm_p": 0.004255321800779508
+        },
+        "nsga2_individual": {
+          "control_mean": 0.24213878875010594,
+          "advantage": 0.08385947162948515,
+          "ci": [
+            0.0606605272946716,
+            0.10697102014130089
+          ],
+          "wins": 61,
+          "losses": 19,
+          "wilcoxon_p": 3.5429859589325145e-09,
+          "paired_A12": 0.737,
+          "holm_p": 1.4171943835730058e-08
+        },
+        "spea2_individual": {
+          "control_mean": 0.2348103307687318,
+          "advantage": 0.07653101364811102,
+          "ci": [
+            0.05169918880038026,
+            0.10228774761338226
+          ],
+          "wins": 59,
+          "losses": 21,
+          "wilcoxon_p": 3.667916773904377e-08,
+          "paired_A12": 0.7135,
+          "holm_p": 1.100375032171313e-07
+        },
+        "nsga2_ls_individual": {
+          "control_mean": 0.35407617093764665,
+          "advantage": 0.19579685381702583,
+          "ci": [
+            0.1756673350333869,
+            0.2187212219305353
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.849526548031477e-15,
+          "paired_A12": 0.9984999999999999,
+          "holm_p": 5.4946685836220346e-14
+        },
+        "mopso_individual": {
+          "control_mean": 1.0503602108295902,
+          "advantage": 0.8920808937089694,
+          "ci": [
+            0.4653524670036923,
+            1.663467006165083
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.849526548031477e-15,
+          "paired_A12": 0.999,
+          "holm_p": 5.4946685836220346e-14
+        }
+      }
+    },
+    "eps_ref": {
+      "lower_is_better": true,
+      "means": {
+        "early_moead_600": 0.2585574395707279,
+        "explorer_solo": 0.2952914253278839,
+        "moead": 0.45274751708272526,
+        "passive": 0.26809388644917576,
+        "nsga2_individual": 0.3829889649250818,
+        "spea2_individual": 0.3800732000462114,
+        "nsga2_ls_individual": 0.49265396675647233,
+        "mopso_individual": 1.0767943696444031
+      },
+      "ranking": [
+        "early_moead_600",
+        "passive",
+        "explorer_solo",
+        "spea2_individual",
+        "nsga2_individual",
+        "moead",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "versus": {
+        "explorer_solo": {
+          "control_mean": 0.2952914253278839,
+          "advantage": 0.03673398575715598,
+          "ci": [
+            0.024991856082535575,
+            0.050116946987235164
+          ],
+          "wins": 61,
+          "losses": 19,
+          "wilcoxon_p": 1.145925806265684e-08,
+          "paired_A12": 0.6452500000000001,
+          "cluster_ci": [
+            0.019572402690635426,
+            0.05715309868091987
+          ],
+          "holm_p": 2.291851612531368e-08
+        },
+        "moead": {
+          "control_mean": 0.45274751708272526,
+          "advantage": 0.19419007751199735,
+          "ci": [
+            0.1640770626913768,
+            0.2253354998023866
+          ],
+          "wins": 77,
+          "losses": 3,
+          "wilcoxon_p": 1.3307782953733957e-14,
+          "paired_A12": 0.91525,
+          "cluster_ci": [
+            0.15354605276904143,
+            0.235793320885591
+          ],
+          "holm_p": 6.653891476866978e-14
+        },
+        "passive": {
+          "control_mean": 0.26809388644917576,
+          "advantage": 0.009536446878447836,
+          "ci": [
+            0.0019595152109136175,
+            0.017459194367135743
+          ],
+          "wins": 48,
+          "losses": 32,
+          "wilcoxon_p": 0.051499665375589865,
+          "paired_A12": 0.5075000000000001,
+          "cluster_ci": [
+            0.0013684075869433649,
+            0.017542468232007103
+          ],
+          "holm_p": 0.051499665375589865
+        },
+        "nsga2_individual": {
+          "control_mean": 0.3829889649250818,
+          "advantage": 0.12443152535435384,
+          "ci": [
+            0.09831498032667224,
+            0.1514901057511548
+          ],
+          "wins": 71,
+          "losses": 9,
+          "wilcoxon_p": 2.42829775522532e-12,
+          "paired_A12": 0.8210000000000001,
+          "holm_p": 7.28489326567596e-12
+        },
+        "spea2_individual": {
+          "control_mean": 0.3800732000462114,
+          "advantage": 0.12151576047548349,
+          "ci": [
+            0.09745351393401738,
+            0.14707574251547545
+          ],
+          "wins": 69,
+          "losses": 11,
+          "wilcoxon_p": 8.302851718914989e-13,
+          "paired_A12": 0.8315000000000001,
+          "holm_p": 3.3211406875659956e-12
+        },
+        "nsga2_ls_individual": {
+          "control_mean": 0.49265396675647233,
+          "advantage": 0.2340965271857444,
+          "ci": [
+            0.21831724656831106,
+            0.25142185489674634
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.849526548031477e-15,
+          "paired_A12": 0.9995,
+          "holm_p": 5.4946685836220346e-14
+        },
+        "mopso_individual": {
+          "control_mean": 1.0767943696444031,
+          "advantage": 0.8182369300736753,
+          "ci": [
+            0.4048192628565884,
+            1.5794143158296885
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.849526548031477e-15,
+          "paired_A12": 1.0,
+          "holm_p": 5.4946685836220346e-14
+        }
+      }
+    },
+    "igd_plus_fixed": {
+      "lower_is_better": true,
+      "means": {
+        "early_moead_600": 0.020542788049182185,
+        "explorer_solo": 0.025672060778515027,
+        "moead": 0.015946831076807548,
+        "passive": 0.01860899446777157,
+        "nsga2_individual": 0.021981111965310315,
+        "spea2_individual": 0.02325462015916358,
+        "nsga2_ls_individual": 0.06797138617319945,
+        "mopso_individual": 0.07496195531142001
+      },
+      "ranking": [
+        "moead",
+        "passive",
+        "early_moead_600",
+        "nsga2_individual",
+        "spea2_individual",
+        "explorer_solo",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "versus": {
+        "explorer_solo": {
+          "control_mean": 0.025672060778515027,
+          "advantage": 0.005129272729332842,
+          "ci": [
+            0.004014007321820479,
+            0.006277839483585565
+          ],
+          "wins": 68,
+          "losses": 12,
+          "wilcoxon_p": 6.262281290493262e-11,
+          "paired_A12": 0.6980000000000001,
+          "cluster_ci": [
+            0.003567934838969999,
+            0.006646439703575627
+          ],
+          "holm_p": 3.131140645246631e-10
+        },
+        "moead": {
+          "control_mean": 0.015946831076807548,
+          "advantage": -0.004595956972374637,
+          "ci": [
+            -0.0067496179296929635,
+            -0.002607723961821825
+          ],
+          "wins": 21,
+          "losses": 59,
+          "wilcoxon_p": 4.032286835466769e-05,
+          "paired_A12": 0.36150000000000004,
+          "cluster_ci": [
+            -0.008201221866431631,
+            -0.0018101226759752347
+          ],
+          "holm_p": 0.00016129147341867076
+        },
+        "passive": {
+          "control_mean": 0.01860899446777157,
+          "advantage": -0.0019337935814106124,
+          "ci": [
+            -0.003532616858781948,
+            -0.0004796676667516014
+          ],
+          "wins": 36,
+          "losses": 44,
+          "wilcoxon_p": 0.11567663591521246,
+          "paired_A12": 0.445,
+          "cluster_ci": [
+            -0.005092900401343246,
+            0.00043020028064645594
+          ],
+          "holm_p": 0.11567663591521246
+        },
+        "nsga2_individual": {
+          "control_mean": 0.021981111965310315,
+          "advantage": 0.0014383239161281322,
+          "ci": [
+            -0.0008803710506959369,
+            0.003582937965533912
+          ],
+          "wins": 53,
+          "losses": 27,
+          "wilcoxon_p": 0.021869587791282386,
+          "paired_A12": 0.5845,
+          "holm_p": 0.04373917558256477
+        },
+        "spea2_individual": {
+          "control_mean": 0.02325462015916358,
+          "advantage": 0.002711832109981392,
+          "ci": [
+            0.000392168599985812,
+            0.004930000462080001
+          ],
+          "wins": 55,
+          "losses": 25,
+          "wilcoxon_p": 0.0021432855427203413,
+          "paired_A12": 0.633,
+          "holm_p": 0.006429856628161024
+        },
+        "nsga2_ls_individual": {
+          "control_mean": 0.06797138617319945,
+          "advantage": 0.047428598124017264,
+          "ci": [
+            0.04281596063253552,
+            0.05222240443122849
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.849526548031477e-15,
+          "paired_A12": 1.0,
+          "holm_p": 5.4946685836220346e-14
+        },
+        "mopso_individual": {
+          "control_mean": 0.07496195531142001,
+          "advantage": 0.05441916726223783,
+          "ci": [
+            0.04969305599075506,
+            0.05930004654932286
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.849526548031477e-15,
+          "paired_A12": 1.0,
+          "holm_p": 5.4946685836220346e-14
+        }
+      }
+    },
+    "eps_fixed": {
+      "lower_is_better": true,
+      "means": {
+        "early_moead_600": 0.04999769349446461,
+        "explorer_solo": 0.0632400399951563,
+        "moead": 0.047026830031033404,
+        "passive": 0.050325972150897715,
+        "nsga2_individual": 0.07278281338343552,
+        "spea2_individual": 0.08063088500826401,
+        "nsga2_ls_individual": 0.17081914553205158,
+        "mopso_individual": 0.16507832440947617
+      },
+      "ranking": [
+        "moead",
+        "early_moead_600",
+        "passive",
+        "explorer_solo",
+        "nsga2_individual",
+        "spea2_individual",
+        "mopso_individual",
+        "nsga2_ls_individual"
+      ],
+      "versus": {
+        "explorer_solo": {
+          "control_mean": 0.0632400399951563,
+          "advantage": 0.013242346500691693,
+          "ci": [
+            0.009018022829456707,
+            0.01733554119571108
+          ],
+          "wins": 66,
+          "losses": 14,
+          "wilcoxon_p": 1.6962233589488386e-08,
+          "paired_A12": 0.699,
+          "cluster_ci": [
+            0.008283543656249955,
+            0.01773479515125557
+          ],
+          "holm_p": 6.068093179084024e-08
+        },
+        "moead": {
+          "control_mean": 0.047026830031033404,
+          "advantage": -0.0029708634634312116,
+          "ci": [
+            -0.007245447550984333,
+            0.001732388047382872
+          ],
+          "wins": 23,
+          "losses": 57,
+          "wilcoxon_p": 0.004191429781609781,
+          "paired_A12": 0.38900000000000007,
+          "cluster_ci": [
+            -0.009465119035180575,
+            0.004868859311026066
+          ],
+          "holm_p": 0.008382859563219562
+        },
+        "passive": {
+          "control_mean": 0.050325972150897715,
+          "advantage": 0.000328278656433099,
+          "ci": [
+            -0.003100217751303535,
+            0.003824313232911526
+          ],
+          "wins": 35,
+          "losses": 45,
+          "wilcoxon_p": 0.7882436055250418,
+          "paired_A12": 0.4915,
+          "cluster_ci": [
+            -0.004055881775569146,
+            0.0052056914902314615
+          ],
+          "holm_p": 0.7882436055250418
+        },
+        "nsga2_individual": {
+          "control_mean": 0.07278281338343552,
+          "advantage": 0.022785119888970907,
+          "ci": [
+            0.016405291085029493,
+            0.029632195798687314
+          ],
+          "wins": 59,
+          "losses": 21,
+          "wilcoxon_p": 1.517023294771006e-08,
+          "paired_A12": 0.6737499999999998,
+          "holm_p": 6.068093179084024e-08
+        },
+        "spea2_individual": {
+          "control_mean": 0.08063088500826401,
+          "advantage": 0.030633191513799403,
+          "ci": [
+            0.024109045005083204,
+            0.037446608287715635
+          ],
+          "wins": 72,
+          "losses": 8,
+          "wilcoxon_p": 5.846134273987315e-13,
+          "paired_A12": 0.7725,
+          "holm_p": 2.9230671369936576e-12
+        },
+        "nsga2_ls_individual": {
+          "control_mean": 0.17081914553205158,
+          "advantage": 0.12082145203758696,
+          "ci": [
+            0.10785241273540042,
+            0.1340436515076614
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.848834280717969e-15,
+          "paired_A12": 1.0,
+          "holm_p": 5.494183996502578e-14
+        },
+        "mopso_individual": {
+          "control_mean": 0.16507832440947617,
+          "advantage": 0.11508063091501157,
+          "ci": [
+            0.10252586974748966,
+            0.1278142826529753
+          ],
+          "wins": 80,
+          "losses": 0,
+          "wilcoxon_p": 7.848834280717969e-15,
+          "paired_A12": 1.0,
+          "holm_p": 5.494183996502578e-14
+        }
+      }
+    }
+  },
+  "summary": {
+    "hv": {
+      "psmb_first": true,
+      "significant_after_holm": [
+        "explorer_solo",
+        "moead",
+        "nsga2_individual",
+        "spea2_individual",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "controls_better_on_average": [],
+      "controls_significantly_better": []
+    },
+    "igd_plus_ref": {
+      "psmb_first": true,
+      "significant_after_holm": [
+        "explorer_solo",
+        "moead",
+        "passive",
+        "nsga2_individual",
+        "spea2_individual",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "controls_better_on_average": [],
+      "controls_significantly_better": []
+    },
+    "eps_ref": {
+      "psmb_first": true,
+      "significant_after_holm": [
+        "explorer_solo",
+        "moead",
+        "nsga2_individual",
+        "spea2_individual",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "controls_better_on_average": [],
+      "controls_significantly_better": []
+    },
+    "igd_plus_fixed": {
+      "psmb_first": false,
+      "significant_after_holm": [
+        "explorer_solo",
+        "nsga2_individual",
+        "spea2_individual",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "controls_better_on_average": [
+        "moead",
+        "passive"
+      ],
+      "controls_significantly_better": [
+        "moead"
+      ]
+    },
+    "eps_fixed": {
+      "psmb_first": false,
+      "significant_after_holm": [
+        "explorer_solo",
+        "nsga2_individual",
+        "spea2_individual",
+        "nsga2_ls_individual",
+        "mopso_individual"
+      ],
+      "controls_better_on_average": [
+        "moead"
+      ],
+      "controls_significantly_better": [
+        "moead"
+      ]
+    }
+  }
+}
