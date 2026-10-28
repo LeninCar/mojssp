@@ -92,18 +92,6 @@ from .dmab import (
     UniformRandomSelector,
 )
 from .reward import HypervolumeRewardTracker, RewardInvariantError
-from .igd import (
-    build_empirical_reference_front,
-    compute_archive_contribution_rate,
-    compute_archive_igd,
-    compute_archive_igd_plus,
-    compute_contribution_rate,
-    compute_euclidean_distance,
-    compute_igd,
-    compute_igd_plus,
-    compute_modified_distance,
-    filter_non_dominated_points,
-)
 from .orchestrator import (
     AdaptiveExecutionResult,
     AdaptivePortfolioOrchestrator,
@@ -229,16 +217,6 @@ __all__ = _PAIRING_SYMBOLS + [
     "UniformRandomSelector",
     "RewardInvariantError",
     "HypervolumeRewardTracker",
-    "compute_euclidean_distance",
-    "compute_igd",
-    "compute_archive_igd",
-    "compute_modified_distance",
-    "compute_igd_plus",
-    "compute_archive_igd_plus",
-    "compute_contribution_rate",
-    "compute_archive_contribution_rate",
-    "filter_non_dominated_points",
-    "build_empirical_reference_front",
     "BlockExecutionRecord",
     "AdaptiveExecutionResult",
     "AdaptivePortfolioOrchestrator",

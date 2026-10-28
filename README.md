@@ -38,7 +38,7 @@ Detalle en `results/experiments/holdout_early_moead_600_20261024/` (`interpretac
 | Carpeta | Contenido |
 | --- | --- |
 | `src/mojssp/` | Modelo, decodificador, evaluador, archivo de Pareto, HV, los seis brazos (NSGA-II, NSGA-II+LS, MOPSO, MOEA/D, SPEA2, BLMR en `regional_explorer.py`), selectores y orquestador del portafolio |
-| `scripts/` | Runners de campañas y análisis; `run_instance.py` corre cualquier método final sobre una instancia |
+| `scripts/` | Runners de las campañas finales (holdout, comparación de políticas, barrido) y las funciones que reutilizan; `run_instance.py` corre cualquier método final sobre una instancia |
 | `scripts/validation/` | Validación experta del código, el modelo y el holdout |
 | `tests/` | Pruebas (`pytest`) |
 | `data/` | Instancias `.dzn`: validación, bancos experimentales y `generated/expanded_200` con su partición desarrollo/holdout |
@@ -47,6 +47,11 @@ Detalle en `results/experiments/holdout_early_moead_600_20261024/` (`interpretac
 | `results/historical/` | Campañas anteriores al 22 de octubre de 2026 |
 | `results/index.csv` | Índice de campañas: pregunta, contenido, estado y ubicación |
 | `docs/model_formulation.md` | Formulación matemática del modelo |
+
+Los scripts de las campañas exploratorias anteriores (pilotos, fases 2 a F8.6,
+inyecciones, crédito compartido) y sus módulos se retiraron del código actual;
+siguen en la etiqueta `thesis-full-history`, junto con los comandos que citan
+`results/commands.csv` y `results/index.csv`.
 
 ## Entorno
 
