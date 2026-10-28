@@ -1,0 +1,991 @@
+{
+  "phase": "develop",
+  "frozen_commit": "100f7402c7111dead56ff20e7f52fb6fa21e0003",
+  "split": "data/generated/expanded_200/experimental_split.csv",
+  "split_sha256": "fecec443abe6efbd38bdee12827ef80fca2021f79ee4d93e5a01975eec62d996",
+  "instances": [
+    {
+      "name": "base_c01_5x5_b02",
+      "base_id": "base_c01_5x5_b02",
+      "dimensions": "5x5",
+      "profile": "base",
+      "sha256": "e2eb85afe8aef99207c407bae4d4c242da0f2b7f76bdcbe539d6125db90b6ff9"
+    },
+    {
+      "name": "base_c01_5x5_b02_btnk_high",
+      "base_id": "base_c01_5x5_b02",
+      "dimensions": "5x5",
+      "profile": "btnk_high",
+      "sha256": "131e67c370bad13daca2f70c7aa74fcde07859f38dca09222028f6c345237c48"
+    },
+    {
+      "name": "base_c01_5x5_b02_nrg_strong",
+      "base_id": "base_c01_5x5_b02",
+      "dimensions": "5x5",
+      "profile": "nrg_strong",
+      "sha256": "0b7980f7bb39d539a251137c6dbf7f70eca700f3398fc5a7f9303e25ac7c0c9a"
+    },
+    {
+      "name": "base_c01_5x5_b02_tard_high",
+      "base_id": "base_c01_5x5_b02",
+      "dimensions": "5x5",
+      "profile": "tard_high",
+      "sha256": "2b1434f6943de24881ed80c91fed639f332b5684d1273673509273990ef03cfe"
+    },
+    {
+      "name": "base_c01_5x5_b02_tard_med",
+      "base_id": "base_c01_5x5_b02",
+      "dimensions": "5x5",
+      "profile": "tard_med",
+      "sha256": "e26b5d67a2a26ca7c37eac8f6aaadf2dadd9af5abeb97a8c2c9602de88844794"
+    },
+    {
+      "name": "base_c01_5x5_b03",
+      "base_id": "base_c01_5x5_b03",
+      "dimensions": "5x5",
+      "profile": "base",
+      "sha256": "e55a70e4ec0272b551806b49634ecfcdd9e3ac9f46a6d54fe4c7b7714ce34c1b"
+    },
+    {
+      "name": "base_c01_5x5_b03_btnk_high",
+      "base_id": "base_c01_5x5_b03",
+      "dimensions": "5x5",
+      "profile": "btnk_high",
+      "sha256": "610ba1c87fe20c690aa8a1988ece336b10ec57266d0f62fc1b1b7379dcb626eb"
+    },
+    {
+      "name": "base_c01_5x5_b03_nrg_strong",
+      "base_id": "base_c01_5x5_b03",
+      "dimensions": "5x5",
+      "profile": "nrg_strong",
+      "sha256": "367bbcc069eaf377c4cc276ab12746cecac0108186d17e62d594e9986405311b"
+    },
+    {
+      "name": "base_c01_5x5_b03_tard_high",
+      "base_id": "base_c01_5x5_b03",
+      "dimensions": "5x5",
+      "profile": "tard_high",
+      "sha256": "7032b996c3dc0b4e9755da778f21c07615b7466bd2c18f5ff7456d467491b65e"
+    },
+    {
+      "name": "base_c01_5x5_b03_tard_med",
+      "base_id": "base_c01_5x5_b03",
+      "dimensions": "5x5",
+      "profile": "tard_med",
+      "sha256": "3d70ba34a8d24e9833b82de07776cf36f0068e6545af330e32984b9b0b674b9a"
+    },
+    {
+      "name": "base_c01_5x5_b05",
+      "base_id": "base_c01_5x5_b05",
+      "dimensions": "5x5",
+      "profile": "base",
+      "sha256": "11338acf87659129e245bab011423a20044476abd7470d1586f31f614d78a97c"
+    },
+    {
+      "name": "base_c01_5x5_b05_btnk_high",
+      "base_id": "base_c01_5x5_b05",
+      "dimensions": "5x5",
+      "profile": "btnk_high",
+      "sha256": "7ca492dd889851543a8997de18bf79fe84b2f6d533b0fea8eba6a1e2fa74d3e5"
+    },
+    {
+      "name": "base_c01_5x5_b05_nrg_strong",
+      "base_id": "base_c01_5x5_b05",
+      "dimensions": "5x5",
+      "profile": "nrg_strong",
+      "sha256": "16b628dba893e5fff15efd15360d7da97ff05197535aaf16203f3943c93acda1"
+    },
+    {
+      "name": "base_c01_5x5_b05_tard_high",
+      "base_id": "base_c01_5x5_b05",
+      "dimensions": "5x5",
+      "profile": "tard_high",
+      "sha256": "f71b8517deb38a429b1514acc62b101282b28bdb618637fea09c7c492d335d17"
+    },
+    {
+      "name": "base_c01_5x5_b05_tard_med",
+      "base_id": "base_c01_5x5_b05",
+      "dimensions": "5x5",
+      "profile": "tard_med",
+      "sha256": "338f4e121d9a431c4e7a3e5c2c8a046d0bd08f5df6dd7268b4160389c510e1cd"
+    },
+    {
+      "name": "base_c02_10x10_b02",
+      "base_id": "base_c02_10x10_b02",
+      "dimensions": "10x10",
+      "profile": "base",
+      "sha256": "e47bb520ce9383ea45af2a4f0c0e4082225b31a5be27b2555cf2baf20bfc50c7"
+    },
+    {
+      "name": "base_c02_10x10_b02_btnk_high",
+      "base_id": "base_c02_10x10_b02",
+      "dimensions": "10x10",
+      "profile": "btnk_high",
+      "sha256": "40f4951e71a84a19653090d82b1a992aa9c58a1c34dc7935ba8ddc3f7d2a3c8e"
+    },
+    {
+      "name": "base_c02_10x10_b02_nrg_strong",
+      "base_id": "base_c02_10x10_b02",
+      "dimensions": "10x10",
+      "profile": "nrg_strong",
+      "sha256": "f59feb84b9d732de9f48ee16228525268aeb69509b27c073c2b929f00d016ac8"
+    },
+    {
+      "name": "base_c02_10x10_b02_tard_high",
+      "base_id": "base_c02_10x10_b02",
+      "dimensions": "10x10",
+      "profile": "tard_high",
+      "sha256": "d91fb0c4371c4954317ecbabfc4c73097e420b928ea90d3956a74d24e48ef711"
+    },
+    {
+      "name": "base_c02_10x10_b02_tard_med",
+      "base_id": "base_c02_10x10_b02",
+      "dimensions": "10x10",
+      "profile": "tard_med",
+      "sha256": "60e0eed3c040f46d3b445de5b94cfb5bd077d759696246ddd9cf2d7828ff7386"
+    },
+    {
+      "name": "base_c02_10x10_b03",
+      "base_id": "base_c02_10x10_b03",
+      "dimensions": "10x10",
+      "profile": "base",
+      "sha256": "48e5f34682e540b8a1b767011e11c364594025d463b99e8d6a96c66e12da947d"
+    },
+    {
+      "name": "base_c02_10x10_b03_btnk_high",
+      "base_id": "base_c02_10x10_b03",
+      "dimensions": "10x10",
+      "profile": "btnk_high",
+      "sha256": "feaa4264f87b3a73304d5e73346b56ca1878b8bef270e4b9eec50342238c23dd"
+    },
+    {
+      "name": "base_c02_10x10_b03_nrg_strong",
+      "base_id": "base_c02_10x10_b03",
+      "dimensions": "10x10",
+      "profile": "nrg_strong",
+      "sha256": "a770da2e992eac95c1e866b0af13cd8b82ad1a3d84d02399fdc1700794e7046a"
+    },
+    {
+      "name": "base_c02_10x10_b03_tard_high",
+      "base_id": "base_c02_10x10_b03",
+      "dimensions": "10x10",
+      "profile": "tard_high",
+      "sha256": "6b84daf4a8dd1e5260b02fc3895769591d63533442e0860ca5ba0b00414f789b"
+    },
+    {
+      "name": "base_c02_10x10_b03_tard_med",
+      "base_id": "base_c02_10x10_b03",
+      "dimensions": "10x10",
+      "profile": "tard_med",
+      "sha256": "6cc260d874c21adf50f09122a2e88ec30510937a1f09bfcb6762656608e0d5ad"
+    },
+    {
+      "name": "base_c02_10x10_b04",
+      "base_id": "base_c02_10x10_b04",
+      "dimensions": "10x10",
+      "profile": "base",
+      "sha256": "98b301f1a4c8244da3296e8d29811a9f7644fc9437d7c845bffeab50f68ca9f8"
+    },
+    {
+      "name": "base_c02_10x10_b04_btnk_high",
+      "base_id": "base_c02_10x10_b04",
+      "dimensions": "10x10",
+      "profile": "btnk_high",
+      "sha256": "e152f2b1f61cae9ce6672106b089e288bf9d6d081566964ed8aada75f7811b62"
+    },
+    {
+      "name": "base_c02_10x10_b04_nrg_strong",
+      "base_id": "base_c02_10x10_b04",
+      "dimensions": "10x10",
+      "profile": "nrg_strong",
+      "sha256": "d5e9ec5398db2fe7573b95621a7543320fe81eff53d3c14017c1ea9e6549fb53"
+    },
+    {
+      "name": "base_c02_10x10_b04_tard_high",
+      "base_id": "base_c02_10x10_b04",
+      "dimensions": "10x10",
+      "profile": "tard_high",
+      "sha256": "7f17911a0f119a1933e411fd019c2538ce2eaaaad68986df5eb1349334824bcc"
+    },
+    {
+      "name": "base_c02_10x10_b04_tard_med",
+      "base_id": "base_c02_10x10_b04",
+      "dimensions": "10x10",
+      "profile": "tard_med",
+      "sha256": "b89e0225da0dad825124cab05589015dd8ee1728c04fccd224cc9d74c1565c05"
+    },
+    {
+      "name": "base_c03_20x10_b03",
+      "base_id": "base_c03_20x10_b03",
+      "dimensions": "20x10",
+      "profile": "base",
+      "sha256": "49190128bb0f0bdc2cb7105b1c7aa3ca1ff5d51625c8f2e8d24a15c168fb0171"
+    },
+    {
+      "name": "base_c03_20x10_b03_btnk_high",
+      "base_id": "base_c03_20x10_b03",
+      "dimensions": "20x10",
+      "profile": "btnk_high",
+      "sha256": "3a49bc27d8b41a75576d8e3070353cd47a13e22161a00da994eca54b7c34645a"
+    },
+    {
+      "name": "base_c03_20x10_b03_nrg_strong",
+      "base_id": "base_c03_20x10_b03",
+      "dimensions": "20x10",
+      "profile": "nrg_strong",
+      "sha256": "80a325763c1f187efc401a42ce8c705d0e809966547511fa8e74ffc9d62fb09e"
+    },
+    {
+      "name": "base_c03_20x10_b03_tard_high",
+      "base_id": "base_c03_20x10_b03",
+      "dimensions": "20x10",
+      "profile": "tard_high",
+      "sha256": "4047307097946a29e0c1725bfad319a4c04de26abc4098a1104e7da0f6b46801"
+    },
+    {
+      "name": "base_c03_20x10_b03_tard_med",
+      "base_id": "base_c03_20x10_b03",
+      "dimensions": "20x10",
+      "profile": "tard_med",
+      "sha256": "3257f23a6b5493d51cecc10569e8c79f9af01d8777c5ba9ed796fef89a355ebe"
+    },
+    {
+      "name": "base_c03_20x10_b04",
+      "base_id": "base_c03_20x10_b04",
+      "dimensions": "20x10",
+      "profile": "base",
+      "sha256": "606bcb8842f32c3eb22a9461c4ad16a78ce18207342ab1605c0e947a1df31b7f"
+    },
+    {
+      "name": "base_c03_20x10_b04_btnk_high",
+      "base_id": "base_c03_20x10_b04",
+      "dimensions": "20x10",
+      "profile": "btnk_high",
+      "sha256": "b6eacdbc91c3c571fc62f770e3818d7a859ccdb4f8ec21c8c971a55b9c947b1c"
+    },
+    {
+      "name": "base_c03_20x10_b04_nrg_strong",
+      "base_id": "base_c03_20x10_b04",
+      "dimensions": "20x10",
+      "profile": "nrg_strong",
+      "sha256": "01829ecdf8ce79213d05254d9834d9bb6803f9cdc87d5ad0c387a7fc20538c41"
+    },
+    {
+      "name": "base_c03_20x10_b04_tard_high",
+      "base_id": "base_c03_20x10_b04",
+      "dimensions": "20x10",
+      "profile": "tard_high",
+      "sha256": "2173ce364ca422a72de641a63ae8d9cf9cf625292b3ec1b8141c690415f744d9"
+    },
+    {
+      "name": "base_c03_20x10_b04_tard_med",
+      "base_id": "base_c03_20x10_b04",
+      "dimensions": "20x10",
+      "profile": "tard_med",
+      "sha256": "99e0abe1af2d72359a0cb68239779ad835a7a5d6c8d9248d1bcb691f606f5cb6"
+    },
+    {
+      "name": "base_c03_20x10_b05",
+      "base_id": "base_c03_20x10_b05",
+      "dimensions": "20x10",
+      "profile": "base",
+      "sha256": "f2c0770144f702d678173fea91af7a5a1b2592703621f1e26dcfa78d6d5c4143"
+    },
+    {
+      "name": "base_c03_20x10_b05_btnk_high",
+      "base_id": "base_c03_20x10_b05",
+      "dimensions": "20x10",
+      "profile": "btnk_high",
+      "sha256": "f0c2f830b199cd2bc27fe6b5b9f10da098163f1a0ca7f1267fb43a77a77bdca7"
+    },
+    {
+      "name": "base_c03_20x10_b05_nrg_strong",
+      "base_id": "base_c03_20x10_b05",
+      "dimensions": "20x10",
+      "profile": "nrg_strong",
+      "sha256": "f6d4455a0a8bea542affa2e2d8c4fc0c646c173613853b36d8b250a2d6ff5c38"
+    },
+    {
+      "name": "base_c03_20x10_b05_tard_high",
+      "base_id": "base_c03_20x10_b05",
+      "dimensions": "20x10",
+      "profile": "tard_high",
+      "sha256": "0517bb4e74085d7e2a51c5a57dc9f1658d540e360d2a02788de417be7e6434b0"
+    },
+    {
+      "name": "base_c03_20x10_b05_tard_med",
+      "base_id": "base_c03_20x10_b05",
+      "dimensions": "20x10",
+      "profile": "tard_med",
+      "sha256": "c5f8d6cc62dcea834d9bd22c78f42831cbd461a0269b2cc11a5ae42a6048011b"
+    },
+    {
+      "name": "base_c04_10x20_b03",
+      "base_id": "base_c04_10x20_b03",
+      "dimensions": "10x20",
+      "profile": "base",
+      "sha256": "bfc4eda41b339eb511f6f11f721b9fad5890a50e7dc418cdc73318e25c5c6663"
+    },
+    {
+      "name": "base_c04_10x20_b03_btnk_high",
+      "base_id": "base_c04_10x20_b03",
+      "dimensions": "10x20",
+      "profile": "btnk_high",
+      "sha256": "58e9b6d33d762559e7207123b296e81e9e45e6575d38402edfe42f66200e5ef9"
+    },
+    {
+      "name": "base_c04_10x20_b03_nrg_strong",
+      "base_id": "base_c04_10x20_b03",
+      "dimensions": "10x20",
+      "profile": "nrg_strong",
+      "sha256": "727e5cafe301a4810eab9637f12f6c5da6f04bfe6cbdb24b2bae9d6c1b8d6703"
+    },
+    {
+      "name": "base_c04_10x20_b03_tard_high",
+      "base_id": "base_c04_10x20_b03",
+      "dimensions": "10x20",
+      "profile": "tard_high",
+      "sha256": "032d9edf09929f827bcaa86038b051737444cd0e213b4feedf8b20db7914db5a"
+    },
+    {
+      "name": "base_c04_10x20_b03_tard_med",
+      "base_id": "base_c04_10x20_b03",
+      "dimensions": "10x20",
+      "profile": "tard_med",
+      "sha256": "418e64edb5ec0203ca3db81c111d19af703868ba44a0e20ad8b5412f0ac54161"
+    },
+    {
+      "name": "base_c04_10x20_b04",
+      "base_id": "base_c04_10x20_b04",
+      "dimensions": "10x20",
+      "profile": "base",
+      "sha256": "3f034a0a1c58c8455f82c4f0c4754d70eef8bc151573679a55e94419f74f40a7"
+    },
+    {
+      "name": "base_c04_10x20_b04_btnk_high",
+      "base_id": "base_c04_10x20_b04",
+      "dimensions": "10x20",
+      "profile": "btnk_high",
+      "sha256": "9f64c19472d2159dabe25c15f4ac167857331bde379cb0e2ac9efa0f767ee87e"
+    },
+    {
+      "name": "base_c04_10x20_b04_nrg_strong",
+      "base_id": "base_c04_10x20_b04",
+      "dimensions": "10x20",
+      "profile": "nrg_strong",
+      "sha256": "a67a38d009eedda46a931cb51b04c096f4b15d92fb9110de7666b03c02ce18cf"
+    },
+    {
+      "name": "base_c04_10x20_b04_tard_high",
+      "base_id": "base_c04_10x20_b04",
+      "dimensions": "10x20",
+      "profile": "tard_high",
+      "sha256": "a2384d3f414dd0a2b9486358b1e6060cbf3d953f594132b9e89ebc8c7d2869f9"
+    },
+    {
+      "name": "base_c04_10x20_b04_tard_med",
+      "base_id": "base_c04_10x20_b04",
+      "dimensions": "10x20",
+      "profile": "tard_med",
+      "sha256": "ca4a97901231e5344b1fcf1a3edb81dfaaedcdb4ef19561a20e5454f07e204c3"
+    },
+    {
+      "name": "base_c04_10x20_b05",
+      "base_id": "base_c04_10x20_b05",
+      "dimensions": "10x20",
+      "profile": "base",
+      "sha256": "31cf412f5eb8e461daaadb85cdc0cd1c03fa600cc12abd202542c56c835276ef"
+    },
+    {
+      "name": "base_c04_10x20_b05_btnk_high",
+      "base_id": "base_c04_10x20_b05",
+      "dimensions": "10x20",
+      "profile": "btnk_high",
+      "sha256": "ecf15ea31896fb26b2be4527505492e9febaf9d3a1145766647c129d32677917"
+    },
+    {
+      "name": "base_c04_10x20_b05_nrg_strong",
+      "base_id": "base_c04_10x20_b05",
+      "dimensions": "10x20",
+      "profile": "nrg_strong",
+      "sha256": "af7ba2969f110573f516208ad81241f64fcd23e9ddd11c9660eed6f3a142507a"
+    },
+    {
+      "name": "base_c04_10x20_b05_tard_high",
+      "base_id": "base_c04_10x20_b05",
+      "dimensions": "10x20",
+      "profile": "tard_high",
+      "sha256": "6dd4894e1be7dfd9e6e500a038d53a671cffc009eade40142019d97cc0db1ef2"
+    },
+    {
+      "name": "base_c04_10x20_b05_tard_med",
+      "base_id": "base_c04_10x20_b05",
+      "dimensions": "10x20",
+      "profile": "tard_med",
+      "sha256": "cae220995cc4425f7a76bc7d1935e3866ee5a8fc6600ba014b90503792b2c143"
+    },
+    {
+      "name": "base_c05_20x20_b02",
+      "base_id": "base_c05_20x20_b02",
+      "dimensions": "20x20",
+      "profile": "base",
+      "sha256": "f2d76e38469691f420f6da6ebc29ee16bbccc04af6a35ff9069b05eefea13430"
+    },
+    {
+      "name": "base_c05_20x20_b02_btnk_high",
+      "base_id": "base_c05_20x20_b02",
+      "dimensions": "20x20",
+      "profile": "btnk_high",
+      "sha256": "e1a8add9170b3c66b62c633df14339351e796f2a954c872269c3fbc7abbf9ad4"
+    },
+    {
+      "name": "base_c05_20x20_b02_nrg_strong",
+      "base_id": "base_c05_20x20_b02",
+      "dimensions": "20x20",
+      "profile": "nrg_strong",
+      "sha256": "31a3c36709888a583a013f04a67f017980e1ff597b013c6ca47994dd0e48b747"
+    },
+    {
+      "name": "base_c05_20x20_b02_tard_high",
+      "base_id": "base_c05_20x20_b02",
+      "dimensions": "20x20",
+      "profile": "tard_high",
+      "sha256": "3b6a24444e37d6546e5bf98fde7468b63056b956ad983f853d453ecfd40aca2c"
+    },
+    {
+      "name": "base_c05_20x20_b02_tard_med",
+      "base_id": "base_c05_20x20_b02",
+      "dimensions": "20x20",
+      "profile": "tard_med",
+      "sha256": "d8fa3ba82da65264d80392c26d00a8c5779a060f96a68a528275f3334d451bdf"
+    },
+    {
+      "name": "base_c05_20x20_b03",
+      "base_id": "base_c05_20x20_b03",
+      "dimensions": "20x20",
+      "profile": "base",
+      "sha256": "71f69151ead7013b18f110d3aa119c0e34e0c7f89ceaf687c0e44fe81b58ea0d"
+    },
+    {
+      "name": "base_c05_20x20_b03_btnk_high",
+      "base_id": "base_c05_20x20_b03",
+      "dimensions": "20x20",
+      "profile": "btnk_high",
+      "sha256": "e1f1d8b7f01df4ec65aa59622c25d021aba25cd741419ca7d5b4e52f543dbf8d"
+    },
+    {
+      "name": "base_c05_20x20_b03_nrg_strong",
+      "base_id": "base_c05_20x20_b03",
+      "dimensions": "20x20",
+      "profile": "nrg_strong",
+      "sha256": "b3bc3e39dcadb73a184301d7fe2a860a6b97ae7384a1d090e6c66c92c3b0cae1"
+    },
+    {
+      "name": "base_c05_20x20_b03_tard_high",
+      "base_id": "base_c05_20x20_b03",
+      "dimensions": "20x20",
+      "profile": "tard_high",
+      "sha256": "cf29eb353bb6a5f1b074785a6ee9bf32cd006713bc8683bc07363ee3d49ec902"
+    },
+    {
+      "name": "base_c05_20x20_b03_tard_med",
+      "base_id": "base_c05_20x20_b03",
+      "dimensions": "20x20",
+      "profile": "tard_med",
+      "sha256": "d2b1730fe3dd4215636cbbbcc94d7a17d231453935a06af0befeeafc3435e8b0"
+    },
+    {
+      "name": "base_c05_20x20_b05",
+      "base_id": "base_c05_20x20_b05",
+      "dimensions": "20x20",
+      "profile": "base",
+      "sha256": "e57105b00eda8fa82e83732c8da3665db2f53450dae20ddea36cdbdca4b1c65b"
+    },
+    {
+      "name": "base_c05_20x20_b05_btnk_high",
+      "base_id": "base_c05_20x20_b05",
+      "dimensions": "20x20",
+      "profile": "btnk_high",
+      "sha256": "b5a4988a10315b960388ab1c1683608f69db816919716ead878f79ff61f27d51"
+    },
+    {
+      "name": "base_c05_20x20_b05_nrg_strong",
+      "base_id": "base_c05_20x20_b05",
+      "dimensions": "20x20",
+      "profile": "nrg_strong",
+      "sha256": "829d0914acd512adf00b2da98cf8f1ba9e2103d0a9ce8bf6725aa21cd9b32dab"
+    },
+    {
+      "name": "base_c05_20x20_b05_tard_high",
+      "base_id": "base_c05_20x20_b05",
+      "dimensions": "20x20",
+      "profile": "tard_high",
+      "sha256": "642281fbef8eba6fc253b4e8276095e249f541b7d6b921eb4532157be3869166"
+    },
+    {
+      "name": "base_c05_20x20_b05_tard_med",
+      "base_id": "base_c05_20x20_b05",
+      "dimensions": "20x20",
+      "profile": "tard_med",
+      "sha256": "37c283f9041240bd136280250c55a44640f45f02343ce8cb3923afdb00630c1b"
+    },
+    {
+      "name": "base_c06_30x20_b02",
+      "base_id": "base_c06_30x20_b02",
+      "dimensions": "30x20",
+      "profile": "base",
+      "sha256": "0e17b41ce24ac4651588a54d94f8ea5262124ee7982b7a69baa1cd90c62f1141"
+    },
+    {
+      "name": "base_c06_30x20_b02_btnk_high",
+      "base_id": "base_c06_30x20_b02",
+      "dimensions": "30x20",
+      "profile": "btnk_high",
+      "sha256": "5fe3e2f770fa69277c39758d35273aa9c5c945cd67d73cf155c55e29b99d53c4"
+    },
+    {
+      "name": "base_c06_30x20_b02_nrg_strong",
+      "base_id": "base_c06_30x20_b02",
+      "dimensions": "30x20",
+      "profile": "nrg_strong",
+      "sha256": "4dffb48e4f370e65286207d8ad23d341665e4becc0cf6a4d6ec98d773bdd6ec3"
+    },
+    {
+      "name": "base_c06_30x20_b02_tard_high",
+      "base_id": "base_c06_30x20_b02",
+      "dimensions": "30x20",
+      "profile": "tard_high",
+      "sha256": "2755d49078654f9367c972fa149ab343af9ff1ec7baf82ec756df8fc31775264"
+    },
+    {
+      "name": "base_c06_30x20_b02_tard_med",
+      "base_id": "base_c06_30x20_b02",
+      "dimensions": "30x20",
+      "profile": "tard_med",
+      "sha256": "d36fa4dd14ed159d3e490f976d4f95432e4ad2d5ef5e0c81afbd7b3e09ed1bdf"
+    },
+    {
+      "name": "base_c06_30x20_b03",
+      "base_id": "base_c06_30x20_b03",
+      "dimensions": "30x20",
+      "profile": "base",
+      "sha256": "5827e089d88f34eed0080ca9872d40cdd151585c05e195ea8d909d0ae854fae9"
+    },
+    {
+      "name": "base_c06_30x20_b03_btnk_high",
+      "base_id": "base_c06_30x20_b03",
+      "dimensions": "30x20",
+      "profile": "btnk_high",
+      "sha256": "1f39f916a4e5abd1e8cd0b26bdf5709b0372064bd917c324a55f0efc57fe7b3d"
+    },
+    {
+      "name": "base_c06_30x20_b03_nrg_strong",
+      "base_id": "base_c06_30x20_b03",
+      "dimensions": "30x20",
+      "profile": "nrg_strong",
+      "sha256": "aaef1a19e4d4d28de80fe4e99eaa5cc596cfe1abf4ca9c44fe597911c3e1adf9"
+    },
+    {
+      "name": "base_c06_30x20_b03_tard_high",
+      "base_id": "base_c06_30x20_b03",
+      "dimensions": "30x20",
+      "profile": "tard_high",
+      "sha256": "a5bf1f1b1f222ccfe25532207a37472b891d17fee6416e5bb6139926ee33dfc5"
+    },
+    {
+      "name": "base_c06_30x20_b03_tard_med",
+      "base_id": "base_c06_30x20_b03",
+      "dimensions": "30x20",
+      "profile": "tard_med",
+      "sha256": "a5bdbcd4d4957953a99e9d75d35fa8139d998b2cd1288cfb8c38f2c9e1f9451b"
+    },
+    {
+      "name": "base_c06_30x20_b04",
+      "base_id": "base_c06_30x20_b04",
+      "dimensions": "30x20",
+      "profile": "base",
+      "sha256": "aad19ea8427d638b2c612aa23c64e73ccdbfb138c316de071f43657784ffb62b"
+    },
+    {
+      "name": "base_c06_30x20_b04_btnk_high",
+      "base_id": "base_c06_30x20_b04",
+      "dimensions": "30x20",
+      "profile": "btnk_high",
+      "sha256": "316906045f1a8eb51b5a07c0e2808049d6ab76a47b81b858a586745efb125b01"
+    },
+    {
+      "name": "base_c06_30x20_b04_nrg_strong",
+      "base_id": "base_c06_30x20_b04",
+      "dimensions": "30x20",
+      "profile": "nrg_strong",
+      "sha256": "a0585bfe8bb206264bda193b626dc4bb4448d6f9e24d25052ece3b36ea268611"
+    },
+    {
+      "name": "base_c06_30x20_b04_tard_high",
+      "base_id": "base_c06_30x20_b04",
+      "dimensions": "30x20",
+      "profile": "tard_high",
+      "sha256": "e726d31e56a835452d9cae3949303ee1cbc468989bfc6acc3a3b72ebf74856aa"
+    },
+    {
+      "name": "base_c06_30x20_b04_tard_med",
+      "base_id": "base_c06_30x20_b04",
+      "dimensions": "30x20",
+      "profile": "tard_med",
+      "sha256": "9cdd34b01e8651f9dd8e6eecb04807f24a1cfdf8ac14a8af8c885e1c50ca21c7"
+    },
+    {
+      "name": "base_c07_40x20_b01",
+      "base_id": "base_c07_40x20_b01",
+      "dimensions": "40x20",
+      "profile": "base",
+      "sha256": "99491dfb44dc1504559d1993117bd338b4ecd73daf3024592de088178f4f524b"
+    },
+    {
+      "name": "base_c07_40x20_b01_btnk_high",
+      "base_id": "base_c07_40x20_b01",
+      "dimensions": "40x20",
+      "profile": "btnk_high",
+      "sha256": "4325c55fa7d9081675b4b532c0eb3f421d3b7239f90bda11f8589276e2b4eb81"
+    },
+    {
+      "name": "base_c07_40x20_b01_nrg_strong",
+      "base_id": "base_c07_40x20_b01",
+      "dimensions": "40x20",
+      "profile": "nrg_strong",
+      "sha256": "d6974223f3752e792d15004a00343e3514ee1bae75f337c10a416a13c48edf87"
+    },
+    {
+      "name": "base_c07_40x20_b01_tard_high",
+      "base_id": "base_c07_40x20_b01",
+      "dimensions": "40x20",
+      "profile": "tard_high",
+      "sha256": "dc7b30f36141535e7fc28b44cdf46759f71b1a91c156228fa9bf6ea13eecc78f"
+    },
+    {
+      "name": "base_c07_40x20_b01_tard_med",
+      "base_id": "base_c07_40x20_b01",
+      "dimensions": "40x20",
+      "profile": "tard_med",
+      "sha256": "33ac3645fe73e03d114fe56eb63781d1fe97d96a757ab1f63c22e0889df43917"
+    },
+    {
+      "name": "base_c07_40x20_b03",
+      "base_id": "base_c07_40x20_b03",
+      "dimensions": "40x20",
+      "profile": "base",
+      "sha256": "970c27a850790e115349c39c5a717ddafd3ad047059e0a54b41b80999e2a8865"
+    },
+    {
+      "name": "base_c07_40x20_b03_btnk_high",
+      "base_id": "base_c07_40x20_b03",
+      "dimensions": "40x20",
+      "profile": "btnk_high",
+      "sha256": "f741a79d2bc5291f7c26e3f79ad13c7da5308d465e36bb4ec2b140ab9b0a099b"
+    },
+    {
+      "name": "base_c07_40x20_b03_nrg_strong",
+      "base_id": "base_c07_40x20_b03",
+      "dimensions": "40x20",
+      "profile": "nrg_strong",
+      "sha256": "5ded3ce6b17f73b85631f54b3a55ae9a5c96f59df37c6aca15e4438b5f00ede8"
+    },
+    {
+      "name": "base_c07_40x20_b03_tard_high",
+      "base_id": "base_c07_40x20_b03",
+      "dimensions": "40x20",
+      "profile": "tard_high",
+      "sha256": "0c77ba52781f5d4f53924485afd17ece1356d20ab86d86e23478dba47fc7c89d"
+    },
+    {
+      "name": "base_c07_40x20_b03_tard_med",
+      "base_id": "base_c07_40x20_b03",
+      "dimensions": "40x20",
+      "profile": "tard_med",
+      "sha256": "fc00b8e8e661659bcfb1625c26b126b65373a89390d537c46835467934b9f02c"
+    },
+    {
+      "name": "base_c07_40x20_b04",
+      "base_id": "base_c07_40x20_b04",
+      "dimensions": "40x20",
+      "profile": "base",
+      "sha256": "39446abc38153204aeee0cf422a37ad569218c7230b7da3ed818b62c5ec87c97"
+    },
+    {
+      "name": "base_c07_40x20_b04_btnk_high",
+      "base_id": "base_c07_40x20_b04",
+      "dimensions": "40x20",
+      "profile": "btnk_high",
+      "sha256": "75b72ac06a5c9d4b364d36e953a83587c10f9fc172ba5b09b0c6b6082cf766c3"
+    },
+    {
+      "name": "base_c07_40x20_b04_nrg_strong",
+      "base_id": "base_c07_40x20_b04",
+      "dimensions": "40x20",
+      "profile": "nrg_strong",
+      "sha256": "974307b8f7fbfd38ec618f0704ca0f0927d49ab8a8e40c23dda9565d778130e7"
+    },
+    {
+      "name": "base_c07_40x20_b04_tard_high",
+      "base_id": "base_c07_40x20_b04",
+      "dimensions": "40x20",
+      "profile": "tard_high",
+      "sha256": "f89633484e1f3898bfa878f49352d7c6f0e284f3e3d2cada03a54394a490d56e"
+    },
+    {
+      "name": "base_c07_40x20_b04_tard_med",
+      "base_id": "base_c07_40x20_b04",
+      "dimensions": "40x20",
+      "profile": "tard_med",
+      "sha256": "da75d16052509d64099faff43f7501cfd14efd4cd9264efc5b27c47f37650f14"
+    },
+    {
+      "name": "base_c08_50x50_b01",
+      "base_id": "base_c08_50x50_b01",
+      "dimensions": "50x50",
+      "profile": "base",
+      "sha256": "d6e8fd864200cc8fca33e39df3d05ba97fcf9300cf4659baf12f5436e0b5510b"
+    },
+    {
+      "name": "base_c08_50x50_b01_btnk_high",
+      "base_id": "base_c08_50x50_b01",
+      "dimensions": "50x50",
+      "profile": "btnk_high",
+      "sha256": "ab78a11e8a9e1cfe3c6d91d67c3d8d8da04edceb41c537e114f0825ccd806004"
+    },
+    {
+      "name": "base_c08_50x50_b01_nrg_strong",
+      "base_id": "base_c08_50x50_b01",
+      "dimensions": "50x50",
+      "profile": "nrg_strong",
+      "sha256": "b4c39fec8fbe6127443f561bf7a9c2e7063db98686a20a82d14ff2ddc405cfc4"
+    },
+    {
+      "name": "base_c08_50x50_b01_tard_high",
+      "base_id": "base_c08_50x50_b01",
+      "dimensions": "50x50",
+      "profile": "tard_high",
+      "sha256": "57d72513cd02a6ecafb3fd05b9ad50d8c7200432593830c7904d2d3dbaeb296f"
+    },
+    {
+      "name": "base_c08_50x50_b01_tard_med",
+      "base_id": "base_c08_50x50_b01",
+      "dimensions": "50x50",
+      "profile": "tard_med",
+      "sha256": "d5f74b9189b1142d14b448ddb5529fda374992b139e11c96af0ceb38ea28014b"
+    },
+    {
+      "name": "base_c08_50x50_b03",
+      "base_id": "base_c08_50x50_b03",
+      "dimensions": "50x50",
+      "profile": "base",
+      "sha256": "dd0eb0c12ccc131dd58c41802a83124d81693d8272a4c8cacd59302fd6c54017"
+    },
+    {
+      "name": "base_c08_50x50_b03_btnk_high",
+      "base_id": "base_c08_50x50_b03",
+      "dimensions": "50x50",
+      "profile": "btnk_high",
+      "sha256": "f30bc4b4721546979f14e4874b1fbfdf1186de4ace339053d17fba18ed503be2"
+    },
+    {
+      "name": "base_c08_50x50_b03_nrg_strong",
+      "base_id": "base_c08_50x50_b03",
+      "dimensions": "50x50",
+      "profile": "nrg_strong",
+      "sha256": "a82e30591864d9bc423718e6ee43fa863a98f5ca3eba6a60c385c22e035a887a"
+    },
+    {
+      "name": "base_c08_50x50_b03_tard_high",
+      "base_id": "base_c08_50x50_b03",
+      "dimensions": "50x50",
+      "profile": "tard_high",
+      "sha256": "56491a796a5bc2a3ac7f49a97c9b2983fabc22d34a275d1f5e39a5242ba2b675"
+    },
+    {
+      "name": "base_c08_50x50_b03_tard_med",
+      "base_id": "base_c08_50x50_b03",
+      "dimensions": "50x50",
+      "profile": "tard_med",
+      "sha256": "623eded297789c687962a1aea924ee9b210cdd57d3cf8e9714eecd466530f679"
+    },
+    {
+      "name": "base_c08_50x50_b04",
+      "base_id": "base_c08_50x50_b04",
+      "dimensions": "50x50",
+      "profile": "base",
+      "sha256": "6b21e4b0cea186366e4e4581e81382075c40737396866b1412468eeaa41f6daa"
+    },
+    {
+      "name": "base_c08_50x50_b04_btnk_high",
+      "base_id": "base_c08_50x50_b04",
+      "dimensions": "50x50",
+      "profile": "btnk_high",
+      "sha256": "683d4383a8cc1f11a2f522ddd2f37d24cc589929767e536365851cd6eeb5b86f"
+    },
+    {
+      "name": "base_c08_50x50_b04_nrg_strong",
+      "base_id": "base_c08_50x50_b04",
+      "dimensions": "50x50",
+      "profile": "nrg_strong",
+      "sha256": "1f8bc50ca730da22b4b7df2aa50367d11356e118878dbad4fec853f7755b63a2"
+    },
+    {
+      "name": "base_c08_50x50_b04_tard_high",
+      "base_id": "base_c08_50x50_b04",
+      "dimensions": "50x50",
+      "profile": "tard_high",
+      "sha256": "f2bec3592e4e7adb4b364e571b13dad82bd5268ae0aac790b605a76735d2ca08"
+    },
+    {
+      "name": "base_c08_50x50_b04_tard_med",
+      "base_id": "base_c08_50x50_b04",
+      "dimensions": "50x50",
+      "profile": "tard_med",
+      "sha256": "15fa0aa14c225e7485415bde632e9b735e35cf886da87cb5bf40930ce4e59979"
+    }
+  ],
+  "seeds": [
+    100,
+    200,
+    300
+  ],
+  "methods": [
+    "cut_300",
+    "cut_600",
+    "cut_900",
+    "cut_1200",
+    "cut_1800",
+    "passive",
+    "moead_blmr_scaled",
+    "explorer_solo",
+    "moead"
+  ],
+  "budget": 3000,
+  "population_size": 30,
+  "block_size": 50,
+  "cuts": [
+    300,
+    600,
+    900,
+    1200,
+    1800
+  ],
+  "full_design": true,
+  "decision_rule": "Fixed before running. Scores are mean HV over seeds per instance, then equal instance weights. (1) The best fixed cut is the cut_X with the highest development mean. (2) A size-adaptive rule picks, for each instance dimension, the cut with the highest mean on that dimension. Both rules are scored out of sample by leave-one-base-out: the cut(s) are chosen without the held-out base instance and its profiles, then scored on them. The size-adaptive rule is adopted only if its leave-one-base-out advantage over the fixed rule has a base-clustered bootstrap 95% interval above zero; otherwise the best fixed cut is selected. (3) The 600 FE cut is called justified if cut_600 is the best fixed cut or the clustered interval of best fixed cut minus cut_600 includes zero. Comparisons with the scaled-UCB pair, the pair without cut and the individuals are descriptive here; they are decided in the confirmation phase.",
+  "source_sha256": {
+    "src/mojssp/__init__.py": "938c9a287ec41c4faa90a03e0e0e9fa3f71bae547c6f118c4644902f186b8acd",
+    "src/mojssp/algorithm_contract.py": "9b29b0eef1e6257708943ab06fac7f75b3ca70841a635dd65dd7d628edb6883f",
+    "src/mojssp/archive_injection.py": "0b453e494296617c0d9d80f74c6b9e6601618065478e5b4cb0e8ddae0cc6cf14",
+    "src/mojssp/arms.py": "3d8ec0941ff5ca2ff17aefb0f40a1de9eeb7484c5ac324e3bcce361b3eca6fe0",
+    "src/mojssp/change_detection.py": "4890f2d05b9a4b500e622c1760f8a08be59e146cf69592d54e6476cf5f8d0028",
+    "src/mojssp/contribution_report.py": "8d44ffc40a8a5032247761b7750c291f18c4eca3509db984b65290a373d7fb94",
+    "src/mojssp/cooperation.py": "961bd8879abdae23b112052d85c8036aa089c476359f5d5bad3c51485389c6c2",
+    "src/mojssp/critical_path.py": "2cd7c97a64acbdd8348d6e39860536e2f70cf884f8e3dab305b45a9805f2dcd8",
+    "src/mojssp/curve_prediction.py": "43248e5288bb2bc3a345182546480c0418bd6277fea1739f58a3854b8b1c51ba",
+    "src/mojssp/decoder.py": "99b53d508951b27718e9ed3c96c8d3adfd159d69b423494837ead6aa48097914",
+    "src/mojssp/dmab.py": "011e2b346f11123ca4ec5b2948021b1f8ade970afe320a3e627c193a0b0f5099",
+    "src/mojssp/dominance.py": "0f6e7c18caa8742501ae2cca1bd264b7ba1abe714dec0eaa11470574b4c59508",
+    "src/mojssp/dynamic_budget.py": "651f9168e724869d7c4ae523d8e8d5f78555909f7ffa264f380bfed323e2d37b",
+    "src/mojssp/evaluator.py": "6faefc950cd0f479bdadaf792401614562ec8a421fd2b95d7f689289c2d88591",
+    "src/mojssp/fixed_budget.py": "f888eadeaef651e33f353dd2ba6145089ac5cb7564ce46f7963aa5fc71368fc4",
+    "src/mojssp/hypervolume.py": "29eb947ba639878ad9fe97ab33c93c82bfe504fef94e7652fee4fcdab8b5e7fc",
+    "src/mojssp/igd.py": "7261db82f3dc23f358f6c3e53399f6ee56cc14938b25315c481e6037fee81f30",
+    "src/mojssp/instance.py": "be5b457d0e6f2907a47e887cafe865be594e1c3edd47cad99a52098dc44f1982",
+    "src/mojssp/io.py": "baa123f152c4fdc46ee9c05b58d6e54e4946718b5912f64f8b6eb50aba807fca",
+    "src/mojssp/job.py": "bcafe025eb733ed20630e01038a0c29250843fb445e9dc67f2298e9dc10e8ea7",
+    "src/mojssp/local_search.py": "2ada1b9e93d5decb3feef6458af1828f156c27866f6a6201148ce16200be8141",
+    "src/mojssp/mode.py": "71809460b27fa73fa7c974b20fcec716fa8ed8d93c96ba8479719ef97d1337cd",
+    "src/mojssp/moead.py": "2b255aa71044544e43ea38b56f8afb40562e18d3a59ed0fb401382cdfc5981fa",
+    "src/mojssp/mopso.py": "71be976773d2aea9ac7d563eed6bd4b983d79cfa416cd268471c55903562af50",
+    "src/mojssp/normalization.py": "a8ee007482647562f4180c37bcc5e7b1d87f1bcbd634eff5d125216814812425",
+    "src/mojssp/nsga2.py": "ab972b335676e57e68e23c1a4882bf24b3b1bc83f46263fe27524323eb6290c2",
+    "src/mojssp/nsga2_ls.py": "48be8d1184bd0922310a6329662d27af7293b1f7e8caf86b783ef8bd3cb93729",
+    "src/mojssp/operation.py": "2375872b7c960a903b2f939276ba9167618c94463a6f2c79c7541dfe759510b5",
+    "src/mojssp/orchestrator.py": "bc480b3abe3ea526e37271f2e87bc6b9bc6865936a3809174e80a32594efaddb",
+    "src/mojssp/page_hinkley.py": "e0fa8323dec4c495c36a71c7af7562a56f3a7e79a12f3ec5e28f54524c5d712d",
+    "src/mojssp/pareto_archive.py": "88d648cfa44bf5fbe90bab0aa6be79b556b9776717d83d6529326b2c5a5e6318",
+    "src/mojssp/portfolio.py": "57ffd3bb86363f881ca8f517fc0b38409600f24e73f923f6fb8642af3e422bf0",
+    "src/mojssp/project_paths.py": "64b86ed73fae9d6ad5fbfa261d7123b935919292ff538a073d7380a01fd3c0fb",
+    "src/mojssp/provenance.py": "25785185fa23a80955305c8c2311f4d3afbb64578dea531b33d67bfc88462053",
+    "src/mojssp/regional_explorer.py": "9bde2fc3919021ea7d9ca9b17f70b938452ea4fec7725b987f3337926317b141",
+    "src/mojssp/regional_injection.py": "c8a9689fb73b65918c990feeec3b5a2e2b776918c2e07cdc1bccd3f489de84d5",
+    "src/mojssp/regional_portfolio.py": "11a6cb08e34be1d1b918eb5ade8b3779e3be8d398fcb01c5302cc37e830ed2be",
+    "src/mojssp/reward.py": "92df551224b1a7bdd9b2ffbb3f138e8944705820be3a65cc32923f6e26be6785",
+    "src/mojssp/runner.py": "375ad8f7d60933ec2a2c60653997e1f869d5da27d41abb9d50d13072e0efc6f4",
+    "src/mojssp/schedule.py": "d172a77a5e3e887f0dacb93104ce2cbb2ae9bede3edfa77929aca1e4e00a95b8",
+    "src/mojssp/schedule_validator.py": "5ebccb1a86e571e8e007e21f14cea8e255889e113072344a0c211faccde81cd4",
+    "src/mojssp/selectors.py": "a1d9e494ac4e3bc3da533574ffedf4a3008058032c058690f64b50c9b26ce62b",
+    "src/mojssp/shared_credit.py": "bcccef5cc20630da490a0982d347ef57e845230976351a995465bc319d86e9ba",
+    "src/mojssp/solution.py": "52df758611f9f4ee4c58f72b1b975948223a997fac021334863048185e475a45",
+    "src/mojssp/spea2.py": "99a25b29ccb35b64cdefd6828c1f5de80aa75dbf1026629b951d49f9d7aa506e",
+    "src/mojssp/subproblem_injection.py": "23164007b322128b4a43f24d5b335597237ba0792daac152b63dd630a4c1b4d0",
+    "src/mojssp/subproblem_replay.py": "5a35c4d187130c8df1281c5bb4615bf7e50d61de48886d49b97886e809df445e",
+    "src/mojssp/validator.py": "13778e573b0a19df347c2802bb7cb7d56eb8c290d654f46ac611ee0ea175b7d6",
+    "scripts/analyze_generated_instances.py": "28b4fd8fbdd55b747838d19e736ee5f913498c80f440dc5d38b606b16f042058",
+    "scripts/analyze_instance_diversity.py": "7850a6e4c87c96b5e9002f91941b33141a9d5ec9e49f6edb103342c8c6f4d9d3",
+    "scripts/analyze_phase2_budget_diagnostic.py": "6cfdf290279c9aaaff5157d1ba429fc9a53677dce9c963b1fb0f6d2e79889681",
+    "scripts/analyze_phase2_pilot.py": "142176417deea5bbb240be3e62f06257bd3aa3bcaa2975bf254cc53b0ba3af7b",
+    "scripts/analyze_pilot_results.py": "1a1f3b2bc1d28619a119d4895d58c338dfc197b58bec5fc6cd8b3cdbe7dd9fbd",
+    "scripts/analyze_portfolio_loop.py": "a3048ddab722c80d43180d6a17fb0efd661fed99765ccd6d72b32921095e864d",
+    "scripts/audit_f864_diversity.py": "2ce8869fee3e0680d0c52d379ed890373a86129248a3fe737d687cd04f22f500",
+    "scripts/audit_phase2_closure.py": "aa1e962813a5167e6811275d3a850c13e2c823a048635dc8356be4afadf6315d",
+    "scripts/audit_portfolio_loop.py": "facab2433f0fa80944db81a82777f65fd6a3b196ae1264f6b2a8fce7972141d6",
+    "scripts/compare_budget_signals.py": "adeaaebbd68fd5e706bfe37d595db25ad80d2b6d10add1f44f86f16f7fab7d25",
+    "scripts/demo_adaptive_portfolio.py": "da6549a484d9a8136a5eb9d7a0649f709e8d7416bbeed6a3551d80d11378bd18",
+    "scripts/demo_nsga2.py": "bb4b9f58691fc6dcc1ce2a9e9ff6ea53de352d033dbf3c83784e8857e15ab367",
+    "scripts/derive_budget_weights.py": "4fdddcb4b5a264d7656bd724469c21109eca93d52d6cfefd172b9bd4bb943dff",
+    "scripts/diagnose_dmab_sensitivity.py": "70e5d41daa51f4c2d86acf3b39a1ab959e0cd27d474e8232cbf327283571f0c8",
+    "scripts/diagnose_dmab_window_horizon.py": "ea46aa34857442df45f41472a4dbb55ba382fcc644e3c26ba0d33478e69411fb",
+    "scripts/generate_analysis_plots.py": "b3c1739abfcc2ea5899367037b35a29a2ecb18fd7f87cd02e4fe01ff71f574ff",
+    "scripts/generate_mojssp_instances.py": "ba8e7826415fbb11c93b55dfc0afa62531a995cdd8867cfce241d93e6ec63c75",
+    "scripts/pilot_analysis.py": "2046e443b3565e180ce23fc48f0ae85858bd3860109d1067ccc9f7d380941965",
+    "scripts/plot_portfolio_loop.py": "f8f02ce2a7cd109586c66fb8725deb388bdcfaaa589c35633a64b3562ce9a2ba",
+    "scripts/report_portfolio_contribution.py": "085978ef847053831ef8d586616f40d21c4bc919b7c3bc39363065607e5b91a5",
+    "scripts/report_portfolio_loop.py": "9e580f550f386d8249381cb5186dd72f5542d5fa756f92afc028e475549fb331",
+    "scripts/reproduce_portfolio_baseline.py": "2001ef883668fe4569969161adc5b72d710185d61b4f8517b9a07d0e3a5f053e",
+    "scripts/run_allocation_variants_pilot.py": "da47e140abafc168977755cf93191f1e9ef0faea71f00c2e0b833ac036c8b503",
+    "scripts/run_archive_injection_pilot.py": "54ad4dbc20d8764cc0d7be03d62b61bce2bfa0735d710b7291108f15757c7e71",
+    "scripts/run_blmr_injection_pilot.py": "bdac1daab006290cda99ab845b9245e06abafbbccd1d38ce73aadf2332f86fc2",
+    "scripts/run_calibration_f83.py": "8a53610008a0d61c129b0b465985d13faf662d2fad3257baf004b55efc464769",
+    "scripts/run_composition_pilot.py": "4ae6d98466afa0f189def06a291c42d2d2e5bcf8966ec5657418fba22bfec5c3",
+    "scripts/run_cut_sweep.py": "e78706db191fee7f315849ce53c76ff3bbe410ef3c5462428c056567fc171da3",
+    "scripts/run_dynamic_pilot.py": "590d102d864fcdb2c67780b1b774ebd71227d64930748819ec07f719f8ea7b1f",
+    "scripts/run_experiment.py": "ad4664df2cad47ba8bcfe88a0e4d431411b88e833d5c15b61b5cca5b724c8f46",
+    "scripts/run_f85_experiment.py": "c99acb36047261090bb655ca7727462518e2bf397f3393d7a091d3bf256839df",
+    "scripts/run_f86_experiment.py": "e7868123eac5da9c6ab7542b0598dd9c6c96ff9a60ea79936e8f41b24563bac8",
+    "scripts/run_holdout_evaluation.py": "1a9cd22b0c0c35522f074e1436fd76a7478729eaa802cb59de3b093df811929d",
+    "scripts/run_holdout_policy_comparison.py": "3e8d01fae287a239f2873d7f51e8cc3759ad8753be3bb69baa075144b4a757e2",
+    "scripts/run_instance.py": "ddb10b9e2a9961ced61492a61bb207482ca481efc90c296a8f5028c7a029b14e",
+    "scripts/run_instance_probe_selection.py": "64421930f0beac93365da1951d3cb660d8d4de7a4052620d2a0483f42f47551c",
+    "scripts/run_instance_selection.py": "5f0788b59f1d869a33c4346f43fe2540d054f6972ce34a315de588f6ffcd5a1a",
+    "scripts/run_multiea_pilot.py": "e8a38305668f9833329605ecbb2d83b2afe57e05ff742855de99d8f9d651b929",
+    "scripts/run_pair_pilot.py": "6e97692949cd8d1fe884f3091478b48c6ff7b58a64004904680f2b55e6751c44",
+    "scripts/run_phase2_budget_diagnostic.py": "6b90e38339ce32bac44ea5d0a3e581f0405233a4518eed6c95fd658cd039c42b",
+    "scripts/run_phase2_pilot.py": "f792fd8d2af0b2b53e44e80c543182c8919f4f908250f95e92a1a2e67f820ab1",
+    "scripts/run_pilot_125_experiments.py": "664e495e65db92b3135fb3d475d317221b2b0152e2b81486feba11d4192afaae",
+    "scripts/run_portfolio_campaign.py": "7b92198c136dddb3e5045614be25016a2fdd167c91227a945d6fa4f1b5c48666",
+    "scripts/run_portfolio_loop.py": "6b9d502fd21d73361a3563b2ec3c3514de89d914856729d787a99712fbbdf669",
+    "scripts/run_psmb.py": "ab1461197cbe74bf14754e1d1f610cb4697fa0b43f3ef4a465191bd20bd1061e",
+    "scripts/run_regional_budget_pilot.py": "e50fec22e8e229668e364241df5595b0f946659edd25bea570b1e61f9c08cc9c",
+    "scripts/run_regional_composition_comparison.py": "69ffad59fc2118c63a39643c59a11ef2220be872c4982ec423f73af167f2f441",
+    "scripts/run_regional_cooperation_pilot.py": "0a6961a12e498ca9da3a9b26063755d58e42a16b8d858eab72d395bd1da46dec",
+    "scripts/run_regional_experiment.py": "316e0c4122e40fbb01f93e0c97acc6a010587e5d093cf9b53d1ef4cab544e2ce",
+    "scripts/run_regional_explorer_controls.py": "7ea9bb12f202b5279514407eddd2b8def17d7e46fa4560700a24c19eee3b75cc",
+    "scripts/run_regional_policy_comparison.py": "54a8e75ba720a1efca4b0af404f2887e34804c6073f20dca63e78629663160a6",
+    "scripts/run_regional_policy_pilot.py": "a89112016cbc888f431a66fa935fff3d3f77fcde42187dbb0c7b1baee2ef0393",
+    "scripts/run_regional_reserve_pilot.py": "d699f44502bac02ce117576f3df56305c412aead18950175e4493036e76045c8",
+    "scripts/run_shared_credit_pilot.py": "137ab45c52bf35d25e4c28daa448d87fa3225fc177bd0027ece5a8e3ad89a973",
+    "scripts/run_stagnation_pilot.py": "f8b37d93e07fe246c30a76963603e6babf3acfc553496b02adb0c09dcb79b722",
+    "scripts/run_subproblem_injection_pilot.py": "f6bf4d2159b7eaebe3a3c023d9a5f3c3aee5478ee280ef8dbfadd2de7cee769a",
+    "scripts/run_subproblem_replay_pilot.py": "c4a8505c43f471462e954a722d8938825c8dbdf7fe6f36e7f00af64e43ced0cf",
+    "scripts/run_weighted_pilot.py": "7458076df136d32bf05659ca61142f3e120cb16e564e0a80f5dac5300ea9e50e",
+    "scripts/smoke_multi_instance.py": "f0637e513c973f100a3d245daf6294f2a1ae0d4ad63f692afeeb533ddf2cdcea",
+    "scripts/smoke_test_generated_instances.py": "109ad79230c078e26b32ab9e64994a77e8ac183b71b35278539f840492cd743c",
+    "scripts/validate_neutral_warmup.py": "9599a6cb4ffd2cbf9c7667472a64e1866d624b995aa439c6133810285c136beb",
+    "scripts/validate_portfolio_loop.py": "2884270236cd7481ea80d54f025c8e880d8d219703ccb73ded06366f1c6fe85e",
+    "scripts/validate_regional_expansion.py": "b32caac46315eee0c995edd54b3acdff43ae461f5d70ec37ebbf555f2b723266",
+    "scripts/verify_portfolio_closure.py": "184da846b35c7c9dbe31aa6b5d43fbaf4a923b31607267aeb486f17cdaf6d9a9"
+  },
+  "scope": "Development instances only; the 80 holdout_test instances are not used"
+}

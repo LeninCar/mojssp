@@ -1,0 +1,52 @@
+Barrido del corte MOEA/D -> BLMR exclusivo (fase develop)
+=========================================================
+
+Diseño: 120 instancias de desarrollo de expanded_200 (24 bases x 5 perfiles,
+8 dimensiones), semillas 100, 200 y 300, 3000 FE. 3240 corridas, commit
+100f740. El holdout de 80 instancias no se usó.
+
+HV medio en desarrollo
+  cut_900            0.9943
+  cut_600 (PS-MB)    0.9942
+  cut_1200           0.9919
+  cut_1800           0.9917
+  cut_300            0.9912
+  UCB escalado       0.9889
+  pareja sin corte   0.9868
+  BLMR solo          0.9801
+  MOEA/D solo        0.9786
+
+Lo que dice la regla fijada antes de correr
+1. Mejor corte fijo: 900, pero empatado con 600 (+0.0001, IC agrupado
+   [-0.0030; +0.0033], 65 a 55). El corte de 600 queda justificado.
+2. Cortes 1200, 1800 y 300 quedan por debajo; 1200 con IC agrupado
+   sobre cero. Cortar demasiado pronto o demasiado tarde pierde HV.
+3. La regla por tamaño se adopta: fuera de muestra (dejando fuera una base)
+   supera al corte fijo con IC agrupado [+0.0024; +0.0060]. Cortes elegidos:
+   5x5 1800, 10x10 900, 10x20 300, 20x10 300, 20x20 600, 30x20 900,
+   40x20 1200, 50x50 900.
+
+Matices (análisis adicional, no forma parte de la regla)
+- La ventaja del adaptativo contra el fijo está inflada: 600 y 900 están
+  empatados, y al dejar fuera una base el fijo salta entre ambos hacia el que
+  peor le va a esa base (HV fijo fuera de muestra 0.9918, menor que 0.9942).
+- Contra el PS-MB congelado (cut_600) la ventaja fuera de muestra del
+  adaptativo es pequeña: +0.0018, IC agrupado [+0.0001; +0.0034], gana en 57
+  de 120 instancias. Contra cut_900: +0.0017, IC [-0.0013; +0.0043].
+- Los patrones por tamaño son de 3 bases por dimensión; solo 5x5 (cortes
+  tardíos) y 20x10/10x20 (corte temprano) son algo consistentes.
+- En desarrollo cut_600 supera al UCB escalado: +0.0053, IC agrupado
+  [+0.0012; +0.0097]. En el holdout estaban empatados (+0.0025).
+- cut_600 supera a la pareja sin corte (+0.0073) y a BLMR solo (+0.0141).
+
+Conclusión
+El corte de 600 FE está justificado: es tan bueno como el mejor corte fijo y
+mejor que cortes más tempranos o más tardíos. El corte por tamaño solo
+promete unos +0.002 de HV y, por la regla, necesita la fase confirm en
+instancias nuevas antes de reemplazar al PS-MB. Si no se corre confirm, el
+método principal sigue siendo el PS-MB y el corte por tamaño se reporta como
+trabajo futuro.
+
+Archivos: decision.json (regla y números), summary.csv, breakdown.csv (por
+dimensión), comparisons.csv, by_instance.csv, runs.csv, compact_runs.jsonl.gz
+(curvas, brazos por bloque y frentes de cada corrida).

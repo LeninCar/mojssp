@@ -113,10 +113,14 @@ ejecutarlo desde `git checkout holdout-v2-freeze`. Con `--resume` las corridas
 ya guardadas se reutilizan; sin las carpetas `runs/` locales, se vuelven a
 calcular.
 
-## Barrido del corte (en curso)
+## Barrido del corte
 
 El corte en 600 FE no se optimizó. `scripts/run_cut_sweep.py` lo estudia sin
-tocar el holdout ya usado:
+tocar el holdout ya usado. Resultado de `develop`: el corte de 600 queda
+justificado (empata con 900, el mejor fijo, y supera a 300, 1200 y 1800). Un
+corte por tamaño gana fuera de muestra unos +0,002 de HV sobre el PS-MB; solo
+lo reemplazaría si `confirm` lo valida en instancias nuevas. Detalle en
+`results/experiments/cut_sweep_development_20261028/interpretacion.txt`.
 
 1. `develop`: cortes en 300, 600, 900, 1200 y 1800 FE, la pareja sin corte, el
    UCB escalado, BLMR solo y MOEA/D solo en las 120 instancias de desarrollo de
@@ -131,3 +135,15 @@ $env:PYTHONPATH = "src;scripts"
 ```
 
 Exige el código commiteado; `--resume` continúa una corrida interrumpida.
+
+## Corridas compactas
+
+Las carpetas `runs/` (varios GB) no están en git. `scripts/export_compact_runs.py`
+guarda en `compact_runs.jsonl.gz` de cada campaña final (holdout, comparación de
+políticas, barrido) la curva de HV, el brazo de cada bloque, el reparto y el
+frente de cada corrida, suficiente para rehacer figuras sin los `runs/`.
+
+```python
+import gzip, json
+runs = [json.loads(l) for l in gzip.open('results/experiments/holdout_early_moead_600_20261024/compact_runs.jsonl.gz', 'rt')]
+```

@@ -1,0 +1,164 @@
+{
+  "full_design": true,
+  "decision_rule": "Fixed before running. Scores are mean HV over seeds per instance, then equal instance weights. (1) The best fixed cut is the cut_X with the highest development mean. (2) A size-adaptive rule picks, for each instance dimension, the cut with the highest mean on that dimension. Both rules are scored out of sample by leave-one-base-out: the cut(s) are chosen without the held-out base instance and its profiles, then scored on them. The size-adaptive rule is adopted only if its leave-one-base-out advantage over the fixed rule has a base-clustered bootstrap 95% interval above zero; otherwise the best fixed cut is selected. (3) The 600 FE cut is called justified if cut_600 is the best fixed cut or the clustered interval of best fixed cut minus cut_600 includes zero. Comparisons with the scaled-UCB pair, the pair without cut and the individuals are descriptive here; they are decided in the confirmation phase.",
+  "means": {
+    "cut_300": 0.9912158659711718,
+    "cut_600": 0.9941883499207835,
+    "cut_900": 0.9942917960525274,
+    "cut_1200": 0.9919303120126493,
+    "cut_1800": 0.991656391411254,
+    "passive": 0.9868498860547089,
+    "moead_blmr_scaled": 0.9888972912920871,
+    "explorer_solo": 0.9801141467601201,
+    "moead": 0.9786141593752409
+  },
+  "best_fixed_cut": "cut_900",
+  "size_adaptive_cuts": {
+    "5x5": 1800,
+    "10x10": 900,
+    "10x20": 300,
+    "20x10": 300,
+    "20x20": 600,
+    "30x20": 900,
+    "40x20": 1200,
+    "50x50": 900
+  },
+  "leave_one_base_out": {
+    "fixed_mean": 0.9917940647373269,
+    "adaptive_mean": 0.9960123384425086,
+    "adaptive_minus_fixed_cluster95": [
+      0.002447199800808422,
+      0.006041386867321156
+    ]
+  },
+  "adaptive_adopted": true,
+  "cut_600_justified": true,
+  "versus_best_fixed": {
+    "cut_300": {
+      "mean_difference": 0.003075930081355609,
+      "bootstrap95": [
+        -0.0009882763943714157,
+        0.00688821151115364
+      ],
+      "cluster_bootstrap95": [
+        -0.001535835126915433,
+        0.007004108639988111
+      ],
+      "wins": 79,
+      "losses": 41,
+      "wilcoxon_p": 0.005592502883657381
+    },
+    "cut_600": {
+      "mean_difference": 0.00010344613174389413,
+      "bootstrap95": [
+        -0.0031928196642239757,
+        0.0033053848554722887
+      ],
+      "cluster_bootstrap95": [
+        -0.0029598751858691996,
+        0.0033053734283048698
+      ],
+      "wins": 65,
+      "losses": 55,
+      "wilcoxon_p": 0.46979793063531305
+    },
+    "cut_1200": {
+      "mean_difference": 0.0023614840398781174,
+      "bootstrap95": [
+        -0.0008494263992400582,
+        0.0056478647961604594
+      ],
+      "cluster_bootstrap95": [
+        0.00038694039473294984,
+        0.004519287857268128
+      ],
+      "wins": 61,
+      "losses": 59,
+      "wilcoxon_p": 0.22731714850601548
+    },
+    "cut_1800": {
+      "mean_difference": 0.0026354046412735543,
+      "bootstrap95": [
+        -0.00047418608922082645,
+        0.0058505480520825255
+      ],
+      "cluster_bootstrap95": [
+        -0.0004707916081247316,
+        0.005933430752596787
+      ],
+      "wins": 64,
+      "losses": 56,
+      "wilcoxon_p": 0.12616046792510485
+    },
+    "passive": {
+      "mean_difference": 0.007441909997818339,
+      "bootstrap95": [
+        0.004078078938421219,
+        0.010840507233954225
+      ],
+      "cluster_bootstrap95": [
+        0.0034761066628136925,
+        0.01184198015492649
+      ],
+      "wins": 78,
+      "losses": 42,
+      "wilcoxon_p": 3.056175631308481e-05
+    },
+    "moead_blmr_scaled": {
+      "mean_difference": 0.005394504760440144,
+      "bootstrap95": [
+        0.0013665778382783765,
+        0.00955939241638289
+      ],
+      "cluster_bootstrap95": [
+        0.0005967534610892538,
+        0.010464952490909379
+      ],
+      "wins": 65,
+      "losses": 55,
+      "wilcoxon_p": 0.043471831275292444
+    },
+    "explorer_solo": {
+      "mean_difference": 0.014177649292407541,
+      "bootstrap95": [
+        0.009918984018124914,
+        0.018623574167031292
+      ],
+      "cluster_bootstrap95": [
+        0.009723901819792427,
+        0.019045197483286008
+      ],
+      "wins": 93,
+      "losses": 27,
+      "wilcoxon_p": 7.664541042150211e-10
+    },
+    "moead": {
+      "mean_difference": 0.015677636677286434,
+      "bootstrap95": [
+        0.009937460484820693,
+        0.021636414371122677
+      ],
+      "cluster_bootstrap95": [
+        0.004734343515918546,
+        0.027534197427136475
+      ],
+      "wins": 65,
+      "losses": 55,
+      "wilcoxon_p": 0.00012741331593263291
+    }
+  },
+  "selected": {
+    "kind": "size_adaptive",
+    "cut_by_dimension": {
+      "5x5": 1800,
+      "10x10": 900,
+      "10x20": 300,
+      "20x10": 300,
+      "20x20": 600,
+      "30x20": 900,
+      "40x20": 1200,
+      "50x50": 900
+    }
+  },
+  "frozen_commit": "100f7402c7111dead56ff20e7f52fb6fa21e0003"
+}
