@@ -1,4 +1,5 @@
 """Reproducibility and budget checks shared by the four portfolio policies."""
+
 from pathlib import Path
 
 import pytest
@@ -10,9 +11,9 @@ from mojssp.portfolio.selectors import POLICIES, make_selector
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.mark.parametrize('policy', POLICIES)
+@pytest.mark.parametrize("policy", POLICIES)
 def test_same_seed_preserves_front_and_allocation_with_partial_final_block(policy):
-    instance = load_dzn(ROOT / 'data/validation/small_3x3.dzn')
+    instance = load_dzn(ROOT / "data/validation/small_3x3.dzn")
     arguments = dict(seed=42, total_budget=241, block_size=20, population_size=10, policy=policy)
     first, first_history = run_phase2_portfolio_experiment(instance, **arguments)
     second, second_history = run_phase2_portfolio_experiment(instance, **arguments)
@@ -27,4 +28,4 @@ def test_same_seed_preserves_front_and_allocation_with_partial_final_block(polic
 
 def test_unknown_policy_is_rejected():
     with pytest.raises(ValueError):
-        make_selector('unknown', ['MOEA/D', 'NSGA-II', 'SPEA2'])
+        make_selector("unknown", ["MOEA/D", "NSGA-II", "SPEA2"])

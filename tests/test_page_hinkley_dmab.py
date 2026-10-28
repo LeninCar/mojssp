@@ -279,7 +279,6 @@ class TestPageHinkleyDMABSelector(unittest.TestCase):
         self.assertAlmostEqual(selector.detector.alarm_statistic, 0.0)
         self.assertFalse(selector.detector.change_detected)
 
-
     def test_manual_reset(self) -> None:
         """Verify manual reset() completely restores initial state."""
         selector = PageHinkleyDMABSelector(self.arm_names, seed=42)
@@ -342,7 +341,5 @@ class TestPageHinkleyDMABSelector(unittest.TestCase):
         self.assertEqual(selector.is_cycle_probe_complete, False)
 
 
-
 if __name__ == "__main__":
     unittest.main()
-

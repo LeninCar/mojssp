@@ -79,8 +79,12 @@ class TestParetoArchive(unittest.TestCase):
 
         self.sol_a, self.sched_a, self.obj_a = make_dummy_data((0,), (1,), 10, 2, 50.0)
         self.sol_b, self.sched_b, self.obj_b = make_dummy_data((0,), (2,), 15, 5, 80.0)  # Dominated by A
-        self.sol_c, self.sched_c, self.obj_c = make_dummy_data((1,), (1,), 6, 4, 90.0)   # Incomparable with A and D
-        self.sol_d, self.sched_d, self.obj_d = make_dummy_data((1,), (2,), 7, 1, 40.0)   # Dominates A, incomparable with C
+        self.sol_c, self.sched_c, self.obj_c = make_dummy_data(
+            (1,), (1,), 6, 4, 90.0
+        )  # Incomparable with A and D
+        self.sol_d, self.sched_d, self.obj_d = make_dummy_data(
+            (1,), (2,), 7, 1, 40.0
+        )  # Dominates A, incomparable with C
 
         # Different genotype from A, but identical objectives to A
         self.sol_a_alt, self.sched_a_alt, self.obj_a_alt = make_dummy_data((0,), (3,), 10, 2, 50.0)
@@ -161,11 +165,13 @@ class TestParetoArchive(unittest.TestCase):
     def test_batch_update_and_successive_additions(self) -> None:
         archive = ParetoArchive()
         # Update with multiple candidates: A, B (dominated), C (non-dominated)
-        count = archive.update([
-            (self.sol_a, self.sched_a, self.obj_a),
-            (self.sol_b, self.sched_b, self.obj_b),
-            (self.sol_c, self.sched_c, self.obj_c),
-        ])
+        count = archive.update(
+            [
+                (self.sol_a, self.sched_a, self.obj_a),
+                (self.sol_b, self.sched_b, self.obj_b),
+                (self.sol_c, self.sched_c, self.obj_c),
+            ]
+        )
         self.assertEqual(count, 2)  # A and C accepted, B rejected
         self.assertEqual(len(archive), 2)
 
@@ -224,11 +230,13 @@ class TestNSGA2IntegrationWithDominanceAndArchive(unittest.TestCase):
         # Feed NSGA-II results into ParetoArchive
         archive = ParetoArchive()
         added_count = archive.update(
-            list(zip(
-                result.non_dominated_solutions,
-                result.non_dominated_schedules,
-                result.non_dominated_objectives,
-            ))
+            list(
+                zip(
+                    result.non_dominated_solutions,
+                    result.non_dominated_schedules,
+                    result.non_dominated_objectives,
+                )
+            )
         )
         self.assertGreater(added_count, 0)
         self.assertEqual(len(archive), added_count)

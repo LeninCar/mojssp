@@ -21,7 +21,6 @@ from mojssp import (
 )
 
 
-
 class TestDecoder(unittest.TestCase):
     """Test suite for the Serial List-Based Decoder."""
 
@@ -40,9 +39,7 @@ class TestDecoder(unittest.TestCase):
         )
 
         self.mode0_1_1 = ProcessingMode(mode_id=1, duration=4, energy=6.0)
-        self.op0_1 = Operation(
-            job_id=0, op_id=1, machine_id=1, modes=(self.mode0_1_1,), release_date=0
-        )
+        self.op0_1 = Operation(job_id=0, op_id=1, machine_id=1, modes=(self.mode0_1_1,), release_date=0)
 
         self.job0 = Job(job_id=0, operations=(self.op0_0, self.op0_1), due_date=15)
 
@@ -53,9 +50,7 @@ class TestDecoder(unittest.TestCase):
         )
 
         self.mode1_1_1 = ProcessingMode(mode_id=1, duration=2, energy=4.0)
-        self.op1_1 = Operation(
-            job_id=1, op_id=1, machine_id=0, modes=(self.mode1_1_1,), release_date=0
-        )
+        self.op1_1 = Operation(job_id=1, op_id=1, machine_id=0, modes=(self.mode1_1_1,), release_date=0)
 
         self.job1 = Job(job_id=1, operations=(self.op1_0, self.op1_1), due_date=15)
 
@@ -164,9 +159,7 @@ class TestDecoder(unittest.TestCase):
 
     def test_release_date_delay(self) -> None:
         # Create instance where op has a high release date
-        op_late = Operation(
-            job_id=0, op_id=0, machine_id=0, modes=(self.mode0_0_1,), release_date=10
-        )
+        op_late = Operation(job_id=0, op_id=0, machine_id=0, modes=(self.mode0_0_1,), release_date=10)
         job_late = Job(job_id=0, operations=(op_late,), due_date=20)
         inst_late = Instance(name="late", num_jobs=1, num_machines=1, jobs=(job_late,))
 

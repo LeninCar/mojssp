@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from mojssp.portfolio.page_hinkley import ClassicalUCB1Selector
 from mojssp.portfolio.dmab import DMABSelector, ArmStats
 
+
 class TestClassicalUCB1Selector(unittest.TestCase):
     def test_protocol_conformance(self):
         selector = ClassicalUCB1Selector(["A", "B", "C"], exploration_factor=0.07, seed=42)
@@ -45,6 +46,7 @@ class TestClassicalUCB1Selector(unittest.TestCase):
         selector.reset()
         self.assertEqual(selector.total_pulls, 0)
         self.assertFalse(selector.is_initial_probe_complete)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -95,9 +95,7 @@ def map_operation_to_sequence_index(
     try:
         k = job_ops.index(operation)
     except ValueError:
-        raise ValueError(
-            f"Operation {operation} not found in schedule for job {operation.job_id}."
-        )
+        raise ValueError(f"Operation {operation} not found in schedule for job {operation.job_id}.")
 
     occurrence = 0
     for idx, j in enumerate(sequence):
@@ -106,14 +104,10 @@ def map_operation_to_sequence_index(
                 return idx
             occurrence += 1
 
-    raise ValueError(
-        f"Operation {operation} (occurrence {k}) not found in sequence."
-    )
+    raise ValueError(f"Operation {operation} (occurrence {k}) not found in sequence.")
 
 
-def get_critical_sequence_indices(
-    schedule: Schedule, sequence: Tuple[int, ...]
-) -> Set[int]:
+def get_critical_sequence_indices(schedule: Schedule, sequence: Tuple[int, ...]) -> Set[int]:
     """Identify the set of positions in sequence that correspond to critical operations.
 
     Args:
@@ -140,4 +134,3 @@ def get_critical_sequence_indices(
         job_occurrence[j_id] += 1
 
     return critical_indices
-

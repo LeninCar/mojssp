@@ -84,9 +84,11 @@ class TestProvenanceObservability(unittest.TestCase):
             arm_name = "Arm_A"
             total_evaluations = 10
             is_completed = False
+
             def run(self, budget):
                 arch = ParetoArchive([entry1])
                 from mojssp.algorithms.algorithm_contract import AlgorithmBlockResult
+
                 return AlgorithmBlockResult(solutions=arch, evaluations_used=10, completed=False)
 
         obs_portfolio.register_arm(MockArm(), name="Arm_A")
@@ -115,9 +117,11 @@ class TestProvenanceObservability(unittest.TestCase):
             arm_name = "Arm_B"
             total_evaluations = 10
             is_completed = False
+
             def run(self, budget):
                 arch = ParetoArchive([entry2])
                 from mojssp.algorithms.algorithm_contract import AlgorithmBlockResult
+
                 return AlgorithmBlockResult(solutions=arch, evaluations_used=10, completed=False)
 
         obs_portfolio.register_arm(MockArmB(), name="Arm_B")
@@ -154,17 +158,25 @@ class TestProvenanceObservability(unittest.TestCase):
             arm_name = "NSGA-II"
             total_evaluations = 5
             is_completed = False
+
             def run(self, budget):
                 from mojssp.algorithms.algorithm_contract import AlgorithmBlockResult
-                return AlgorithmBlockResult(solutions=ParetoArchive([entry_a]), evaluations_used=5, completed=False)
+
+                return AlgorithmBlockResult(
+                    solutions=ParetoArchive([entry_a]), evaluations_used=5, completed=False
+                )
 
         class Arm2:
             arm_name = "SPEA2"
             total_evaluations = 5
             is_completed = False
+
             def run(self, budget):
                 from mojssp.algorithms.algorithm_contract import AlgorithmBlockResult
-                return AlgorithmBlockResult(solutions=ParetoArchive([entry_b]), evaluations_used=5, completed=False)
+
+                return AlgorithmBlockResult(
+                    solutions=ParetoArchive([entry_b]), evaluations_used=5, completed=False
+                )
 
         obs_portfolio.register_arm(Arm1())
         obs_portfolio.register_arm(Arm2())
@@ -193,7 +205,9 @@ class TestProvenanceObservability(unittest.TestCase):
         arm_n1 = NSGA2Arm(self.instance, population_size=10, seed=seed)
         arm_s1 = SPEA2Arm(self.instance, population_size=10, archive_size=10, seed=seed)
         p_std = Portfolio({"MOEA/D": arm_m1, "NSGA-II": arm_n1, "SPEA2": arm_s1})
-        dmab1 = SlidingWindowUCB(arm_names=list(p_std.arm_names), window_size=5, exploration_factor=0.07, seed=seed)
+        dmab1 = SlidingWindowUCB(
+            arm_names=list(p_std.arm_names), window_size=5, exploration_factor=0.07, seed=seed
+        )
         rt1 = HypervolumeRewardTracker(normalizer=self.normalizer)
         orch1 = AdaptivePortfolioOrchestrator(portfolio=p_std, dmab=dmab1, reward_tracker=rt1)
         res1 = orch1.run(total_budget=budget, block_size=block_size, neutral_warmup=True)
@@ -208,7 +222,9 @@ class TestProvenanceObservability(unittest.TestCase):
             tracker=tracker,
             enabled=True,
         )
-        dmab2 = SlidingWindowUCB(arm_names=list(p_obs.arm_names), window_size=5, exploration_factor=0.07, seed=seed)
+        dmab2 = SlidingWindowUCB(
+            arm_names=list(p_obs.arm_names), window_size=5, exploration_factor=0.07, seed=seed
+        )
         rt2 = HypervolumeRewardTracker(normalizer=self.normalizer)
         orch2 = AdaptivePortfolioOrchestrator(portfolio=p_obs, dmab=dmab2, reward_tracker=rt2)
         res2 = orch2.run(total_budget=budget, block_size=block_size, neutral_warmup=True)
@@ -236,8 +252,18 @@ class TestProvenanceObservability(unittest.TestCase):
         self.assertEqual(hv_after1, hv_after2)
 
         # 6. Final Global Archive size and exact objective coordinates
-        front1 = sorted([(e.objectives.makespan, e.objectives.tardiness, e.objectives.energy) for e in res1.global_archive.entries])
-        front2 = sorted([(e.objectives.makespan, e.objectives.tardiness, e.objectives.energy) for e in res2.global_archive.entries])
+        front1 = sorted(
+            [
+                (e.objectives.makespan, e.objectives.tardiness, e.objectives.energy)
+                for e in res1.global_archive.entries
+            ]
+        )
+        front2 = sorted(
+            [
+                (e.objectives.makespan, e.objectives.tardiness, e.objectives.energy)
+                for e in res2.global_archive.entries
+            ]
+        )
         self.assertEqual(front1, front2)
 
         # 7. Final genotypes set must be identical
@@ -261,7 +287,9 @@ class TestProvenanceObservability(unittest.TestCase):
         arm_n1 = NSGA2Arm(self.instance, population_size=10, seed=seed)
         arm_s1 = SPEA2Arm(self.instance, population_size=10, archive_size=10, seed=seed)
         p_std = Portfolio({"MOEA/D": arm_m1, "NSGA-II": arm_n1, "SPEA2": arm_s1})
-        dmab1 = SlidingWindowUCB(arm_names=list(p_std.arm_names), window_size=5, exploration_factor=0.07, seed=seed)
+        dmab1 = SlidingWindowUCB(
+            arm_names=list(p_std.arm_names), window_size=5, exploration_factor=0.07, seed=seed
+        )
         rt1 = HypervolumeRewardTracker(normalizer=self.normalizer)
         orch1 = AdaptivePortfolioOrchestrator(portfolio=p_std, dmab=dmab1, reward_tracker=rt1)
         res1 = orch1.run(total_budget=budget, block_size=block_size, neutral_warmup=True)
@@ -275,7 +303,9 @@ class TestProvenanceObservability(unittest.TestCase):
             tracker=None,
             enabled=False,
         )
-        dmab2 = SlidingWindowUCB(arm_names=list(p_dis.arm_names), window_size=5, exploration_factor=0.07, seed=seed)
+        dmab2 = SlidingWindowUCB(
+            arm_names=list(p_dis.arm_names), window_size=5, exploration_factor=0.07, seed=seed
+        )
         rt2 = HypervolumeRewardTracker(normalizer=self.normalizer)
         orch2 = AdaptivePortfolioOrchestrator(portfolio=p_dis, dmab=dmab2, reward_tracker=rt2)
         res2 = orch2.run(total_budget=budget, block_size=block_size, neutral_warmup=True)
@@ -285,8 +315,18 @@ class TestProvenanceObservability(unittest.TestCase):
         self.assertEqual([b.arm_name for b in res1.history], [b.arm_name for b in res2.history])
         self.assertEqual([b.reward for b in res1.history], [b.reward for b in res2.history])
         self.assertEqual([b.hv_after for b in res1.history], [b.hv_after for b in res2.history])
-        front1 = sorted([(e.objectives.makespan, e.objectives.tardiness, e.objectives.energy) for e in res1.global_archive.entries])
-        front2 = sorted([(e.objectives.makespan, e.objectives.tardiness, e.objectives.energy) for e in res2.global_archive.entries])
+        front1 = sorted(
+            [
+                (e.objectives.makespan, e.objectives.tardiness, e.objectives.energy)
+                for e in res1.global_archive.entries
+            ]
+        )
+        front2 = sorted(
+            [
+                (e.objectives.makespan, e.objectives.tardiness, e.objectives.energy)
+                for e in res2.global_archive.entries
+            ]
+        )
         self.assertEqual(front1, front2)
 
     def test_import_internal_errors_not_suppressed(self) -> None:

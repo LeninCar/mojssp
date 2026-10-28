@@ -230,9 +230,7 @@ def run_standalone_experiment(
 
     runtime_s = time.perf_counter() - t0
 
-    archive = (
-        last_block_res.solutions if last_block_res is not None else ParetoArchive()
-    )
+    archive = last_block_res.solutions if last_block_res is not None else ParetoArchive()
     final_hv = compute_archive_hypervolume(archive, normalizer)
     front_coords = tuple(
         (float(e.objectives.makespan), float(e.objectives.tardiness), float(e.objectives.energy))
@@ -379,8 +377,8 @@ def run_phase2_portfolio_experiment(
     budget_shares=None,
     selected_arms=None,
     round_size: int = 300,
-    minimum_share: float = .1,
-    share_power: float = 1.,
+    minimum_share: float = 0.1,
+    share_power: float = 1.0,
     exclusive_arm=None,
     exclusive_after=None,
 ) -> Tuple[RunResult, Tuple[BlockExecutionRecord, ...]]:
@@ -410,22 +408,32 @@ def run_phase2_portfolio_experiment(
     Raises:
         ValueError: If policy is unknown, or budgets are non-positive.
     """
-    if policy not in ('adaptive', 'sw_ucb', 'uniform', 'scaled', 'ph', 'dmab_ph', 'ucb1', 'weighted', 'dynamic'):
-        raise ValueError(f'Unknown policy: {policy}')
-    canonical = ('MOEA/D', 'NSGA-II', 'SPEA2')
+    if policy not in (
+        "adaptive",
+        "sw_ucb",
+        "uniform",
+        "scaled",
+        "ph",
+        "dmab_ph",
+        "ucb1",
+        "weighted",
+        "dynamic",
+    ):
+        raise ValueError(f"Unknown policy: {policy}")
+    canonical = ("MOEA/D", "NSGA-II", "SPEA2")
     selected = canonical if selected_arms is None else tuple(selected_arms)
     if len(selected) < 2 or len(set(selected)) != len(selected) or not set(selected).issubset(canonical):
-        raise ValueError('Select two or three distinct supported algorithms')
-    if budget_shares is not None and policy != 'weighted':
-        raise ValueError('Budget shares apply only to the weighted policy')
+        raise ValueError("Select two or three distinct supported algorithms")
+    if budget_shares is not None and policy != "weighted":
+        raise ValueError("Budget shares apply only to the weighted policy")
     quotas = None
-    if policy == 'weighted':
+    if policy == "weighted":
         shares = budget_shares
         if shares is None or set(shares) != set(selected):
-            raise ValueError('Expected shares for every selected algorithm')
+            raise ValueError("Expected shares for every selected algorithm")
         quotas = evaluation_quotas(total_budget, shares)
         if any(value < population_size for value in quotas.values()):
-            raise ValueError('Each weighted quota must cover its full initial population')
+            raise ValueError("Each weighted quota must cover its full initial population")
 
     normalizer = ObjectiveNormalizer(compute_instance_bounds(instance))
 
@@ -436,37 +444,48 @@ def run_phase2_portfolio_experiment(
 
     arms: Dict[str, PortfolioArm] = {}
     for name in selected:
-        if name == 'MOEA/D':
+        if name == "MOEA/D":
             arms[name] = MOEADArm(instance, population_size=population_size, seed=seed_moead)
-        elif name == 'NSGA-II':
-            arms[name] = NSGA2Arm(instance, population_size=population_size, max_generations=None, seed=seed_nsga2)
+        elif name == "NSGA-II":
+            arms[name] = NSGA2Arm(
+                instance, population_size=population_size, max_generations=None, seed=seed_nsga2
+            )
         else:
-            arms[name] = SPEA2Arm(instance, population_size=population_size, archive_size=population_size, seed=seed_spea2)
+            arms[name] = SPEA2Arm(
+                instance, population_size=population_size, archive_size=population_size, seed=seed_spea2
+            )
     portfolio = Portfolio(arms)
     arm_names = list(arms.keys())
 
-    selector = make_selector('uniform' if policy in ('weighted','dynamic') else policy, arm_names, seed=seed, window_size=window_size,
-        exploration_factor=exploration_factor, delta=delta, threshold=threshold,
+    selector = make_selector(
+        "uniform" if policy in ("weighted", "dynamic") else policy,
+        arm_names,
+        seed=seed,
+        window_size=window_size,
+        exploration_factor=exploration_factor,
+        delta=delta,
+        threshold=threshold,
         min_instances=min_instances,
         feed_initial_probe_to_detector=feed_initial_probe_to_detector,
-        feed_reexploration_to_detector=feed_reexploration_to_detector)
+        feed_reexploration_to_detector=feed_reexploration_to_detector,
+    )
     labels = {
-        'adaptive': 'Adaptive Portfolio (DMAB)',
-        'sw_ucb': 'Adaptive Portfolio (DMAB)',
-        'uniform': 'Uniform Portfolio (Round-Robin)',
-        'scaled': 'Scaled UCB Portfolio',
-        'ph': 'Adaptive Portfolio (DMAB-PH)',
-        'dmab_ph': 'Adaptive Portfolio (DMAB-PH)',
-        'ucb1': 'Classical UCB1 Portfolio',
-        'weighted': 'Fixed Prior Weighted Portfolio',
-        'dynamic': 'Dynamic Round Budget Portfolio',
+        "adaptive": "Adaptive Portfolio (DMAB)",
+        "sw_ucb": "Adaptive Portfolio (DMAB)",
+        "uniform": "Uniform Portfolio (Round-Robin)",
+        "scaled": "Scaled UCB Portfolio",
+        "ph": "Adaptive Portfolio (DMAB-PH)",
+        "dmab_ph": "Adaptive Portfolio (DMAB-PH)",
+        "ucb1": "Classical UCB1 Portfolio",
+        "weighted": "Fixed Prior Weighted Portfolio",
+        "dynamic": "Dynamic Round Budget Portfolio",
     }
     algo_label = labels[policy]
     policy_label = policy
     if selected != canonical:
-        suffix = '_'.join(name.replace('/', '').replace('-', '') for name in selected)
-        policy_label += '_' + suffix
-        algo_label += ' [' + ', '.join(selected) + ']'
+        suffix = "_".join(name.replace("/", "").replace("-", "") for name in selected)
+        policy_label += "_" + suffix
+        algo_label += " [" + ", ".join(selected) + "]"
 
     reward_tracker = HypervolumeRewardTracker(normalizer=normalizer)
     orchestrator = AdaptivePortfolioOrchestrator(
@@ -476,15 +495,19 @@ def run_phase2_portfolio_experiment(
     )
 
     t0 = time.perf_counter()
-    if policy == 'dynamic':
+    if policy == "dynamic":
         from mojssp.portfolio.dynamic_budget import round_shares
+
         if not neutral_warmup:
-            raise ValueError('Dynamic rounds require neutral initialization')
-        initial = evaluation_quotas(min(round_size,total_budget), round_shares(dict.fromkeys(arm_names,0.),minimum_share))
+            raise ValueError("Dynamic rounds require neutral initialization")
+        initial = evaluation_quotas(
+            min(round_size, total_budget), round_shares(dict.fromkeys(arm_names, 0.0), minimum_share)
+        )
         if any(value < population_size for value in initial.values()):
-            raise ValueError('Initial round must cover each full population')
-        exec_res = orchestrator.run_dynamic_rounds(total_budget, block_size, round_size, minimum_share,
-                                                   share_power, exclusive_arm, exclusive_after)
+            raise ValueError("Initial round must cover each full population")
+        exec_res = orchestrator.run_dynamic_rounds(
+            total_budget, block_size, round_size, minimum_share, share_power, exclusive_arm, exclusive_after
+        )
     elif quotas is not None:
         exec_res = orchestrator.run_fixed_quotas(quotas, block_size, neutral_warmup)
     else:
@@ -572,76 +595,92 @@ def export_results_to_csv(
     runs_csv_path = raw_dir / "runs.csv"
     with open(runs_csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow([
-            "run_id",
-            "instance",
-            "run_type",
-            "algorithm",
-            "seed",
-            "budget",
-            "evaluations_used",
-            "runtime_seconds",
-            "hypervolume",
-            "archive_size",
-            "completed",
-            "total_blocks",
-        ])
+        writer.writerow(
+            [
+                "run_id",
+                "instance",
+                "run_type",
+                "algorithm",
+                "seed",
+                "budget",
+                "evaluations_used",
+                "runtime_seconds",
+                "hypervolume",
+                "archive_size",
+                "completed",
+                "total_blocks",
+            ]
+        )
         for r in runs:
             total_blocks = len(r.checkpoints) if r.run_type == "portfolio" else ""
-            writer.writerow([
-                r.run_id,
-                r.instance,
-                r.run_type,
-                r.algorithm,
-                r.seed,
-                r.budget,
-                r.evaluations_used,
-                f"{r.runtime_seconds:.6f}",
-                f"{r.hypervolume:.8f}",
-                r.archive_size,
-                r.completed,
-                total_blocks,
-            ])
+            writer.writerow(
+                [
+                    r.run_id,
+                    r.instance,
+                    r.run_type,
+                    r.algorithm,
+                    r.seed,
+                    r.budget,
+                    r.evaluations_used,
+                    f"{r.runtime_seconds:.6f}",
+                    f"{r.hypervolume:.8f}",
+                    r.archive_size,
+                    r.completed,
+                    total_blocks,
+                ]
+            )
 
     # 2. Export portfolio_blocks.csv
     blocks_csv_path = raw_dir / "portfolio_blocks.csv"
     with open(blocks_csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow([
-            "run_id",
-            "instance",
-            "seed",
-            "block_index",
-            "arm_selected",
-            "phase",
-            "budget_allocated",
-            "evaluations_used",
-            "hv_before",
-            "hv_after",
-            "reward",
-            "completed",
-            "fe_before", "fe_after", "alarm_triggered", "num_alarms",
-            "ph_statistic", "cycle_index",
-        ])
+        writer.writerow(
+            [
+                "run_id",
+                "instance",
+                "seed",
+                "block_index",
+                "arm_selected",
+                "phase",
+                "budget_allocated",
+                "evaluations_used",
+                "hv_before",
+                "hv_after",
+                "reward",
+                "completed",
+                "fe_before",
+                "fe_after",
+                "alarm_triggered",
+                "num_alarms",
+                "ph_statistic",
+                "cycle_index",
+            ]
+        )
         for run_id, b in portfolio_blocks:
             # Parse instance and seed from run_id
             parts = run_id.split("_")
-            writer.writerow([
-                run_id,
-                parts[0],
-                parts[-2].replace("s", ""),
-                b.block_index,
-                b.arm_name,
-                getattr(b, "phase", "adaptive"),
-                b.budget_allocated,
-                b.evaluations_used,
-                f"{b.hv_before:.8f}",
-                f"{b.hv_after:.8f}",
-                f"{b.reward:.8f}",
-                b.completed,
-                b.fe_before, b.fe_after, b.alarm_triggered, b.num_alarms,
-                f"{b.ph_statistic:.8f}", b.cycle_index,
-            ])
+            writer.writerow(
+                [
+                    run_id,
+                    parts[0],
+                    parts[-2].replace("s", ""),
+                    b.block_index,
+                    b.arm_name,
+                    getattr(b, "phase", "adaptive"),
+                    b.budget_allocated,
+                    b.evaluations_used,
+                    f"{b.hv_before:.8f}",
+                    f"{b.hv_after:.8f}",
+                    f"{b.reward:.8f}",
+                    b.completed,
+                    b.fe_before,
+                    b.fe_after,
+                    b.alarm_triggered,
+                    b.num_alarms,
+                    f"{b.ph_statistic:.8f}",
+                    b.cycle_index,
+                ]
+            )
 
     # 3. Export checkpoints.csv
     checkpoints_csv_path = raw_dir / "checkpoints.csv"
@@ -656,48 +695,55 @@ def export_results_to_csv(
     alloc_csv_path = summaries_dir / "arm_allocations.csv"
     with open(alloc_csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow([
-            "run_id",
-            "instance",
-            "seed",
-            "total_budget",
-            "total_evaluations",
-            "arm",
-            "evaluations_assigned",
-            "percentage_of_budget",
-            "number_of_blocks",
-            "cumulative_reward",
-        ])
+        writer.writerow(
+            [
+                "run_id",
+                "instance",
+                "seed",
+                "total_budget",
+                "total_evaluations",
+                "arm",
+                "evaluations_assigned",
+                "percentage_of_budget",
+                "number_of_blocks",
+                "cumulative_reward",
+            ]
+        )
         for r in runs:
             if r.arm_allocations:
                 for arm_name, alloc in sorted(r.arm_allocations.items()):
-                    writer.writerow([
-                        r.run_id,
-                        r.instance,
-                        r.seed,
-                        r.budget,
-                        r.evaluations_used,
-                        alloc.arm_name,
-                        alloc.evaluations_assigned,
-                        f"{alloc.percentage_of_budget:.2f}",
-                        alloc.number_of_blocks,
-                        f"{alloc.cumulative_reward:.8f}",
-                    ])
+                    writer.writerow(
+                        [
+                            r.run_id,
+                            r.instance,
+                            r.seed,
+                            r.budget,
+                            r.evaluations_used,
+                            alloc.arm_name,
+                            alloc.evaluations_assigned,
+                            f"{alloc.percentage_of_budget:.2f}",
+                            alloc.number_of_blocks,
+                            f"{alloc.cumulative_reward:.8f}",
+                        ]
+                    )
 
     # 5. Export Pareto fronts as JSON
     for r in runs:
         front_file = fronts_dir / f"{r.run_id}.json"
         with open(front_file, "w", encoding="utf-8") as f:
-            json.dump({
-                "run_id": r.run_id,
-                "instance": r.instance,
-                "algorithm": r.algorithm,
-                "seed": r.seed,
-                "budget": r.budget,
-                "hypervolume": r.hypervolume,
-                "archive_size": r.archive_size,
-                "pareto_front": [
-                    {"makespan": p[0], "tardiness": p[1], "energy": p[2]}
-                    for p in r.pareto_front
-                ],
-            }, f, indent=2)
+            json.dump(
+                {
+                    "run_id": r.run_id,
+                    "instance": r.instance,
+                    "algorithm": r.algorithm,
+                    "seed": r.seed,
+                    "budget": r.budget,
+                    "hypervolume": r.hypervolume,
+                    "archive_size": r.archive_size,
+                    "pareto_front": [
+                        {"makespan": p[0], "tardiness": p[1], "energy": p[2]} for p in r.pareto_front
+                    ],
+                },
+                f,
+                indent=2,
+            )

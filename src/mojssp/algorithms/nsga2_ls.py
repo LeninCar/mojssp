@@ -68,7 +68,9 @@ class NSGA2LS:
         if not (0.0 <= crossover_probability <= 1.0):
             raise ValueError(f"crossover_probability must be in [0, 1], got {crossover_probability}")
         if not (0.0 <= mutation_sequence_probability <= 1.0):
-            raise ValueError(f"mutation_sequence_probability must be in [0, 1], got {mutation_sequence_probability}")
+            raise ValueError(
+                f"mutation_sequence_probability must be in [0, 1], got {mutation_sequence_probability}"
+            )
         if not (0.0 <= ls_non_f1_ratio <= 1.0):
             raise ValueError(f"ls_non_f1_ratio must be in [0, 1], got {ls_non_f1_ratio}")
 
@@ -163,9 +165,7 @@ class NSGA2LS:
                 num_non_f1_candidates = len(f2_plus)
 
             non_f1_candidates = (
-                rng.sample(f2_plus, num_non_f1_candidates)
-                if num_non_f1_candidates > 0
-                else []
+                rng.sample(f2_plus, num_non_f1_candidates) if num_non_f1_candidates > 0 else []
             )
 
             candidates_for_ls = list(f1) + non_f1_candidates
@@ -259,4 +259,3 @@ def nsga2_ls(
         seed=seed,
     )
     return algo.run(instance)
-

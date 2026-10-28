@@ -141,9 +141,7 @@ class Portfolio:
         if canon in self._aliases:
             return self._arms[self._aliases[canon]]
 
-        raise KeyError(
-            f"Arm '{name}' not found in portfolio. Available arms: {list(self._arms.keys())}"
-        )
+        raise KeyError(f"Arm '{name}' not found in portfolio. Available arms: {list(self._arms.keys())}")
 
     def run_arm(self, name: str, budget: int) -> PortfolioBlockResult:
         """Execute a budget block on the specified arm and update the Global Pareto Archive.

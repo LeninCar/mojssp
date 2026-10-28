@@ -163,6 +163,7 @@ class TestPortfolio(unittest.TestCase):
     def test_dominance_pruning_in_global_archive(self) -> None:
         """Test 7: Verify dominated solutions are properly pruned when a dominating solution is added."""
         portfolio = Portfolio()
+
         def make_dummy_entry(job_id: int, mode_id: int, makespan: int, tardiness: int, energy: float):
             sol = Solution(sequence=(job_id,), modes=(mode_id,))
             sched_op = ScheduledOperation(

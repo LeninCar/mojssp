@@ -50,9 +50,7 @@ class TestNSGA2LS(unittest.TestCase):
         self.assertEqual(len(res.population), pop_size)
         self.assertEqual(len(res.population_objectives), pop_size)
         self.assertTrue(len(res.non_dominated_solutions) > 0)
-        self.assertEqual(
-            len(res.non_dominated_solutions), len(res.non_dominated_objectives)
-        )
+        self.assertEqual(len(res.non_dominated_solutions), len(res.non_dominated_objectives))
 
         for obj in res.non_dominated_objectives:
             self.assertGreater(obj.makespan, 0)
@@ -123,4 +121,3 @@ class TestNSGA2LS(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

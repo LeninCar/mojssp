@@ -3,6 +3,7 @@
 Global entries supply genotypes only. Their offspring always use the native
 decoder/evaluator/selection path; no cached fitness is assigned to a new child.
 """
+
 from collections import defaultdict
 import math
 
@@ -15,11 +16,11 @@ class GuidedMatingArm:
 
     def set_archive_guidance(self, guidance):
         if guidance is not None and guidance.instance is not self._instance:
-            raise ValueError('Guidance must belong to the identical instance object')
+            raise ValueError("Guidance must belong to the identical instance object")
         self._archive_guidance = guidance
 
     def _guided_parent(self, native_parent):
-        guide = getattr(self, '_archive_guidance', None)
+        guide = getattr(self, "_archive_guidance", None)
         return guide.parent(self, native_parent) if guide else native_parent
 
 
@@ -34,7 +35,7 @@ class ArchiveGuidance:
 
     def __init__(self, instance, normalizer, every=10):
         if isinstance(every, bool) or not isinstance(every, int) or every < 1:
-            raise ValueError('every must be a positive integer')
+            raise ValueError("every must be a positive integer")
         self.instance = instance
         self.normalizer = normalizer
         self.every = every
@@ -48,20 +49,27 @@ class ArchiveGuidance:
 
     def prepare(self, arm, archive, first_seen):
         if arm._instance is not self.instance:
-            raise ValueError('Cannot exchange across problem instances')
+            raise ValueError("Cannot exchange across problem instances")
         local = arm.current_archive.entries
         local_ids = {compute_genotype_id(e.solution) for e in local}
         points = [self.normalizer.normalize_tuple(e.objectives) for e in local]
-        foreign = [e for e in archive.entries
-                   if compute_genotype_id(e.solution) not in local_ids
-                   and first_seen.get(compute_genotype_id(e.solution)) not in (None, arm.arm_name)]
+        foreign = [
+            e
+            for e in archive.entries
+            if compute_genotype_id(e.solution) not in local_ids
+            and first_seen.get(compute_genotype_id(e.solution)) not in (None, arm.arm_name)
+        ]
         self._donors[arm.arm_name] = None
         if not points or not foreign:
             return None
         # Genotype ID makes equal-distance choices independent of archive order.
-        donor = max(foreign, key=lambda e: (
-            min(math.dist(self.normalizer.normalize_tuple(e.objectives), p) for p in points),
-            compute_genotype_id(e.solution)))
+        donor = max(
+            foreign,
+            key=lambda e: (
+                min(math.dist(self.normalizer.normalize_tuple(e.objectives), p) for p in points),
+                compute_genotype_id(e.solution),
+            ),
+        )
         self._donors[arm.arm_name] = donor
         return compute_genotype_id(donor.solution)
 
@@ -73,9 +81,13 @@ class ArchiveGuidance:
         if donor.solution == native_parent:
             return native_parent
         self.uses += 1
-        self.events.append({'recipient': arm.arm_name,
-                            'recipient_fe_before_mating': arm.total_evaluations,
-                            'donor_id': compute_genotype_id(donor.solution),
-                            'native_parent_id': compute_genotype_id(native_parent),
-                            'mating_index': self._counts[arm.arm_name]})
+        self.events.append(
+            {
+                "recipient": arm.arm_name,
+                "recipient_fe_before_mating": arm.total_evaluations,
+                "donor_id": compute_genotype_id(donor.solution),
+                "native_parent_id": compute_genotype_id(native_parent),
+                "mating_index": self._counts[arm.arm_name],
+            }
+        )
         return donor.solution

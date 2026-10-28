@@ -151,9 +151,7 @@ class PageHinkleyDetector:
             raise ValueError(f"threshold must be a finite real number > 0.0, got {threshold!r}")
 
         if direction not in ("down", "up", "both"):
-            raise ValueError(
-                f"direction must be one of ('down', 'up', 'both'), got {direction!r}"
-            )
+            raise ValueError(f"direction must be one of ('down', 'up', 'both'), got {direction!r}")
 
         if isinstance(min_instances, bool) or not isinstance(min_instances, int):
             raise ValueError(f"min_instances must be an integer, got {min_instances!r}")
@@ -217,11 +215,7 @@ class PageHinkleyDetector:
         Raises:
             ValueError: If value is not a finite real number (NaN or +/-Inf).
         """
-        if (
-            isinstance(value, bool)
-            or not isinstance(value, (int, float))
-            or not math.isfinite(value)
-        ):
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
             raise ValueError(f"Observation must be a finite real number, got {value!r}")
 
         val = float(value)
@@ -316,4 +310,3 @@ class PageHinkleyDetector:
 
         self._ph_stat = 0.0
         self._change_detected = False
-

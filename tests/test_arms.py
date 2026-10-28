@@ -278,7 +278,9 @@ class TestMOPSOArm(unittest.TestCase):
         self.assertEqual(arm_seg.total_evaluations, 200)
 
         # Exact match in particle positions and objectives
-        cont_particles = [(p.position, obj) for p, obj in zip(arm_cont.particles, arm_cont.particle_objectives)]
+        cont_particles = [
+            (p.position, obj) for p, obj in zip(arm_cont.particles, arm_cont.particle_objectives)
+        ]
         seg_particles = [(p.position, obj) for p, obj in zip(arm_seg.particles, arm_seg.particle_objectives)]
         self.assertEqual(cont_particles, seg_particles)
 
@@ -290,7 +292,9 @@ class TestMOPSOArm(unittest.TestCase):
         """Verify exact continuity across arbitrary cuts: 50+150, 37+63+100, 101+99, 5+95+100, 1+9+40+150, 23+41+57+79."""
         arm_base = MOPSOArm(self.instance, population_size=10, max_evaluations=500, seed=self.seed)
         res_base = arm_base.run(200)
-        base_particles = [(p.position, obj) for p, obj in zip(arm_base.particles, arm_base.particle_objectives)]
+        base_particles = [
+            (p.position, obj) for p, obj in zip(arm_base.particles, arm_base.particle_objectives)
+        ]
         base_arch_sols = res_base.solutions.solutions
         base_arch_objs = res_base.solutions.objectives
 
@@ -341,7 +345,9 @@ class TestMOPSOArm(unittest.TestCase):
         res_base = arm_base.run(10)
 
         arm_particles = [(p.position, obj) for p, obj in zip(arm.particles, arm.particle_objectives)]
-        base_particles = [(p.position, obj) for p, obj in zip(arm_base.particles, arm_base.particle_objectives)]
+        base_particles = [
+            (p.position, obj) for p, obj in zip(arm_base.particles, arm_base.particle_objectives)
+        ]
         self.assertEqual(arm_particles, base_particles)
         self.assertEqual(res2.solutions.solutions, res_base.solutions.solutions)
         self.assertEqual(res2.solutions.objectives, res_base.solutions.objectives)

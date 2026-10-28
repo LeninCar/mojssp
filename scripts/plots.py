@@ -94,19 +94,37 @@ def plot_pareto_front(
     nrg_vals = [e.objectives.energy for e in entries]
 
     plots = [
-        (axes[0], cmax_vals, tard_vals, "Makespan (Cmax)", "Tardiness (T)", "Trade-off Makespan vs Tardiness"),
+        (
+            axes[0],
+            cmax_vals,
+            tard_vals,
+            "Makespan (Cmax)",
+            "Tardiness (T)",
+            "Trade-off Makespan vs Tardiness",
+        ),
         (axes[1], cmax_vals, nrg_vals, "Makespan (Cmax)", "Energía (E)", "Trade-off Makespan vs Energía"),
         (axes[2], tard_vals, nrg_vals, "Tardiness (T)", "Energía (E)", "Trade-off Tardiness vs Energía"),
     ]
 
     for ax, x_vals, y_vals, x_lbl, y_lbl, title in plots:
-        ax.scatter(x_vals, y_vals, color="#2b5c8f", s=50, alpha=0.7, edgecolors="none", label="Frente de Pareto")
+        ax.scatter(
+            x_vals, y_vals, color="#2b5c8f", s=50, alpha=0.7, edgecolors="none", label="Frente de Pareto"
+        )
         # Highlight selected
         for s_idx in selected_indices:
             e = entries[s_idx]
             sx = getattr(e.objectives, "makespan" if "Makespan" in x_lbl else "tardiness")
             sy = getattr(e.objectives, "tardiness" if "Tardiness" in y_lbl else "energy")
-            ax.scatter([sx], [sy], color="#d9381e", s=130, edgecolors="black", linewidth=1.5, zorder=5, label=f"Solución #{s_idx+1}")
+            ax.scatter(
+                [sx],
+                [sy],
+                color="#d9381e",
+                s=130,
+                edgecolors="black",
+                linewidth=1.5,
+                zorder=5,
+                label=f"Solución #{s_idx + 1}",
+            )
 
         ax.set_xlabel(x_lbl, fontweight="bold")
         ax.set_ylabel(y_lbl, fontweight="bold")
@@ -118,13 +136,14 @@ def plot_pareto_front(
     by_label = dict(zip(labels, handles))
     axes[0].legend(by_label.values(), by_label.keys(), loc="best", framealpha=0.9)
 
-    plt.suptitle(f"Frente de Pareto MO-JSSP: {instance_name} ({algo_name.upper()})", fontsize=14, fontweight="bold")
+    plt.suptitle(
+        f"Frente de Pareto MO-JSSP: {instance_name} ({algo_name.upper()})", fontsize=14, fontweight="bold"
+    )
     plt.tight_layout()
     output_path.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(output_path, dpi=200)
     plt.close()
     print(f"-> Grafico de Frente de Pareto guardado en: {output_path}")
-
 
 
 def plot_convergence(curves, blocks, budget, cut, output_path, instance_name):
@@ -138,8 +157,14 @@ def plot_convergence(curves, blocks, budget, cut, output_path, instance_name):
         fig, ax = plt.subplots(figsize=(12, 5.5))
     for label, color, result, main in curves:
         fe, hv = zip(*result["checkpoints"])
-        ax.plot(fe, hv, color=color, linewidth=2.4 if main else 1.6, linestyle="--" if main else "-",
-                label=f"{label} (HV final {result['hypervolume']:.4f})")
+        ax.plot(
+            fe,
+            hv,
+            color=color,
+            linewidth=2.4 if main else 1.6,
+            linestyle="--" if main else "-",
+            label=f"{label} (HV final {result['hypervolume']:.4f})",
+        )
     if cut:
         ax.axvline(cut, color="grey", linestyle=":", linewidth=1)
         ax.text(cut, ax.get_ylim()[0], f"  corte {cut} FE", color="grey", va="bottom", fontsize=9)
@@ -151,8 +176,14 @@ def plot_convergence(curves, blocks, budget, cut, output_path, instance_name):
     if blocks:
         for b in blocks:
             start = b["fe_after"] - b["evaluations_used"]
-            bar.barh(0, b["evaluations_used"], left=start, color=ARM_COLORS[b["arm_name"]],
-                     edgecolor="white", linewidth=0.5)
+            bar.barh(
+                0,
+                b["evaluations_used"],
+                left=start,
+                color=ARM_COLORS[b["arm_name"]],
+                edgecolor="white",
+                linewidth=0.5,
+            )
         for arm, color in ARM_COLORS.items():
             bar.barh(0, 0, color=color, label=ARM_LABELS[arm])
         if cut:
@@ -175,15 +206,24 @@ def plot_fronts_overlay(fronts, output_path, instance_name):
 
     fronts: lista de (etiqueta, color, entradas, es_principal); el principal se dibuja encima.
     """
-    pairs = [("makespan", "tardiness", "Makespan", "Tardanza"),
-             ("makespan", "energy", "Makespan", "Energía"),
-             ("tardiness", "energy", "Tardanza", "Energía")]
+    pairs = [
+        ("makespan", "tardiness", "Makespan", "Tardanza"),
+        ("makespan", "energy", "Makespan", "Energía"),
+        ("tardiness", "energy", "Tardanza", "Energía"),
+    ]
     fig, axes = plt.subplots(1, 3, figsize=(16, 5))
     for ax, (x, y, xl, yl) in zip(axes, pairs):
         for label, color, entries, main in sorted(fronts, key=lambda f: f[3]):
-            ax.scatter([getattr(e.objectives, x) for e in entries], [getattr(e.objectives, y) for e in entries],
-                       s=50 if main else 30, color=color, alpha=0.75, edgecolors="none",
-                       marker="D" if main else "o", label=f"{label} ({len(entries)} sol.)")
+            ax.scatter(
+                [getattr(e.objectives, x) for e in entries],
+                [getattr(e.objectives, y) for e in entries],
+                s=50 if main else 30,
+                color=color,
+                alpha=0.75,
+                edgecolors="none",
+                marker="D" if main else "o",
+                label=f"{label} ({len(entries)} sol.)",
+            )
         ax.set_xlabel(xl, fontweight="bold")
         ax.set_ylabel(yl, fontweight="bold")
         ax.grid(True, linestyle="--", alpha=0.5)

@@ -97,6 +97,7 @@ from .portfolio.orchestrator import (
     AdaptivePortfolioOrchestrator,
     BlockExecutionRecord,
 )
+
 try:
     from .pairing import (
         CheckResult,
@@ -114,6 +115,7 @@ try:
         validate_pairing,
         write_dzn_raw,
     )
+
     _PAIRING_SYMBOLS = [
         "RawDznData",
         "ReferenceSample",
@@ -221,15 +223,6 @@ __all__ = _PAIRING_SYMBOLS + [
     "AdaptiveExecutionResult",
     "AdaptivePortfolioOrchestrator",
 ]
-
-
-
-
-
-
-
-
-
 
 
 from .portfolio.page_hinkley import PageHinkleyDMABSelector, PageHinkleyAlarmRecord

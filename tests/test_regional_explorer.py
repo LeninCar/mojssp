@@ -15,41 +15,46 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_constant_objectives_are_removed_and_duplicate_vectors_do_not_inflate_density():
-    points = [(.1,0,.9),(.5,0,.5),(.9,0,.1),(.1,0,.9)]
+    points = [(0.1, 0, 0.9), (0.5, 0, 0.5), (0.9, 0, 0.1), (0.1, 0, 0.9)]
     geometry = region_geometry(points)
-    assert geometry['active_objectives']==[True,False,True]
-    assert len(geometry['weights'])==3
-    assert all(w[1]==0 for w in geometry['weights'])
-    assert geometry['densities']==[1,1,1]
+    assert geometry["active_objectives"] == [True, False, True]
+    assert len(geometry["weights"]) == 3
+    assert all(w[1] == 0 for w in geometry["weights"])
+    assert geometry["densities"] == [1, 1, 1]
 
 
 def test_energy_directed_mode_move_reduces_evaluated_energy():
-    instance = load_dzn(ROOT/'data/validation/small_3x3.dzn')
-    initial = Solution.random(instance,rng=random.Random(3))
-    solution = Solution(initial.sequence,tuple(max(op.modes,key=lambda m:m.energy).mode_id for op in instance.all_operations))
-    schedule = Decoder().decode(instance,solution)
-    objectives = Evaluator().evaluate(instance,schedule)
-    parent = ArchiveEntry(solution,schedule,objectives)
-    explorer = RegionalExplorerArm(instance,ObjectiveNormalizer(compute_instance_bounds(instance)))
-    explorer._weight = (0.,0.,1.)
-    child,operator = explorer._mode_move(parent)
+    instance = load_dzn(ROOT / "data/validation/small_3x3.dzn")
+    initial = Solution.random(instance, rng=random.Random(3))
+    solution = Solution(
+        initial.sequence,
+        tuple(max(op.modes, key=lambda m: m.energy).mode_id for op in instance.all_operations),
+    )
+    schedule = Decoder().decode(instance, solution)
+    objectives = Evaluator().evaluate(instance, schedule)
+    parent = ArchiveEntry(solution, schedule, objectives)
+    explorer = RegionalExplorerArm(instance, ObjectiveNormalizer(compute_instance_bounds(instance)))
+    explorer._weight = (0.0, 0.0, 1.0)
+    child, operator = explorer._mode_move(parent)
     child.validate_with_instance(instance)
-    evaluated = Evaluator().evaluate(instance,Decoder().decode(instance,child))
-    assert operator=='directed_mode'
-    assert child.sequence==solution.sequence
-    assert evaluated.energy<objectives.energy
+    evaluated = Evaluator().evaluate(instance, Decoder().decode(instance, child))
+    assert operator == "directed_mode"
+    assert child.sequence == solution.sequence
+    assert evaluated.energy < objectives.energy
 
 
 def test_individual_explorer_pays_for_initialization_within_total_budget():
-    instance = load_dzn(ROOT/'data/validation/small_3x3.dzn')
+    instance = load_dzn(ROOT / "data/validation/small_3x3.dzn")
     original = Evaluator.evaluate
     calls = []
-    def counted(self,*a,**kw):
+
+    def counted(self, *a, **kw):
         calls.append(1)
-        return original(self,*a,**kw)
-    with patch.object(Evaluator,'evaluate',counted):
-        result = run_blmr(instance,42,budget=300,population_size=10,policy='sparse')
-    assert len(calls)==result['evaluations_used']==300
-    assert result['initialization_fe']==10 and result['evolution_fe']==290
-    assert sum(row['evaluations'] for row in result['region_trace'])==290
-    assert result['checkpoints'][0][0]==50
+        return original(self, *a, **kw)
+
+    with patch.object(Evaluator, "evaluate", counted):
+        result = run_blmr(instance, 42, budget=300, population_size=10, policy="sparse")
+    assert len(calls) == result["evaluations_used"] == 300
+    assert result["initialization_fe"] == 10 and result["evolution_fe"] == 290
+    assert sum(row["evaluations"] for row in result["region_trace"]) == 290
+    assert result["checkpoints"][0][0] == 50

@@ -39,8 +39,7 @@ class ArchiveEntry:
         schedule_energy = sum(op.energy for op in self.schedule.operations)
         if not math.isclose(self.objectives.energy, schedule_energy, abs_tol=1e-5):
             raise ValueError(
-                f"Energy mismatch: schedule has {schedule_energy}, "
-                f"objectives has {self.objectives.energy}"
+                f"Energy mismatch: schedule has {schedule_energy}, objectives has {self.objectives.energy}"
             )
 
 
@@ -145,9 +144,7 @@ class ParetoArchive:
 
         # 3. Candidate is non-dominated: eliminate existing members dominated by the candidate
         self._entries = [
-            existing
-            for existing in self._entries
-            if not dominates(entry.objectives, existing.objectives)
+            existing for existing in self._entries if not dominates(entry.objectives, existing.objectives)
         ]
 
         # 4. Insert candidate into archive
@@ -180,4 +177,3 @@ class ParetoArchive:
                     f"Expected ArchiveEntry or (Solution, Schedule, ObjectiveValues) tuple, got {type(item)}"
                 )
         return added_count
-

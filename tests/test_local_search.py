@@ -157,7 +157,9 @@ class TestLocalSearch(unittest.TestCase):
         """Caso 2: Candidate that strictly dominates an existing solution is a Pareto improvement."""
         archive = LocalParetoArchive(max_size=10)
         s_dom = Solution(sequence=(1, 1, 2, 2), modes=(1, 1, 1, 1))
-        archive.add(s_dom, decode(self.instance, s_dom), evaluate(self.instance, decode(self.instance, s_dom)))
+        archive.add(
+            s_dom, decode(self.instance, s_dom), evaluate(self.instance, decode(self.instance, s_dom))
+        )
 
         # Insert superior solution sA that strictly dominates s_dom
         sA = Solution(sequence=(1, 2, 1, 2), modes=(1, 1, 1, 1))
@@ -219,7 +221,9 @@ class TestLocalSearch(unittest.TestCase):
         self.assertTrue(resC.pareto_improvement)
         self.assertEqual(len(archive), 2)
 
-    def test_case5_stopping_condition_triggers_after_max_no_improvement_even_if_crowding_changes(self) -> None:
+    def test_case5_stopping_condition_triggers_after_max_no_improvement_even_if_crowding_changes(
+        self,
+    ) -> None:
         """Caso 5: LocalSearch stops on max_no_improvement (20) when changes are purely crowding replacements."""
         from unittest.mock import patch
 
@@ -254,4 +258,3 @@ class TestLocalSearch(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

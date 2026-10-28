@@ -120,9 +120,7 @@ class SlidingWindowUCB:
         seen = set()
         for idx, name in enumerate(arm_names):
             if not isinstance(name, str) or not name.strip():
-                raise ValueError(
-                    f"arm_names must contain non-empty strings, got element {idx}: {name!r}"
-                )
+                raise ValueError(f"arm_names must contain non-empty strings, got element {idx}: {name!r}")
             if name in seen:
                 raise ValueError(f"Duplicate arm name '{name}' in arm_names.")
             seen.add(name)
@@ -138,9 +136,7 @@ class SlidingWindowUCB:
             or math.isinf(exploration_factor)
             or exploration_factor < 0.0
         ):
-            raise ValueError(
-                f"exploration_factor must be a finite float >= 0.0, got {exploration_factor!r}"
-            )
+            raise ValueError(f"exploration_factor must be a finite float >= 0.0, got {exploration_factor!r}")
 
         self._arm_names: Tuple[str, ...] = tuple(cleaned_names)
         self._window_size: int = window_size
@@ -217,15 +213,9 @@ class SlidingWindowUCB:
             ValueError: If reward is not a finite real number (NaN or +/-Inf).
         """
         if arm_name not in self._total_counts:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
 
-        if (
-            isinstance(reward, bool)
-            or not isinstance(reward, (int, float))
-            or not math.isfinite(reward)
-        ):
+        if isinstance(reward, bool) or not isinstance(reward, (int, float)) or not math.isfinite(reward):
             raise ValueError(f"reward must be a finite real number, got {reward!r}")
 
         self._total_pulls += 1
@@ -244,9 +234,7 @@ class SlidingWindowUCB:
             KeyError: If arm_name is not registered.
         """
         if arm_name not in self._total_counts:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         self._initialized_arms.add(arm_name)
 
     def mark_warmup_complete(self, arm_name: Optional[str] = None) -> None:
@@ -260,25 +248,19 @@ class SlidingWindowUCB:
     def is_arm_initialized(self, arm_name: str) -> bool:
         """Return whether an arm has completed warm-up or initialization."""
         if arm_name not in self._total_counts:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         return arm_name in self._initialized_arms
 
     def get_adaptive_pulls(self, arm_name: str) -> int:
         """Return the count of adaptive updates executed for the given arm."""
         if arm_name not in self._adaptive_pulls:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         return self._adaptive_pulls[arm_name]
 
     def is_in_initial_probe(self, arm_name: str) -> bool:
         """Return True if the arm has not yet completed its initial adaptive probe block."""
         if arm_name not in self._adaptive_pulls:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         return self._adaptive_pulls[arm_name] == 0
 
     @property
@@ -327,8 +309,6 @@ class SlidingWindowUCB:
         self._initialized_arms.clear()
         self._window.clear()
         self._rng = random.Random(self._seed)
-
-
 
 
 class UniformRandomSelector:
@@ -437,9 +417,7 @@ class RoundRobinSelector:
         seen = set()
         for idx, name in enumerate(arm_names):
             if not isinstance(name, str) or not name.strip():
-                raise ValueError(
-                    f"arm_names must contain non-empty strings, got element {idx}: {name!r}"
-                )
+                raise ValueError(f"arm_names must contain non-empty strings, got element {idx}: {name!r}")
             if name in seen:
                 raise ValueError(f"Duplicate arm name '{name}' in arm_names.")
             seen.add(name)
@@ -520,5 +498,3 @@ class RoundRobinSelector:
         self._total_counts = {name: 0 for name in self._arm_names}
         self._adaptive_pulls = {name: 0 for name in self._arm_names}
         self._initialized_arms.clear()
-
-

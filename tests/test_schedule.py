@@ -11,7 +11,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from mojssp import Schedule, ScheduledOperation
 
 
-
 class TestScheduledOperation(unittest.TestCase):
     """Tests for ScheduledOperation immutability and invariants."""
 
@@ -226,4 +225,3 @@ class TestSchedule(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

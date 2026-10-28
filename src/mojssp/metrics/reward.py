@@ -46,14 +46,10 @@ class HypervolumeRewardTracker:
             ValueError: If reference_point does not have 3 coordinates or tolerance < 0.
         """
         if not isinstance(normalizer, ObjectiveNormalizer):
-            raise TypeError(
-                f"normalizer must be an instance of ObjectiveNormalizer, got {type(normalizer)}"
-            )
+            raise TypeError(f"normalizer must be an instance of ObjectiveNormalizer, got {type(normalizer)}")
 
         if len(reference_point) != 3:
-            raise ValueError(
-                f"reference_point must have 3 dimensions, got {len(reference_point)}"
-            )
+            raise ValueError(f"reference_point must have 3 dimensions, got {len(reference_point)}")
 
         if tolerance < 0.0:
             raise ValueError(f"tolerance must be non-negative, got {tolerance}")
@@ -103,9 +99,7 @@ class HypervolumeRewardTracker:
             RewardInvariantError: If HV_after < HV_before beyond the numerical tolerance.
         """
         if not isinstance(archive, ParetoArchive):
-            raise TypeError(
-                f"archive must be an instance of ParetoArchive, got {type(archive)}"
-            )
+            raise TypeError(f"archive must be an instance of ParetoArchive, got {type(archive)}")
 
         if archive.is_empty:
             hv_after = 0.0

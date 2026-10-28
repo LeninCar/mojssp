@@ -369,13 +369,9 @@ class MOPSO:
                 f"max_evaluations ({max_evaluations}) must be at least population_size ({population_size})"
             )
         if personal_archive_size < 1:
-            raise ValueError(
-                f"personal_archive_size must be at least 1, got {personal_archive_size}"
-            )
+            raise ValueError(f"personal_archive_size must be at least 1, got {personal_archive_size}")
         if global_crowding_interval < 1:
-            raise ValueError(
-                f"global_crowding_interval must be at least 1, got {global_crowding_interval}"
-            )
+            raise ValueError(f"global_crowding_interval must be at least 1, got {global_crowding_interval}")
 
         self._population_size = population_size
         self._max_evaluations = max_evaluations

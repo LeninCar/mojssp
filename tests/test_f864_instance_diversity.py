@@ -73,12 +73,28 @@ class TestF864InstanceDiversity(unittest.TestCase):
         self.assertEqual(sources.count("generated"), 25)
 
         required_cols = [
-            "instance", "source", "jobs", "machines", "operations",
-            "operations_per_job", "operations_per_machine", "jobs_per_machine",
-            "duration_mean", "duration_cv", "energy_mean", "energy_cv",
-            "time_energy_conflict", "release_mean", "release_cv",
-            "due_mean", "due_cv", "tardiness_pressure", "machine_load_cv",
-            "bottleneck_concentration", "bound_cmax_min", "bound_cmax_max",
+            "instance",
+            "source",
+            "jobs",
+            "machines",
+            "operations",
+            "operations_per_job",
+            "operations_per_machine",
+            "jobs_per_machine",
+            "duration_mean",
+            "duration_cv",
+            "energy_mean",
+            "energy_cv",
+            "time_energy_conflict",
+            "release_mean",
+            "release_cv",
+            "due_mean",
+            "due_cv",
+            "tardiness_pressure",
+            "machine_load_cv",
+            "bottleneck_concentration",
+            "bound_cmax_min",
+            "bound_cmax_max",
         ]
 
         for col in required_cols:
@@ -87,7 +103,11 @@ class TestF864InstanceDiversity(unittest.TestCase):
         for r in reader:
             for k, v in r.items():
                 self.assertNotEqual(v, "", f"Empty value in row {r['instance']} for {k}")
-                self.assertNotIn(v.lower(), ["nan", "null", "none", "inf"], f"Invalid float value in {r['instance']} for {k}")
+                self.assertNotIn(
+                    v.lower(),
+                    ["nan", "null", "none", "inf"],
+                    f"Invalid float value in {r['instance']} for {k}",
+                )
 
     def test_03_distance_matrix_integrity(self):
         """Check f864_instance_distances.csv has exactly 666 unique pairs and valid properties."""
@@ -111,9 +131,10 @@ class TestF864InstanceDiversity(unittest.TestCase):
             dist = float(r["distance"])
             self.assertGreaterEqual(dist, 0.0, f"Negative distance between {a} and {b}")
 
-            self.assertIn(r["similarity_category"], [
-                "muy similares", "similares", "moderadamente diferentes", "claramente diferentes"
-            ])
+            self.assertIn(
+                r["similarity_category"],
+                ["muy similares", "similares", "moderadamente diferentes", "claramente diferentes"],
+            )
 
     def test_04_factor_coverage_matrix(self):
         """Check f864_factor_coverage.csv covers all core dimensions."""

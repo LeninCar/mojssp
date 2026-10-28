@@ -102,4 +102,3 @@ def evaluate(instance: Instance, schedule: Schedule) -> ObjectiveValues:
         ObjectiveValues containing (makespan, tardiness, energy).
     """
     return Evaluator().evaluate(instance, schedule)
-

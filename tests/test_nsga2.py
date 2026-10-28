@@ -115,15 +115,21 @@ class TestNSGA2Components(unittest.TestCase):
 
     def test_binary_tournament_selection(self) -> None:
         rng = random.Random(42)
-        p1 = Individual(self.dummy_sol, self.dummy_sched, ObjectiveValues(10, 2, 10.0), rank=1, crowding_distance=0.5)
-        p2 = Individual(self.dummy_sol, self.dummy_sched, ObjectiveValues(12, 3, 12.0), rank=2, crowding_distance=0.9)
+        p1 = Individual(
+            self.dummy_sol, self.dummy_sched, ObjectiveValues(10, 2, 10.0), rank=1, crowding_distance=0.5
+        )
+        p2 = Individual(
+            self.dummy_sol, self.dummy_sched, ObjectiveValues(12, 3, 12.0), rank=2, crowding_distance=0.9
+        )
 
         # Lower rank wins
         winner = binary_tournament(p1, p2, rng)
         self.assertIs(winner, p1)
 
         # Same rank: higher crowding distance wins
-        p3 = Individual(self.dummy_sol, self.dummy_sched, ObjectiveValues(10, 2, 10.0), rank=1, crowding_distance=0.8)
+        p3 = Individual(
+            self.dummy_sol, self.dummy_sched, ObjectiveValues(10, 2, 10.0), rank=1, crowding_distance=0.8
+        )
         winner2 = binary_tournament(p1, p3, rng)
         self.assertIs(winner2, p3)
 
@@ -239,4 +245,3 @@ class TestNSGA2Execution(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

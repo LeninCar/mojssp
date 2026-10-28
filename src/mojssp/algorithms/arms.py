@@ -200,9 +200,7 @@ class NSGA2Arm(GuidedMatingArm):
                     self._pending_sibling = None
                     if self._rng.random() < self._mutation_sequence_probability:
                         c_sol = mutate_sequence_swap(c_sol, self._rng)
-                    c_sol = mutate_modes_per_gene(
-                        c_sol, self._instance, self._p_mut_mode, self._rng
-                    )
+                    c_sol = mutate_modes_per_gene(c_sol, self._instance, self._p_mut_mode, self._rng)
                     ind = _evaluate_sol(c_sol)
                     self._offspring_in_progress.append(ind)
                     continue
@@ -219,7 +217,9 @@ class NSGA2Arm(GuidedMatingArm):
                 )
 
                 if self._rng.random() < self._crossover_probability:
-                    c1_sol, c2_sol = crossover_pox(p1.solution, self._guided_parent(p2.solution), self._instance, self._rng)
+                    c1_sol, c2_sol = crossover_pox(
+                        p1.solution, self._guided_parent(p2.solution), self._instance, self._rng
+                    )
                 else:
                     c1_sol, c2_sol = p1.solution, p2.solution
 
@@ -231,7 +231,10 @@ class NSGA2Arm(GuidedMatingArm):
                 ind1 = _evaluate_sol(c1)
                 self._offspring_in_progress.append(ind1)
 
-                if len(self._offspring_in_progress) >= self._population_size or evals_used >= effective_budget:
+                if (
+                    len(self._offspring_in_progress) >= self._population_size
+                    or evals_used >= effective_budget
+                ):
                     self._pending_sibling = c2_sol
                     break
 
@@ -417,9 +420,7 @@ class MOPSOArm:
 
         # Apply global evaluation limit if specified
         remaining_evals = (
-            self._max_evaluations - self._total_evaluations
-            if self._max_evaluations is not None
-            else budget
+            self._max_evaluations - self._total_evaluations if self._max_evaluations is not None else budget
         )
         if remaining_evals <= 0:
             self._completed = True
@@ -465,9 +466,7 @@ class MOPSOArm:
                     or self._iterations % self._global_crowding_interval == 0
                     or not self._global_crowding
                 ):
-                    self._global_crowding = calculate_entries_crowding_distance(
-                        self._global_archive.entries
-                    )
+                    self._global_crowding = calculate_entries_crowding_distance(self._global_archive.entries)
 
             while self._current_particle_index < self._population_size and evals_used < effective_budget:
                 if self._max_evaluations is not None and self._total_evaluations >= self._max_evaluations:
@@ -478,9 +477,7 @@ class MOPSOArm:
                 p_idx = self._current_particle_index
 
                 # Select pbest from particle's personal archive
-                p_crowding = calculate_entries_crowding_distance(
-                    particle.personal_archive.entries
-                )
+                p_crowding = calculate_entries_crowding_distance(particle.personal_archive.entries)
                 pbest_entry = select_guide_by_crowding(
                     particle.personal_archive.entries,
                     p_crowding,
@@ -492,9 +489,7 @@ class MOPSOArm:
                     e for e in self._global_archive.entries if e in self._global_crowding
                 ]
                 if not active_global_entries:
-                    self._global_crowding = calculate_entries_crowding_distance(
-                        self._global_archive.entries
-                    )
+                    self._global_crowding = calculate_entries_crowding_distance(self._global_archive.entries)
                     active_global_entries = list(self._global_archive.entries)
 
                 gbest_entry = select_guide_by_crowding(
@@ -622,7 +617,9 @@ class NSGA2LSArm:
         if not (0.0 <= crossover_probability <= 1.0):
             raise ValueError(f"crossover_probability must be in [0, 1], got {crossover_probability}")
         if not (0.0 <= mutation_sequence_probability <= 1.0):
-            raise ValueError(f"mutation_sequence_probability must be in [0, 1], got {mutation_sequence_probability}")
+            raise ValueError(
+                f"mutation_sequence_probability must be in [0, 1], got {mutation_sequence_probability}"
+            )
         if not (0.0 <= ls_non_f1_ratio <= 1.0):
             raise ValueError(f"ls_non_f1_ratio must be in [0, 1], got {ls_non_f1_ratio}")
         if max_ls_iterations < 1:
@@ -823,9 +820,7 @@ class NSGA2LSArm:
 
         # Apply global evaluation limit if specified
         remaining_evals = (
-            self._max_evaluations - self._total_evaluations
-            if self._max_evaluations is not None
-            else budget
+            self._max_evaluations - self._total_evaluations if self._max_evaluations is not None else budget
         )
         if remaining_evals <= 0:
             self._completed = True
@@ -880,7 +875,9 @@ class NSGA2LSArm:
 
             # Phase OFFSPRING: Create offspring Q_t
             if self._phase == "OFFSPRING":
-                while len(self._offspring_in_progress) < self._population_size and evals_used < effective_budget:
+                while (
+                    len(self._offspring_in_progress) < self._population_size and evals_used < effective_budget
+                ):
                     if self._pending_sibling is not None:
                         c_sol = self._pending_sibling
                         self._pending_sibling = None
@@ -915,7 +912,10 @@ class NSGA2LSArm:
                     ind1 = _evaluate_genetic(c1)
                     self._offspring_in_progress.append(ind1)
 
-                    if len(self._offspring_in_progress) >= self._population_size or evals_used >= effective_budget:
+                    if (
+                        len(self._offspring_in_progress) >= self._population_size
+                        or evals_used >= effective_budget
+                    ):
                         self._pending_sibling = c2_sol
                         break
 
@@ -939,11 +939,7 @@ class NSGA2LSArm:
                     if num_non_f1 > len(f2_plus):
                         num_non_f1 = len(f2_plus)
 
-                    non_f1 = (
-                        self._rng.sample(f2_plus, num_non_f1)
-                        if num_non_f1 > 0
-                        else []
-                    )
+                    non_f1 = self._rng.sample(f2_plus, num_non_f1) if num_non_f1 > 0 else []
 
                     self._candidates_for_ls = list(f1) + non_f1
                     self._current_candidate_index = 0
@@ -953,7 +949,10 @@ class NSGA2LSArm:
 
             # Phase LS: Execute Local Search on candidate solutions
             if self._phase == "LS":
-                while self._current_candidate_index < len(self._candidates_for_ls) and evals_used < effective_budget:
+                while (
+                    self._current_candidate_index < len(self._candidates_for_ls)
+                    and evals_used < effective_budget
+                ):
                     candidate = self._candidates_for_ls[self._current_candidate_index]
 
                     if self._active_ls_state is None:
@@ -1050,7 +1049,10 @@ class NSGA2LSArm:
                     self._refined_individuals = []
                     self._active_ls_state = None
 
-                    if self._max_generations is not None and self._generations_completed >= self._max_generations:
+                    if (
+                        self._max_generations is not None
+                        and self._generations_completed >= self._max_generations
+                    ):
                         self._completed = True
                     else:
                         self._phase = "OFFSPRING"
@@ -1063,5 +1065,3 @@ class NSGA2LSArm:
             evaluations_used=evals_used,
             completed=self._completed,
         )
-
-

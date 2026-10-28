@@ -37,20 +37,18 @@ class TestHypervolume(unittest.TestCase):
         self.assertEqual(hv, 0.0)
 
         # Mix of valid and invalid points: only valid point contributes
-        hv_mixed = compute_hypervolume(
-            [(0.0, 0.0, 0.0), (1.5, 0.5, 0.5)], reference_point=(1.0, 1.0, 1.0)
-        )
+        hv_mixed = compute_hypervolume([(0.0, 0.0, 0.0), (1.5, 0.5, 0.5)], reference_point=(1.0, 1.0, 1.0))
         self.assertAlmostEqual(hv_mixed, 1.0, places=7)
 
     def test_single_point_origin(self) -> None:
         """Origin point with reference (1.1, 1.1, 1.1) produces 1.1^3."""
         hv = compute_hypervolume([(0.0, 0.0, 0.0)], reference_point=(1.1, 1.1, 1.1))
-        self.assertAlmostEqual(hv, 1.1 ** 3, places=7)
+        self.assertAlmostEqual(hv, 1.1**3, places=7)
 
     def test_single_point_corner(self) -> None:
         """Point (1.0, 1.0, 1.0) with reference (1.1, 1.1, 1.1) produces 0.1^3."""
         hv = compute_hypervolume([(1.0, 1.0, 1.0)], reference_point=(1.1, 1.1, 1.1))
-        self.assertAlmostEqual(hv, 0.1 ** 3, places=7)
+        self.assertAlmostEqual(hv, 0.1**3, places=7)
 
     def test_point_on_reference_boundary(self) -> None:
         """Point with point[i] == reference_point[i] produces 0.0 volume."""
@@ -90,7 +88,7 @@ class TestHypervolume(unittest.TestCase):
         hv_both = compute_hypervolume([pt_a, pt_b], reference_point=ref)
 
         self.assertAlmostEqual(hv_both, hv_a_only, places=7)
-        self.assertAlmostEqual(hv_both, 0.8 ** 3, places=7)
+        self.assertAlmostEqual(hv_both, 0.8**3, places=7)
 
     def test_duplicate_points_do_not_inflate_volume(self) -> None:
         """Duplicated points must yield identical volume."""

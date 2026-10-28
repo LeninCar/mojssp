@@ -134,7 +134,12 @@ class TestRunner(unittest.TestCase):
             instance=self.small_3x2, seed=42, total_budget=60, block_size=20, population_size=10
         )
         standalone_toy = run_standalone_experiment(
-            instance=self.toy_instance, arm_name="NSGA-II", seed=42, budget=60, block_size=20, population_size=10
+            instance=self.toy_instance,
+            arm_name="NSGA-II",
+            seed=42,
+            budget=60,
+            block_size=20,
+            population_size=10,
         )
 
         all_runs = [res_toy, res_s32, standalone_toy]

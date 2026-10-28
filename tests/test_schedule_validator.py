@@ -41,9 +41,7 @@ class TestScheduleValidator(unittest.TestCase):
             job_id=0, op_id=0, machine_id=0, modes=(self.mode0_0_1, self.mode0_0_2), release_date=0
         )
         self.mode0_1_1 = ProcessingMode(mode_id=1, duration=4, energy=6.0)
-        self.op0_1 = Operation(
-            job_id=0, op_id=1, machine_id=1, modes=(self.mode0_1_1,), release_date=0
-        )
+        self.op0_1 = Operation(job_id=0, op_id=1, machine_id=1, modes=(self.mode0_1_1,), release_date=0)
         self.job0 = Job(job_id=0, operations=(self.op0_0, self.op0_1), due_date=15)
 
         self.mode1_0_1 = ProcessingMode(mode_id=1, duration=5, energy=10.0)
@@ -52,9 +50,7 @@ class TestScheduleValidator(unittest.TestCase):
             job_id=1, op_id=0, machine_id=1, modes=(self.mode1_0_1, self.mode1_0_2), release_date=2
         )
         self.mode1_1_1 = ProcessingMode(mode_id=1, duration=2, energy=4.0)
-        self.op1_1 = Operation(
-            job_id=1, op_id=1, machine_id=0, modes=(self.mode1_1_1,), release_date=0
-        )
+        self.op1_1 = Operation(job_id=1, op_id=1, machine_id=0, modes=(self.mode1_1_1,), release_date=0)
         self.job1 = Job(job_id=1, operations=(self.op1_0, self.op1_1), due_date=15)
 
         self.instance = Instance(
@@ -70,23 +66,57 @@ class TestScheduleValidator(unittest.TestCase):
         # J1-O0 (M1, mode 2, dur 3, energy 15.0, r=2): [2, 5]
         # J1-O1 (M0, mode 1, dur 2, energy 4.0, r=0): [5, 7]
         self.valid_op0_0 = ScheduledOperation(
-            job_id=0, op_id=0, machine_id=0, mode_id=1, start=0, completion=3, duration=3, energy=5.0, release_date=0
+            job_id=0,
+            op_id=0,
+            machine_id=0,
+            mode_id=1,
+            start=0,
+            completion=3,
+            duration=3,
+            energy=5.0,
+            release_date=0,
         )
         self.valid_op0_1 = ScheduledOperation(
-            job_id=0, op_id=1, machine_id=1, mode_id=1, start=5, completion=9, duration=4, energy=6.0, release_date=0
+            job_id=0,
+            op_id=1,
+            machine_id=1,
+            mode_id=1,
+            start=5,
+            completion=9,
+            duration=4,
+            energy=6.0,
+            release_date=0,
         )
         self.valid_op1_0 = ScheduledOperation(
-            job_id=1, op_id=0, machine_id=1, mode_id=2, start=2, completion=5, duration=3, energy=15.0, release_date=2
+            job_id=1,
+            op_id=0,
+            machine_id=1,
+            mode_id=2,
+            start=2,
+            completion=5,
+            duration=3,
+            energy=15.0,
+            release_date=2,
         )
         self.valid_op1_1 = ScheduledOperation(
-            job_id=1, op_id=1, machine_id=0, mode_id=1, start=5, completion=7, duration=2, energy=4.0, release_date=0
+            job_id=1,
+            op_id=1,
+            machine_id=0,
+            mode_id=1,
+            start=5,
+            completion=7,
+            duration=2,
+            energy=4.0,
+            release_date=0,
         )
-        self.valid_schedule = Schedule([
-            self.valid_op0_0,
-            self.valid_op0_1,
-            self.valid_op1_0,
-            self.valid_op1_1,
-        ])
+        self.valid_schedule = Schedule(
+            [
+                self.valid_op0_0,
+                self.valid_op0_1,
+                self.valid_op1_0,
+                self.valid_op1_1,
+            ]
+        )
         self.validator = ScheduleValidator()
 
     def test_valid_schedule_passes(self) -> None:
@@ -177,7 +207,15 @@ class TestScheduleValidator(unittest.TestCase):
     def test_release_date_violation_fails(self) -> None:
         # Op (1,0) has release_date = 2 in instance. Schedule with start = 1 (and release_date=1)
         early_op = ScheduledOperation(
-            job_id=1, op_id=0, machine_id=1, mode_id=2, start=1, completion=4, duration=3, energy=15.0, release_date=1
+            job_id=1,
+            op_id=0,
+            machine_id=1,
+            mode_id=2,
+            start=1,
+            completion=4,
+            duration=3,
+            energy=15.0,
+            release_date=1,
         )
         sched = Schedule([self.valid_op0_0, self.valid_op0_1, early_op, self.valid_op1_1])
         errors = self.validator.validate(self.instance, sched, raise_on_error=False)
@@ -191,7 +229,15 @@ class TestScheduleValidator(unittest.TestCase):
         )
         # Shift J1-O0 so it doesn't overlap machine 1 [6, 9]
         shift_op1_0 = ScheduledOperation(
-            job_id=1, op_id=0, machine_id=1, mode_id=2, start=6, completion=9, duration=3, energy=15.0, release_date=2
+            job_id=1,
+            op_id=0,
+            machine_id=1,
+            mode_id=2,
+            start=6,
+            completion=9,
+            duration=3,
+            energy=15.0,
+            release_date=2,
         )
         sched = Schedule([self.valid_op0_0, premature_op0_1, shift_op1_0, self.valid_op1_1])
         errors = self.validator.validate(self.instance, sched, raise_on_error=False)
@@ -218,4 +264,3 @@ class TestScheduleValidator(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -12,41 +12,53 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CAMPAIGNS = [
-    'holdout_early_moead_600_20261024',
-    'holdout_policy_comparison_20261025',
-    'cut_sweep_development_20261028',
+    "holdout_early_moead_600_20261024",
+    "holdout_policy_comparison_20261025",
+    "cut_sweep_development_20261028",
 ]
-KEYS = ['case', 'master_seed', 'method', 'composition', 'dimension', 'hypervolume', 'auc_hv',
-        'runtime_seconds', 'evaluations_used', 'allocations']
+KEYS = [
+    "case",
+    "master_seed",
+    "method",
+    "composition",
+    "dimension",
+    "hypervolume",
+    "auc_hv",
+    "runtime_seconds",
+    "evaluations_used",
+    "allocations",
+]
 
 
 def compact(run):
     row = {k: run[k] for k in KEYS if k in run}
-    row['checkpoints'] = [[int(fe), round(hv, 6)] for fe, hv in run.get('checkpoints', [])]
-    row['block_arms'] = [b['arm_name'] for b in run.get('blocks', [])]
-    row['front'] = sorted({tuple(p) for p in run.get('pareto_front', [])})
+    row["checkpoints"] = [[int(fe), round(hv, 6)] for fe, hv in run.get("checkpoints", [])]
+    row["block_arms"] = [b["arm_name"] for b in run.get("blocks", [])]
+    row["front"] = sorted({tuple(p) for p in run.get("pareto_front", [])})
     return row
 
 
 def export(campaign):
-    folder = ROOT / 'results' / 'experiments' / campaign
-    paths = sorted((folder / 'runs').glob('*.json'))
+    folder = ROOT / "results" / "experiments" / campaign
+    paths = sorted((folder / "runs").glob("*.json"))
     if not paths:
-        print(f'{campaign}: sin carpeta runs/, se omite')
+        print(f"{campaign}: sin carpeta runs/, se omite")
         return
-    target = folder / 'compact_runs.jsonl.gz'
-    with gzip.open(target, 'wt', encoding='utf-8') as out:
+    target = folder / "compact_runs.jsonl.gz"
+    with gzip.open(target, "wt", encoding="utf-8") as out:
         for path in paths:
-            out.write(json.dumps(compact(json.loads(path.read_text())), separators=(',', ':')) + '\n')
-    print(f'{campaign}: {len(paths)} corridas -> {target.relative_to(ROOT)} ({target.stat().st_size / 1e6:.1f} MB)')
+            out.write(json.dumps(compact(json.loads(path.read_text())), separators=(",", ":")) + "\n")
+    print(
+        f"{campaign}: {len(paths)} corridas -> {target.relative_to(ROOT)} ({target.stat().st_size / 1e6:.1f} MB)"
+    )
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument('campaigns', nargs='*', default=CAMPAIGNS)
+    parser.add_argument("campaigns", nargs="*", default=CAMPAIGNS)
     for campaign in parser.parse_args().campaigns:
         export(campaign)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

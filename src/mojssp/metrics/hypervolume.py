@@ -28,11 +28,7 @@ def _compute_2d_hypervolume(
     r1, r2 = reference_2d
 
     # Discard points outside the 2D bounding region
-    valid_points = [
-        (p[0], p[1])
-        for p in points_2d
-        if p[0] < r1 and p[1] < r2
-    ]
+    valid_points = [(p[0], p[1]) for p in points_2d if p[0] < r1 and p[1] < r2]
     if not valid_points:
         return 0.0
 
@@ -84,9 +80,7 @@ def compute_hypervolume(
         The exact hypervolume enclosed by the non-dominated points and the reference point.
     """
     if len(reference_point) != 3:
-        raise ValueError(
-            f"Reference point must have 3 dimensions, got {len(reference_point)}"
-        )
+        raise ValueError(f"Reference point must have 3 dimensions, got {len(reference_point)}")
 
     r0, r1, r2 = (
         float(reference_point[0]),
@@ -125,9 +119,7 @@ def compute_hypervolume(
         return float(max(0.0, r0 - p[0]) * max(0.0, r1 - p[1]) * max(0.0, r2 - p[2]))
 
     # 4. Dimension Sweeping (2D Slicing) along coordinate 0
-    x_coords = sorted(
-        set(p[0] for p in non_dominated if p[0] < r0).union({r0})
-    )
+    x_coords = sorted(set(p[0] for p in non_dominated if p[0] < r0).union({r0}))
 
     total_volume = 0.0
     ref_2d = (r1, r2)
@@ -140,11 +132,7 @@ def compute_hypervolume(
             continue
 
         # Points active throughout [x_start, x_end] are those with p[0] <= x_start
-        active_2d = [
-            (p[1], p[2])
-            for p in non_dominated
-            if p[0] <= x_start
-        ]
+        active_2d = [(p[1], p[2]) for p in non_dominated if p[0] <= x_start]
 
         if not active_2d:
             continue
@@ -175,4 +163,3 @@ def compute_archive_hypervolume(
     """
     normalized_points = normalizer.normalize_archive(archive)
     return compute_hypervolume(normalized_points, reference_point=reference_point)
-

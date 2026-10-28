@@ -94,8 +94,7 @@ def compute_instance_bounds(instance: Instance) -> ObjectiveBounds:
         for k in range(n_j):
             op_k = job.operations[k]
             remaining_min_duration = sum(
-                op_min_duration[(job.operations[h].job_id, job.operations[h].op_id)]
-                for h in range(k, n_j)
+                op_min_duration[(job.operations[h].job_id, job.operations[h].op_id)] for h in range(k, n_j)
             )
             lb_jk = op_k.release_date + remaining_min_duration
             op_lbs.append(lb_jk)
@@ -104,24 +103,16 @@ def compute_instance_bounds(instance: Instance) -> ObjectiveBounds:
 
     # 3. Makespan upper bound: max release date + sum of all max durations
     max_release = max((op.release_date for op in instance.all_operations), default=0)
-    total_max_duration = sum(
-        op_max_duration[(op.job_id, op.op_id)] for op in instance.all_operations
-    )
+    total_max_duration = sum(op_max_duration[(op.job_id, op.op_id)] for op in instance.all_operations)
     cmax_max = float(max_release + total_max_duration)
 
     # 4. Energy bounds
-    energy_min = float(
-        sum(op_min_energy[(op.job_id, op.op_id)] for op in instance.all_operations)
-    )
-    energy_max = float(
-        sum(op_max_energy[(op.job_id, op.op_id)] for op in instance.all_operations)
-    )
+    energy_min = float(sum(op_min_energy[(op.job_id, op.op_id)] for op in instance.all_operations))
+    energy_max = float(sum(op_max_energy[(op.job_id, op.op_id)] for op in instance.all_operations))
 
     # 5. Tardiness bounds
     tardiness_min = 0.0
-    tardiness_max = float(
-        sum(max(0.0, cmax_max - float(job.due_date)) for job in instance.jobs)
-    )
+    tardiness_max = float(sum(max(0.0, cmax_max - float(job.due_date)) for job in instance.jobs))
 
     return ObjectiveBounds(
         cmax_min=cmax_min,
@@ -171,13 +162,11 @@ class ObjectiveNormalizer:
         # Check for real violations beyond tolerance
         if val < lower - self._tolerance:
             raise NormalizationBoundError(
-                f"{name} value {val} is below lower bound {lower} "
-                f"(tolerance: {self._tolerance})"
+                f"{name} value {val} is below lower bound {lower} (tolerance: {self._tolerance})"
             )
         if val > upper + self._tolerance:
             raise NormalizationBoundError(
-                f"{name} value {val} is above upper bound {upper} "
-                f"(tolerance: {self._tolerance})"
+                f"{name} value {val} is above upper bound {upper} (tolerance: {self._tolerance})"
             )
 
         # Handle degenerate case where upper == lower
@@ -222,13 +211,9 @@ class ObjectiveNormalizer:
             tardiness = float(objectives[1])
             energy = float(objectives[2])
         else:
-            raise TypeError(
-                f"Expected 3-element tuple or ObjectiveValues, got {type(objectives)}"
-            )
+            raise TypeError(f"Expected 3-element tuple or ObjectiveValues, got {type(objectives)}")
 
-        cmax_norm = self._normalize_value(
-            cmax, self._bounds.cmax_min, self._bounds.cmax_max, "makespan"
-        )
+        cmax_norm = self._normalize_value(cmax, self._bounds.cmax_min, self._bounds.cmax_max, "makespan")
         tardiness_norm = self._normalize_value(
             tardiness, self._bounds.tardiness_min, self._bounds.tardiness_max, "tardiness"
         )
@@ -237,9 +222,7 @@ class ObjectiveNormalizer:
         )
         return (cmax_norm, tardiness_norm, energy_norm)
 
-    def denormalize_tuple(
-        self, normalized: Tuple[float, float, float]
-    ) -> Tuple[float, float, float]:
+    def denormalize_tuple(self, normalized: Tuple[float, float, float]) -> Tuple[float, float, float]:
         """Denormalize a [0, 1]^3 objective vector back to original problem scale.
 
         Args:
@@ -256,20 +239,14 @@ class ObjectiveNormalizer:
             float(normalized[1]),
             float(normalized[2]),
         )
-        cmax = self._bounds.cmax_min + cmax_norm * (
-            self._bounds.cmax_max - self._bounds.cmax_min
-        )
+        cmax = self._bounds.cmax_min + cmax_norm * (self._bounds.cmax_max - self._bounds.cmax_min)
         tardiness = self._bounds.tardiness_min + tardiness_norm * (
             self._bounds.tardiness_max - self._bounds.tardiness_min
         )
-        energy = self._bounds.energy_min + energy_norm * (
-            self._bounds.energy_max - self._bounds.energy_min
-        )
+        energy = self._bounds.energy_min + energy_norm * (self._bounds.energy_max - self._bounds.energy_min)
         return (cmax, tardiness, energy)
 
-    def normalize_archive(
-        self, archive: ParetoArchive
-    ) -> List[Tuple[float, float, float]]:
+    def normalize_archive(self, archive: ParetoArchive) -> List[Tuple[float, float, float]]:
         """Normalize all non-dominated objective vectors contained in a ParetoArchive.
 
         Args:
@@ -279,4 +256,3 @@ class ObjectiveNormalizer:
             List of 3-tuples normalized in [0, 1]^3.
         """
         return [self.normalize_tuple(entry.objectives) for entry in archive.entries]
-

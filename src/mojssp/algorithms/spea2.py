@@ -101,9 +101,7 @@ def calculate_spea2_fitness(
         ind_i.fitness = ind_i.raw_fitness + ind_i.density
 
 
-def truncate_archive(
-    candidates: Sequence[SPEA2Individual], target_size: int
-) -> List[SPEA2Individual]:
+def truncate_archive(candidates: Sequence[SPEA2Individual], target_size: int) -> List[SPEA2Individual]:
     """Deterministically truncate a set of non-dominated individuals to target_size.
 
     Iteratively removes the candidate with minimum distance to another individual.
@@ -181,9 +179,7 @@ def environmental_selection(
     return truncate_archive(non_dominated, target_size=archive_size)
 
 
-def binary_tournament_spea2(
-    p1: SPEA2Individual, p2: SPEA2Individual, rng: random.Random
-) -> SPEA2Individual:
+def binary_tournament_spea2(p1: SPEA2Individual, p2: SPEA2Individual, rng: random.Random) -> SPEA2Individual:
     """Binary tournament for SPEA2 based on total fitness F (lower is better)."""
     if p1.fitness < p2.fitness:
         return p1
@@ -228,7 +224,9 @@ class SPEA2:
         if not (0.0 <= crossover_probability <= 1.0):
             raise ValueError(f"crossover_probability must be in [0, 1], got {crossover_probability}")
         if not (0.0 <= mutation_sequence_probability <= 1.0):
-            raise ValueError(f"mutation_sequence_probability must be in [0, 1], got {mutation_sequence_probability}")
+            raise ValueError(
+                f"mutation_sequence_probability must be in [0, 1], got {mutation_sequence_probability}"
+            )
         if max_evaluations is not None and max_evaluations <= 0:
             raise ValueError(f"max_evaluations must be positive, got {max_evaluations}")
 
@@ -395,9 +393,7 @@ class SPEA2Arm(GuidedMatingArm):
             )
 
         remaining_evals = (
-            self._max_evaluations - self._total_evaluations
-            if self._max_evaluations is not None
-            else budget
+            self._max_evaluations - self._total_evaluations if self._max_evaluations is not None else budget
         )
         if remaining_evals <= 0:
             self._completed = True
@@ -442,26 +438,18 @@ class SPEA2Arm(GuidedMatingArm):
 
         # 2. Generational evolution loop
         while evals_used < effective_budget and not self._completed:
-            if (
-                self._max_evaluations is not None
-                and self._total_evaluations >= self._max_evaluations
-            ):
+            if self._max_evaluations is not None and self._total_evaluations >= self._max_evaluations:
                 self._completed = True
                 break
 
-            while (
-                len(self._offspring_in_progress) < self._population_size
-                and evals_used < effective_budget
-            ):
+            while len(self._offspring_in_progress) < self._population_size and evals_used < effective_budget:
                 # Check for pending sibling from prior block
                 if self._pending_sibling is not None:
                     c_sol = self._pending_sibling
                     self._pending_sibling = None
                     if self._rng.random() < self._mutation_sequence_probability:
                         c_sol = mutate_sequence_swap(c_sol, self._rng)
-                    c_sol = mutate_modes_per_gene(
-                        c_sol, self._instance, self._p_mut_mode, self._rng
-                    )
+                    c_sol = mutate_modes_per_gene(c_sol, self._instance, self._p_mut_mode, self._rng)
                     ind = _evaluate_sol(c_sol)
                     self._offspring_in_progress.append(ind)
                     continue
@@ -518,10 +506,7 @@ class SPEA2Arm(GuidedMatingArm):
                 self._offspring_in_progress = []
                 self._generations_completed += 1
 
-        if (
-            self._max_evaluations is not None
-            and self._total_evaluations >= self._max_evaluations
-        ):
+        if self._max_evaluations is not None and self._total_evaluations >= self._max_evaluations:
             self._completed = True
 
         return AlgorithmBlockResult(
@@ -552,4 +537,3 @@ def spea2(
         max_evaluations=max_evaluations,
     )
     return algo.run(instance)
-

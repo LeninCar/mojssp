@@ -186,8 +186,7 @@ class TestMOPSOComponents(unittest.TestCase):
         # Over multiple draws, select_guide_by_crowding selects among extremes uniformly
         # and does NOT always select min(Cmax) or min(E)
         selections = [
-            select_guide_by_crowding(archive.entries, p_crowding, random.Random(seed))
-            for seed in range(50)
+            select_guide_by_crowding(archive.entries, p_crowding, random.Random(seed)) for seed in range(50)
         ]
         selected_solutions = {e.solution for e in selections}
 
@@ -216,7 +215,9 @@ class TestMOPSOComponents(unittest.TestCase):
         self.assertTrue(math.isinf(distances[e3]))
 
         # Selected guide must be chosen uniformly among infinite entries
-        chosen_inf = [select_guide_by_crowding(entries, distances, random.Random(seed)) for seed in range(100)]
+        chosen_inf = [
+            select_guide_by_crowding(entries, distances, random.Random(seed)) for seed in range(100)
+        ]
         self.assertTrue(all(e in [e1, e3] for e in chosen_inf))
         # Both infinite extremes are selected roughly equally
         self.assertGreater(chosen_inf.count(e1), 30)
@@ -224,7 +225,9 @@ class TestMOPSOComponents(unittest.TestCase):
 
         # Case B: All finite distances
         finite_distances = {e1: 0.1, e2: 0.8, e3: 0.1}
-        selections = [select_guide_by_crowding(entries, finite_distances, random.Random(seed)) for seed in range(200)]
+        selections = [
+            select_guide_by_crowding(entries, finite_distances, random.Random(seed)) for seed in range(200)
+        ]
         # e2 has 80% weight
         self.assertGreater(selections.count(e2), 130)
 

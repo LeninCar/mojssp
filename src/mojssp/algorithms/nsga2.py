@@ -12,7 +12,6 @@ from mojssp.model.schedule import Schedule
 from mojssp.model.solution import Solution
 
 
-
 @dataclass(eq=False)
 class Individual:
     """Internal algorithmic individual pairing genotype, phenotype, and NSGA-II metadata.
@@ -47,8 +46,6 @@ class NSGA2Result:
     non_dominated_objectives: Tuple[ObjectiveValues, ...]
     population: Tuple[Solution, ...]
     population_objectives: Tuple[ObjectiveValues, ...]
-
-
 
 
 def fast_non_dominated_sort(population: Sequence[Individual]) -> List[List[Individual]]:
@@ -95,7 +92,6 @@ def fast_non_dominated_sort(population: Sequence[Individual]) -> List[List[Indiv
         curr_idx += 1
 
     return [[population[idx] for idx in f] for f in front_indices if f]
-
 
 
 def calculate_crowding_distance(front: List[Individual]) -> None:

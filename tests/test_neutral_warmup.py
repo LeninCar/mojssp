@@ -48,7 +48,9 @@ class TestNeutralWarmup(unittest.TestCase):
         arms = {
             "NSGA-II": NSGA2Arm(self.instance, population_size=pop_size, seed=seed_nsga2),
             "MOPSO": MOPSOArm(self.instance, population_size=pop_size, seed=seed_mopso),
-            "NSGA-II+LS": NSGA2LSArm(self.instance, population_size=pop_size, seed=seed_ls, max_ls_iterations=5, max_ls_neighbors=5),
+            "NSGA-II+LS": NSGA2LSArm(
+                self.instance, population_size=pop_size, seed=seed_ls, max_ls_iterations=5, max_ls_neighbors=5
+            ),
         }
         portfolio = Portfolio(arms)
         dmab = SlidingWindowUCB(
@@ -184,7 +186,7 @@ class TestNeutralWarmup(unittest.TestCase):
         adaptive_evals = sum(r.evaluations_used for r in res.history if r.phase == "adaptive")
 
         self.assertEqual(warmup_evals, 3 * block_size)  # 150 FE (3 warmup blocks)
-        self.assertEqual(probe_evals, 3 * block_size)   # 150 FE (3 probe blocks)
+        self.assertEqual(probe_evals, 3 * block_size)  # 150 FE (3 probe blocks)
         self.assertEqual(adaptive_evals, 4 * block_size)  # 200 FE (4 ordinary adaptive blocks)
         self.assertEqual(warmup_evals + probe_evals + adaptive_evals, total_budget)
 

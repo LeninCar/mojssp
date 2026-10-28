@@ -168,7 +168,9 @@ class TestSPEA2Components(unittest.TestCase):
         self.assertIn(e1, truncated, "Extremes must be preserved")
         self.assertIn(e2, truncated, "Extremes must be preserved")
         # Exactly one of p1 or p2 should be kept
-        self.assertTrue((p1 in truncated and p2 not in truncated) or (p2 in truncated and p1 not in truncated))
+        self.assertTrue(
+            (p1 in truncated and p2 not in truncated) or (p2 in truncated and p1 not in truncated)
+        )
 
 
 class TestSPEA2Execution(unittest.TestCase):

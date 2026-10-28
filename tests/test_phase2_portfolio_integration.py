@@ -65,9 +65,15 @@ class TestPhase2PortfolioIntegration(unittest.TestCase):
             selector.update(arm, reward=0.01 * (i + 1))
 
         expected_seq = [
-            "MOEA/D", "NSGA-II", "SPEA2",
-            "MOEA/D", "NSGA-II", "SPEA2",
-            "MOEA/D", "NSGA-II", "SPEA2",
+            "MOEA/D",
+            "NSGA-II",
+            "SPEA2",
+            "MOEA/D",
+            "NSGA-II",
+            "SPEA2",
+            "MOEA/D",
+            "NSGA-II",
+            "SPEA2",
         ]
         self.assertEqual(selected_seq, expected_seq)
         self.assertEqual(selector.total_pulls, 9)
@@ -227,4 +233,3 @@ class TestPhase2PortfolioIntegration(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

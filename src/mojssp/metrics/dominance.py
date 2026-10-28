@@ -25,5 +25,3 @@ def dominates(
     a_vals = (a.makespan, a.tardiness, a.energy) if isinstance(a, ObjectiveValues) else tuple(a)
     b_vals = (b.makespan, b.tardiness, b.energy) if isinstance(b, ObjectiveValues) else tuple(b)
     return all(x <= y for x, y in zip(a_vals, b_vals)) and any(x < y for x, y in zip(a_vals, b_vals))
-
-

@@ -172,16 +172,12 @@ class LocalParetoArchive:
 
         # 3. Identify and remove existing entries dominated by the new entry
         dominated_entries = [
-            existing
-            for existing in self._entries
-            if dominates(entry.objectives, existing.objectives)
+            existing for existing in self._entries if dominates(entry.objectives, existing.objectives)
         ]
         num_dominated = len(dominated_entries)
 
         self._entries = [
-            existing
-            for existing in self._entries
-            if not dominates(entry.objectives, existing.objectives)
+            existing for existing in self._entries if not dominates(entry.objectives, existing.objectives)
         ]
 
         # 4. Record capacity state before insertion and insert candidate
@@ -194,15 +190,13 @@ class LocalParetoArchive:
             pruned = True
             self._prune_to_max_size()
 
-        candidate_remained = (entry in self._entries)
+        candidate_remained = entry in self._entries
 
         # Genuine Pareto improvement occurs if:
         # - candidate dominated one or more existing members (num_dominated > 0), OR
         # - candidate was accepted into an archive with available capacity (size_before_insert < max_size)
         #   and remained in the archive without being a crowding replacement.
-        pareto_improvement = (
-            num_dominated > 0 or (candidate_remained and size_before_insert < self._max_size)
-        )
+        pareto_improvement = num_dominated > 0 or (candidate_remained and size_before_insert < self._max_size)
 
         return ArchiveAddResult(
             accepted=True,
@@ -353,9 +347,7 @@ class LocalSearch:
                 # Perform swap on sequence
                 seq_list = list(seq)
                 seq_list[i], seq_list[j] = seq_list[j], seq_list[i]
-                neighbor_solution = Solution(
-                    sequence=tuple(seq_list), modes=base_entry.solution.modes
-                )
+                neighbor_solution = Solution(sequence=tuple(seq_list), modes=base_entry.solution.modes)
 
                 # Decode and evaluate
                 neighbor_schedule = decoder.decode(instance, neighbor_solution)
@@ -366,9 +358,7 @@ class LocalSearch:
                     eval_counter[0] += 1
 
                 # Attempt insertion into local archive
-                add_result = local_archive.add(
-                    neighbor_solution, neighbor_schedule, neighbor_objectives
-                )
+                add_result = local_archive.add(neighbor_solution, neighbor_schedule, neighbor_objectives)
                 if add_result.pareto_improvement:
                     iteration_improved = True
 
@@ -389,4 +379,3 @@ class LocalSearch:
             evaluations_count=ls_evaluations,
             stopped_reason=stopped_reason,
         )
-

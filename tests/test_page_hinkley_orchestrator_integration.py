@@ -276,7 +276,6 @@ class TestPageHinkleyOrchestratorIntegration(unittest.TestCase):
         # Global archive must remain preserved
         self.assertEqual(len(portfolio.global_archive), archive_size_before)
 
-
     def test_12_exact_fe_accounting(self) -> None:
         """12. Verify FE_total = FE_warmup + FE_sondeo + FE_adaptativo = sum(evaluations_used)."""
         orchestrator, portfolio, _ = self._create_pipeline()
@@ -343,8 +342,17 @@ class TestPageHinkleyOrchestratorIntegration(unittest.TestCase):
 
             self.assertGreater(len(rows), 0)
             required_fields = {
-                "run_id", "arm_selected", "phase", "evaluations_used", "reward",
-                "fe_before", "fe_after", "alarm_triggered", "num_alarms", "ph_statistic", "cycle_index"
+                "run_id",
+                "arm_selected",
+                "phase",
+                "evaluations_used",
+                "reward",
+                "fe_before",
+                "fe_after",
+                "alarm_triggered",
+                "num_alarms",
+                "ph_statistic",
+                "cycle_index",
             }
             self.assertTrue(required_fields.issubset(rows[0].keys()))
         finally:
@@ -402,9 +410,7 @@ class TestPageHinkleyOrchestratorIntegration(unittest.TestCase):
 
     def test_20_absence_of_alarms_under_high_threshold(self) -> None:
         """20. Verify that setting a high threshold lambda=1.0 results in exactly zero alarms."""
-        orchestrator, _, dmab = self._create_pipeline(
-            delta=0.001, threshold=1.0, min_instances=5
-        )
+        orchestrator, _, dmab = self._create_pipeline(delta=0.001, threshold=1.0, min_instances=5)
         res = orchestrator.run(total_budget=200, block_size=25, neutral_warmup=True)
         self.assertEqual(dmab.num_alarms, 0)
         for b in res.history:

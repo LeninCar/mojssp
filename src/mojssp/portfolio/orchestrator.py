@@ -57,7 +57,6 @@ class BlockExecutionRecord:
     round_index: Optional[int] = None
 
 
-
 @dataclass(frozen=True)
 class AdaptiveExecutionResult:
     """Result of running an adaptive portfolio execution under a global budget.
@@ -110,9 +109,7 @@ class AdaptivePortfolioOrchestrator:
             raise TypeError(f"dmab must implement DMABSelector protocol, got {type(dmab)}")
 
         if not isinstance(reward_tracker, HypervolumeRewardTracker):
-            raise TypeError(
-                f"reward_tracker must be a HypervolumeRewardTracker, got {type(reward_tracker)}"
-            )
+            raise TypeError(f"reward_tracker must be a HypervolumeRewardTracker, got {type(reward_tracker)}")
 
         self._portfolio = portfolio
         self._dmab = dmab
@@ -168,7 +165,7 @@ class AdaptivePortfolioOrchestrator:
         if hasattr(self._dmab, "is_in_initial_probe"):
             is_probe = self._dmab.is_in_initial_probe(arm_name)
         elif hasattr(self._dmab, "get_adaptive_pulls"):
-            is_probe = (self._dmab.get_adaptive_pulls(arm_name) == 0)
+            is_probe = self._dmab.get_adaptive_pulls(arm_name) == 0
 
         if hasattr(self._dmab, "is_in_reexploration"):
             is_reexploring = self._dmab.is_in_reexploration(arm_name)
@@ -176,9 +173,7 @@ class AdaptivePortfolioOrchestrator:
         fe_before = self._portfolio.total_evaluations
 
         # 2. Portfolio executes block on selected arm
-        block_result: PortfolioBlockResult = self._portfolio.run_arm(
-            arm_name, budget=block_budget
-        )
+        block_result: PortfolioBlockResult = self._portfolio.run_arm(arm_name, budget=block_budget)
         fe_after = self._portfolio.total_evaluations
 
         # 3. Compute ΔHV reward on the updated Global Pareto Archive
@@ -207,10 +202,12 @@ class AdaptivePortfolioOrchestrator:
         ph_stat = 0.0
         if hasattr(self._dmab, "num_alarms"):
             alarms_after = self._dmab.num_alarms
-            alarm_triggered_in_block = (alarms_after > alarms_before)
+            alarm_triggered_in_block = alarms_after > alarms_before
             if hasattr(self._dmab, "detector"):
                 ph_stat = self._dmab.detector.alarm_statistic
-            elif alarm_triggered_in_block and hasattr(self._dmab, "alarm_history") and self._dmab.alarm_history:
+            elif (
+                alarm_triggered_in_block and hasattr(self._dmab, "alarm_history") and self._dmab.alarm_history
+            ):
                 ph_stat = self._dmab.alarm_history[-1].alarm_statistic
 
         cycle_idx = 0
@@ -270,9 +267,7 @@ class AdaptivePortfolioOrchestrator:
 
         fe_before = self._portfolio.total_evaluations
         hv_before = self._reward_tracker.current_hv
-        block_result: PortfolioBlockResult = self._portfolio.run_arm(
-            arm_name, budget=block_budget
-        )
+        block_result: PortfolioBlockResult = self._portfolio.run_arm(arm_name, budget=block_budget)
         self._last_block_result = block_result
         fe_after = self._portfolio.total_evaluations
         reward = self._reward_tracker.compute_reward(self._portfolio.global_archive)
@@ -350,9 +345,7 @@ class AdaptivePortfolioOrchestrator:
                 rec = self.run_warmup_block(arm_name, warmup_budget)
                 run_evaluations_used += rec.evaluations_used
 
-                if rec.completed and all(
-                    arm.is_completed for arm in self._portfolio.arms.values()
-                ):
+                if rec.completed and all(arm.is_completed for arm in self._portfolio.arms.values()):
                     break
 
         # Phase 2: Active DMAB Adaptive Phase
@@ -361,9 +354,7 @@ class AdaptivePortfolioOrchestrator:
             block_budget = min(block_size, remaining)
 
             # Check if all registered arms have definitively finished
-            if self._portfolio.arms and all(
-                arm.is_completed for arm in self._portfolio.arms.values()
-            ):
+            if self._portfolio.arms and all(arm.is_completed for arm in self._portfolio.arms.values()):
                 break
 
             record = self.step(block_budget)
@@ -389,22 +380,21 @@ class AdaptivePortfolioOrchestrator:
         """
         names = tuple(self._portfolio.arms)
         if set(quotas) != set(names) or any(
-            isinstance(value, bool) or not isinstance(value, int) or value <= 0
-            for value in quotas.values()
+            isinstance(value, bool) or not isinstance(value, int) or value <= 0 for value in quotas.values()
         ):
-            raise ValueError('Expected a positive integer quota for every arm')
+            raise ValueError("Expected a positive integer quota for every arm")
         if block_size <= 0 or self._history or self._portfolio.total_evaluations:
-            raise ValueError('Fixed quotas require a fresh execution and positive block size')
+            raise ValueError("Fixed quotas require a fresh execution and positive block size")
         used = dict.fromkeys(names, 0)
 
         def execute(name, warmup=False):
             amount = min(block_size, quotas[name] - used[name])
             record = self.run_warmup_block(name, amount)
             if record.evaluations_used != amount:
-                raise RuntimeError('Arm failed to consume its assigned fixed quota block')
+                raise RuntimeError("Arm failed to consume its assigned fixed quota block")
             used[name] += record.evaluations_used
             if not warmup:
-                self._history[-1] = replace(record, phase='fixed')
+                self._history[-1] = replace(record, phase="fixed")
 
         if neutral_warmup:
             for name in names:
@@ -420,8 +410,16 @@ class AdaptivePortfolioOrchestrator:
             history=tuple(self._history),
         )
 
-    def run_dynamic_rounds(self, total_budget, block_size, round_size=300, minimum_share=.1,
-                           share_power=1., exclusive_arm=None, exclusive_after=None):
+    def run_dynamic_rounds(
+        self,
+        total_budget,
+        block_size,
+        round_size=300,
+        minimum_share=0.1,
+        share_power=1.0,
+        exclusive_arm=None,
+        exclusive_after=None,
+    ):
         """Reallocate each round from the previous round's gain per real FE.
 
         The initial round is uniform. Its first block per arm is excluded from
@@ -436,51 +434,69 @@ class AdaptivePortfolioOrchestrator:
 
         names = tuple(self._portfolio.arms)
         if self._history or self._portfolio.total_evaluations:
-            raise ValueError('Dynamic rounds require a fresh execution')
-        if any(isinstance(value, bool) or not isinstance(value, int) or value <= 0
-               for value in [total_budget, block_size, round_size]):
-            raise ValueError('Budgets and block size must be positive integers')
+            raise ValueError("Dynamic rounds require a fresh execution")
+        if any(
+            isinstance(value, bool) or not isinstance(value, int) or value <= 0
+            for value in [total_budget, block_size, round_size]
+        ):
+            raise ValueError("Budgets and block size must be positive integers")
         if (exclusive_arm is None) != (exclusive_after is None):
-            raise ValueError('Exclusive arm and start must be given together')
-        if exclusive_arm is not None and (exclusive_arm not in names or isinstance(exclusive_after, bool)
-                                          or not isinstance(exclusive_after, int) or exclusive_after < round_size):
-            raise ValueError('Exclusive phase needs a known arm and must start after the first round')
-        shares = round_shares(dict.fromkeys(names, 0.), minimum_share, share_power)
+            raise ValueError("Exclusive arm and start must be given together")
+        if exclusive_arm is not None and (
+            exclusive_arm not in names
+            or isinstance(exclusive_after, bool)
+            or not isinstance(exclusive_after, int)
+            or exclusive_after < round_size
+        ):
+            raise ValueError("Exclusive phase needs a known arm and must start after the first round")
+        shares = round_shares(dict.fromkeys(names, 0.0), minimum_share, share_power)
         consumed, round_index = 0, 0
         while consumed < total_budget:
-            order = names[round_index % len(names):] + names[:round_index % len(names)]
-            amount_round = min(round_size, total_budget-consumed)
+            order = names[round_index % len(names) :] + names[: round_index % len(names)]
+            amount_round = min(round_size, total_budget - consumed)
             if exclusive_arm is not None and consumed >= exclusive_after:
                 quotas = {name: amount_round if name == exclusive_arm else 0 for name in names}
             else:
-                quotas = evaluation_quotas(amount_round, {name:shares[name] for name in order})
+                quotas = evaluation_quotas(amount_round, {name: shares[name] for name in order})
             used = dict.fromkeys(names, 0)
             scored_fe = dict.fromkeys(names, 0)
-            gains = dict.fromkeys(names, 0.)
+            gains = dict.fromkeys(names, 0.0)
             while any(used[name] < quotas[name] for name in names):
                 available = [name for name in order if used[name] < quotas[name]]
-                name = min(available, key=lambda arm: used[arm]/quotas[arm])
-                amount = min(block_size, quotas[name]-used[name])
+                name = min(available, key=lambda arm: used[arm] / quotas[arm])
+                amount = min(block_size, quotas[name] - used[name])
                 warmup = round_index == 0 and used[name] == 0
                 record = self.run_warmup_block(name, amount)
                 if record.evaluations_used != amount:
-                    raise RuntimeError('Arm failed to consume its dynamic round quota')
-                self._history[-1] = replace(record, phase='warmup' if warmup else 'dynamic',
-                                            round_index=round_index)
+                    raise RuntimeError("Arm failed to consume its dynamic round quota")
+                self._history[-1] = replace(
+                    record, phase="warmup" if warmup else "dynamic", round_index=round_index
+                )
                 used[name] += amount
                 consumed += amount
                 if not warmup:
                     scored_fe[name] += amount
                     gains[name] += record.reward
-            rates = {name: gains[name]/scored_fe[name] if scored_fe[name] else 0. for name in names}
+            rates = {name: gains[name] / scored_fe[name] if scored_fe[name] else 0.0 for name in names}
             shares = round_shares(rates, minimum_share, share_power)
             round_index += 1
-        return AdaptiveExecutionResult(total_evaluations=self._portfolio.total_evaluations,
-            total_blocks=len(self._history),global_archive=self._portfolio.global_archive,
-            history=tuple(self._history))
+        return AdaptiveExecutionResult(
+            total_evaluations=self._portfolio.total_evaluations,
+            total_blocks=len(self._history),
+            global_archive=self._portfolio.global_archive,
+            history=tuple(self._history),
+        )
 
-    def run_predicted_winner(self, total_budget, block_size, normalizer, initial_blocks=2, seed=0,
-                             curve='own', max_initial_blocks=6):
+    def run_predicted_winner(
+        self,
+        total_budget,
+        block_size,
+        normalizer,
+        initial_blocks=2,
+        seed=0,
+        curve="own",
+        max_initial_blocks=6,
+    ):
         """Winner-take-all selection by predicted own-archive HV at a common future FE.
 
         With curve='own', an arm's curve is the HV of its own archive against the
@@ -498,53 +514,68 @@ class AdaptivePortfolioOrchestrator:
 
         names = tuple(self._portfolio.arms)
         if self._history or self._portfolio.total_evaluations:
-            raise ValueError('Predicted selection requires a fresh execution')
-        if any(isinstance(value, bool) or not isinstance(value, int) or value <= 0
-               for value in [total_budget, block_size, initial_blocks]):
-            raise ValueError('Budgets, block size and initial blocks must be positive integers')
-        if curve not in ('own', 'credit'):
-            raise ValueError('Curve must be own or credit')
-        if (initial_blocks < 2 or max_initial_blocks < initial_blocks
-                or total_budget < initial_blocks*block_size*len(names)):
-            raise ValueError('Each arm needs two initial blocks to fit a line')
+            raise ValueError("Predicted selection requires a fresh execution")
+        if any(
+            isinstance(value, bool) or not isinstance(value, int) or value <= 0
+            for value in [total_budget, block_size, initial_blocks]
+        ):
+            raise ValueError("Budgets, block size and initial blocks must be positive integers")
+        if curve not in ("own", "credit"):
+            raise ValueError("Curve must be own or credit")
+        if (
+            initial_blocks < 2
+            or max_initial_blocks < initial_blocks
+            or total_budget < initial_blocks * block_size * len(names)
+        ):
+            raise ValueError("Each arm needs two initial blocks to fit a line")
         rng = random.Random(seed)
         curves = {name: [] for name in names}
         used = dict.fromkeys(names, 0)
-        credit = dict.fromkeys(names, 0.)
+        credit = dict.fromkeys(names, 0.0)
         self.prediction_trace = []
 
         def execute(name, phase):
-            amount = min(block_size, total_budget-self._portfolio.total_evaluations)
+            amount = min(block_size, total_budget - self._portfolio.total_evaluations)
             record = self.run_warmup_block(name, amount)
             if record.evaluations_used != amount:
-                raise RuntimeError('Arm failed to consume its predicted block')
+                raise RuntimeError("Arm failed to consume its predicted block")
             self._history[-1] = replace(record, phase=phase)
             used[name] += amount
-            if curve == 'own':
+            if curve == "own":
                 value = compute_archive_hypervolume(self._last_block_result.arm_result.solutions, normalizer)
             else:
-                credit[name] += 0. if phase == 'warmup' else record.reward
+                credit[name] += 0.0 if phase == "warmup" else record.reward
                 value = credit[name]
             curves[name].append((used[name], value))
 
         for index in range(max_initial_blocks):
-            pending = [name for name in names if index < initial_blocks or
-                       curves[name][-1][1] <= curves[name][0][1]]
+            pending = [
+                name for name in names if index < initial_blocks or curves[name][-1][1] <= curves[name][0][1]
+            ]
             if not pending:
                 break
             for name in pending:
                 if self._portfolio.total_evaluations < total_budget:
-                    execute(name, 'warmup' if index == 0 else 'probe')
+                    execute(name, "warmup" if index == 0 else "probe")
         while self._portfolio.total_evaluations < total_budget:
             target = max(used[name] + block_size for name in names)
             draws = {name: sampled_prediction(curves[name], target, rng)[0] for name in names}
             chosen = max(names, key=lambda name: draws[name])
-            self.prediction_trace.append(dict(fe_before=self._portfolio.total_evaluations,
-                target=target, predictions=draws, chosen=chosen))
-            execute(chosen, 'predicted')
-        return AdaptiveExecutionResult(total_evaluations=self._portfolio.total_evaluations,
-            total_blocks=len(self._history),global_archive=self._portfolio.global_archive,
-            history=tuple(self._history))
+            self.prediction_trace.append(
+                dict(
+                    fe_before=self._portfolio.total_evaluations,
+                    target=target,
+                    predictions=draws,
+                    chosen=chosen,
+                )
+            )
+            execute(chosen, "predicted")
+        return AdaptiveExecutionResult(
+            total_evaluations=self._portfolio.total_evaluations,
+            total_blocks=len(self._history),
+            global_archive=self._portfolio.global_archive,
+            history=tuple(self._history),
+        )
 
     def reset(self) -> None:
         """Reset portfolio, dmab, reward tracker, and execution history."""

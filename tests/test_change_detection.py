@@ -23,7 +23,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from mojssp.portfolio.change_detection import PageHinkleyDetector, PageHinkleyState
 
 
-
 class TestPageHinkleyDetector(unittest.TestCase):
     """Test suite for PageHinkleyDetector."""
 
@@ -119,7 +118,7 @@ class TestPageHinkleyDetector(unittest.TestCase):
         alarm_3 = d.update(0.0)
         self.assertTrue(alarm_3)
         self.assertAlmostEqual(d.current_mean, 2.0 / 3.0)
-        expected_ph_3 = (2.0 / 3.0 - 0.1)  # m_3 - min_m = (-0.2 + 0.5666667) - (-0.2) = 0.5666667
+        expected_ph_3 = 2.0 / 3.0 - 0.1  # m_3 - min_m = (-0.2 + 0.5666667) - (-0.2) = 0.5666667
         self.assertAlmostEqual(d.alarm_statistic, expected_ph_3, places=6)
         self.assertTrue(d.change_detected)
 
@@ -244,7 +243,6 @@ class TestPageHinkleyDetector(unittest.TestCase):
             self.assertFalse(d.change_detected)
             self.assertFalse(state.change_detected)
             self.assertAlmostEqual(d.current_mean, 0.0, places=9)
-
 
     def test_reset_behavior(self) -> None:
         """Verify that reset() cleanly restores initial state."""

@@ -112,4 +112,3 @@ def decode(instance: Instance, solution: Solution) -> Schedule:
         Schedule containing all ScheduledOperation objects.
     """
     return Decoder().decode(instance, solution)
-

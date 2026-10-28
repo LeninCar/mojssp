@@ -133,9 +133,7 @@ def generate_uniform_weights(
         best_cand: Optional[Tuple[float, ...]] = None
         best_min_dist = -1.0
         for cand in remaining:
-            min_d = min(
-                math.dist(cand, s) for s in selected
-            )
+            min_d = min(math.dist(cand, s) for s in selected)
             if min_d > best_min_dist:
                 best_min_dist = min_d
                 best_cand = cand
@@ -172,9 +170,7 @@ def compute_neighborhoods(
     neighborhoods: List[Tuple[int, ...]] = []
 
     for i, wi in enumerate(weight_vectors):
-        distances = [
-            (math.dist(wi, wj), j) for j, wj in enumerate(weight_vectors)
-        ]
+        distances = [(math.dist(wi, wj), j) for j, wj in enumerate(weight_vectors)]
         distances.sort(key=lambda pair: pair[0])
         neighbors = tuple(pair[1] for pair in distances[:t])
         neighborhoods.append(neighbors)
@@ -199,10 +195,7 @@ def tchebycheff_scalarizing(
     Returns:
         Scalar aggregation value (lower is better in minimization).
     """
-    return max(
-        weight_vector[k] * abs(normalized_objectives[k] - ideal_point[k])
-        for k in range(3)
-    )
+    return max(weight_vector[k] * abs(normalized_objectives[k] - ideal_point[k]) for k in range(3))
 
 
 @dataclass
@@ -476,9 +469,7 @@ class MOEADArm(GuidedMatingArm):
             )
 
         remaining_evals = (
-            self._max_evaluations - self._total_evaluations
-            if self._max_evaluations is not None
-            else budget
+            self._max_evaluations - self._total_evaluations if self._max_evaluations is not None else budget
         )
         if remaining_evals <= 0:
             self._completed = True
@@ -492,7 +483,9 @@ class MOEADArm(GuidedMatingArm):
         evals_used = 0
 
         # Helper to decode, evaluate, normalize, update ideal point, and add to archive
-        def _evaluate_candidate(sol: Solution) -> Tuple[Schedule, ObjectiveValues, Tuple[float, float, float]]:
+        def _evaluate_candidate(
+            sol: Solution,
+        ) -> Tuple[Schedule, ObjectiveValues, Tuple[float, float, float]]:
             nonlocal evals_used
             sched = self._decoder.decode(self._instance, sol)
             objs = self._evaluator.evaluate(self._instance, sched)
@@ -531,10 +524,7 @@ class MOEADArm(GuidedMatingArm):
         # 2. Generational evolution phase
         if len(self._subproblems) == self._population_size:
             while evals_used < effective_budget:
-                if (
-                    self._max_evaluations is not None
-                    and self._total_evaluations >= self._max_evaluations
-                ):
+                if self._max_evaluations is not None and self._total_evaluations >= self._max_evaluations:
                     self._completed = True
                     break
 
@@ -566,9 +556,7 @@ class MOEADArm(GuidedMatingArm):
                 # Mutation
                 if self._rng.random() < self._mutation_sequence_probability:
                     child_sol = mutate_sequence_swap(child_sol, self._rng)
-                child_sol = mutate_modes_per_gene(
-                    child_sol, self._instance, self._p_mut_mode, self._rng
-                )
+                child_sol = mutate_modes_per_gene(child_sol, self._instance, self._p_mut_mode, self._rng)
 
                 # Decode & evaluate (consumes exactly 1 FE)
                 child_sched, child_objs, child_norm = _evaluate_candidate(child_sol)
@@ -579,9 +567,7 @@ class MOEADArm(GuidedMatingArm):
                 replaced_count = 0
 
                 for j in replacement_pool:
-                    child_tch = tchebycheff_scalarizing(
-                        child_norm, self._weights[j], self._ideal_point
-                    )
+                    child_tch = tchebycheff_scalarizing(child_norm, self._weights[j], self._ideal_point)
                     current_tch = tchebycheff_scalarizing(
                         self._subproblems[j].normalized_objectives,
                         self._weights[j],
@@ -603,10 +589,7 @@ class MOEADArm(GuidedMatingArm):
                     self._current_subproblem_idx = 0
                     self._generations_completed += 1
 
-        if (
-            self._max_evaluations is not None
-            and self._total_evaluations >= self._max_evaluations
-        ):
+        if self._max_evaluations is not None and self._total_evaluations >= self._max_evaluations:
             self._completed = True
 
         return AlgorithmBlockResult(

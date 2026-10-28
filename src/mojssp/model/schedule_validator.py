@@ -178,4 +178,3 @@ def validate_schedule(
     """
     validator = ScheduleValidator(energy_tolerance=energy_tolerance)
     return validator.validate(instance, schedule, raise_on_error=raise_on_error)
-

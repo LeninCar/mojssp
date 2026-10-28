@@ -42,10 +42,7 @@ class TestSmokeMultiInstance(unittest.TestCase):
             ("small_3x2", data_dir / "validation" / "small_3x2.dzn"),
             ("small_3x3", data_dir / "validation" / "small_3x3.dzn"),
         ]
-        self.instances = {
-            name: load_dzn(path, validate=True)
-            for name, path in self.instance_files
-        }
+        self.instances = {name: load_dzn(path, validate=True) for name, path in self.instance_files}
         self.arm_classes = [NSGA2Arm, MOPSOArm, NSGA2LSArm]
         self.seed = 42
 
@@ -163,9 +160,7 @@ class TestSmokeMultiInstance(unittest.TestCase):
                 for i in range(len(entries)):
                     for j in range(len(entries)):
                         if i != j:
-                            self.assertFalse(
-                                dominates(entries[i].objectives, entries[j].objectives)
-                            )
+                            self.assertFalse(dominates(entries[i].objectives, entries[j].objectives))
                 # Unique genotypes
                 seen = set()
                 for e in entries:
@@ -184,11 +179,13 @@ class TestSmokeMultiInstance(unittest.TestCase):
 
                 def _run_orch():
                     norm = ObjectiveNormalizer(bounds)
-                    p = Portfolio([
-                        NSGA2Arm(inst, population_size=10, seed=777),
-                        MOPSOArm(inst, population_size=10, seed=777),
-                        NSGA2LSArm(inst, population_size=10, seed=777),
-                    ])
+                    p = Portfolio(
+                        [
+                            NSGA2Arm(inst, population_size=10, seed=777),
+                            MOPSOArm(inst, population_size=10, seed=777),
+                            NSGA2LSArm(inst, population_size=10, seed=777),
+                        ]
+                    )
                     d = SlidingWindowUCB(p.arm_names, window_size=5, seed=777)
                     t = HypervolumeRewardTracker(norm)
                     o = AdaptivePortfolioOrchestrator(p, d, t)
@@ -215,11 +212,13 @@ class TestSmokeMultiInstance(unittest.TestCase):
             with self.subTest(instance=inst_name):
                 bounds = compute_instance_bounds(inst)
                 norm = ObjectiveNormalizer(bounds)
-                p = Portfolio([
-                    NSGA2Arm(inst, population_size=10, seed=self.seed),
-                    MOPSOArm(inst, population_size=10, seed=self.seed),
-                    NSGA2LSArm(inst, population_size=10, seed=self.seed),
-                ])
+                p = Portfolio(
+                    [
+                        NSGA2Arm(inst, population_size=10, seed=self.seed),
+                        MOPSOArm(inst, population_size=10, seed=self.seed),
+                        NSGA2LSArm(inst, population_size=10, seed=self.seed),
+                    ]
+                )
                 d = SlidingWindowUCB(p.arm_names, seed=self.seed)
                 t = HypervolumeRewardTracker(norm)
                 o = AdaptivePortfolioOrchestrator(p, d, t)

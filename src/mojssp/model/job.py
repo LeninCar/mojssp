@@ -49,4 +49,3 @@ class Job:
             if op.op_id == op_id:
                 return op
         raise IndexError(f"Operation with op_id={op_id} not found in Job {self.job_id}.")
-

@@ -150,8 +150,8 @@ class TestDMAB(unittest.TestCase):
         dmab = SlidingWindowUCB(arm_names=["A", "B"], window_size=3)
 
         dmab.update("A", 10.0)  # [ (A, 10) ]
-        dmab.update("B", 1.0)   # [ (A, 10), (B, 1) ]
-        dmab.update("B", 2.0)   # [ (A, 10), (B, 1), (B, 2) ]
+        dmab.update("B", 1.0)  # [ (A, 10), (B, 1) ]
+        dmab.update("B", 2.0)  # [ (A, 10), (B, 1), (B, 2) ]
 
         stats = dmab.get_stats()
         self.assertEqual(stats["A"].window_pulls, 1)
@@ -160,7 +160,7 @@ class TestDMAB(unittest.TestCase):
         self.assertAlmostEqual(stats["B"].window_mean, 1.5)
 
         # 4th update evicts the oldest observation (A, 10.0)
-        dmab.update("B", 3.0)   # [ (B, 1), (B, 2), (B, 3) ]
+        dmab.update("B", 3.0)  # [ (B, 1), (B, 2), (B, 3) ]
 
         stats = dmab.get_stats()
         self.assertEqual(stats["A"].total_pulls, 1)

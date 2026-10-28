@@ -87,9 +87,7 @@ class TestOrchestrator(unittest.TestCase):
         total_budget = 47
         block_size = 15
 
-        res: AdaptiveExecutionResult = orchestrator.run(
-            total_budget=total_budget, block_size=block_size
-        )
+        res: AdaptiveExecutionResult = orchestrator.run(total_budget=total_budget, block_size=block_size)
 
         self.assertLessEqual(res.total_evaluations, total_budget)
         self.assertEqual(orchestrator.total_evaluations, res.total_evaluations)
@@ -161,9 +159,7 @@ class TestOrchestrator(unittest.TestCase):
 
         rec2 = orchestrator.step(block_budget=15)
         # Verify total evals on portfolio equals sum of steps
-        self.assertEqual(
-            orchestrator.total_evaluations, rec1.evaluations_used + rec2.evaluations_used
-        )
+        self.assertEqual(orchestrator.total_evaluations, rec1.evaluations_used + rec2.evaluations_used)
 
     def test_global_archive_accumulation(self) -> None:
         """Test G: Global Pareto Archive accumulates non-dominated solutions across blocks."""

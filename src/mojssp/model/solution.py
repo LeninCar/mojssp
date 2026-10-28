@@ -53,8 +53,7 @@ class Solution:
             count = self.sequence.count(job.job_id)
             if count != job.num_operations:
                 raise ValueError(
-                    f"Job {job.job_id} appears {count} times in sequence; "
-                    f"expected {job.num_operations}."
+                    f"Job {job.job_id} appears {count} times in sequence; expected {job.num_operations}."
                 )
 
         # Check mode validity for each operation using the canonical all_operations order
@@ -103,4 +102,3 @@ class Solution:
             modes_list.append(chosen_mode.mode_id)
 
         return cls(sequence=tuple(seq_list), modes=tuple(modes_list))
-

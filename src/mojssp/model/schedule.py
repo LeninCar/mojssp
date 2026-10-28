@@ -141,4 +141,3 @@ class Schedule:
         if job_id not in self._job_completion_times:
             raise KeyError(f"Job {job_id} not found in schedule.")
         return self._job_completion_times[job_id]
-

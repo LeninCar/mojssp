@@ -15,7 +15,9 @@ class TestIO(unittest.TestCase):
     """Test loading .dzn files and mapping to MO-JSSP domain model."""
 
     def setUp(self):
-        self.toy_dzn_path = Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
+        self.toy_dzn_path = (
+            Path(__file__).resolve().parent.parent / "data" / "validation" / "toy_instance.dzn"
+        )
 
     def test_load_toy_dzn(self):
         self.assertTrue(self.toy_dzn_path.exists(), f"File {self.toy_dzn_path} must exist.")

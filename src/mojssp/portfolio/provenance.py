@@ -349,7 +349,9 @@ class ProvenanceObservingPortfolio(Portfolio):
         result: AlgorithmBlockResult = arm.run(budget)
         fe_after = fe_before + result.evaluations_used
 
-        offered_entries = result.solutions.entries if (result.solutions and not result.solutions.is_empty) else ()
+        offered_entries = (
+            result.solutions.entries if (result.solutions and not result.solutions.is_empty) else ()
+        )
         solutions_offered = len(offered_entries)
 
         accepted_new = 0

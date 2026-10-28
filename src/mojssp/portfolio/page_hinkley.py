@@ -1,4 +1,5 @@
 """Page-Hinkley selection and its stationary UCB1 control."""
+
 from dataclasses import dataclass
 import math
 import random
@@ -6,6 +7,7 @@ from typing import Dict, List, Literal, Optional, Sequence, Tuple
 
 from mojssp.portfolio.change_detection import PageHinkleyDetector
 from mojssp.portfolio.dmab import ArmStats
+
 
 @dataclass(frozen=True)
 class PageHinkleyAlarmRecord:
@@ -28,7 +30,6 @@ class PageHinkleyAlarmRecord:
     observed_reward: float
     alarm_statistic: float
     threshold: float
-
 
 
 class PageHinkleyDMABSelector:
@@ -107,9 +108,7 @@ class PageHinkleyDMABSelector:
         seen = set()
         for idx, name in enumerate(arm_names):
             if not isinstance(name, str) or not name.strip():
-                raise ValueError(
-                    f"arm_names must contain non-empty strings, got element {idx}: {name!r}"
-                )
+                raise ValueError(f"arm_names must contain non-empty strings, got element {idx}: {name!r}")
             if name in seen:
                 raise ValueError(f"Duplicate arm name '{name}' in arm_names.")
             seen.add(name)
@@ -122,9 +121,7 @@ class PageHinkleyDMABSelector:
             or math.isinf(exploration_factor)
             or exploration_factor < 0.0
         ):
-            raise ValueError(
-                f"exploration_factor must be a finite float >= 0.0, got {exploration_factor!r}"
-            )
+            raise ValueError(f"exploration_factor must be a finite float >= 0.0, got {exploration_factor!r}")
 
         self._arm_names: Tuple[str, ...] = tuple(cleaned_names)
         self._c: float = float(exploration_factor)
@@ -255,22 +252,16 @@ class PageHinkleyDMABSelector:
             ValueError: If reward is not a finite real number.
         """
         if arm_name not in self._total_counts:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
 
-        if (
-            isinstance(reward, bool)
-            or not isinstance(reward, (int, float))
-            or not math.isfinite(reward)
-        ):
+        if isinstance(reward, bool) or not isinstance(reward, (int, float)) or not math.isfinite(reward):
             raise ValueError(f"reward must be a finite real number, got {reward!r}")
 
         rew = float(reward)
 
         # Determine probe vs adaptive status BEFORE updating counters
-        is_initial_probe = (self._adaptive_pulls[arm_name] == 0)
-        is_reexploring = (len(self._alarm_history) > 0 and self._cycle_counts[arm_name] == 0)
+        is_initial_probe = self._adaptive_pulls[arm_name] == 0
+        is_reexploring = len(self._alarm_history) > 0 and self._cycle_counts[arm_name] == 0
 
         # Track re-exploration pull count if arm had 0 pulls in current cycle
         if self._cycle_counts[arm_name] == 0:
@@ -324,33 +315,25 @@ class PageHinkleyDMABSelector:
     def initialize_arm(self, arm_name: str) -> None:
         """Mark an arm as initialized by neutral warm-up without updating reward statistics."""
         if arm_name not in self._total_counts:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         self._initialized_arms.add(arm_name)
 
     def is_arm_initialized(self, arm_name: str) -> bool:
         """Return whether an arm has completed warm-up or initialization."""
         if arm_name not in self._total_counts:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         return arm_name in self._initialized_arms
 
     def get_adaptive_pulls(self, arm_name: str) -> int:
         """Return the lifetime count of adaptive updates executed for the given arm."""
         if arm_name not in self._adaptive_pulls:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         return self._adaptive_pulls[arm_name]
 
     def is_in_initial_probe(self, arm_name: str) -> bool:
         """Return True if the arm has not yet completed its initial lifetime adaptive probe."""
         if arm_name not in self._adaptive_pulls:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         return self._adaptive_pulls[arm_name] == 0
 
     @property
@@ -361,16 +344,13 @@ class PageHinkleyDMABSelector:
     def is_in_reexploration(self, arm_name: str) -> bool:
         """Return True if the arm is undergoing post-alarm mandatory re-exploration in this cycle."""
         if arm_name not in self._cycle_counts:
-            raise KeyError(
-                f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}"
-            )
+            raise KeyError(f"Unknown arm '{arm_name}'. Registered arms: {list(self._arm_names)}")
         return len(self._alarm_history) > 0 and self._cycle_counts[arm_name] == 0
 
     @property
     def is_cycle_probe_complete(self) -> bool:
         """Return True if all registered arms have completed their probe in the current cycle."""
         return all(count > 0 for count in self._cycle_counts.values())
-
 
     def get_stats(self) -> Dict[str, ArmStats]:
         """Return a defensive snapshot of statistics for all registered arms.
@@ -418,7 +398,6 @@ class PageHinkleyDMABSelector:
         self._rng = random.Random(self._seed)
 
 
-
 class ClassicalUCB1Selector:
     """Classical Upper Confidence Bound (UCB1) selector without change detection or sliding window.
 
@@ -452,9 +431,7 @@ class ClassicalUCB1Selector:
         seen = set()
         for idx, name in enumerate(arm_names):
             if not isinstance(name, str) or not name.strip():
-                raise ValueError(
-                    f"arm_names must contain non-empty strings, got element {idx}: {name!r}"
-                )
+                raise ValueError(f"arm_names must contain non-empty strings, got element {idx}: {name!r}")
             if name in seen:
                 raise ValueError(f"Duplicate arm name '{name}' in arm_names.")
             seen.add(name)
@@ -467,9 +444,7 @@ class ClassicalUCB1Selector:
             or math.isinf(exploration_factor)
             or exploration_factor < 0.0
         ):
-            raise ValueError(
-                f"exploration_factor must be a finite float >= 0.0, got {exploration_factor!r}"
-            )
+            raise ValueError(f"exploration_factor must be a finite float >= 0.0, got {exploration_factor!r}")
 
         self._arm_names: Tuple[str, ...] = tuple(cleaned_names)
         self._c: float = float(exploration_factor)
@@ -525,11 +500,7 @@ class ClassicalUCB1Selector:
     def update(self, arm_name: str, reward: float) -> None:
         if arm_name not in self._total_counts:
             raise KeyError(f"Unknown arm '{arm_name}'")
-        if (
-            isinstance(reward, bool)
-            or not isinstance(reward, (int, float))
-            or not math.isfinite(reward)
-        ):
+        if isinstance(reward, bool) or not isinstance(reward, (int, float)) or not math.isfinite(reward):
             raise ValueError(f"reward must be a finite real number, got {reward!r}")
 
         rew = float(reward)
@@ -593,4 +564,3 @@ class ClassicalUCB1Selector:
         self._total_rewards = {name: 0.0 for name in self._arm_names}
         self._initialized_arms.clear()
         self._rng = random.Random(self._seed)
-

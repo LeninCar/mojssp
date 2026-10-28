@@ -25,7 +25,9 @@ class Operation:
 
     def __post_init__(self) -> None:
         if not self.modes:
-            raise ValueError(f"Operation ({self.job_id}, {self.op_id}) must have at least one processing mode.")
+            raise ValueError(
+                f"Operation ({self.job_id}, {self.op_id}) must have at least one processing mode."
+            )
         if self.release_date < 0:
             raise ValueError(f"release_date must be non-negative, got {self.release_date}")
 

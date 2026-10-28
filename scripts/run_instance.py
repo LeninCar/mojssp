@@ -28,7 +28,13 @@ from mojssp.experiments.methods import run_method as run_campaign_method, run_ps
 from mojssp.model.io import load_dzn
 from mojssp.metrics.normalization import compute_instance_bounds
 from mojssp.model.solution import Solution
-from plots import plot_convergence, plot_fronts_overlay, plot_gantt_chart, plot_pareto_front, print_ascii_gantt
+from plots import (
+    plot_convergence,
+    plot_fronts_overlay,
+    plot_gantt_chart,
+    plot_pareto_front,
+    print_ascii_gantt,
+)
 
 METHODS = {
     "psmb": ("PS-MB", "#1a1a1a"),
@@ -42,9 +48,16 @@ METHODS = {
     "mopso": ("MOPSO", "#6d4c41"),
 }
 # Nombre de cada método en los archivos de las campañas
-CAMPAIGN_NAMES = {"scaled": "moead_blmr_scaled", "passive": "passive", "blmr": "explorer_solo", "moead": "moead",
-                  "nsga2": "nsga2_individual", "spea2": "spea2_individual", "nsga2_ls": "nsga2_ls_individual",
-                  "mopso": "mopso_individual"}
+CAMPAIGN_NAMES = {
+    "scaled": "moead_blmr_scaled",
+    "passive": "passive",
+    "blmr": "explorer_solo",
+    "moead": "moead",
+    "nsga2": "nsga2_individual",
+    "spea2": "spea2_individual",
+    "nsga2_ls": "nsga2_ls_individual",
+    "mopso": "mopso_individual",
+}
 
 
 def run_method(instance, seed, budget, method, cut):
@@ -93,6 +106,7 @@ def rebuild_front(instance, front_entries):
 
 def pick_solutions(entries, bounds, select):
     """Índices de las soluciones a detallar según --select."""
+
     def norm_dist(e):
         o = e.objectives
         c = (o.makespan - bounds.cmax_min) / max(1, bounds.cmax_max - bounds.cmax_min)
@@ -123,19 +137,42 @@ def pick_solutions(entries, bounds, select):
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Corre un método sobre una instancia .dzn y genera sus gráficas")
+    parser = argparse.ArgumentParser(
+        description="Corre un método sobre una instancia .dzn y genera sus gráficas"
+    )
     parser.add_argument("--instance", type=Path, required=True, help="Ruta al archivo .dzn")
     parser.add_argument("--method", choices=METHODS, default="psmb", help="Método principal (default: psmb)")
-    parser.add_argument("--compare", nargs="+", choices=METHODS, default=[],
-                        help="Otros métodos a correr con la misma semilla, p. ej. --compare blmr moead")
-    parser.add_argument("--cut", type=int, default=600, help="Corte del PS-MB en FE, múltiplo de 50 (default: 600)")
-    parser.add_argument("--seed", type=int, default=100, help="Semilla (default: 100, la primera del holdout)")
-    parser.add_argument("--budget", type=int, default=3000, help="Presupuesto en FE, múltiplo de 50 (default: 3000)")
-    parser.add_argument("--select", default="all",
-                        help="Solución a detallar: 'all', 'cmax', 'tardiness', 'energy', 'balanced' o número 1..N (default: all)")
-    parser.add_argument("--show-front", action="store_true", help="Imprime todos los puntos del frente, no solo los destacados")
-    parser.add_argument("--output-dir", type=Path,
-                        help="Carpeta de salida (default: results/demo/<instancia>_<método>_seed<semilla>)")
+    parser.add_argument(
+        "--compare",
+        nargs="+",
+        choices=METHODS,
+        default=[],
+        help="Otros métodos a correr con la misma semilla, p. ej. --compare blmr moead",
+    )
+    parser.add_argument(
+        "--cut", type=int, default=600, help="Corte del PS-MB en FE, múltiplo de 50 (default: 600)"
+    )
+    parser.add_argument(
+        "--seed", type=int, default=100, help="Semilla (default: 100, la primera del holdout)"
+    )
+    parser.add_argument(
+        "--budget", type=int, default=3000, help="Presupuesto en FE, múltiplo de 50 (default: 3000)"
+    )
+    parser.add_argument(
+        "--select",
+        default="all",
+        help="Solución a detallar: 'all', 'cmax', 'tardiness', 'energy', 'balanced' o número 1..N (default: all)",
+    )
+    parser.add_argument(
+        "--show-front",
+        action="store_true",
+        help="Imprime todos los puntos del frente, no solo los destacados",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        help="Carpeta de salida (default: results/demo/<instancia>_<método>_seed<semilla>)",
+    )
     args = parser.parse_args()
 
     if not args.instance.exists():
@@ -162,13 +199,20 @@ def main() -> None:
     print(f"{main_label.upper()} SOBRE UNA INSTANCIA")
     print("=" * 75)
     print(f"Instancia:     {args.instance.name}")
-    print(f"Estructura:    {len(instance.jobs)} trabajos, {instance.num_machines} máquinas, "
-          f"{instance.total_operations} operaciones")
-    print(f"Presupuesto:   {args.budget} FE" + (f"  (PS-MB: MOEA/D + BLMR hasta {cut} FE; después solo BLMR)" if cut else ""))
+    print(
+        f"Estructura:    {len(instance.jobs)} trabajos, {instance.num_machines} máquinas, "
+        f"{instance.total_operations} operaciones"
+    )
+    print(
+        f"Presupuesto:   {args.budget} FE"
+        + (f"  (PS-MB: MOEA/D + BLMR hasta {cut} FE; después solo BLMR)" if cut else "")
+    )
     print(f"Semilla:       {args.seed}")
-    print(f"Cotas de normalización: makespan [{bounds.cmax_min}, {bounds.cmax_max}], "
-          f"tardanza [{bounds.tardiness_min}, {bounds.tardiness_max}], "
-          f"energía [{bounds.energy_min:.2f}, {bounds.energy_max:.2f}]")
+    print(
+        f"Cotas de normalización: makespan [{bounds.cmax_min}, {bounds.cmax_max}], "
+        f"tardanza [{bounds.tardiness_min}, {bounds.tardiness_max}], "
+        f"energía [{bounds.energy_min:.2f}, {bounds.energy_max:.2f}]"
+    )
     print("-" * 75)
 
     results = {}
@@ -189,15 +233,19 @@ def main() -> None:
             print(f"{name:<14} {f'{lo}-{hi}':<12} {used['MOEA/D']:>8} {used['RegionExplorer']:>8}")
         total = main_result["allocations"]
         print("-" * 46)
-        print(f"{'Total':<14} {'':<12} {total.get('MOEA/D', 0):>8} {total.get('RegionExplorer', 0):>8}"
-              f"   (MOEA/D {100 * total.get('MOEA/D', 0) / args.budget:.1f} %)")
+        print(
+            f"{'Total':<14} {'':<12} {total.get('MOEA/D', 0):>8} {total.get('RegionExplorer', 0):>8}"
+            f"   (MOEA/D {100 * total.get('MOEA/D', 0) / args.budget:.1f} %)"
+        )
 
     print("\nRESULTADO:")
     print(f"{'Método':<18} {'HV':>10} {'Puntos':>8} {'Tiempo (s)':>11}")
     print("-" * 51)
     for method, result in results.items():
-        print(f"{METHODS[method][0]:<18} {result['hypervolume']:>10.6f} {len(set(map(tuple, result['pareto_front']))):>8} "
-              f"{result['wall_seconds']:>11.2f}")
+        print(
+            f"{METHODS[method][0]:<18} {result['hypervolume']:>10.6f} {len(set(map(tuple, result['pareto_front']))):>8} "
+            f"{result['wall_seconds']:>11.2f}"
+        )
     for method in methods[1:]:
         diff = main_result["hypervolume"] - results[method]["hypervolume"]
         print(f"  {main_label} menos {METHODS[method][0]}: {diff:+.6f}")
@@ -210,43 +258,74 @@ def main() -> None:
         tags.setdefault(i, []).append(label)
 
     show_all = args.show_front or len(entries) <= 30
-    print(f"\nFRENTE DE PARETO DE {main_label.upper()}: {len(entries)} puntos distintos"
-          + ("" if show_all else " (solo los destacados; --show-front para verlos todos)"))
+    print(
+        f"\nFRENTE DE PARETO DE {main_label.upper()}: {len(entries)} puntos distintos"
+        + ("" if show_all else " (solo los destacados; --show-front para verlos todos)")
+    )
     print(f"{'Opción':<8} {'Makespan':>10} {'Tardanza':>10} {'Energía':>12}  Perfil")
     print("-" * 75)
     for i, e in enumerate(entries):
         if show_all or i in tags:
             o = e.objectives
-            print(f"#{i + 1:<7} {o.makespan:>10} {o.tardiness:>10} {o.energy:>12.2f}  {' | '.join(tags.get(i, []))}")
+            print(
+                f"#{i + 1:<7} {o.makespan:>10} {o.tardiness:>10} {o.energy:>12.2f}  {' | '.join(tags.get(i, []))}"
+            )
 
     print()
     curves = [(*METHODS[m], r, m == args.method) for m, r in results.items()]
-    plot_convergence(curves, blocks, args.budget, cut if args.method == "psmb" else None,
-                     out_dir / "convergencia.png", instance.name)
+    plot_convergence(
+        curves,
+        blocks,
+        args.budget,
+        cut if args.method == "psmb" else None,
+        out_dir / "convergencia.png",
+        instance.name,
+    )
     plot_pareto_front(entries, [i for i, _ in chosen], out_dir / "frente.png", instance.name, main_label)
     if len(methods) > 1:
-        plot_fronts_overlay([(*METHODS[m], f, m == args.method) for m, f in fronts.items()],
-                            out_dir / "frentes_comparados.png", instance.name)
+        plot_fronts_overlay(
+            [(*METHODS[m], f, m == args.method) for m, f in fronts.items()],
+            out_dir / "frentes_comparados.png",
+            instance.name,
+        )
 
     for i, label in chosen:
         o = entries[i].objectives
         print("\n" + "=" * 75)
-        print(f"SOLUCIÓN #{i + 1} ({label}): makespan {o.makespan}, tardanza {o.tardiness}, energía {o.energy:.2f}")
+        print(
+            f"SOLUCIÓN #{i + 1} ({label}): makespan {o.makespan}, tardanza {o.tardiness}, energía {o.energy:.2f}"
+        )
         print("=" * 75)
         if instance.num_machines <= 20:
             print_ascii_gantt(entries[i].schedule)
         slug = label.lower().replace(" ", "_").replace("#", "")
-        plot_gantt_chart(entries[i].schedule, out_dir / f"gantt_sol{i + 1}_{slug}.png",
-                         title=f"Gantt {main_label}: {instance.name}",
-                         subtitle=f"Solución #{i + 1} [{label}]: makespan={o.makespan}, tardanza={o.tardiness}, energía={o.energy:.2f}")
+        plot_gantt_chart(
+            entries[i].schedule,
+            out_dir / f"gantt_sol{i + 1}_{slug}.png",
+            title=f"Gantt {main_label}: {instance.name}",
+            subtitle=f"Solución #{i + 1} [{label}]: makespan={o.makespan}, tardanza={o.tardiness}, energía={o.energy:.2f}",
+        )
 
-    summary = dict(instance=str(args.instance), method=args.method, seed=args.seed, budget=args.budget, cut=cut,
-                   normalized_reference=[1.1, 1.1, 1.1],
-                   methods={m: dict(hypervolume=r["hypervolume"], evaluations_used=r["evaluations_used"],
-                                    front_size=len(fronts[m]), wall_seconds=r["wall_seconds"],
-                                    allocations=r.get("allocations"), checkpoints=r["checkpoints"],
-                                    pareto_front=r["pareto_front"])
-                            for m, r in results.items()})
+    summary = dict(
+        instance=str(args.instance),
+        method=args.method,
+        seed=args.seed,
+        budget=args.budget,
+        cut=cut,
+        normalized_reference=[1.1, 1.1, 1.1],
+        methods={
+            m: dict(
+                hypervolume=r["hypervolume"],
+                evaluations_used=r["evaluations_used"],
+                front_size=len(fronts[m]),
+                wall_seconds=r["wall_seconds"],
+                allocations=r.get("allocations"),
+                checkpoints=r["checkpoints"],
+                pareto_front=r["pareto_front"],
+            )
+            for m, r in results.items()
+        },
+    )
     (out_dir / "resumen.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False), encoding="utf-8")
     print("\n" + "=" * 75)
     print(f"Archivos generados en: {out_dir.resolve()}")

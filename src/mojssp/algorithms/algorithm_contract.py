@@ -156,6 +156,7 @@ class MOEADAdapter:
 
     def __init__(self, algorithm: Optional[Any] = None, **kwargs: Any) -> None:
         from mojssp.algorithms.moead import MOEAD
+
         self._algorithm = algorithm if algorithm is not None else MOEAD(**kwargs)
 
     @property
@@ -168,6 +169,7 @@ class MOEADAdapter:
 
     def run(self, instance: Instance) -> AlgorithmResult:
         from mojssp.algorithms.moead import MOEADResult
+
         raw: MOEADResult = self._algorithm.run(instance)
         return AlgorithmResult(
             archive=raw.archive,
@@ -183,6 +185,7 @@ class SPEA2Adapter:
 
     def __init__(self, algorithm: Optional[Any] = None, **kwargs: Any) -> None:
         from mojssp.algorithms.spea2 import SPEA2
+
         self._algorithm = algorithm if algorithm is not None else SPEA2(**kwargs)
 
     @property
@@ -195,6 +198,7 @@ class SPEA2Adapter:
 
     def run(self, instance: Instance) -> AlgorithmResult:
         from mojssp.algorithms.spea2 import SPEA2Result
+
         raw: SPEA2Result = self._algorithm.run(instance)
         return AlgorithmResult(
             archive=raw.archive,
@@ -253,4 +257,3 @@ class PortfolioArm(Protocol):
             and completion status.
         """
         ...
-

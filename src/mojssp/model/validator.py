@@ -52,9 +52,8 @@ def validate_instance(instance: Instance, raise_on_error: bool = True) -> List[s
     min_machine = min(all_machines) if all_machines else 0
     max_machine = max(all_machines) if all_machines else 0
 
-    valid_machine_range = (
-        (min_machine >= 0 and max_machine < instance.num_machines) or
-        (min_machine >= 1 and max_machine <= instance.num_machines)
+    valid_machine_range = (min_machine >= 0 and max_machine < instance.num_machines) or (
+        min_machine >= 1 and max_machine <= instance.num_machines
     )
     if all_machines and not valid_machine_range:
         errors.append(

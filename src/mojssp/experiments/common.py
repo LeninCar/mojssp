@@ -20,12 +20,12 @@ def digest(path):
 
 def write_json(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open('x', encoding='utf-8') as stream:
+    with path.open("x", encoding="utf-8") as stream:
         json.dump(value, stream, ensure_ascii=False, indent=2, allow_nan=False)
 
 
 def write_csv(path, rows):
-    with path.open('x', encoding='utf-8-sig', newline='') as stream:
+    with path.open("x", encoding="utf-8-sig", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
@@ -33,14 +33,14 @@ def write_csv(path, rows):
 
 def auc(checkpoints, budget):
     """Area under the HV curve over the budget, divided by the budget."""
-    previous_fe, previous_hv, area = 0, 0., 0.
+    previous_fe, previous_hv, area = 0, 0.0, 0.0
     for fe, hv in checkpoints:
         if fe <= previous_fe or hv < previous_hv - 1e-12:
-            raise ValueError('Invalid hypervolume trajectory')
+            raise ValueError("Invalid hypervolume trajectory")
         area += (fe - previous_fe) * (hv + previous_hv) / 2
         previous_fe, previous_hv = fe, hv
     if previous_fe != budget:
-        raise ValueError('Incomplete trajectory')
+        raise ValueError("Incomplete trajectory")
     return area / budget
 
 
@@ -54,7 +54,7 @@ def count_evaluations():
         counter[0] += 1
         return original(self, *args, **kwargs)
 
-    with patch.object(Evaluator, 'evaluate', counted):
+    with patch.object(Evaluator, "evaluate", counted):
         yield counter
 
 
@@ -63,10 +63,10 @@ def independent_hv(points, reference=(1.1, 1.1, 1.1)):
     p = np.unique(np.asarray(points, dtype=float), axis=0)
     p = p[np.all(p < np.asarray(reference), axis=1)]
     if not len(p):
-        return 0.
+        return 0.0
     xs = sorted(set(p[:, 0]) | {reference[0]})
     ys = sorted(set(p[:, 1]) | {reference[1]})
-    volume = 0.
+    volume = 0.0
     for x, x1 in zip(xs, xs[1:]):
         active = p[p[:, 0] <= x]
         for y, y1 in zip(ys, ys[1:]):

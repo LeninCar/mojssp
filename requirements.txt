@@ -8,3 +8,6 @@ pytest==9.1.1
 pandas==2.2.3
 seaborn==0.13.2
 scikit-learn==1.7.2
+
+# Formatter (development only)
+ruff==0.17.3
