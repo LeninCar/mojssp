@@ -1,0 +1,10 @@
+# Python 3.12. Versions used for the final campaigns (holdout and validations).
+numpy==2.5.3
+scipy==1.16.2
+matplotlib==3.10.1
+pytest==9.1.1
+
+# Only for older analysis scripts (phase 2 analyses, instance selection pilots).
+pandas==2.2.3
+seaborn==0.13.2
+scikit-learn==1.7.2

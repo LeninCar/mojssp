@@ -18,15 +18,28 @@ individual: +0,0136 con intervalo bootstrap del 95 % [+0,0085; +0,0185].
 Supera en promedio a los seis individuales; con la pareja MOEA/D + BLMR con UCB
 escalado queda estadísticamente empatado.
 
-Detalle en `results/experiments/holdout_early_moead_600_20261024/interpretacion.txt`
-y `results/experiments/holdout_policy_comparison_20261025/`.
+La validación experta confirma el resultado y lo precisa:
+
+- Con corrección de Holm para las siete comparaciones, la ventaja sobre BLMR solo
+  y MOEA/D se mantiene; sobre la pareja con rondas dinámicas (+0,0049) no es
+  significativa (p = 0,088; el intervalo agrupado por instancia base incluye el cero).
+- Con IGD+ y épsilon normalizados por el frente de referencia (los tres objetivos
+  pesan igual), el PS-MB es primero. Con las cotas fijas del HV, que pesan sobre
+  todo la energía, MOEA/D es primero: cubre mejor la zona de bajo consumo,
+  mientras el PS-MB y BLMR son mejores en makespan y tardanza.
+- El PS-MB supera a BLMR solo con todas las métricas y normalizaciones.
+
+Detalle en `results/experiments/holdout_early_moead_600_20261024/` (`interpretacion.txt`,
+`expert_validation.json`, `secondary_metrics.json`) y
+`results/experiments/holdout_policy_comparison_20261025/`.
 
 ## Estructura
 
 | Carpeta | Contenido |
 | --- | --- |
 | `src/mojssp/` | Modelo, decodificador, evaluador, archivo de Pareto, HV, los seis brazos (NSGA-II, NSGA-II+LS, MOPSO, MOEA/D, SPEA2, BLMR en `regional_explorer.py`), selectores y orquestador del portafolio |
-| `scripts/` | Runners de campañas, análisis y validaciones |
+| `scripts/` | Runners de campañas y análisis; `run_psmb.py` corre el PS-MB sobre una instancia |
+| `scripts/validation/` | Validación experta del código, el modelo y el holdout |
 | `tests/` | Pruebas (`pytest`) |
 | `data/` | Instancias `.dzn`: validación, bancos experimentales y `generated/expanded_200` con su partición desarrollo/holdout |
 | `configs/` | Configuraciones de algunas campañas |
@@ -37,12 +50,45 @@ y `results/experiments/holdout_policy_comparison_20261025/`.
 
 ## Entorno
 
-Python 3.12 con `numpy`, `scipy`, `matplotlib` y `pytest`, en `.venv`.
-Los scripts necesitan `src` y `scripts` en la ruta de módulos.
+Python 3.12 en `.venv`. `requirements.txt` fija las versiones usadas;
+`pandas`, `seaborn` y `scikit-learn` solo hacen falta para scripts de análisis
+anteriores. Los runners de campañas necesitan `src` y `scripts` en la ruta de
+módulos (`$env:PYTHONPATH = "src;scripts"`).
 
-```bash
-.venv/Scripts/python.exe -m pytest -q
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+.venv\Scripts\python.exe -m pytest -q
 ```
+
+## Correr el PS-MB sobre una instancia
+
+`scripts/run_psmb.py` usa las mismas funciones que el holdout: con la semilla 100
+y 3000 FE reproduce el HV guardado.
+
+```powershell
+.venv\Scripts\python.exe scripts\run_psmb.py --instance data\generated\expanded_200\base_c02_10x10_b05_btnk_high.dzn --compare
+```
+
+Imprime el reparto del presupuesto por fase, el HV y las soluciones destacadas
+del frente, y guarda en `results/demo/<instancia>_seed<semilla>/` la convergencia
+del HV con el brazo de cada bloque, el frente, los Gantt y `resumen.json`.
+`--compare` corre también BLMR solo y MOEA/D solo y agrega sus frentes
+superpuestos; `--select` elige qué solución detallar (`all`, `cmax`,
+`tardiness`, `energy`, `balanced` o un número).
+
+## Validaciones
+
+Desde la raíz, con `.venv\Scripts\python.exe scripts\validation\<script>`:
+
+| Script | Qué comprueba |
+| --- | --- |
+| `validate_model.py` | Caso 2x2 resuelto a mano y lector, decodificador y evaluador independientes |
+| `validate_hv.py` | HV contra dos métodos exactos independientes |
+| `validate_normalization.py` | Sesgo de las cotas fijas y repetición con normalización empírica |
+| `validate_fe.py` | Exactamente 3000 decodificaciones y evaluaciones por método |
+| `validate_experiments.py` | Código congelado, reproducción de una muestra, fugas, semillas, Holm, A12 emparejado e intervalo agrupado |
+| `validate_secondary_metrics.py` | IGD+ y épsilon en el holdout, incluido el UCB escalado |
 
 ## Reproducir la evaluación final
 
@@ -66,3 +112,22 @@ El runner del holdout exige que el código sea exactamente el congelado: hay que
 ejecutarlo desde `git checkout holdout-v2-freeze`. Con `--resume` las corridas
 ya guardadas se reutilizan; sin las carpetas `runs/` locales, se vuelven a
 calcular.
+
+## Barrido del corte (en curso)
+
+El corte en 600 FE no se optimizó. `scripts/run_cut_sweep.py` lo estudia sin
+tocar el holdout ya usado:
+
+1. `develop`: cortes en 300, 600, 900, 1200 y 1800 FE, la pareja sin corte, el
+   UCB escalado, BLMR solo y MOEA/D solo en las 120 instancias de desarrollo de
+   `expanded_200` (3 semillas). Elige un corte fijo o por tamaño con una regla
+   fijada antes de correr y dice si 600 queda justificado.
+2. `confirm`: corre la elección contra el PS-MB, el UCB escalado y los controles
+   una sola vez en instancias nuevas que no estén en `expanded_200`.
+
+```powershell
+$env:PYTHONPATH = "src;scripts"
+.venv\Scripts\python.exe scripts\run_cut_sweep.py develop --output-dir results\experiments\cut_sweep_development_20261028
+```
+
+Exige el código commiteado; `--resume` continúa una corrida interrumpida.
