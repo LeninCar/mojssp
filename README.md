@@ -38,7 +38,7 @@ Detalle en `results/experiments/holdout_early_moead_600_20261024/` (`interpretac
 | Carpeta | Contenido |
 | --- | --- |
 | `src/mojssp/` | Modelo, decodificador, evaluador, archivo de Pareto, HV, los seis brazos (NSGA-II, NSGA-II+LS, MOPSO, MOEA/D, SPEA2, BLMR en `regional_explorer.py`), selectores y orquestador del portafolio |
-| `scripts/` | Runners de campañas y análisis; `run_psmb.py` corre el PS-MB sobre una instancia |
+| `scripts/` | Runners de campañas y análisis; `run_instance.py` corre cualquier método final sobre una instancia |
 | `scripts/validation/` | Validación experta del código, el modelo y el holdout |
 | `tests/` | Pruebas (`pytest`) |
 | `data/` | Instancias `.dzn`: validación, bancos experimentales y `generated/expanded_200` con su partición desarrollo/holdout |
@@ -61,21 +61,28 @@ python -m venv .venv
 .venv\Scripts\python.exe -m pytest -q
 ```
 
-## Correr el PS-MB sobre una instancia
+## Correr un método sobre una instancia
 
-`scripts/run_psmb.py` usa las mismas funciones que el holdout: con la semilla 100
-y 3000 FE reproduce el HV guardado.
+`scripts/run_instance.py` usa las mismas funciones que las campañas finales: con
+la semilla 100 y 3000 FE reproduce el HV guardado en el holdout para los nueve
+métodos.
 
 ```powershell
-.venv\Scripts\python.exe scripts\run_psmb.py --instance data\generated\expanded_200\base_c02_10x10_b05_btnk_high.dzn --compare
+.venv\Scripts\python.exe scripts\run_instance.py --instance data\generated\expanded_200\base_c02_10x10_b05_btnk_high.dzn --compare blmr moead
 ```
 
-Imprime el reparto del presupuesto por fase, el HV y las soluciones destacadas
-del frente, y guarda en `results/demo/<instancia>_seed<semilla>/` la convergencia
-del HV con el brazo de cada bloque, el frente, los Gantt y `resumen.json`.
-`--compare` corre también BLMR solo y MOEA/D solo y agrega sus frentes
-superpuestos; `--select` elige qué solución detallar (`all`, `cmax`,
-`tardiness`, `energy`, `balanced` o un número).
+| Opción | Uso |
+| --- | --- |
+| `--method` | Método principal: `psmb` (por defecto), `scaled`, `passive`, `blmr`, `moead`, `nsga2`, `spea2`, `nsga2_ls`, `mopso` |
+| `--compare` | Otros métodos a correr con la misma semilla |
+| `--cut` | Corte del PS-MB en FE (600 por defecto) |
+| `--seed`, `--budget` | Semilla (100) y presupuesto (3000 FE) |
+| `--select` | Solución a detallar: `all`, `cmax`, `tardiness`, `energy`, `balanced` o un número |
+| `--show-front`, `--output-dir` | Imprimir todo el frente; carpeta de salida |
+
+Imprime el reparto del presupuesto por fase (en los portafolios), el HV y las
+soluciones destacadas, y guarda en `results/demo/<instancia>_<método>_seed<semilla>/`
+la convergencia del HV, el frente, los frentes comparados, los Gantt y `resumen.json`.
 
 ## Validaciones
 
