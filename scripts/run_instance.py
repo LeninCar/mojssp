@@ -150,7 +150,10 @@ def main() -> None:
         help="Otros métodos a correr con la misma semilla, p. ej. --compare blmr moead",
     )
     parser.add_argument(
-        "--cut", type=int, default=600, help="Corte del PS-MB en FE, múltiplo de 50 (default: 600)"
+        "--cut",
+        type=int,
+        default=600,
+        help="Corte del PS-MB en FE: múltiplo de 300 (inicio de ronda) menor que el presupuesto (default: 600)",
     )
     parser.add_argument(
         "--seed", type=int, default=100, help="Semilla (default: 100, la primera del holdout)"
@@ -181,8 +184,12 @@ def main() -> None:
         parser.error("El presupuesto debe ser múltiplo de 50 y al menos 600 FE")
     methods = [args.method] + [m for m in dict.fromkeys(args.compare) if m != args.method]
     cut = args.cut if "psmb" in methods else None
-    if cut is not None and (cut % 50 or not 0 < cut <= args.budget):
-        parser.error("El corte debe ser múltiplo de 50 y estar entre 50 y el presupuesto")
+    # The coordinator reallocates in 300 FE rounds and only switches to BLMR at a round start.
+    if cut is not None and (cut % 300 or not 300 <= cut < args.budget):
+        parser.error(
+            "El corte debe ser múltiplo de 300 (el PS-MB solo cambia a BLMR al inicio de una ronda), "
+            "al menos 300 y menor que el presupuesto"
+        )
     if cut is not None and cut != 600:
         METHODS["psmb"] = (f"PS-MB (corte {cut})", METHODS["psmb"][1])
     select = args.select.strip().lower()
