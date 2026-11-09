@@ -1,0 +1,8 @@
+method,mean_hypervolume
+moead_regional_ph,0.9653327364088268
+moead_regional_sw_ucb,0.9615247142136081
+nsga2_regional_ph,0.9639805867015389
+nsga2_regional_sw_ucb,0.9654520158007397
+quartet_regional_ph,0.9227900928062471
+quartet_regional_sw_ucb,0.9265842125533189
+quartet_regional_uniform,0.9258599482913418

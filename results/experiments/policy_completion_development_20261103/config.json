@@ -1,0 +1,82 @@
+{
+  "cases": [
+    "development_00_5x5",
+    "development_01_10x10",
+    "development_02_20x10",
+    "development_03_10x20",
+    "development_04_20x20",
+    "development_05_30x20"
+  ],
+  "seeds": [
+    100,
+    200,
+    300
+  ],
+  "budget": 3000,
+  "block_size": 50,
+  "population_size": 30,
+  "configurations": {
+    "moead_regional_sw_ucb": {
+      "arms": [
+        "MOEA/D",
+        "RegionExplorer"
+      ],
+      "policy": "sw_ucb"
+    },
+    "moead_regional_ph": {
+      "arms": [
+        "MOEA/D",
+        "RegionExplorer"
+      ],
+      "policy": "ph"
+    },
+    "nsga2_regional_sw_ucb": {
+      "arms": [
+        "NSGA-II",
+        "RegionExplorer"
+      ],
+      "policy": "sw_ucb"
+    },
+    "nsga2_regional_ph": {
+      "arms": [
+        "NSGA-II",
+        "RegionExplorer"
+      ],
+      "policy": "ph"
+    },
+    "quartet_regional_uniform": {
+      "arms": [
+        "MOEA/D",
+        "NSGA-II",
+        "SPEA2",
+        "RegionExplorer"
+      ],
+      "policy": "uniform"
+    },
+    "quartet_regional_sw_ucb": {
+      "arms": [
+        "MOEA/D",
+        "NSGA-II",
+        "SPEA2",
+        "RegionExplorer"
+      ],
+      "policy": "sw_ucb"
+    },
+    "quartet_regional_ph": {
+      "arms": [
+        "MOEA/D",
+        "NSGA-II",
+        "SPEA2",
+        "RegionExplorer"
+      ],
+      "policy": "ph"
+    }
+  },
+  "reproduced_before_running": [
+    "spea2_regional_sw_ucb",
+    "spea2_regional_ph",
+    "moead_regional_uniform",
+    "quartet_regional_scaled"
+  ],
+  "scope": "Run on 2026-11-03, after the holdout evaluation (2026-10-24), only to complete the development table of BLMR pairs and policies; it played no part in selecting PS-MB."
+}

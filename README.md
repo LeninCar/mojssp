@@ -34,10 +34,10 @@ decidir, cinco semillas (100–500) y 3000 FE. Resultados (capítulo 7 de la tes
 | BLMR individual | 0.9789 | +0.0136 [+0.0071; +0.0196] |
 | MOEA/D individual | 0.9766 | +0.0158 [+0.0040; +0.0287] |
 
-Los intervalos de la tesis remuestrean las 16 instancias base, porque los cinco
-perfiles de cada base no son independientes. En `interpretacion.txt` y
-`comparisons.csv` aparecen además intervalos por instancia (más estrechos,
-p. ej. [+0.0085; +0.0185] frente a BLMR); para citar, usar los agrupados.
+Los intervalos remuestrean las 16 instancias base, porque los cinco perfiles de
+cada base no son independientes. `interpretacion.txt` y `comparisons.csv`
+incluyen también intervalos por instancia, más estrechos; los valores de
+referencia son los agrupados.
 
 - Frente a BLMR y MOEA/D la ventaja se mantiene con corrección de Holm. Frente a
   la pareja sin corte no es concluyente en HV final, pero sí lo es en AUC-HV
@@ -48,9 +48,10 @@ p. ej. [+0.0085; +0.0185] frente a BLMR); para citar, usar los agrupados.
 - La pareja con UCB escalado (`moead_blmr_scaled`) se evaluó como
   comparación complementaria y queda estadísticamente empatada con el PS-MB.
 
-Detalle en `results/experiments/holdout_early_moead_600_20261024/` y
-`results/experiments/holdout_policy_comparison_20261025/`. El resumen general
-está en `results/RESUMEN_RESULTADOS.md`.
+Los resultados detallados están en
+`results/experiments/holdout_early_moead_600_20261024/` y
+`results/experiments/holdout_policy_comparison_20261025/`; el resumen general,
+en `results/RESUMEN_RESULTADOS.md`.
 
 ## Estructura
 
@@ -77,15 +78,12 @@ está en `results/RESUMEN_RESULTADOS.md`.
 | `docs/model_formulation.md` | Formulación matemática del modelo |
 
 Los scripts de las campañas exploratorias anteriores (pilotos, fases 2 a F8.6,
-inyecciones, crédito compartido) se retiraron del código actual. Siguen en la
-etiqueta `thesis-full-history`, junto con los comandos citados en
-`results/commands.csv` y `results/index.csv`.
+inyecciones, crédito compartido) están en la etiqueta `thesis-full-history`;
+sus comandos se listan en `results/commands.csv` y `results/index.csv`.
 
 ## Entorno
 
-Python 3.12 en `.venv`. `requirements.txt` fija las versiones. `pandas` hace
-falta para los scripts de figuras y para `run_policy_completion.py`; `seaborn` y
-`scikit-learn`, solo para análisis anteriores.
+Python 3.12 en `.venv`, con las versiones fijadas en `requirements.txt`.
 
 ```powershell
 python -m venv .venv
@@ -93,9 +91,8 @@ python -m venv .venv
 .venv\Scripts\python.exe -m pytest -q
 ```
 
-`run_instance.py`, las validaciones y `instance_sets.py` agregan `src` a la ruta
-por su cuenta. Los runners de `scripts/campaigns/` necesitan
-`$env:PYTHONPATH = "src"`.
+Los runners de `scripts/campaigns/` requieren `$env:PYTHONPATH = "src"`; los
+demás scripts agregan `src` a la ruta por su cuenta.
 
 ## Correr el portafolio sobre una instancia
 
@@ -136,11 +133,10 @@ del HV, el frente, los frentes comparados, los diagramas de Gantt y
 `resumen.json`.
 
 > **Nota sobre `--cut`.** El coordinador reasigna en rondas de 300 FE
-> (0, 300, 600, 900…) y solo cambia a BLMR al inicio de una ronda. Por eso
-> `run_instance.py` acepta únicamente múltiplos de 300, como los del barrido
-> (300, 600, 900, 1200, 1800). `run_psmb` desde Python no hace esta validación:
-> un corte que no sea múltiplo de 300 equivale al siguiente múltiplo (450 se
-> comporta como 600) y uno menor que 300 produce un error.
+> (0, 300, 600, 900…) y solo cambia a BLMR al inicio de una ronda, por lo que
+> `run_instance.py` acepta únicamente múltiplos de 300. Desde Python, `run_psmb`
+> no valida el corte: un valor que no sea múltiplo de 300 se comporta como el
+> siguiente múltiplo y uno menor que 300 produce un error.
 
 ## Parámetros del PS-MB
 
@@ -204,13 +200,9 @@ Desde la raíz, con `.venv\Scripts\python.exe scripts\validation\<script>`:
 
 ## Reproducir la evaluación final
 
-El código evaluado está congelado en la etiqueta `holdout-v2-freeze`. El código
-actual se reorganizó después, pero da los mismos resultados:
-`validate_experiments.py` reproduce una muestra de corridas.
-
-Para relanzar el holdout tal como se corrió, hay que usar la etiqueta congelada
-(con las rutas de esa versión). El runner exige que el código sea exactamente el
-congelado; con `--resume` reutiliza las corridas guardadas en `runs/`.
+El holdout se ejecuta desde la etiqueta `holdout-v2-freeze`, con las rutas de
+esa versión. El runner verifica que el código coincida con el congelado y, con
+`--resume`, reutiliza las corridas guardadas en `runs/`.
 
 ```powershell
 git checkout holdout-v2-freeze
@@ -220,9 +212,8 @@ git checkout master
 ```
 
 La comparación complementaria de políticas (5 políticas × 4 composiciones en las
-mismas 80 instancias) se escribió después de la congelación y se corre desde el
-código actual. Reutiliza las corridas congeladas y comprueba el hash de la
-partición:
+mismas 80 instancias) se ejecuta desde el código actual. Reutiliza las corridas
+del holdout y verifica el hash de la partición:
 
 ```powershell
 .\scripts\campaigns\run_holdout_policies.ps1 -DryRun     # lista lo pendiente
@@ -231,17 +222,15 @@ partición:
 
 ## Barrido del corte (análisis de sensibilidad)
 
-El corte de 600 FE se fijó antes de la evaluación independiente.
-`scripts/campaigns/run_cut_sweep.py` lo estudió después, sin tocar el holdout
-(Tabla 6.12 de la tesis). En las 120 instancias de desarrollo, 900 FE obtiene
-el HV medio más alto (0.994292) y 600 FE queda prácticamente igual (0.994188),
-con una diferencia no concluyente. Es una comprobación de sensibilidad, no una
-justificación a posteriori del corte. Detalle en
+`scripts/campaigns/run_cut_sweep.py` compara distintos cortes en las 120
+instancias de desarrollo, sin usar el holdout (Tabla 6.12 de la tesis). 900 FE
+obtiene el HV medio más alto (0.994292) y 600 FE queda prácticamente igual
+(0.994188); la diferencia no es concluyente. El análisis completo está en
 `results/experiments/cut_sweep_development_20261028/interpretacion.txt`.
 
 | Subcomando | Qué hace | Opciones |
 | --- | --- | --- |
-| `develop` | Cortes 300, 600, 900, 1200 y 1800, más la pareja sin corte, el UCB escalado, BLMR y MOEA/D, en las 120 instancias de desarrollo (3 semillas) | `--output-dir` (obligatoria), `--workers` (1–14, 12), `--resume`, `--seeds` (prueba rápida, no escribe decisión) |
+| `develop` | Cortes 300, 600, 900, 1200 y 1800, más la pareja sin corte, el UCB escalado, BLMR y MOEA/D, en las 120 instancias de desarrollo (3 semillas) | `--output-dir` (obligatoria), `--workers` (1–14, 12), `--resume`, `--seeds` (prueba rápida) |
 | `confirm` | Corre la elección de `develop` una sola vez en instancias nuevas, fuera de `expanded_200` | lo anterior más `--development-dir` e `--instances-dir` (obligatorias) |
 
 ```powershell
@@ -249,15 +238,16 @@ $env:PYTHONPATH = "src"
 .venv\Scripts\python.exe scripts\campaigns\run_cut_sweep.py develop --output-dir results\experiments\cut_sweep_development_20261028 --resume
 ```
 
-`confirm` no se ha ejecutado. El script exige que el código esté commiteado.
+El subcomando `confirm` no se ha ejecutado; requiere que el código no tenga
+cambios sin confirmar en git.
 
 ## Completitud de la Tabla 6.7
 
 `scripts/campaigns/run_policy_completion.py` corre las siete celdas de la
 Tabla 6.7 que faltaban en el banco de desarrollo: SW-UCB y Page-Hinkley con
 MOEA/D + BLMR y con NSGA-II + BLMR, y uniforme, SW-UCB y Page-Hinkley con el
-cuarteto. Antes de correrlas comprueba que reproduce corridas guardadas de las
-campañas originales. Es un análisis posterior al holdout y solo descriptivo.
+cuarteto. Antes de ejecutarlas verifica que reproduce corridas guardadas de las
+campañas originales. Sus resultados son descriptivos.
 
 ```powershell
 $env:PYTHONPATH = "src"
@@ -280,8 +270,8 @@ fragmentos LaTeX y CSV):
 Las carpetas `runs/` (varios GB) no están en git.
 `scripts/campaigns/export_compact_runs.py` guarda en el `compact_runs.jsonl.gz`
 de cada campaña final (holdout, comparación de políticas, barrido) la curva de
-HV, el algoritmo de cada bloque, el reparto y el frente de cada corrida. Con eso
-se pueden rehacer las figuras sin los `runs/`.
+HV, el algoritmo de cada bloque, el reparto y el frente de cada corrida, lo que
+permite reconstruir las figuras sin las carpetas `runs/`.
 
 ```python
 import gzip, json
