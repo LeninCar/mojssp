@@ -61,6 +61,10 @@ scratch/
 
 # Thesis drafts and working documents
 docs/tesis/
+docs/tesis_entrega/
+docs/anexos_tesis.tex
+docs/correcciones_tesis.md
+docs/guia_correcciones_tesis.md
 
 # Local working notes and editorial guidance
 .local/
