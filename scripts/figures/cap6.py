@@ -255,7 +255,6 @@ def figure_blmr_vs_moead(out):
     ax.set_xticks(range(len(order)), [f"{s}\n({means[s]:+.3f})".replace("-", "−") for s in order])
     ax.set_xlabel("Tamaño de la instancia (trabajos × máquinas)")
     ax.set_ylabel("HV(BLMR) − HV(MOEA/D)")
-    ax.set_title("Diferencia pareada de hipervolumen por tamaño de instancia", fontsize=9.5, loc="left")
     ax.grid(axis="x", visible=False)
     leg = ax.legend(
         loc="upper center", bbox_to_anchor=(0.5, -0.24), ncol=2, fontsize=8, frameon=False, handlelength=1.4
@@ -409,7 +408,7 @@ def figure_blmr_individuals(out):
     )
 
     by_instance = hv.groupby(level=0).mean()
-    bars = [("BLMR", ORANGE), ("MOEA/D", BLUE), ("NSGA-II", "#9db9dd"), ("SPEA2", "#9db9dd")]
+    bars = [("BLMR", BLUE), ("MOEA/D", ORANGE), ("NSGA-II", "#9db9dd"), ("SPEA2", "#9db9dd")]
     fig, ax = plt.subplots(figsize=(5.4, 3.4))
     for i, (name, color) in enumerate(bars):
         mean = hv[name].mean()
@@ -431,7 +430,7 @@ def figure_blmr_individuals(out):
     ax.set_ylim(0, 1.2)
     ax.set_ylabel("HV final (media de 18 corridas)")
     ax.grid(axis="x", visible=False)
-    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in (ORANGE, BLUE, "#9db9dd")]
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in (BLUE, ORANGE, "#9db9dd")]
     handles.append(plt.Line2D([], [], marker="o", ls="", ms=4, color=INK))
     ax.legend(
         handles,

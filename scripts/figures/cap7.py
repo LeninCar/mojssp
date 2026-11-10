@@ -41,37 +41,37 @@ def save(fig, out, name):
     plt.close(fig)
 
 
-# Figure 7.x: MOEA/D minus BLMR per holdout instance, grouped by size
+# Figure 7.x: BLMR minus MOEA/D per holdout instance, grouped by size (same sign as Figure 6.5)
 def figure_moead_blmr_size(out):
     runs = pd.read_csv(HOLD / "runs.csv", encoding="utf-8-sig")
     split = pd.read_csv(SPLIT, encoding="utf-8-sig").set_index("instance_name")
     hv = runs.pivot_table(index="case", columns="method", values="hypervolume", aggfunc="mean")
     assert len(hv) == 80 and (runs.groupby(["case", "method"]).size() == 5).all()
-    diff = (hv["moead"] - hv["explorer_solo"]).rename("moead_minus_blmr").to_frame()
+    diff = (hv["explorer_solo"] - hv["moead"]).rename("blmr_minus_moead").to_frame()
     diff["size"] = split.loc[diff.index, "dimensions"]
     diff["operations"] = split.loc[diff.index, "total_operations"]
     diff.to_csv(out / "fig7_moead_blmr_tamano_datos.csv")
 
     fig, ax = plt.subplots(figsize=(7.0, 3.6))
-    top, bottom = 0.06, -0.11
-    ax.axhspan(0, top, color=ORANGE, alpha=0.08, lw=0)
-    ax.axhspan(bottom, 0, color=BLUE, alpha=0.07, lw=0)
+    top, bottom = 0.11, -0.06
+    ax.axhspan(0, top, color=BLUE, alpha=0.07, lw=0)
+    ax.axhspan(bottom, 0, color=ORANGE, alpha=0.08, lw=0)
     ax.axhline(0, color=INK, lw=0.9)
     counts = []
     for i, size in enumerate(SIZES):
-        d = diff[diff["size"] == size].sort_index()["moead_minus_blmr"].values
+        d = diff[diff["size"] == size].sort_index()["blmr_minus_moead"].values
         assert len(d) == 10
         x = i + np.linspace(-0.3, 0.3, len(d))
         ax.scatter(
             x,
             d,
             s=22,
-            color=[ORANGE if v > 0 else BLUE for v in d],
+            color=[BLUE if v > 0 else ORANGE for v in d],
             edgecolor="white",
             linewidth=0.6,
             zorder=3,
         )
-        counts.append((int((d < 0).sum()), int((d > 0).sum())))
+        counts.append((int((d > 0).sum()), int((d < 0).sum())))
     ops = diff.groupby("size")["operations"].first()
     ax.set_xticks(
         range(len(SIZES)),
@@ -91,25 +91,25 @@ def figure_moead_blmr_size(out):
     )
     ax.set_xlim(-0.6, len(SIZES) - 0.4)
     ax.set_ylim(bottom, top)
-    ax.set_ylabel("HV(MOEA/D) − HV(BLMR)")
+    ax.set_ylabel("HV(BLMR) − HV(MOEA/D)")
     ax.grid(axis="y", color="#e6e5e1", lw=0.6)
     ax.text(
         len(SIZES) - 0.45,
         top - 0.004,
-        "Arriba de 0: MOEA/D mejor",
+        "BLMR obtiene mayor HV",
         ha="right",
         va="top",
         fontsize=8.5,
-        color="#b4471d",
+        color="#1c5cab",
     )
     ax.text(
         len(SIZES) - 0.45,
         bottom + 0.004,
-        "Abajo de 0: BLMR mejor",
+        "MOEA/D obtiene mayor HV",
         ha="right",
         va="bottom",
         fontsize=8.5,
-        color="#1c5cab",
+        color="#b4471d",
     )
     save(fig, out, "fig7_moead_blmr_tamano")
     expected = [(9, 1), (9, 1), (8, 2), (8, 2), (0, 10), (0, 10), (0, 10), (0, 10)]
@@ -134,9 +134,10 @@ def figure_moead_blmr_size(out):
     return counts
 
 
+# Same colour convention as chapter 6: BLMR blue, MOEA/D orange
 COMPARATORS = [
-    ("moead", "MOEA/D", BLUE),
-    ("explorer_solo", "BLMR", ORANGE),
+    ("moead", "MOEA/D", ORANGE),
+    ("explorer_solo", "BLMR", BLUE),
     ("passive", "Pareja sin corte", "#6b6a66"),
 ]
 PROFILES = [

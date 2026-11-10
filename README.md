@@ -223,7 +223,7 @@ del holdout y verifica el hash de la partición:
 ## Barrido del corte (análisis de sensibilidad)
 
 `scripts/campaigns/run_cut_sweep.py` compara distintos cortes en las 120
-instancias de desarrollo, sin usar el holdout (Tabla 6.12 de la tesis). 900 FE
+instancias de desarrollo, sin usar el holdout. 900 FE
 obtiene el HV medio más alto (0.994292) y 600 FE queda prácticamente igual
 (0.994188); la diferencia no es concluyente. El análisis completo está en
 `results/experiments/cut_sweep_development_20261028/interpretacion.txt`.
